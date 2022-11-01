@@ -24,20 +24,56 @@ router.post("/",userController.add_user);
 router.post("/buyDashboard",userController.buyDashboard_user);
 
 
+// add_service
+router.post("/addservice",userController.add_service);
+
+
 // data property
 router.post("/property",userController.add_property);
+
+
+// get all data
+router.get("/getService",userController.service_all);
 
 // get all data
 router.get("/",userController.user_all);
 
+
+// get all property data
+router.get("/property",userController.user_property_all);
+
 // get single data
 router.get("/:userId",userController.signle_user);
 
-// delete data
+
+// get single data
+router.get("/service/:userId",userController.signle_services);
+
+
+// get single property
+router.get("/property/:propertyId",userController.signle_property);
+
+
+// delete property data
+router.delete("/property/:propertyId",userController.delete_property);
+// delete data services
 router.delete("/:userId",userController.delete_user);
+
+// delete data services
+router.delete("/services/:userId",userController.delete_service);
+
+
+
+// update single property data
+router.put("/property/:propertyId",userController.update_property);
 
 // update single data
 router.put("/:userId",userController.update_user);
+
+
+
+// update single data
+router.put("/service/:userId",userController.update_service);
 
 // // for single file
 // router.post('/profile', upload.single('avatar'), singleUpload);

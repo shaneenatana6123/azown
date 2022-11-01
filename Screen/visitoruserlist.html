@@ -223,7 +223,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="dashboard"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
@@ -243,7 +243,7 @@
           </ul>
         </li>
         <li>
-          <a href="../widgets.html">
+          <a href="property">
             <i class="fa fa-th"></i> <span>Property</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -270,13 +270,13 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
+            <span>Service</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li class="active"><a href="servicelist"><i class="fa fa-circle-o"></i> Service List</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
             <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
             <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
@@ -440,7 +440,7 @@
       
                   <th>Password</th>
       
-                  <th>Date</th>
+                  <th>Email</th>
                   <th>About</th>
                   <th>Dashboard</th>
                   <th>Property</th>
@@ -814,8 +814,10 @@
       aadhaar: "123412341234",
       totaldashboard: "0",
       totalproperty: "0"};
+
+      var base_url = window.location.origin;
       $.ajax({
-        url:"http://localhost:3000/api/users/"+id,
+        url: base_url +"/api/users/"+id,
         type:"PUT",
         contentType: 'application/json',
         dataType: 'json',
@@ -838,8 +840,9 @@
     if(conf == true){
       location.href = "public";
    //   location.href='https://google.com';
+   var base_url = window.location.origin;
       $.ajax({
-        url:"http://localhost:3000/api/users/"+deleteid,
+        url:base_url+"/api/users/"+deleteid,
         type:"DELETE",
         success: function(data,status){
           readRecords();
@@ -856,10 +859,10 @@
       
     $("#hidden_user_id").val(id);
     
-
+    var base_url = window.location.origin;
     
     $.ajax({
-      url: "http://localhost:3000/api/users/"+id,
+      url: base_url+"/api/users/"+id,
       type:"GET",
       success: function(data,status){
       
@@ -882,7 +885,8 @@
   }
   function sign_out(){
     sessionStorage.clear();
-    window.location.href="http://localhost:3000"; 
+    var base_url = window.location.origin;
+    window.location.href=base_url; 
   }
   function BuyDashboard(id){
     const d = new Date();
@@ -900,10 +904,10 @@
       dateAndTime:d};
       
 
-
+      var base_url = window.location.origin;
 
       $.ajax({
-        url:"http://localhost:3000/api/users/buyDashboard",
+        url:base_url+"/api/users/buyDashboard",
               type:"POST",
               contentType: 'application/json',
               dataType: 'json',
@@ -935,11 +939,11 @@
   function readRecords(){
 
     var toSend = {userType:"Visitor"};
-  
+    var base_url = window.location.origin;
   
    
     $.ajax({
-      url:"http://localhost:3000/api/users/UserType",
+      url:base_url+"/api/users/UserType",
             type:"POST",
             contentType: 'application/json',
             dataType: 'json',
@@ -958,18 +962,18 @@
                   i=i+1;
                   temp +='<tr>';
                     temp +='<td><b>'+i+'</b></td>';
-                    temp +='<td>'+u.userType+'</td>';
-                    temp +='<td>'+u.userName+'</td>';
-                    temp +='<td>'+u.mobile+'</td>';
-                    temp +='<td>'+u.pass+'</td>';
-                    temp +='<td>'+u.date+'</td>';
-                    temp +='<td>'+u.about+'</td>';
-                    temp +='<td><b>'+u.UserTotalDashboard+'</b></td>';
-                    temp +='<td><b>'+u.UserTotalProperty+'</b></td>';
-                    temp +='<td ><a href="#" onclick="GetUserDetails('+"'"+u._id+"'"+')" > <i class="fa fa-edit"></i> </a></td>';
-                    temp +='<td ><a href="#" onclick="DeleteUser('+"'"+u._id+"'"+')"  ><i class="fa fa-delete">delete</i></a></td>';
-                    temp +='<td ><a href="#" onclick="BuyDashboard('+"'"+u._id+"'"+')"  ><i class="fa fa-dashboard"></i></a></td>';
-                    temp +='<td ><button onclick="AddProperty('+"'"+u._id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
+                    temp +='<td>'+u.user_type+'</td>';
+                    temp +='<td>'+u.user_name+'</td>';
+                    temp +='<td>'+u.user_number+'</td>';
+                    temp +='<td>'+u.user_password+'</td>';
+                    temp +='<td>'+u.user_email+'</td>';
+                    temp +='<td>'+u.user_details+'</td>';
+                    temp +='<td><b>'+"0"+'</b></td>';
+                    temp +='<td><b>'+"0"+'</b></td>';
+                    temp +='<td ><a href="#" onclick="GetUserDetails('+"'"+u.user_id+"'"+')" > <i class="fa fa-edit"></i> </a></td>';
+                    temp +='<td ><a href="#" onclick="DeleteUser('+"'"+u.user_id+"'"+')"  ><i class="fa fa-delete">delete</i></a></td>';
+                    temp +='<td ><a href="#" onclick="BuyDashboard('+"'"+u.user_id+"'"+')"  ><i class="fa fa-dashboard"></i></a></td>';
+                    temp +='<td ><button onclick="AddProperty('+"'"+u.user_id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
                 });
                 $('#dataRes').html(temp);
                // document.getElementById("dataRes").innerHTML = temp;

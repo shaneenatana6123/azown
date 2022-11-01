@@ -5,6 +5,7 @@ const cors = require("cors")
 
 
 
+
 dotenv.config();
 
 // connect to db
@@ -17,7 +18,7 @@ mongoose.connect(
 
 const path = require('path')
 const app = express()
-const port = 3000
+var port =  process.env.PORT || 3000
 
 
 //app.use(express.static(path.join(__dirname,'public')))
@@ -41,9 +42,18 @@ app.use(cors())
 
  app.use("/api/userstype",usertypeRoutes)
 
-app.get('/', (req, res) => {
+app.get('/admin/', (req, res) => {
   // res.send('Hello World!')
   res.sendFile(path.join(__dirname, 'screen/login.html'))
+}) 
+app.get('/details/', (req, res) => {
+  // res.send('Hello World!')
+  res.sendFile(path.join(__dirname, 'website/propertyDetails.html'))
+}) 
+
+app.get('/', (req, res) => {
+  // res.send('Hello World!')
+  res.sendFile(path.join(__dirname, 'website/home.html'))
 }) 
 
 app.get('/about', (req, res) => {
@@ -54,6 +64,15 @@ app.get('/about', (req, res) => {
     // res.send('Hello World! about')
     res.sendFile(path.join(__dirname, 'screen/dashboard.html'))
   })
+  app.get('/PropertyImg/:img', (req, res) => {
+    // res.send('Hello World! about')
+    res.sendFile(path.join(__dirname, 'public/uploads/'+req.params.img))
+  })
+  app.get('/property', (req, res) => {
+     var name = 'hello';
+    // res.send('Hello World! about')
+    res.sendFile(path.join(__dirname, 'screen/property.html'))
+  })
   app.get('/userlist', (req, res) => {
     // res.send('Hello World! about')
     res.sendFile(path.join(__dirname, 'screen/userlist.html'))
@@ -61,6 +80,16 @@ app.get('/about', (req, res) => {
   app.get('/agentuserlist', (req, res) => {
     // res.send('Hello World! about')
     res.sendFile(path.join(__dirname, 'screen/agentuserlist.html'))
+  })
+
+  app.get('/dashboard', (req, res) => {
+    // res.send('Hello World! about')
+    res.sendFile(path.join(__dirname, 'screen/dashboard.html'))
+  })
+
+  app.get('/servicelist', (req, res) => {
+    // res.send('Hello World! about')
+    res.sendFile(path.join(__dirname, 'screen/servicelist.html'))
   })
   app.get('/brokeruserlist', (req, res) => {
     // res.send('Hello World! about')

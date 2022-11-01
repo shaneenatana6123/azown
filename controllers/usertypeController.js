@@ -3,9 +3,9 @@ const User = require("../model/Usertype");
 
 // for single file
 const singleUpload = async (req, res, next)=>{
-    console.log(req.file);
-
-    res.json("users");
+    // console.log(req.file);
+    console.log("kg");
+    res.json(req.file);
     // req.file is the `avatar` file
     // req.body will hold the text fields, if there were any
   };

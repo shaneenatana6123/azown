@@ -342,7 +342,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li class="active"><a href="dashboard"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
@@ -362,7 +362,7 @@
           </ul>
         </li>
         <li>
-          <a href="pages/widgets.html">
+          <a href="property">
             <i class="fa fa-th"></i> <span>Property</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -390,13 +390,13 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
+            <span>Services</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="servicelist"><i class="fa fa-circle-o"></i> Service List</a></li>
             <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
             <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
             <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
@@ -1280,7 +1280,8 @@
 
 function sign_out(){
   sessionStorage.clear();
-  window.location.href="http://localhost:3000"; 
+  var base_url = window.location.origin;
+  window.location.href=base_url; 
 }
 
 function getData(){
@@ -1293,8 +1294,10 @@ function getData(){
 //  alert(sessionStorage.getItem("userName"))
 }
 function readRecords(){
+
+  var base_url = window.location.origin;
   $.ajax({
-    url: "http://localhost:3000/api/users",
+    url: base_url+"/api/users",
     type:"GET",
     success: function(data,status){
       if(data.length >0){

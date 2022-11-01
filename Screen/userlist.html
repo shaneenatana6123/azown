@@ -31,6 +31,9 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -224,7 +227,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="dashboard"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
@@ -244,7 +247,7 @@
           </ul>
         </li>
         <li>
-          <a href="../widgets.html">
+          <a href="property">
             <i class="fa fa-th"></i> <span>Property</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -254,7 +257,7 @@
         <li class="treeview active">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
+            <span>Users</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -271,13 +274,13 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
+            <span>Service</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="servicelist"><i class="fa fa-circle-o"></i> Service List</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
             <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
             <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
@@ -411,6 +414,7 @@
 
       <div class="row">
         <div class="col-sm-12 col-md-9">
+          <button onclick=CreateUser() class="btn btn-primary">Create User</button>
           <!-- <div class="dataTables_length" id="dtBasicExample_length">
             <section>Show 
               <select name="dtBasicExample_length" aria-controls="dtBasicExample" >
@@ -430,7 +434,7 @@
       </div>
       <br>
         <div id="records_contant">
-            <table class="table table-stripped table-bordered text-center" id="tabled" cellspacing="0" width="100%">
+            <table class="table table-stripped table-bordered text-center" style="overflow-x: auto; display: block;" id="tabled" cellspacing="0" width="100%">
     
               <thead>
                 <tr>
@@ -441,7 +445,7 @@
       
                   <th>Password</th>
       
-                  <th>Date</th>
+                  <th>Email</th>
                   <th>About</th>
 
                   <th>Dashboard</th>
@@ -477,52 +481,116 @@
 
 
 
-    
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">User Form</h3>
+          </div>
+          <div class="modal-body">
+            <form id="formidtwo" >
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              
+               
+                  <div class="form-outline mb-2">
+                    <input type="text" id="update_userName" class="form-control" name="userName" placeholder="User name" required/>
+                  </div>  
+                <br>
+                  <div class="form-outline mb-4">
+                    <input type="tel" id="update_mobile" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" required/>
+                  </div>
+                <br>
+            
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="update_email" class="form-control" name="email" placeholder="Email" required/>
+              </div>
+              
+              <br>
+              
+            
+              <!-- passwrod input -->
+              <div class="form-outline mb-4">
+                <input type="password" id="update_pass" class="form-control" name="pass" placeholder="Password" required/>
+              </div>
+              <br>
+              <!-- Message input -->
+              <div class="form-outline mb-4">
+                <textarea class="form-control" id="update_about" rows="4" name="about"  placeholder="Additional information"></textarea>
+              
+              </div>
+              <br>
+              <div class="form-outline mb-4">
+                <select id="update_usertype" class="form-select" aria-label="Default select example">
+                  <option selected>Open this select user type</option>
+                  <option value="1">Visitor</option>
+                  <option value="2">Agent</option>
+                  <option value="3">Broker</option>
+                  <option value="4">Builder</option>
+                  <option value="5">Vendors</option>
+                </select>
+            </div>
+            
+            
+            
+            
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button onclick="close_model()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button onclick="update_buttonTwo()" type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <!--Update Modal -->
-      <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     
+
+    
+      <!--Create User Modal -->
+      <div class="modal fade" id="createUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">User Form</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">Create User</h3>
             </div>
             <div class="modal-body">
-              <form id="formidtwo">
+              <form id="formidtwothree" >
                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                  <div class="col">
-                    <div class="form-outline">
-                      <input type="text" id="update_userName" class="form-control" name="userName" placeholder="User name" required/>
+                
+                 
+                    <div class="form-outline mb-2">
+                      <input type="text" id="create_userName" class="form-control" name="userName" placeholder="User name" required/>
+                    </div>  
+                  <br>
+                    <div class="form-outline mb-4">
+                      <input type="tel" id="create_mobile" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" required/>
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-outline">
-                      <input type="tel" id="update_mobile" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" required/>
-                    </div>
-                  </div>
-                </div>
+                  <br>
               
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="update_email" class="form-control" name="email" placeholder="Email" required/>
+                  <input type="email" id="create_email" class="form-control" name="email" placeholder="Email" required/>
                 </div>
                 
-            
+                <br>
                 
               
                 <!-- passwrod input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="update_pass" class="form-control" name="pass" placeholder="Password" required/>
+                  <input type="password" id="create_pass" class="form-control" name="pass" placeholder="Password" required/>
                 </div>
-
+                <br>
                 <!-- Message input -->
                 <div class="form-outline mb-4">
-                  <textarea class="form-control" id="update_about" rows="4" name="about"  placeholder="Additional information"></textarea>
+                  <textarea class="form-control" id="create_about" rows="4" name="about"  placeholder="Additional information"></textarea>
                 
                 </div>
+                <br>
                 <div class="form-outline mb-4">
-                  <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-                  <select id="update_usertype" class="form-select" aria-label="Default select example">
+                  <select id="create_usertype" class="form-select" aria-label="Default select example">
                     <option selected>Open this select user type</option>
                     <option value="1">Visitor</option>
                     <option value="2">Agent</option>
@@ -538,10 +606,9 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button onclick="close_model()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button onclick="update_buttonTwo()"  type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Save User</button>
+              <button onclick="close_create_model()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button onclick="createUserbtn()" type="button" class="btn btn-primary">Save</button>
             </div>
-            <input type="hidden" name="" id="hidden_user_id">
           </div>
         </div>
       </div>
@@ -549,71 +616,278 @@
 
 
 
-
-      <!--Update Modal -->
-      <div class="modal fade" id="createProperty" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!--Create Property Modal -->
+      <div class="modal fade" id="createProperty" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">User Form</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">Create Property</h3>
             </div>
             <div class="modal-body">
-              <form id="formidtwo">
+              <form id="formidtwo" >
                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                  <div class="col">
-                    <div class="form-outline">
-                      <input type="text" id="update_userName" class="form-control" name="userName" placeholder="User name" required/>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-outline">
-                      <input type="tel" id="update_mobile" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" required/>
-                    </div>
-                  </div>
-                </div>
-              
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="update_email" class="form-control" name="email" placeholder="Email" required/>
-                </div>
                 
-            
-                
-              
-                <!-- passwrod input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="update_pass" class="form-control" name="pass" placeholder="Password" required/>
-                </div>
+                 
+               
 
-                <!-- Message input -->
-                <div class="form-outline mb-4">
-                  <textarea class="form-control" id="update_about" rows="4" name="about"  placeholder="Additional information"></textarea>
-                
-                </div>
-                <div class="form-outline mb-4">
-                  <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-                  <select id="update_usertype" class="form-select" aria-label="Default select example">
-                    <option selected>Open this select user type</option>
-                    <option value="1">Visitor</option>
-                    <option value="2">Agent</option>
-                    <option value="3">Broker</option>
-                    <option value="4">Builder</option>
-                    <option value="5">Vendors</option>
-                  </select>
+              <br>
+              <div class="form-outline mb-4">
+                <select name=”state” id="state_selectId" onchange="setCities();" class="form-control" aria-label="Default select example">
+                  <option selected>Select State</option>
+                 
+                </select>
+            </div>
+
+            <br>
+              <div class="form-outline mb-4">
+                <select name=”state” id="city_selectId"  class="form-control" aria-label="Default select example">
+                  <option selected>Select City</option>
+                 
+                </select>
+            </div>
+            <br>
+               <!-- Street input -->
+               <div class="form-outline mb-4">
+                <input type="text" id="property_Street" class="form-control" name="Street" placeholder="Street" required/>
               </div>
               
+              <br>
+
+
+                <!-- Landmark input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="property_Landmark" class="form-control" name="Landmark" placeholder="Landmark" required/>
+                </div>
+                
+                <br>
+
+                <!-- Address input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="property_Address" class="form-control" name="Address" placeholder="Full Address" required/>
+                </div>
+                
+                <br>
+
+
+                <!-- BildingName input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="property_BildingName" class="form-control" name="BildingName" placeholder="Full Bilding Name" required/>
+                </div>
+                
+                <br>
+
+
+               
+
+
+                <!-- ownerName input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="property_ownerName" class="form-control" name="ownerName" placeholder="Owner Name" required/>
+                </div>
+                
+                <br>
               
+                 <!-- PropertySize input -->
+                 <div class="form-outline mb-4">
+                  <input type="text" id="property_PropertySize" class="form-control" name="PropertySize" placeholder="Property Size (111 * 111)" required/>
+                </div>
+                
+                <br>
               
-              
+                 <!-- Property_about input -->
+                 <div class="form-outline mb-4">
+                  <textarea class="form-control" id="update_property_infor" rows="4" name="about"  placeholder="Property information"></textarea>
+                
+                </div>
+                <br>
+
+                <div class="form-outline mb-4" >
+                  <input type="file" id="upload-img" accept="image/*" onchange="loadFile(event)"/>
+                  <br>
+                  <ul id="upload_image_list">
+                    
+                    </ul>
+                  <!-- <img id="output" width="200"/> -->
+                </div>
+                <br>
+                <div class="form-outline mb-4">
+                  <select id="update_property_type" class="form-control" onchange="setProperty();" aria-label="Select Property Type">
+                    <option selected>Select Property Type</option>
+                    <option value="1">Residential</option>
+                    <option value="2">Commercial</option>
+                    <option value="4">Plot</option>
+                  </select>
+              </div>
+
+              <br>
+
+
+              <div class="form-outline mb-4">
+                <select id="update_PropertyBuyType" onchange="setPropertyBuyType();" class="form-control" aria-label="Select Property Buy Type">
+                  <option selected>Select Property Buy Type</option>
+                  <option value="1">Rent</option>
+                  <option value="2">Sale</option>
+                </select>
+            </div>
+
+            <br>
+
+           
+            <div id="flat">
+
+            <div class="form-outline mb-4" >
+              <select id="update_BHKType" class="form-control" aria-label="Select BHK Type">
+                <option selected>Select BHK Type</option>
+                <option value="1">1 BHK</option>
+                <option value="2">2 BHK</option>
+                <option value="3">3 BHK</option>
+                <option value="4">4 BHK</option>
+                <option value="5">5 BHK</option>
+                <option value="6">Duplex Apartments</option>
+                <option value="7">Penthouse Apartments</option>
+                <option value="8">Villa Apartments</option>
+
+                <option value="9">Serviced Apartments</option>
+                <option value="10">High-rise Apartments</option>
+                <option value="11">Low-rise Apartments</option>
+                <option value="12">Studio Apartments</option>
+              </select>
+          </div>
+          <br>
+
+
+                   <!-- Fat No input -->
+                   <div class="form-outline mb-4">
+                    <input type="text" id="update_property_FlatNo" class="form-control" name="ownerName" placeholder="Flat no" required/>
+                  </div>
+                  
+                  <br>
+
+                   <!-- FloorNo input -->
+                   <div class="form-outline mb-4">
+                    <input type="text" id="update_property_FloorNo" class="form-control" name="ownerName" placeholder="Write the floor no of the flat" required/>
+                  </div>
+                  
+                  <br>
+                        
+             <!-- TotalFloor input -->
+             <div class="form-outline mb-4">
+              <input type="number" id="update_property_TotalFloor" class="form-control" name="ownerName" placeholder="How many Total Floors are there in the building" required/>
+            </div>
+            
+            <br>
+
+
+        </div>
+
+          
+
+ 
+                
+           <!-- PropertyAge input -->
+          <div class="form-outline mb-4">
+            <input type="number" id="update_property_PropertyAge" class="form-control" name="ownerName" placeholder="Property Age" required/>
+          </div>
+          
+          <br>  
+          
+           <!-- Zipcode input -->
+           <div class="form-outline mb-4">
+            <input type="number" id="update_property_Zipcode" maxlength="6" class="form-control" name="ownerName" placeholder="Zipcode" required/>
+          </div>
+          
+          <br>
+
+
+
+
+
+          <div class="form-outline mb-4">
+            <select id="update_PropertyFacing" class="form-control" aria-label="Select Property Facing">
+              <option selected>Select Property Facing</option>
+              <option value="1">South</option>
+              <option value="2">North</option>
+              <option value="3">East</option>
+              <option value="4">West</option>
+            </select>
+        </div>
+
+        <br>
+
+
+            <!-- lat input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="update_property_lat" class="form-control" name="ownerName" placeholder="Latitude" required/>
+            </div>
+            
+            <br>
+
+
+            <!-- long input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="update_property_long" class="form-control" name="ownerName" placeholder="Longitude" required/>
+            </div>
+
+            <br>
+
+
+            <div id="rent">
+              <!-- MonthyMaintenance input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="update_property_MonthyMaintenance" class="form-control" name="ownerName" placeholder="Monthy Maintenance" required/>
+              </div>
+
+              <br>
+
+
+              <!-- rent input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="update_property_rent" class="form-control" name="ownerName" placeholder="Rent" required/>
+              </div>
+
+              <br>
+              <!-- Deposit input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="update_property_Deposit" class="form-control" name="ownerName" placeholder="Deposit" required/>
+              </div>
+
+              <br>
+
+            </div>
+            
+            
+            <!-- LeaseDuration input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="update_property_LeaseDuration" class="form-control" name="LeaseDuration" placeholder="Lease Duration" required/>
+            </div>
+
+            <br>
+
+
+
+            <!-- HanderID input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="update_property_HanderID" class="form-control" name="LeaseDuration" placeholder="Hander ID" required/>
+            </div>
+
+            <br>
+         
+
+            <!-- UserId input -->
+            <div class="form-outline mb-4">
+              <input type="hidden" id="update_property_UserID" class="form-control" name="LeaseDuration" placeholder="Hander ID" required/>
+            </div>
+
+            <br>
+
+         
               </form>
             </div>
             <div class="modal-footer">
-              <button onclick="close_model()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button onclick="update_buttonTwo()"  type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Save User</button>
+              <button onclick="close_model()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button onclick="AddPropertyDB()" type="button" class="btn btn-primary">Save changes</button>
             </div>
-            <input type="hidden" name="" id="hidden_user_id">
           </div>
         </div>
       </div>
@@ -859,6 +1133,53 @@
     $("#name_mobile").html(userNameTag+" - "+userMobileTag+" <small>"+userEmailTag+"</small>");
   //  alert(sessionStorage.getItem("userName"))
   }
+
+
+  function createUserbtn(){
+    var name = $('#create_userName').val();
+    var email = $('#create_email').val();
+    var pass = $('#create_pass').val();
+    var mobile= $("#create_mobile").val();
+    var about= $("#create_about").val();
+    var currentTime = new Date();
+    var toSend = {userType:$('#create_usertype :selected').text(),
+    userName:name,
+    email:email,
+    pass:pass,
+    mobile:mobile,
+    img:"https://google.com/img.png",
+    price:"0",
+    transactionId:"0",
+    date:currentTime,
+    block:"0",
+    about:about,
+    UserDOB: "dob",
+    country: "India",
+    state: "Uttar Pradesh",
+    city: "Kanpur",
+    street: "Street",
+    landmark: "Z Square Mall",
+    pancard: "ABCDE12345",
+    aadhaar: "123412341234",
+    totaldashboard: "0",
+    totalproperty: "0"};
+    var base_url = window.location.origin;
+    $.ajax({
+      url:base_url+"/api/users",
+      type:"POST",
+      contentType: 'application/json',
+      dataType: 'json',
+      data: JSON.stringify(toSend),
+      success: function(result,status){
+        readRecords();
+        $('#createUser').modal('hide');
+      },
+      error: function(error){
+        alert(JSON.stringify(error));
+      }
+    });
+  }
+
   function update_buttonTwo(){
     var id = $('#hidden_user_id').val();
       var name = $('#update_userName').val();
@@ -888,8 +1209,11 @@
       aadhaar: "123412341234",
       totaldashboard: "0",
       totalproperty: "0"};
+
+      var base_url = window.location.origin;
+
       $.ajax({
-        url:"http://localhost:3000/api/users/"+id,
+        url:base_url+"/api/users/"+id,
         type:"PUT",
         contentType: 'application/json',
         dataType: 'json',
@@ -903,8 +1227,50 @@
         }
       });
   }
+
+  function close_create_model(){
+    $('#createUser').modal('hide'); 
+  }
   function close_model(){
-    $('#updateModal').modal('hide');
+    $('#createProperty').modal('hide');
+  }
+
+
+  var img_array = [];
+  function loadFile(event){
+    let file = event.target.files[0];
+    var fileUrl = URL.createObjectURL(file);
+    var fileName = file.name;
+    var fileType = file.type;
+//    $("#output").attr("src",fileUrl);
+
+
+    $("#upload_image_list").append('<li style="display:inline;"><<img id="output" src='+fileUrl+' width="200"/></li>')
+
+ //   alert('Filename: ' + fileName + ' , Type: ' + fileType);
+   
+
+    var form = new FormData();
+    form.append("avatar", file, "/E:/Download/OIPs.jpg");
+    var base_url = window.location.origin;
+        $.ajax({
+          url:base_url+"/api/users/photos/upload/",
+                type:"POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                data: form,
+          success: function(result,status){
+            var returnedData = JSON.parse(result);
+            img_array.push(returnedData.filename);
+    
+          },
+          error: function(error){
+            alert(JSON.stringify(error));
+          }
+        })
+  
   }
   
   function DeleteUser(deleteid){
@@ -912,8 +1278,9 @@
     if(conf == true){
       location.href = "public";
    //   location.href='https://google.com';
+   var base_url = window.location.origin;
       $.ajax({
-        url:"http://localhost:3000/api/users/"+deleteid,
+        url:base_url+"/api/users/"+deleteid,
         type:"DELETE",
         success: function(data,status){
           readRecords();
@@ -943,11 +1310,11 @@
       block:"0",
       dateAndTime:d};
       
-
+      var base_url = window.location.origin;
 
 
       $.ajax({
-        url:"http://localhost:3000/api/users/buyDashboard",
+        url:base_url+"/api/users/buyDashboard",
               type:"POST",
               contentType: 'application/json',
               dataType: 'json',
@@ -965,60 +1332,375 @@
       })
 
   }
-  function AddProperty(id){
-    //$("#createProperty").modal("show");
+
+
+  // State lists
+var states = new Array();
+
+states["India"] = new Array("Andaman and Nicobar Islands","Andhra Pradesh","Arunachal Pradesh","Assam",
+"Bihar","Chandigarh","Chhattisgarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Goa","Gujarat",
+"Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Ladakh","Lakshadweep",
+"Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Puducherry","Punjab",
+"Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttarakhand","Uttar Pradesh","West Bengal");
+// City lists
+var cities = new Array();
+cities["India"] = new Array();
+
+cities["India"]["Chandigarh"]  = new Array("Chandigarh");
+
+cities["India"]["Delhi"]  = new Array("Delhi");
+
+cities["India"]["West Bengal"]  = new Array("Bankura","Barddhaman (Burdwan)","Birbhum","Dakshin Dinajpur",
+"Darjiling (Darjeeling)","Haora (Howrah)","Hugli (Hooghly)","Jalpaiguri","Koch Bihar (Cooch Behar)",
+"Kolkata","Maldah","Murshidabad","Nadia","North Twenty Four Parganas","Paschim Medinipur","Purba Medinipur",
+"Puruliya (Purulia)","South Twenty Four Parganas","Uttar Dinajpur");
+
+cities["India"]["Uttar Pradesh"]  = new Array("Agra","Aligarh","Allahabad","Ambedkar Nagar","Amroha","Auraiya",
+"Azamgarh","Ayodhya","Badaun","Bahraich","Ballia","Balrampur","Banda","Barabanki","Bareilly","Basti","Bijnor",
+"Bulandshahr","Chandauli","Deoria","Etah","Etawah","Faizabad","Farrukhabad","Fatehpur","Firozabad",
+"Gautam Buddha Nagar","Ghaziabad","Ghazipur","Gonda","Gorkakhpur","Hamirpur","Hardoi","Hathras",
+"Jaunpur","Jhansi","Kannauj","Kanpur Dehat","Kanpur Nagar","Kaushambi","Kushinagar","Lakhimpur Kheri",
+"Lucknow","Maharajganj","Mainpuri","Mathura","Meerut","Mirzapur","Moradabad","Muzaffarnagar","Pilibhit",
+"Pratapgarh","Rae Bareli","Rampur","Saharanpur","Shahjahanpur","Shamli","Siddharthnagar","Sitapur","Sonbhadra",
+"Sultanpur","Unnao","Varanasi");
+
+cities["India"]["Uttarakhand"]  = new Array("Almora","Almora Cantonment","Badrinathpuri","Bageshwar","Bahadarabad",
+"Bajpur (Bazpur)","Banbasa","Bandiya (Bandia)","Bangherimahabatpur","Barkot","Bhagwanpur",
+"Bharat Heavy Electricals Limited Ranipur","Bhimtal","Bhowali","Central Hope Town","Chakrata",
+"Chamba","Chamoli Gopeshwar","Champawat","Clement Town","Dehradun","Dehradun Cantonment","Devaprayag",
+"Dhaluwala","Dhandera","Dharchula","Didihat","Dineshpur","Dogadda","Doiwala","Dwarahat",
+"Fatehpur Range, Dhamua Dunga Area","Gadarpur","Gangotri","Gochar (Gauchar)","Gumaniwala","Haldwani-cum-Kathgodam",
+"Haldwani Talli","Haripur Kalan","Haripur Kalan","Jagjeetpur","Jaspur","Jhabrera","Jiwangarh","Jonk",
+"Joshimath (Jyotirmath)","Kaladhungi","Kanchal Gosain","Karnaprayag","Kashipur","Kashirampur","Kedarnath",
+"Kela Khera","Khanjarpur","Kharak mafi","Khatima","Khatyari","Kichha","Kirtinagar","Kotdwara (Kotdwar)",
+"Laksar","Lalkuan","Landaur (Landour)","Landhaura","Lansdowne","Lohaghat","Maholiya","Mahua Dabra Haripura",
+"Mahua Kheraganj","Manglaur","Maohanpur Mohammadpur","Mehu Wala Mafi",
+"Mukhani (Roopnagar, Basant Vihar Colony and Judges Farm)","Muni Ki Reti","Mussoorie","Nagala Imarti",
+"Nagla","Nainital Cantonment","Nandprayag (Nandaprayag)","Narendranagar","Natthan Pur","Natthuwa Wala",
+"Padali Gujar","Padampur Sukhran","Pauri","Piran Kaliyar","Pithoragarh","Pratitnagar","Raipur",
+"Ramnagar","Ranikhet","Rawali Mahdood","Rishikesh","Rishikesh","Roorkee","Roorkee Cantonment",
+"Rudraprayag","Rudrapur","Saidpura","Salempur Rajputan","Shafipur","Shahpur","Shaktigarh","Sitarganj",
+"Srinagar","Sultanpur","Sunhaira","Tanakpur","Tehri","Umru Khurd","Uttarkashi","Vikasnagar","Virbhadra");
+
+cities["India"]["Tripura"]  = new Array("Amarpur","Ambassa","Agartala","Belonia","Bishalgarh","Dharmanagar",
+"Jirania","Kailashahar","Khowai",'Kumarghat',"Kamalpur","Melaghar","Mohanpur","Panisagar","Ranirbazar",
+"Teliamura","Sonamura","Sabroom","Santirbazar","Udaipur");
+
+cities["India"]["Telangana"]  = new Array("Adilabad","Kumuram Bheem","Mancherial","Nirmal","Nizamabad","Jagitial",
+"Peddapalli","Kamareddy","Rajanna Sircilla","Karimnagar","Jayashankar","Sangareddy","Medak","Siddipet","Jangaon",
+"Hanamkonda","Warangal","Mulugu","Bhadradri","Khammam","Mahabubabad","Suryapet","Nalgonda","Yadadri",
+"Medchal–Malkajgiri","Hyderabad","Ranga Reddy","Vikarabad","Narayanpet","Mahabubnagar","Nagarkurnool",
+"Wanaparthy","Jogulamba");
+
+cities["India"]["Tamil Nadu"]  = new Array("Arcot","Chengalpattu","Chennai","Chidambaram",
+"Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kanchipuram","Kanniyakumari",
+"Kodaikanal","Kumbakonam","Madurai","Mamallapuram","Nagappattinam","Nagercoil",
+"Palayamkottai","Palayamkottai",'Rajapalayam',"Ramanathapuram","Salem","Thanjavur",
+"Tiruchchirappalli","Tirunelveli","Tiruppur","Thoothukudi","Udhagamandalam","Vellore");
+
+cities["India"]["Sikkim"]  = new Array("Gangtok","Gyalshing","Lachung","Mangan");
+
+cities["India"]["Rajasthan"]  = new Array("Abu","Ajmer","Alwar","Amer","Barmer","Beawar",
+"Bharatpur","Bhilwara","Bikaner","Bundi","Chittaurgarh","Churu","Dhaulpur","Dungarpur",
+"Ganganagar","Hanumangarh","Jaipur","Jaisalmer","Jalor","Jhalawar","Jhunjhunu","Jodhpur",
+"Kishangarh","Kota","Merta","Nagaur","Nathdwara","Pali","Phalodi","Pushkar","Sawai Madhopur",
+"Shahpura","Sikar","Sirohi","Tonk","Udaipur");
+
+
+cities["India"]["Punjab"]  = new Array("Amritsar","Batala","Chandigarh","Faridkot","Firozpur",
+"Gurdaspur","Hoshiarpur","Jalandhar","Kapurthala","Nabha","Patiala","Rupnagar","Sangrur");
+
+cities["India"]["Puducherry"]  = new Array("Karaikal","Mahe","Puducherry","Yanam");
+
+cities["India"]["Odisha"]  = new Array("Balangir","Baleshwar","Baripada","Bhubaneshwar","Brahmapur",
+"Cuttack","Dhenkanal","Kendujhar","Konark","Koraput","Paradip","Phulabani","Puri","Sambalpur","Udayagiri");
+
+cities["India"]["Nagaland"]  = new Array("Kohima","Mon","Phek","Wokha","Zunheboto");
+
+cities["India"]["Mizoram"]  = new Array("Aizawl","Lunglei");
+
+cities["India"]["Meghalaya"]  = new Array("Cherrapunji","Shillong");
+
+cities["India"]["Maharashtra"]  = new Array("Ahmadnagar","Akola","Amravati","Aurangabad",
+"Bhandara","Bhusawal","Bid","Buldhana","Chandrapur","Daulatabad","Dhule","Jalgaon","Kalyan",
+"Karli","Kolhapur","Mahabaleshwar","Malegaon","Matheran","Mumbai","Nagpur","Nanded","Nashik",
+"Osmanabad","Pandharpur","Parbhani","Pune","Ratnagiri","Satara",'Sevagram',"Solapur","Thane",
+"Ulhasnagar","Vasai-Virar","Wardha","Yavatmal");
+
+cities["India"]["Manipur"]  = new Array("Imphal");
+
+cities["India"]["Madhya Pradesh"]  = new Array("Balaghat","Barwani","Betul","Bharhut","Bhind",
+"Bhojpur","Bhopal","Burhanpur","Chhatarpur","Chhindwara","Damoh","Datia","Dewas","Dhar",
+"Dr. Ambedkar Nagar (Mhow)","Guna","Gwalior","Hoshangabad","Indore","Itarsi","Jabalpur","Jhabua",
+"Khajuraho","Khandwa","Khargone",'Maheshwar',"Mandla","Mandsaur","Morena","Murwara","Narsimhapur",
+"Narsinghgarh","Narwar","Neemuch","Nowgong","Orchha","Panna","Raisen","Rajgarh","Ratlam","Rewa",
+"Sagar","Sarangpur","Satna","Sehore","Seoni","Shahdol","Shajapur","Sheopur","Shivpuri","Ujjain","Vidisha");
+
+cities["India"]["Lakshadweep"]  = new Array("Amini","Andrott","Kadmat","Kalpeni","Kavaratti","Minicoy");
+
+cities["India"]["Ladakh"]  = new Array("Kargil","Leh");
+
+cities["India"]["Kerala"]  = new Array("Alappuzha","Vatakara","Idukki","Kannur","Kochi","Kollam","Kottayam","Kozhikode",
+"Mattancheri","Palakkad","Thalassery","Thiruvananthapuram","Thrissur");
+
+cities["India"]["Karnataka"]  = new Array("Badami","Ballari","Bengaluru","Belagavi","Bhadravati",
+"Bidar","Chikkamagaluru","Chitradurga","Davangere","Halebid","Hassan","Hubballi-Dharwad",
+"Kalaburagi","Kolar","Kolar","Madikeri","Mandya","Mangaluru","Mysuru","Raichur","Shivamogga",
+"Shravanabelagola","Shrirangapattana","Tumakuru","Vijayapura");
+
+cities["India"]["Jharkhand"]  = new Array("Bokaro","Chaibasa","Deoghar","Dhanbad","Dumka",
+"Giridih","Hazaribag","Jamshedpur","Jharia","Rajmahal","Ranchi","Saraikela");
+
+cities["India"]["Jammu and Kashmir"]  = new Array("Anantnag","Baramula","Doda","Gulmarg","Jammu",
+"Kathua","Punch","Rajouri","Srinagar","Udhampur");
+
+cities["India"]["Himachal Pradesh"]  = new Array("Bilaspur","Chamba","Dalhousie","Dharmshala",
+"Hamirpur","Kangra","Kullu","Mandi","Nahan","Shimla","Una");
+
+
+cities["India"]["Haryana"]  = new Array("Ambala","Bhiwani","Chandigarh","Faridabad","Firozpur Jhirka","Gurugram","Hansi",
+"Hisar","Jind","Kaithal","Karnal","Kurukshetra","Panipat","Pehowa","Rewari","Rohtak","Sirsa","Sonipat");
+
+cities["India"]["Gujarat"]  = new Array("Ahmadabad","Amreli","Bharuch","Bhavnagar","Bhuj",
+"Dwarka","Gandhinagar","Godhra","Jamnagar","Kandla","Khambhat","Kheda","Mahesana","Morbi",
+"Nadiad","Navsari","Okha","Palanpur","Patan","Porbandar","Rajkot","Surat","Surendranagar","Valsad","Veraval");
+
+cities["India"]["Goa"]  = new Array("Bicholim","Canacona","Cuncolim","Curchorem","Mapusa",
+"Margao","Mormugao","Panaji (Capital City)","Pernem","Ponda","Quepem","Sanguem","Sanguem","Valpoi");
+
+cities["India"]["Dadra and Nagar Haveli and Daman and Diu"]  = new Array("Bhimpore","Dadhel","Dadra","Daman",
+"Diu","Dunetha","Kachigam","Kadaiya","Marwad","Masat","Naroli","Rakholi","Samarvarni","Silvassa (incl. Amli)");
+
+cities["India"]["Chhattisgarh"]  = new Array("Ambikapur","Bhilai (Bhilai Nagar)","Bilaspur","	Bhatapara",
+"Bemetara","Baikunthpur",
+"Champa","Chirmiri","Dongragarh","Dalli-Rajhara","Dhamtari","Gobranawapara","Kawardha","Kanker","Kondagaon",
+"Jagdalpur","Korba","Mahasamund","Mungeli","Manendragarh","Naila Janjgir","Raj Nandgaon","Raigarh","Raipur","Tilda Neora");
+
+cities["India"]["Andaman and Nicobar Islands"]  = new Array("Port Blair");
+
+cities["India"]["Andhra Pradesh"]  = new Array("Adoni","Anantapuram","Bhimavaram","Chittoor",
+"Chilakaluripet","Dharmavaram","Gudivada","Eluru",
+"Guntur","	Guntakal","Hindupur","Kadapa","Kakinada","Kurnool","	Kadiri",
+"Madanapalle","Machilipatnam","Mangalagiri","Nellore","Nandyal","Narasaraopet","Ongole","Proddatur",
+"Rajahmundry","Srikakulam","Tenali","Tadepalligudem","Tirupati","Tadipatri","Vijayawada",
+"Visakhapatnam","Vizianagaram");
+
+cities["India"]["Arunachal Pradesh"]  = new Array("Anjaw","Changlang","East Kameng","East Siang","Lohit","Lower Subansiri","Papum Pare",
+"Tawang","Tirap","Lower Dibang Valley","Upper Siang", "Upper Subansiri","West Kameng","West Siang","Upper Dibang Valley");
+
+cities["India"]["Assam"]  = new Array("Baksa","Barpeta","Bongaigaon","Cachar","Chirang","Dibrugarh",
+"Dima Hasao","Darrang","Dhubri","Dhemaji","Golaghat","Goalpara","Hailakandi","Jorhat","Kamrup",
+"Kamrup Metro","Karbi Anglong","Kokrajhar","Karimganj","Lakhimpur","Nagaon","Nalbari","Morigaon",
+"Sivasagar","sonitpur","Tinsukia","Udalguri");
+
+cities["India"]["Bihar"]  = new Array("Arrah","Aurangabad","Bagaha","Buxar","Bettiah",
+"Begusarai","Bihar Sharif","Bhagalpur",
+"Chhapra","Danapur","Dehri","Darbhanga","Gaya","Jamalpur","Jehanabad","Hajipur","Katihar","	Kishanganj",
+"Motihari","Munger","Muzaffarpur","Nawada",
+"Patna","	Purnia","Saharsa","Sasaram","	Siwan","Sitamarhi");
+
+
+
+
+function setPropertyBuyType(){
+  var property_type = $('#update_PropertyBuyType :selected').text();
+
+
+  if(property_type == "Rent"){
+    $("#rent").show();
+  }else if(property_type == "PG/Hostel"){
+    $("#rent").show();
+  }else {
+    $("#rent").hide();
+  }
+}
+
+function setProperty(){
+
+  var property_type = $('#update_property_type :selected').text();
+
+
+  if(property_type == "Flat"){
+    $("#flat").show();
+    $("#rent").hide();
+  }else {
+    $("#rent").hide();
+    $("#flat").hide();
+  }
+
+ 
+}
+
+function setCities(){
+var  stateSel = $("#state_selectId");
+
+if(stateSel.val() != "Please select"){
+  var cityList = cities["India"][stateSel.val()];
+ 
+   changeSelect("#city_selectId", cityList, cityList);
+}else {
+  $("#city_selectId").empty();
+  $("#city_selectId").append(new Option("Please select", "Please select"));
+ 
+}
+
+}
+
+function changeSelect(fieldID, newOptions, newValues) {
+  
+  $(fieldID).empty();
+  $(fieldID).append(new Option("Please select", "Please select"));
+  for (i=0; i<newOptions.length; i++) {
+    $(fieldID).append(new Option(newOptions[i], newValues[i]));
+  }
+}
+
+
+
+
+
+
+
+
+function clearPropertyData(){
+  
+  $('#property_Street').val("");
+
+  $('#property_Street').val("");
+  $('#property_Landmark').val("");
+  $('#property_Address').val("");
+
+  $('#property_BildingName').val("");
+  $('#property_ownerName').val("");
+  $('#property_PropertySize').val("");
+ 
+ 
+  $('#update_property_UserID').val("");
+ 
+ 
+  $('#update_property_infor').val("");
+  $('#update_property_FlatNo').val("");
+
+  $('#update_property_FloorNo').val("");
+  $('#update_property_TotalFloor').val("");
+  $('#update_property_PropertyAge').val("");
+  $('#update_property_Zipcode').val("");
+
+  $('#update_property_lat').val("");
+  $('#update_property_long').val("");
+
+  $('#update_property_rent').val("");
+  $('#update_property_Deposit').val("");
+  $('#update_property_LeaseDuration').val("");
+ 
+  $('#update_property_HanderID').val("");
+
+
+ 
+}
+
+function AddPropertyDB(){
+   
+  
+ var state_selectId = $('#state_selectId :selected').text();
+ var city_selectId = $('#city_selectId :selected').text();
+ var property_Street = $('#property_Street').val();
+
+ var property_Street = $('#property_Street').val();
+ var property_Landmark = $('#property_Landmark').val();
+ var property_Address = $('#property_Address').val();
+
+ var property_BildingName = $('#property_BildingName').val();
+ var property_ownerName = $('#property_ownerName').val();
+ var property_PropertySize = $('#property_PropertySize').val();
+
+
+ var OwnerId = $('#update_property_UserID').val();
+
+
+ var update_property_infor = $('#update_property_infor').val();
+ var update_property_type = $('#update_property_type :selected').text();
+
+ var update_PropertyBuyType = $('#update_PropertyBuyType :selected').text();
+ var update_BHKType = $('#update_BHKType :selected').text();
+
+ var update_property_FlatNo = $('#update_property_FlatNo').val();
+
+ var update_property_FloorNo = $('#update_property_FloorNo').val();
+ var update_property_TotalFloor = $('#update_property_TotalFloor').val();
+ var update_property_PropertyAge = $('#update_property_PropertyAge').val();
+ var update_property_Zipcode = $('#update_property_Zipcode').val();
+
+ var update_PropertyFacing = $('#update_PropertyFacing :selected').text();
+
+ var update_property_lat = $('#update_property_lat').val();
+ var update_property_long = $('#update_property_long').val();
+ var update_property_MonthyMaintenance = $('#update_property_MonthyMaintenance').val();
+
+
+ var update_property_rent = $('#update_property_rent').val();
+ var update_property_Deposit = $('#update_property_Deposit').val();
+ var update_property_LeaseDuration = $('#update_property_LeaseDuration').val();
+
+ var update_property_HanderID = $('#update_property_HanderID').val();
+
+
+
 
     var toSend = {Country: "India",
-    State: "Uttar Pradesh",
-    City: "Kanpur",
-    Street: "Beech Wala Mandir",
-    Landmark: "Beech Wala Mandir",
-    Address: "Beech Wala Mandir, Kanpur, Uttar Pradesh, India",
-    BildingName: "Building Name",
-    flatNo: "201",
+    State: state_selectId,
+    City: city_selectId,
+    Street: property_Street,
+    Landmark: property_Landmark,
+    Address: property_Address,
+    BildingName: property_BildingName,
+    flatNo: update_property_FlatNo,
 
-ownerName: "Lucky",
-    OwnerId: id,
-    PropertyImage: ["https://img1.png","https://img2.png"],
-    PropertySize: "122",
-    About: "This is good property",
-    PropertyType: "Residential",
-    PropertyBuyType: "Sale",
-    BHKType: "3",
+ownerName: property_ownerName,
+    OwnerId: OwnerId,
+    PropertyImage: img_array,
+    PropertySize: property_PropertySize,
+    About: update_property_infor,
+    PropertyType: update_property_type,
+    PropertyBuyType: update_PropertyBuyType,
+    BHKType: update_BHKType,
 
 
-FloorNo: "2",
-    TotalFloor: "3",
-    PropertyAge: "1100sf",
-    Facing: "South",
-    Zipcode: "208001",
-    lat: "11.111120",
-    long: "23.10101010",
-    rent: "No",
+FloorNo: update_property_FloorNo,
+    TotalFloor: update_property_TotalFloor,
+    PropertyAge: update_property_PropertyAge,
+    Facing: update_PropertyFacing,
+    Zipcode: update_property_Zipcode,
+    lat: update_property_lat,
+    long: update_property_long,
+    rent: update_property_rent,
     
     
     
-MonthyMaintenance: "None",
-    Deposit: "None",
-    LeaseDuration: "None",
-    HanderID: "None",
+MonthyMaintenance: update_property_MonthyMaintenance,
+    Deposit: update_property_Deposit,
+    LeaseDuration: update_property_LeaseDuration,
+    HanderID: update_property_HanderID,
     Date: "123"
 
 };
       
-
+var base_url = window.location.origin;
 
 
       $.ajax({
-        url:"http://localhost:3000/api/users/property",
+        url:base_url+"/api/users/property",
               type:"POST",
               contentType: 'application/json',
               dataType: 'json',
               data: JSON.stringify(toSend),
         success: function(result,status){
           if(result.status == true){
+            $('#createProperty').modal('hide');
+            clearPropertyData();
             readRecords();
-              
+           
+            
           }
   
         },
@@ -1026,24 +1708,44 @@ MonthyMaintenance: "None",
           alert(JSON.stringify(error));
         }
       })
+      
+        
+}
+
+
+function CreateUser(){
+  $("#createUser").modal("show");
+}
+
+function AddProperty(id){
+    var stateList = states["India"];
+   
+    
+    changeSelect("#state_selectId", stateList, stateList);
+    $("#flat").hide();
+    $("#update_property_UserID").val(id);
+    $("#rent").hide();
+    $("#createProperty").modal("show");
+
+ 
   }
   function GetUserDetails(id){
       
     $("#hidden_user_id").val(id);
     
-
+    var base_url = window.location.origin;
     
     $.ajax({
-      url: "http://localhost:3000/api/users/"+id,
+      url: base_url+"/api/users/"+id,
       type:"GET",
       success: function(data,status){
       
         
-        $("#update_userName").val(data.userName);
-        $("#update_mobile").val(data.mobile);
-        $("#update_email").val(data.email);
-        $("#update_pass").val(data.pass);
-        $("#update_about").val(data.about);
+        $("#update_userName").val(data.user_name);
+        $("#update_mobile").val(data.user_number);
+        $("#update_email").val(data.user_email);
+        $("#update_pass").val(data.user_password);
+        $("#update_about").val(data.user_details);
 
        
       },
@@ -1057,7 +1759,8 @@ MonthyMaintenance: "None",
   }
   function sign_out(){
     sessionStorage.clear();
-    window.location.href="http://localhost:3000"; 
+    var base_url = window.location.origin;
+    window.location.href=base_url; 
   }
 
   function searchFun(){
@@ -1069,9 +1772,23 @@ MonthyMaintenance: "None",
   //  }
     
   }
+
+
+
+  function loadUserSuggestion(options){
+
+
+    $("#update_property_HanderID").autocomplete({
+      lookup: options,
+    });
+
+  }
+
   function readRecords(){
+    var userDetail = [];
+    var base_url = window.location.origin;
     $.ajax({
-      url: "http://localhost:3000/api/users",
+      url: base_url+"/api/users",
       type:"GET",
       success: function(data,status){
         if(data.length >0){
@@ -1081,37 +1798,42 @@ MonthyMaintenance: "None",
           var i =0;
           // -- start for loop
           data.forEach((u)=>{
-            
+            userDetail.push({'value':u.userName,'data':u.user_id});
             i=i+1;
             temp +='<tr>';
               temp +='<td><b>'+i+'</b></td>';
-              temp +='<td>'+u.userType+'</td>';
-              temp +='<td>'+u.userName+'</td>';
-              temp +='<td>'+u.mobile+'</td>';
-              temp +='<td>'+u.pass+'</td>';
-              temp +='<td>'+u.date+'</td>';
-              temp +='<td>'+u.about+'</td>';
-             temp +='<td><b>'+u.UserTotalDashboard+'</b></td>';
-                    temp +='<td><b>'+u.UserTotalProperty+'</b></td>';
-              temp +='<td ><a href="#" onclick="GetUserDetails('+"'"+u._id+"'"+')" > <i class="fa fa-edit"></i> </a></td>';
-              temp +='<td ><a href="#" onclick="DeleteUser('+"'"+u._id+"'"+')"  ><i class="fa fa-delete">delete</i></a></td>';
-              if(u.userType == "Broker"){
+              temp +='<td>'+u.user_type+'</td>';
+              temp +='<td>'+u.user_type+'</td>';
+              temp +='<td>'+u.user_number+'</td>';
+              temp +='<td>'+u.user_password+'</td>';
+              temp +='<td>'+u.user_email+'</td>';
+              temp +='<td>'+u.user_details+'</td>';
+             temp +='<td><b>'+0+'</b></td>';
+                    temp +='<td><b>'+0+'</b></td>';
+              temp +='<td ><a href="#" onclick="GetUserDetails('+"'"+u.user_id+"'"+')" > <i class="fa fa-edit"></i> </a></td>';
+              temp +='<td ><a href="#" onclick="DeleteUser('+"'"+u.user_id+"'"+')"  ><i class="fa fa-delete">delete</i></a></td>';
+              if(u.user_type == "Broker"){
 
                 temp +='<td ><a  ><i class="fa fa-dashboard"></i></a></td>';
               }else {
 
-                temp +='<td ><a href="#" onclick="('+"'"+u._id+"'"+')"  ><i class="fa fa-dashboard"></i></a></td>';
+                temp +='<td ><a href="#" onclick="('+"'"+u.user_id+"'"+')"  ><i class="fa fa-dashboard"></i></a></td>';
               }
 
-              if(u.userType == "Broker"){
+              if(u.user_type == "Broker"){
 
-                temp +='<td ><button disabled onclick="AddPBuyDashboardroperty('+"'"+u._id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
+                temp +='<td ><button disabled onclick="AddPBuyDashboardroperty('+"'"+u.user_id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
               }else {
 
-                temp +='<td ><button onclick="AddProperty('+"'"+u._id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
+                temp +='<td ><button onclick="AddProperty('+"'"+u.user_id+"'"+')" class="btn btn-danger">Add Property</button></td></tr>';
               }
           });
+      
           $('#dataRes').html(temp);
+
+      
+
+          loadUserSuggestion(userDetail);
          // document.getElementById("dataRes").innerHTML = temp;
           //-- close for loop
         }

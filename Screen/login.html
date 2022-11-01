@@ -91,7 +91,7 @@
 <script>
 
     $(document).ready(function(){
-
+    
         readRecords();
     });
 
@@ -105,12 +105,13 @@
         }
     }
     function login(){
+      var base_url = window.location.origin;
         var mobile = $('#mobile').val();
         var pass = $('#pass').val();
         var toSend = {pass:pass,
           mobile:mobile};
           $.ajax({
-            url:"http://localhost:3000/api/users/login",
+            url:base_url+"/api/users/login",
             type:"POST",
             contentType: 'application/json',
             dataType: 'json',
@@ -122,14 +123,15 @@
                         alert("Sorry Your Block");
                     }else {
                         sessionStorage.setItem("login",true);
-                        sessionStorage.setItem("userName",result.data[0].userName);
-                        sessionStorage.setItem("email",result.data[0].email);
-                        sessionStorage.setItem("pass",result.data[0].pass);
-                        sessionStorage.setItem("mobile",result.data[0].mobile);
-                        sessionStorage.setItem("img",result.data[0].img);
-                        sessionStorage.setItem("about",result.data[0].about);
+                        sessionStorage.setItem("userName",result.data[0].user_name);
+                        sessionStorage.setItem("email",result.data[0].user_email);
+                        sessionStorage.setItem("pass",result.data[0].user_password);
+                        sessionStorage.setItem("mobile",result.data[0].user_number);
+                        sessionStorage.setItem("img",result.data[0].user_image);
+                        sessionStorage.setItem("about",result.data[0].user_type);
+                        sessionStorage.setItem("user_id",result.data[0].user_id);
                         alert("Login Successfully");
-                        window.location.href=location.href+"public"; 
+                        window.location.href=base_url+"/public"; 
                     }
 
                    
