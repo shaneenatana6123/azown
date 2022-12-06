@@ -7,13 +7,13 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <section id="user-dash">
-        <h1 class="text-center">Vender Profile</h1>
+        <h1 class="text-center">Vender Dashboard</h1>
         <hr>
         <div class="conatiner">
             <div class="user-dash conatiner">
@@ -25,223 +25,563 @@
                             aria-selected="true">My Profile</button>
                         <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                            aria-selected="false">My Services</button>
+                            aria-selected="false">My Shortlist</button>
                         <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled"
-                            aria-selected="false">My Properties</button>
+                            aria-selected="false">Owner Contacted</button>
                         <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-                            aria-selected="false">Messages <sup>3</sup></button>
+                            aria-selected="false">Propertiess</button>
                         <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
-                            aria-selected="false">Your Payment Details</button>
+                            aria-selected="false">Payment</button>
                     </div>
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                             aria-labelledby="v-pills-home-tab" tabindex="0">
-                        <!-- profile -->
-                        <div class="row m-3">
-                            <div class="col-12">
-                                <div class="row p-3">
-                                    <div class="col-6">
-                                        <span>Name : </span>
+                            <!-- profile -->
+                            <div class="row m-3">
+                                <div class="col-12">
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Name : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>Abdul Ali </span>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <span>Abdul Ali </span>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Email : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>AbdulAli@gmail.com </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row p-3">
-                                    <div class="col-6">
-                                        <span>Email : </span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>AbdulAli@gmail.com </span>
-                                    </div>
-                                </div>
-                                <div class="row p-3">
-                                    <div class="col-6">
-                                        <span>Phone : </span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>9876535383 </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- profile -->
-                        
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                            aria-labelledby="v-pills-profile-tab" tabindex="0">
-                        <!-- services -->
-                        <div class="container">
-                            <h2>Create Services</h2>
-                            <form action="">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-                                        <select class="form-select" id="inlineFormSelectPref">
-                                            <option selected>Choose...</option>
-                                            <option value="1">Plamber</option>
-                                            <option value="2">Mechanic</option>
-                                            <option value="3">Manci</option>
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-                                <button class="btn btn-light m-3" type="submit">Add Service</button>
-                            </form>
-
-                        </div>
-                        <hr>
-                        <div class="container">
-                            <h2>Your Services</h2>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="img/anton-SnKfmC1I9fU-unsplash.jpg" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Plambing</h5>
-                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                              <a href="#" class="btn ">Go somewhere</a>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="img/anton-SnKfmC1I9fU-unsplash.jpg" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Cleaning</h5>
-                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                              <a href="#" class="btn ">Go somewhere</a>
-                                            </div>
-                                          </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
-                            aria-labelledby="v-pills-disabled-tab" tabindex="0">...</div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                            aria-labelledby="v-pills-messages-tab" tabindex="0">
-                            <!-- messagees -->
-                            <div class="container">
-                                <div class="row clearfix">
-                                    <div class="col-lg-12">
-                                        <div class="card chat-app">
-                                            <div id="plist" class="people-list">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" placeholder="Search...">
-                                                </div>
-                                                <ul class="list-unstyled chat-list mt-2 mb-0">
-                                                    <li class="clearfix">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Vincent Porter</div>
-                                                            <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
-                                                        </div>
-                                                    </li>
-                                                    <li class="clearfix active">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Aiden Chavez</div>
-                                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="clearfix">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Mike Thomas</div>
-                                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                                        </div>
-                                                    </li>                                    
-                                                    <li class="clearfix">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Christian Kelly</div>
-                                                            <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="clearfix">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Monica Ward</div>
-                                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="clearfix">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                                                        <div class="about">
-                                                            <div class="name">Dean Henry</div>
-                                                            <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="chat">
-                                                <div class="chat-header clearfix">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                                                            </a>
-                                                            <div class="chat-about">
-                                                                <h6 class="m-b-0">Aiden Chavez</h6>
-                                                                <small>Last seen: 2 hours ago</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 hidden-sm text-right">
-                                                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
-                                                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
-                                                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
-                                                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="chat-history">
-                                                    <ul class="m-b-0">
-                                                        <li class="clearfix">
-                                                            <div class="message-data text-right">
-                                                                <span class="message-data-time">10:10 AM, Today</span>
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                                                            </div>
-                                                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                                                        </li>
-                                                        <li class="clearfix">
-                                                            <div class="message-data">
-                                                                <span class="message-data-time">10:12 AM, Today</span>
-                                                            </div>
-                                                            <div class="message my-message">Are we meeting today?</div>                                    
-                                                        </li>                               
-                                                        <li class="clearfix">
-                                                            <div class="message-data">
-                                                                <span class="message-data-time">10:15 AM, Today</span>
-                                                            </div>
-                                                            <div class="message my-message">Project has been already finished and I have results to show you.</div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="chat-message clearfix">
-                                                    <div class="input-group mb-0">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fa fa-send"></i></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Enter text here...">                                    
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Phone : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>9876535383 </span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row m-3">
+                                <div class="col-12">
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Name : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>Abdul Ali </span>
+                                        </div>
+                                    </div>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Email : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>AbdulAli@gmail.com </span>
+                                        </div>
+                                    </div>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Phone : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>9876535383 </span>
+                                        </div>
+                                    </div>
                                 </div>
-                          
-                            <!-- messagees -->
+                            </div>
+                            <div class="row m-3">
+                                <div class="col-12">
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Name : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>Abdul Ali </span>
+                                        </div>
+                                    </div>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Email : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>AbdulAli@gmail.com </span>
+                                        </div>
+                                    </div>
+                                    <div class="row p-3">
+                                        <div class="col-6">
+                                            <span>Phone : </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>9876535383 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- profile -->
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab" tabindex="0">
+                            <!-- services -->
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">All</button>
+                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-profile" type="button" role="tab"
+                                        aria-controls="nav-profile" aria-selected="false">Properties</button>
+                                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-contact" type="button" role="tab"
+                                        aria-controls="nav-contact" aria-selected="false">Services</button>
+
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab" tabindex="0">
+                                    <!-- all -->
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <img src="img/clean1.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <p>Cleaning</p>
+                                                    <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                        bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                    <!-- <span>Abdul Ali</span> -->
+                                                    <div>
+                                                        <span>RS.120</span>
+                                                        <span class=" float-end">Contact</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <img src="img/clean2.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <p>Cleaning</p>
+                                                    <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                        bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                    <!-- <span>Abdul Ali</span> -->
+                                                    <div>
+                                                        <span>RS.120</span>
+                                                        <span class=" float-end">Contact</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <img src="img/clean3.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <p>Cleaning</p>
+                                                    <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                        bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                    <!-- <span>Abdul Ali</span> -->
+                                                    <div>
+                                                        <span>RS.120</span>
+                                                        <span class=" float-end">Contact</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- all -->
+
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab" tabindex="0">
+                                    <!-- prop -->
+                                    <hr class="m-5">
+                                    <div class="row">
+                                        <div class="card col-md-6 mb-3" style="max-width: 49%;">
+                                            <h5>1 BHK Flat In Sai Shriya Residency, Dhayari For Rent In Benkar Vast</h5>
+                                            <p class="fs-6">Lorem ipsum dolor sit amet consectetur.</p>
+                                            <a href="single-property.html">
+                                                <div class="row m-2 text-center">
+                                                    <div class="col-4 rounded border border-dark ">
+                                                        <p>1210 SQRT</p>
+                                                        <p>Built Up</p>
+                                                    </div>
+                                                    <div class="col-4 rounded border border-dark">
+                                                        <p>RS. 1000</p>
+                                                        <p>Deposit</p>
+                                                    </div>
+                                                    <div class="col-4 rounded border border-dark">
+                                                        <p>RS. 32000</p>
+                                                        <p>Rent(Non-nego)</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <div class="card text-bg-dark">
+                                                        <div id="carouselExampleIndicators" class="carousel slide"
+                                                            data-bs-ride="true">
+                                                            <div class="carousel-indicators">
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="0" class="active"
+                                                                    aria-current="true" aria-label="Slide 1"></button>
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                            </div>
+                                                            <div class="carousel-inner">
+                                                                <div class="carousel-item active">
+                                                                    <img src="img/vu-anh-TiVPTYCG_3E-unsplash.jpg"
+                                                                        class="d-block w-100" alt="...">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <img src="img/main image.jpg" class="d-block w-100"
+                                                                        alt="...">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <img src="img/daria-nepriakhina-LZkbXfzJK4M-unsplash.jpg"
+                                                                        class="d-block w-100" alt="...">
+                                                                </div>
+                                                            </div>
+                                                            <button class="carousel-control-prev" type="button"
+                                                                data-bs-target="#carouselExampleIndicators"
+                                                                data-bs-slide="prev">
+                                                                <span class="carousel-control-prev-icon"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Previous</span>
+                                                            </button>
+                                                            <button class="carousel-control-next" type="button"
+                                                                data-bs-target="#carouselExampleIndicators"
+                                                                data-bs-slide="next">
+                                                                <span class="carousel-control-next-icon"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Next</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="card-img-overlay">
+                                                            <h5 class="card-title">Card title</h5>
+                                                            <p class="card-text">This is a wider card with supporting
+                                                                text below as a
+                                                                natural
+                                                                lead-in to additional content. This content is a little
+                                                                bit longer.</p>
+                                                            <p class="card-text"><small>Last updated 3 mins ago</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <p class="card-text">This is a wider card with supporting text
+                                                            below as a natur </p>
+                                                        <div class="row text-center">
+                                                            <div class="col-3 ">
+                                                                <p> Furnished </p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>AC</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>Non veg</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>Parking</p>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                            
+                                            </div>
+                                        </div>
+                                        <div class="card col-md-6 mb-3" style="max-width: 49%;">
+                                            <h5>1 BHK Flat In Sai Shriya Residency, Dhayari For Rent In Benkar Vast</h5>
+                                            <p class="fs-6">Lorem ipsum dolor sit amet consectetur.</p>
+                                            <a href="single-property.html">
+                                                <div class="row m-2 text-center">
+                                                    <div class="col-4 rounded border border-dark ">
+                                                        <p>1210 SQRT</p>
+                                                        <p>Built Up</p>
+                                                    </div>
+                                                    <div class="col-4 rounded border border-dark">
+                                                        <p>RS. 1000</p>
+                                                        <p>Deposit</p>
+                                                    </div>
+                                                    <div class="col-4 rounded border border-dark">
+                                                        <p>RS. 32000</p>
+                                                        <p>Rent(Non-nego)</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <div class="card text-bg-dark">
+                                                        <div id="carouselExampleIndicators" class="carousel slide"
+                                                            data-bs-ride="true">
+                                                            <div class="carousel-indicators">
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="0" class="active"
+                                                                    aria-current="true" aria-label="Slide 1"></button>
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                                <button type="button"
+                                                                    data-bs-target="#carouselExampleIndicators"
+                                                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                            </div>
+                                                            <div class="carousel-inner">
+                                                                <div class="carousel-item active">
+                                                                    <img src="img/vu-anh-TiVPTYCG_3E-unsplash.jpg"
+                                                                        class="d-block w-100" alt="...">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <img src="img/main image.jpg" class="d-block w-100"
+                                                                        alt="...">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <img src="img/daria-nepriakhina-LZkbXfzJK4M-unsplash.jpg"
+                                                                        class="d-block w-100" alt="...">
+                                                                </div>
+                                                            </div>
+                                                            <button class="carousel-control-prev" type="button"
+                                                                data-bs-target="#carouselExampleIndicators"
+                                                                data-bs-slide="prev">
+                                                                <span class="carousel-control-prev-icon"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Previous</span>
+                                                            </button>
+                                                            <button class="carousel-control-next" type="button"
+                                                                data-bs-target="#carouselExampleIndicators"
+                                                                data-bs-slide="next">
+                                                                <span class="carousel-control-next-icon"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Next</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="card-img-overlay">
+                                                            <h5 class="card-title">Card title</h5>
+                                                            <p class="card-text">This is a wider card with supporting
+                                                                text below as a
+                                                                natural
+                                                                lead-in to additional content. This content is a little
+                                                                bit longer.</p>
+                                                            <p class="card-text"><small>Last updated 3 mins ago</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <p class="card-text">This is a wider card with supporting text
+                                                            below as a natur </p>
+                                                        <div class="row text-center">
+                                                            <div class="col-3 ">
+                                                                <p> Furnished </p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>AC</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>Non veg</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>Parking</p>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                            
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- prop -->
+                                </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab" tabindex="0">
+                                    <!-- ser -->
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <img src="img/clean1.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <p>Cleaning</p>
+                                                        <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                            bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                        <!-- <span>Abdul Ali</span> -->
+                                                        <div>
+                                                            <span>RS.120</span>
+                                                            <span class=" float-end">Contact</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <img src="img/clean2.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <p>Cleaning</p>
+                                                        <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                            bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                        <!-- <span>Abdul Ali</span> -->
+                                                        <div>
+                                                            <span>RS.120</span>
+                                                            <span class=" float-end">Contact</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <img src="img/clean3.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <p>Cleaning</p>
+                                                        <p class="card-text" style="font-size: 0.8rem;">Some quick
+                                                            bulk of the card's content. Lorem ipsum dolor sit amet.</p>
+
+                                                        <!-- <span>Abdul Ali</span> -->
+                                                        <div>
+                                                            <span>RS.120</span>
+                                                            <span class=" float-end">Contact</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <!-- ser -->
+                                </div>
+                            </div>
+
+
+                            <!-- services -->
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
+                            aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                            <!-- my prop -->
+                            <div class="container d-inline">
+                                <div class=" border rounded border-dark p-2">
+                                    <p>Name:Shane</p>
+                                    <p>Number:9598798529</p>
+                                    <p>Email:shane@ergmail.com</p>
+                                    <p class="btn" >chat</p>
+                                </div>
+                                
+                            </div>
+                            <!-- my prop -->
+
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab" tabindex="0">
+                            <!-- my Prop-->
+                            <div class="row">
+                                <div class="col-4 border border-dark rounded">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <p>Lorem ipsum dolor sit.</p>
+                                            <p style="font-size: 0.7rem;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis sit tempore accusantium!</p>
+
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="img/clean1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>No conatct till Now</p>
+                                </div>
+                                <div class="col-4 border border-dark rounded">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <p>Lorem ipsum dolor sit.</p>
+                                            <p style="font-size: 0.7rem;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis sit tempore accusantium!</p>
+
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="img/clean1.jpg" alt="">
+                                        </div>
+                                       
+                                    </div>
+                                    <hr>
+                                    <!-- <p>11 Contact till now</p> -->
+                                    <!-- Button trigger modal -->
+<button  data-bs-toggle="modal" data-bs-target="#exampleModal">
+    11 Contact till now
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Laed Request</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <span>Shane Alam</span>
+                <span>959595959</span>
+                <span class="float-end">Chat</span>
+            </div>
+            <hr>
+          
+        
+            <div class="container">
+                <span>Shane Alam</span>
+                <span>959595959</span>
+                <span class="float-end">Chat</span>
+            </div>
+            <hr>
+         
+            <div class="container">
+                <span>Shane Alam</span>
+                <span>959595959</span>
+                <span class="float-end">Chat</span>
+            </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                                </div>
+                            </div>
+
+                            <!-- my Prop-->
 
 
                         </div>
