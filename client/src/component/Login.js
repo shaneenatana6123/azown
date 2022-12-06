@@ -6,12 +6,30 @@ import propertyContext from "../context/PropertyContext";
 const Login = () => {
   const [credential, setcredential] = useState({ email: "", password: "" });
   const context = useContext(propertyContext)
-  const {  getuserdetail,userdetails}=context
+  const {  userdetails}=context
   useEffect(()=>{
     // getuserdetail()
   },[])
   const history = useNavigate();
   const host = "http://localhost:5000";
+
+
+  const getuserdetail = async () => {
+    const responce = await fetch(`${host}/api/auth/getuserdetail`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const userdetailed = await responce.json();
+    console.log("new");
+    console.log(userdetailed);
+    // localStorage.setItem('userdetail',JSON.stringify(userdetailed))
+    localStorage.setItem('userdetail',userdetailed[0].usertype)
+    // console.log(userdetailed.usertype);
+   
+  };
   const login = async (email, password) => {
     const responce = await fetch(`${host}/api/auth/login`, {
       method: "POST",
@@ -24,6 +42,8 @@ const Login = () => {
     console.log(json);
     if (json.success) {
       localStorage.setItem('token', json.authtoken); 
+      getuserdetail()
+      console.log(userdetails)
       history("/");
       
       // localStorage.setItem('userdetail',userdetails[0].usertype)

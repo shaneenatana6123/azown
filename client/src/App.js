@@ -19,7 +19,13 @@ import Services from "./component/Services";
 function App() {
   const context = useContext(propertyContext);
   const { userdeatils } = context;
-  console.log(userdeatils);
+  const usertype = localStorage.getItem("userdetail")
+  // console.log(userdeta);
+  // console.log("newone")
+  // const userdata  = JSON.parse(userdeta)[0].usertype
+  // console.log(userdata);
+  // console.log(JSON.parse(userdeta)[0].usertype);
+  // console.log(userdeatils);
   return (
     <div>
       <Router>
@@ -35,8 +41,9 @@ function App() {
           <Route path="/createproperty" element={<CreateProperty />}></Route>
           {/* <Route path="/userdash" element={<Venderdash/>}></Route> */}
           <Route path="/service/:name" element={<Services />} />
-
-          {localStorage.getItem("token") && ( <Route path="/userdash" element={ userdeatils[0].usertype === "broker" ? (<Brokerdash /> ) :userdeatils[0].usertype === "vender"? <Venderdash/>: (<Userdash />) } ></Route>)}
+{/* {console.log(localStorage.getItem('userdetail'))} */}
+{localStorage.getItem("token") && ( <Route path="/userdash" element={ usertype === "broker" ? (<Brokerdash /> ) :usertype === "vender"? <Venderdash/>: (<Userdash />) } ></Route>)}
+          {/* {localStorage.getItem("token") && ( <Route path="/userdash" element={ userdeatils[0].usertype === "broker" ? (<Brokerdash /> ) :userdeatils[0].usertype === "vender"? <Venderdash/>: (<Userdash />) } ></Route>)} */}
           <Route
             path="/rr-create-property"
             element={<ResidentialRent />}

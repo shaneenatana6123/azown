@@ -5,6 +5,7 @@ const Navbar = () => {
   let history = useNavigate()
   const handleClick=()=>{
     localStorage.removeItem("token")
+    localStorage.removeItem("userdetail")
     history("/login")
   }
   return (
