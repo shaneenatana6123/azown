@@ -23,7 +23,7 @@ const Home = () => {
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                         tabindex="0"> 
-                        <Link className ='btn btn-primary' to ="/allrrprops">Rent</Link>
+                        <Link className ='btn btn-primary' to ="/rrprop">Rent</Link>
                         <Link > <button class="btn btn-light m-3">Resale</button></Link>
                         <Link > <button class="btn btn-light m-3">Pg/Hostel</button></Link>
                         <Link > <button class="btn btn-light m-3">Flatmates</button></Link>

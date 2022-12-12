@@ -1,11 +1,131 @@
 import React, { useState } from "react";
 import PropertyContext from "./PropertyContext";
+import axios from "axios";
 
 const PropertyState = (props) => {
   const host = "http://localhost:5000";
-  const rrpropInitial = [];
-  const [rrprop, setrrprop] = useState(rrpropInitial);
+  
+  const [rrprop, setrrprop] = useState([]);
   const [dash, setdash] = useState([]);
+  const [userdetail, setuserdetail] = useState([]);
+  const [userdata , setuserdata] = useState([])
+
+// userdetails
+const getuserdetail = async () => {
+  const responce = await fetch(`${host}/api/auth/getuserdetail`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setuserdetail(resdata);
+};
+
+const userprofile =async (id)=>{
+  console.log(id);
+  const responce = await fetch(`${host}/api/auth/userprofile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ _id:id }),
+  });
+  const resdata = await responce.json();
+  setuserdata(resdata);
+}
+
+// rr property
+const fetchAllrrprop = async () => {
+  const responce = await fetch(`${host}/api/property/getrrprop`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setrrprop(resdata);
+};
+
+
+
+
+//Rrent leads data
+
+// handler 
+const handlereq = async (pid,uid,des) => {
+  const responce = await fetch(`${host}/api/property/handlerreq`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+    body: JSON.stringify({ property_id :pid,property_owner_id:uid }),
+  });
+  const resdata = await responce.json();
+  console.log(resdata);
+};
+
+const [handlerowner, sethandlerowner] = useState([]);
+  const handreq = async (id) => {
+    // await axios({
+    //   method: "get",
+    //   url: `${host}/api/property/handreqwithid/${id}`,
+    //   headers: {
+    //         "Content-Type": "application/json",
+    //         "auth-token": localStorage.getItem("token"),
+    //       },
+
+    // }).then( (response)=> {
+    //   console.log(response.data);
+    //   sethandlerowner(response.data);
+
+    // });
+    const responce = await fetch(`${host}/api/property/handreqwithid/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const resdata = await responce.json();
+    // console.log(resdata);
+    sethandlerowner(resdata);
+  };
+
+
+  const accepthandler = async (id) => {
+    const responce = await fetch(`${host}/api/property/accepthandler/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const userdetail = await responce.json();
+  };
+
+  const [gethandle, sethandler] = useState([]);
+  const gethandler = async () => {
+    const responce = await fetch(`${host}/api/property/gethandler`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const userdetail = await responce.json();
+    sethandler(userdetail);
+    // console.log(userdetail);
+  };
+// services..
+
+
+// service lead
+
+
 
   const addservice = async (service_name, service_desc, service_charge) => {
     const responce = await fetch(`${host}/api/service/createservice`, {
@@ -36,35 +156,8 @@ const PropertyState = (props) => {
 
   }
 
-  const addrrProp = async (title, description, proptype) => {
-    console.log(title, description, proptype);
-    const responce = await fetch(`${host}/api/property/addprop`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ title, description, proptype }),
-    });
-    const newnote = await responce.json();
-    console.log(newnote);
-    setrrprop(rrprop.concate(newnote));
-    // setnote(notes.concat(newnote));
-  };
-  const fetchAllrrprop = async () => {
-    const responce = await fetch(`${host}/api/property/fetchallprops`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const newnote = await responce.json();
-    console.log(newnote);
-    setrrprop(newnote);
-    // setrrprop(rrprop.concate(newnote))
-    // setnote(notes.concat(newnote));
-  };
+  
+ 
   const [rrprolead, setrrprolead] = useState([]);
   const rrproplead = async (id) => {
     const responce = await fetch(`${host}/api/property/rrproplead/${id}`, {
@@ -76,9 +169,6 @@ const PropertyState = (props) => {
     });
     const leaddata = await responce.json();
     setrrprolead(leaddata);
-    // console.log(leaddata);
-
-    // console.log(id);
   };
   const [userleadsdata, setuserleaddata] = useState([]);
   const userlead = async () => {
@@ -116,7 +206,7 @@ const PropertyState = (props) => {
     setdash(userdetail);
   };
   const lead = async (id) => {
-    const responce = await fetch(`${host}/api/property/leadreq`, {
+    const responce = await fetch(`${host}/api/leadprop/leadcreate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -125,10 +215,9 @@ const PropertyState = (props) => {
       body: JSON.stringify({ property_id: id }),
     });
     const res = await responce.json();
-
     console.log(res);
   };
-  const [userdetail, setuserdetail] = useState([]);
+ 
 
   const kycupdatefun = async (name, email, usertype, phone, adharno) => {
     const responce = await fetch(`${host}/api/auth/kycupdate`, {
@@ -142,67 +231,11 @@ const PropertyState = (props) => {
     const updatedatares = await responce.json();
     console.log(updatedatares);
   };
-  const handlereq = async (id) => {
-    // console.log(id);
-    const responce = await fetch(`${host}/api/property/handlerbreq/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const reqdata = await responce.json();
-  };
-  const [gethandle, sethandler] = useState([]);
-  const gethandler = async () => {
-    const responce = await fetch(`${host}/api/property/gethandler`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const userdetail = await responce.json();
-    sethandler(userdetail);
-    // console.log(userdetail);
-  };
-  const [handlerowner, sethandlerowner] = useState([]);
-  const handreq = async (id) => {
-    const responce = await fetch(`${host}/api/property/handreqwithid/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const userdetail = await responce.json();
-    sethandlerowner(userdetail);
-    // sethandler(userdetail)
-    // console.log(userdetail);
-  };
-  const [userdeatils, setuserdetails] = useState([]);
-  const getuserdetail = async () => {
-    const responce = await fetch(`${host}/api/auth/getuserdetail`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const userdetailed = await responce.json();
-    console.log(userdetailed.usertype);
-    setuserdetails(userdetailed);
-  };
-  const accepthandler = async (id) => {
-    const responce = await fetch(`${host}/api/property/accepthandler/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const userdetail = await responce.json();
-  };
+  
+  
+  
+
+  
   const [venderservice,setvenderservice]= useState([])
   const allvenderservice = async ()=>{
     const responce = await fetch(`${host}/api/service/allvenderservice`, {
@@ -254,9 +287,26 @@ const PropertyState = (props) => {
       const client_data = await responce.json(); 
       set_lead_data(client_data)
     }
+    const [singlerrpropdata, setsinglerrpropdata] =useState([])
+    const singleRrProp = async (id) => {
+      // console.log(id);
+      const responce = await fetch(`${host}/api/property/singlerrprop/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      console.log(propdata);
+      setsinglerrpropdata(propdata)
+
+    };
   return (
     <PropertyContext.Provider
       value={{
+        singleRrProp,
+        singlerrpropdata,
         client_lead_data,
         client_service_lead,
         createservicelead,
@@ -265,7 +315,6 @@ const PropertyState = (props) => {
         addVenderService,
         fetchservice,allservice,
         rrprop,
-        addrrProp,
         handreq,
         handlerowner,
         fetchAllrrprop,
@@ -281,11 +330,11 @@ const PropertyState = (props) => {
         paymentreq,
         userdetail,
         getuserdetail,
-        userdeatils,
         kycupdatefun,
         handlereq,
         accepthandler,
         addservice,
+        userprofile,userdata
       }}
     >
       {props.children}

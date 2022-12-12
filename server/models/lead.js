@@ -5,10 +5,10 @@ const LeadSchema = new Schema({
     property_id:{
         type:String
     },
-    property_user_id:{
+    property_client_id:{
         type:String
     },
-    property_client_id :{
+    property_owner_id :{
         type:String,
     },
     property_handler_id:{
@@ -18,17 +18,12 @@ const LeadSchema = new Schema({
         type:Boolean,
         default:true
     },
-    property_closure_requested:{
-        type:Boolean,     
-    },  
-    property_closure_accepted:{
-        type:Boolean,
-    },
     property_payment_req:{
-        type:Boolean
+        type:Boolean,
+        default:false
     },
-    property_is_transaction_complete  :{
-        type:String
+    property_is_transaction_complete :{
+        type:Boolean
     }    ,
     property_transaction_id :{
         type:String

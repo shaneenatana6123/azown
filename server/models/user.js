@@ -11,6 +11,12 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    phone:{
+        type:String
+    },
+    dob:{
+        type:String
+    },
     password:{
         type: String,
         required: true
@@ -19,16 +25,40 @@ const UserSchema = new Schema({
         type:String,
         default:"visiter"
     },
-    phone:{
+    imgname:{
         type:String
     },
+    description:{
+        type:String
+    },
+    country:String,
+    state:String,
+    city:String,
+    street:String,
+    landmark:String,
     adharno:{
         type:String
+    },
+    pancardno:{
+        type:String
+    },
+    transactionid:{
+        type:String
+    },
+    totalproperty:{
+        type:String
+    },
+    totaldashboard:{
+        type:String
+    },
+    block:{
+        type:Boolean,
+        default:false
     },
     date:{
         type: Date,
         default: Date.now
-    },
+    }
   });
   const User = mongoose.model('user', UserSchema);
   module.exports = User;

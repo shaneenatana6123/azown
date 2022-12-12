@@ -15,6 +15,7 @@ const Services = () => {
   const [service, setservice] = useState([]);
   const host = "http://localhost:5000";
   const { name } = useParams();
+  console.log(name);
   const getservice = async () => {
     const responce = await fetch(`${host}/api/service/${name}`, {
       method: "GET",

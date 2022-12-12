@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import propertyContext from "../context/PropertyContext";
-import { useNavigate } from "react-router-dom";
-import image from "../iamge/image-main.jpg"
+import { useNavigate ,Link} from "react-router-dom";
+
+import RrentProp from "./RrentProp";
 const Allrrprops = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
-  const [isbroker, setbroker] = useState(true);
-  const { rrprop, fetchAllrrprop, lead, handlereq, userdeatils } = context;
+  
+  const { rrprop, fetchAllrrprop, lead, handlereq,singleRrProp, userdeatils } = context;
   useEffect(() => {
     if (localStorage.getItem("token")) {
       fetchAllrrprop();
@@ -16,40 +17,170 @@ const Allrrprops = () => {
   }, []);
   return (
     <div>
-      <h3>All Props</h3>
-      {rrprop.map((property) => {
-        return (
-          <div className="container">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src={image} class="img-fluid rounded-start" alt="error" />
+      <h1 class="text-center">Residential Rent Property</h1>
+      <hr />
+      <div className="container">
+        <div className="row">
+          {/* <div class="col-3">
+            <h2>Filter</h2>
+            <form>
+              <div class="container m-3">
+                <h5>Property Type</h5>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Apartment
+                  </label>
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h6>{property.title}</h6>
-                    <p>{property.description}</p>
-                  
-                    {/* {userdeatils[0].usertype === "broker" ? (
-                      <button onClick={() => handlereq(property._id)}>
-                        Handler Req
-                      </button>
-                    ) : (
-                      <button onClick={() => lead(property._id)}>Lead</button>
-                    )} */}
-                    <h6 className="m-2">2BHK</h6>
-                    <h6 className="m-2">2</h6>
-                    <h6 className="m-2">north</h6>
-
-                    <button onClick={() => lead(property._id)}>Lead</button>
-
-                  </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Independent House/Villa
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Gate Community Villa
+                  </label>
                 </div>
               </div>
-            </div>
-          </div>
-        );
-      })}
+              <div class="container m-3">
+                <h5>BHK Type</h5>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox1">
+                    1 BHK
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox2">
+                    2 BHK
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="option3"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox3">
+                    3 BHK
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="option3"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox3">
+                    4 BHK
+                  </label>
+                </div>
+              </div>
+              <div class="container m-3">
+                <h5>Parking</h5>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox1">
+                    2 Wheeler
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox2">
+                    4 Wheeler
+                  </label>
+                </div>
+              </div>
+              <div class="container m-3">
+                <h5>Furnishing</h5>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox1">
+                    Full
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox2">
+                    Semi
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="option3"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox3">
+                    None
+                  </label>
+                </div>
+              </div>
+              <button class="btn">Filter</button>
+            </form>
+          </div> */}
+          {rrprop.map((property) => {
+            
+            return (
+              <RrentProp property={property} key={property._id}/>
+             
+              
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

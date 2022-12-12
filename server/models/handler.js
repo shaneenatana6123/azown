@@ -5,6 +5,7 @@ const HandlerSchema = new Schema({
     property_id:{
         type:String
     },
+    
     property_owner_id:{
         type:String
     },
@@ -12,10 +13,10 @@ const HandlerSchema = new Schema({
         type:String,
     },
     
-    property_broker_requested:{
-        type:Boolean, 
-        default:false    
-    },  
+    stage:{
+        type:Number,
+        default:0
+    },
     date:{
         type: Date,
         default: Date.now

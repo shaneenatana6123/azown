@@ -1,5 +1,4 @@
-{
-  /* <form onSubmit={handleSubmit}>
+ <!-- <form onSubmit={handleSubmit}>
         <h1 class="text-center m-5"> Residential Rent </h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -972,5 +971,129 @@
           class="btn btn-dark p-2 m-2"
           value="fianl Submit"
         />
-      </form> */
-}
+      </form> 
+
+
+
+
+
+
+
+
+
+
+      {/* <div className="container">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src={image} class="img-fluid rounded-start" alt="error" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6>{property.title}</h6>
+                <p>{property.description}</p>
+              
+                {/* {userdeatils[0].usertype === "broker" ? (
+                  <button onClick={() => handlereq(property._id)}>
+                    Handler Req
+                  </button>
+                ) : (
+                  <button onClick={() => lead(property._id)}>Lead</button>
+                )} */}
+                {/* <h6 className="m-2">2BHK</h6>
+                <h6 className="m-2">2</h6>
+                <h6 className="m-2">north</h6>
+        
+                <button onClick={() => lead(property._id)}>Lead</button>
+        
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>  -->
+
+
+
+
+
+
+        <!-- single -->
+        <!-- {/* <div class="container-fluid m-0">
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src={singleimage}
+                  style={{ height: 500 }}
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src={singleimage}
+                  class="d-block w-100"
+                  style={{ height: 500 }}
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src={singleimage}
+                  class="d-block w-100"
+                  style={{ height: 500 }}
+                  alt="..."
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div> */}
+        {/* <div class="container prop-detail d-block">
+              <div class="container ">
+                  <span class="float-start">
+                      <h1>Diamond Manor Apartment</h1>
+                  </span>
+                  <span class="float-end">
+                      <h3>RS. 54679</h3>
+                  </span>
+              </div>
+          </div> */} -->
+
+
+          <!-- const addrrProp = async (title, description, proptype) => {
+  console.log(title, description, proptype);
+  const responce = await fetch(`${host}/api/property/addprop`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+    body: JSON.stringify({ title, description, proptype }),
+  });
+  const resdata= await responce.json();
+  console.log(resdata);
+  setrrprop(rrprop.concate(resdata));
+ 
+}; -->

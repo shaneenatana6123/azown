@@ -32,6 +32,16 @@ name,email,usertype,phone,adharno
     res.json({"error":"not found"})
   }
 })
+router.get("/userprofile" ,async(req,res)=>{
+  try{
+    const {_id} =req.body
+    console.log(_id);
+    const userdata = await User.findOne({_id})
+    res.json(userdata)
+  }catch{
+    res.json({error:"not found"})
+  }
+})
 router.get("/getuserdetail",fetchuser ,async(req,res)=>{
   try{
     const userdata = await User.find({_id:req.user.id})

@@ -5,15 +5,16 @@ const Navbar = () => {
   let history = useNavigate()
   const handleClick=()=>{
     localStorage.removeItem("token")
-    localStorage.removeItem("userdetail")
+    localStorage.removeItem("userType")
+    localStorage.removeItem("userId")
     history("/login")
   }
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <Link class="navbar-brand" to="/">
-            Azown
+          <Link class="navbar-brand ms-4 " to="/">
+           <b>Azown</b>
           </Link>
           <button
             class="navbar-toggler"
@@ -50,7 +51,7 @@ const Navbar = () => {
               </li> */}
               <li className="nav-item">
                {localStorage.getItem("token") && <Link className="nav-link me-3" to="/userdash">
-                  userdash
+                  UserdashBoard
                 </Link> } 
               </li>
               {localStorage.getItem("token")? <button onClick={handleClick} className="btn btn-dark">Logout</button>:<>              <li class="nav-item">

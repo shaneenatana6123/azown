@@ -26,7 +26,8 @@ const Login = () => {
     console.log("new");
     console.log(userdetailed);
     // localStorage.setItem('userdetail',JSON.stringify(userdetailed))
-    localStorage.setItem('userdetail',userdetailed[0].usertype)
+    localStorage.setItem('userType',userdetailed[0].usertype)
+    localStorage.setItem('userId',userdetailed[0]._id)
     // console.log(userdetailed.usertype);
    
   };
@@ -45,9 +46,6 @@ const Login = () => {
       getuserdetail()
       console.log(userdetails)
       history("/");
-      
-      // localStorage.setItem('userdetail',userdetails[0].usertype)
-      // console.log(localStorage.getItem("userdetail"))
     }else{
       history("/login") 
     }
