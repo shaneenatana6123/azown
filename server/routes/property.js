@@ -40,6 +40,10 @@ router.put("/accepthandler", fetchuser, async (req, res) => {
       { property_id, broker_id,property_owner_id},
       { $set: { stage } }
     );
+    if (stage===10) {
+      await rr_props.updateOne({property_id}, {$set:{handlerid:broker_id}})
+      
+    }
     res.json({res:"updated successfully"});
   } catch {
     res.json({ error: "Not found" });
