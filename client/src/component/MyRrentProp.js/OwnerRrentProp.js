@@ -2,13 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 // import singleimage from "../images/singleprop.jpg";
 import propertyContext from "../../context/PropertyContext";
 import { useParams } from "react-router-dom";
-import { Carousel } from "react-bootstrap";
+import { Carousel ,Modal,Button} from "react-bootstrap";
+
 import BrokerProfile from "./BrokerProfile";
 
 const OwnerRrentProp = () => {
     const context = useContext(propertyContext);
     const { singleRrProp, accepthandler,singlerrpropdata,gethandle,handreq,handlerowner, lead} = context;
     const [contacted,setcontacted] =useState(false)
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () =>{
+    handreq(singlerrpropdata._id)
+    setShow(true);
+  } 
    
     const { id } = useParams();
     useEffect(() => {
@@ -495,7 +503,40 @@ const OwnerRrentProp = () => {
                 <hr />
               {console.log(singlerrpropdata._id)}
                 <h5>Check Handler Requests</h5>
-                <button
+                <>
+      <Button variant="primary" onClick={handleShow}>
+        Check Handler Requests
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Handler Requests</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        {handlerowner && handlerowner.map((user)=>{
+          return <>
+          <BrokerProfile user ={user}/>
+          </>
+          
+        })}
+
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+
+
+
+
+                {/* <button
                 type="button"
                 class="btn "
                 onClick={()=>handreq(singlerrpropdata._id)}
@@ -504,9 +545,15 @@ const OwnerRrentProp = () => {
               </button>
               {handlerowner && handlerowner.map((user) => {
                         return (
-                         <BrokerProfile user = { user }/>
+                          <div>
+                          <p>{user.name}</p>
+                          <p>{user.email}</p>
+                          
+                          </div>
+                       
+                      
                         );
-                      })}
+                      })} */}
                 
               </div>
   

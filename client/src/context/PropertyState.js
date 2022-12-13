@@ -26,7 +26,7 @@ const getuserdetail = async () => {
 const userprofile =async (id)=>{
   console.log(id);
   const responce = await fetch(`${host}/api/auth/userprofile`, {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -70,19 +70,6 @@ const handlereq = async (pid,uid,des) => {
 
 const [handlerowner, sethandlerowner] = useState([]);
   const handreq = async (id) => {
-    // await axios({
-    //   method: "get",
-    //   url: `${host}/api/property/handreqwithid/${id}`,
-    //   headers: {
-    //         "Content-Type": "application/json",
-    //         "auth-token": localStorage.getItem("token"),
-    //       },
-
-    // }).then( (response)=> {
-    //   console.log(response.data);
-    //   sethandlerowner(response.data);
-
-    // });
     const responce = await fetch(`${host}/api/property/handreqwithid/${id}`, {
       method: "GET",
       headers: {
@@ -91,20 +78,20 @@ const [handlerowner, sethandlerowner] = useState([]);
       },
     });
     const resdata = await responce.json();
-    // console.log(resdata);
+    console.log(resdata);
     sethandlerowner(resdata);
   };
-
-
-  const accepthandler = async (id) => {
-    const responce = await fetch(`${host}/api/property/accepthandler/${id}`, {
+  const accepthandler = async (bid,pid,stage) => {
+    const responce = await fetch(`${host}/api/property/accepthandler`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
+      body: JSON.stringify({ broker_id:bid,property_id:pid,stage:stage }),
     });
-    const userdetail = await responce.json();
+    const res = await responce.json();
+    console.log(res);
   };
 
   const [gethandle, sethandler] = useState([]);

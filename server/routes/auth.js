@@ -32,12 +32,14 @@ name,email,usertype,phone,adharno
     res.json({"error":"not found"})
   }
 })
-router.get("/userprofile" ,async(req,res)=>{
+router.post("/userprofile" ,async(req,res)=>{
   try{
     const {_id} =req.body
     console.log(_id);
     const userdata = await User.findOne({_id})
-    res.json(userdata)
+
+    console.log(userdata);
+    res.json({name:userdata.name,eamil:userdata.email})
   }catch{
     res.json({error:"not found"})
   }
