@@ -36,10 +36,9 @@ router.post("/userprofile" ,async(req,res)=>{
   try{
     const {_id} =req.body
     console.log(_id);
-    const userdata = await User.findOne({_id})
-
-    console.log(userdata);
-    res.json({name:userdata.name,eamil:userdata.email})
+    const data = await User.findOne({_id})
+    console.log(data);
+    res.json(data)
   }catch{
     res.json({error:"not found"})
   }

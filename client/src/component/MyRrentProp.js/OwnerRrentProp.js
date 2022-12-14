@@ -8,8 +8,7 @@ import BrokerProfile from "./BrokerProfile";
 
 const OwnerRrentProp = () => {
     const context = useContext(propertyContext);
-    const { singleRrProp, accepthandler,singlerrpropdata,gethandle,handreq,handlerowner, lead} = context;
-    const [contacted,setcontacted] =useState(false)
+    const { singleRrProp,singlerrpropdata,handreq,handlerowner,userprofile,userdata} = context;
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,9 +20,10 @@ const OwnerRrentProp = () => {
     const { id } = useParams();
     useEffect(() => {
       singleRrProp(id);
+      singlerrpropdata &&  userprofile(singlerrpropdata.handlerid)
     }, []);
     
-   
+    
   
     return (
       <div>
@@ -496,12 +496,16 @@ const OwnerRrentProp = () => {
               <div class="conatiner p-3">
               
                 <div class="container p-2 ms-3">
-                  <p>Abdul Ali</p>
-                  <span>Lorem ipsum dolor sit</span>
+                
+                {userdata && <> <p>{userdata.name}</p>
+                  <p>{userdata.email}</p> </>
+                 
+                }
+               
+                  
                 </div>
                 <button className="btn btn-dark">Edit Handler</button>
                 <hr />
-              {console.log(singlerrpropdata._id)}
                 <h5>Check Handler Requests</h5>
                 <>
       <Button variant="primary" onClick={handleShow}>

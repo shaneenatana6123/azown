@@ -92,63 +92,7 @@ const {propert} = props
                   </div>
                 </div>
               </div>
-              {/* <button
-                type="button"
-                class="btn "
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal2"
-                onClick={()=>handreq(propert._id)}
-              >
-                Check handler
-              </button> */}
-              {/* <div
-                class="modal fade"
-                id="exampleModal2"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel2"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel2">
-                        Handler Request
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      {gethandle.map((user) => {
-                        return (
-                          <div>
-                            <span>{user.broker_id}</span>
-                            {!user.property_broker_requested && (
-                              <button onClick={()=>accepthandler(user._id)}>Accept</button>
-                            )}
-                            <hr />
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              
             </div>
           </div>
     </div>
