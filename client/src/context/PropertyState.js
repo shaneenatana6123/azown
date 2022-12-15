@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropertyContext from "./PropertyContext";
-import axios from "axios";
+
 
 const PropertyState = (props) => {
   const host = "http://localhost:5000";
@@ -157,19 +157,7 @@ const [handlerowner, sethandlerowner] = useState([]);
     const leaddata = await responce.json();
     setrrprolead(leaddata);
   };
-  const [userleadsdata, setuserleaddata] = useState([]);
-  const userlead = async () => {
-    const responce = await fetch(`${host}/api/property/userleaddata`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const userleaddata = await responce.json();
-    // console.log(userleaddata);
-    setuserleaddata(userleaddata);
-  };
+  
   const paymentreq = async (id) => {
     // console.log(id);
     const responce = await fetch(`${host}/api/property/paymentreq/${id}`, {
@@ -192,18 +180,7 @@ const [handlerowner, sethandlerowner] = useState([]);
     const userdetail = await responce.json();
     setdash(userdetail);
   };
-  const lead = async (id) => {
-    const responce = await fetch(`${host}/api/leadprop/leadcreate`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ property_id: id }),
-    });
-    const res = await responce.json();
-    console.log(res);
-  };
+ 
  
 
   const kycupdatefun = async (name, email, usertype, phone, adharno) => {
@@ -305,15 +282,13 @@ const [handlerowner, sethandlerowner] = useState([]);
         handreq,
         handlerowner,
         fetchAllrrprop,
-        lead,
         dash,
         gethandle,
         gethandler,
         Userrrprop,
         rrproplead,
         rrprolead,
-        userlead,
-        userleadsdata,
+        
         paymentreq,
         userdetail,
         getuserdetail,

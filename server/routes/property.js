@@ -96,14 +96,7 @@ router.get("/rrproplead/:id", fetchuser, async (req, res) => {
     res.json({ error: "Not found" });
   }
 });
-router.get("/userleaddata", fetchuser, async (req, res) => {
-  try {
-    let data = await lead.find({ property_user_id: req.user.id });
-    res.json(data);
-  } catch {
-    res.json({ error: "Not found" });
-  }
-});
+
 router.put("/paymentreq/:id", fetchuser, async (req, res) => {
   try {
     console.log(req.params.id);

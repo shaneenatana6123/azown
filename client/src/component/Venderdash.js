@@ -1,6 +1,6 @@
 import React from 'react'
-import Myprofile from './Myprofile'
-import Myrrprop from './Myrrprop'
+import Myprofile from './UserDashboard/Profile/Myprofile'
+import Myrrprop from './UserDashboard/Property/Myrrprop'
 import VenderService from './VenderService'
 const Venderdash = () => {
   return (

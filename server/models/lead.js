@@ -5,35 +5,29 @@ const LeadSchema = new Schema({
     property_id:{
         type:String
     },
-    property_client_id:{
+    property_lead_client_id:{
         type:String
     },
-    property_owner_id :{
+    property_lead_owner_id :{
         type:String,
     },
-    property_handler_id:{
+    property_lead_handler_id:{
         type:String
     },
-    property_is_open:{
-        type:Boolean,
-        default:true
+    property_lead_stage:{
+        type:Number
     },
-    property_payment_req:{
-        type:Boolean,
-        default:false
-    },
-    property_is_transaction_complete :{
-        type:Boolean
-    }    ,
-    property_transaction_id :{
+    property_lead_transaction_id :{
         type:String
     },
-    // property_open_date
-    // property_closure_date
-    date:{
+    property_lead_open_date:{
         type: Date,
         default: Date.now
     },
+    property_lead_closure_date:{
+        type:Date
+    }
+
   });
   const Lead = mongoose.model('lead', LeadSchema);
   module.exports = Lead;

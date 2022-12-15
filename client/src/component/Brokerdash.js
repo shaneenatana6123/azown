@@ -1,6 +1,6 @@
 import React from 'react'
 import Handler from './Handler'
-import Myprofile from './Myprofile'
+import Myprofile from './UserDashboard/Profile/Myprofile'
 
 const Brokerdash = () => {
   return (

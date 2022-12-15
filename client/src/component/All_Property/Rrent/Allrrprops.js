@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import propertyContext from "../context/PropertyContext";
+import propertyContext from "../../../context/PropertyContext";
 import { useNavigate ,Link} from "react-router-dom";
 
 import RrentProp from "./RrentProp";

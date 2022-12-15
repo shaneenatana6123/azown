@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
-import propertyContext from "../context/PropertyContext";
+import propertyContext from "../../../context/PropertyContext";
+import { leadContext } from "../../../context/LeadContext";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-import image from "../images/image-main.jpg";
+import image from '../../../images/image-main.jpg';
 const RrentProp = (props) => {
   const { property } = props;
 
   const context = useContext(propertyContext);
+  const leadcontext = useContext(leadContext)
+  const {leadcreate}  = leadcontext
 
   const { lead, handlereq } = context;
 
@@ -166,7 +169,7 @@ const RrentProp = (props) => {
                       contacted ? "btn btn-secondary disabled" : "btn btn-dark"
                     }
                     onClick={() => {
-                      lead(property._id);
+                      leadcreate(property._id);
                       setcontacted(true);
                     }}
                   >
