@@ -95,21 +95,33 @@ res.json({result:"updated lead"})
 
 const ownerlead = async (req,res)=>{
   try{
+
     const {property_id} = req.body
     const property_lead_owner_id = req.user.id
 
  const data = await lead.find({$and:[{property_id},{property_lead_owner_id}]})
  const users =[]
+ let result = []
  for (let i = 0; i < data.length; i++) {
      users.push(data[i].property_lead_client_id) 
  }
  const userdata = await User.find({_id:{$in:users}})
  for (let i = 0; i < data.length; i++) {
-  const element = data[i];
+  let element = data[i];
+  let userval;
+  for (let j = 0; j < userdata.length; j++) {
+    if (userdata[j]._id== element.property_lead_client_id){
+      userval = userdata[j]
+    }}
+    const {name, email} = userval
+    element = {...element._doc,...{name},...{email}}
+    // console.log(element)
+    // console.log(userval);
+    result.push(element)
   
  }
- console.log(data);
- res.json(data)
+ console.log(result);
+ res.json(result)
   }catch{
     res.json({ error: "Not found" });
   }

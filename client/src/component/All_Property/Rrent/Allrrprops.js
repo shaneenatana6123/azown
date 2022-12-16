@@ -7,7 +7,7 @@ const Allrrprops = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
   
-  const { rrprop, fetchAllrrprop, lead, handlereq,singleRrProp, userdeatils } = context;
+  const { rrprop, fetchAllrrprop} = context;
   useEffect(() => {
     if (localStorage.getItem("token")) {
       fetchAllrrprop();

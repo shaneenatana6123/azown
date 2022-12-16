@@ -10,7 +10,7 @@ const Myrrprop = () => {
   const context = useContext(propertyContext);
   const { dash, Userrrprop,  gethandler} = context;
   const leadcontext = useContext(leadContext)
-  const {ownerlead, ownerleaddata} = leadcontext 
+  const {ownerlead, ownerleaddata,updateleadstage} = leadcontext 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -44,7 +44,10 @@ const Myrrprop = () => {
         </Modal.Header>
         <Modal.Body>{ownerleaddata && ownerleaddata.map((lead)=>{
           return <div>
-            <p>he</p>
+            <p> <b>Client Name : </b> {lead.name}</p>
+            <p> <b>Client Email : </b> {lead.email}</p>
+            {lead.property_lead_stage===(0) ? <></>: lead.property_lead_stage===(10) ? <><button className="btn btn-dark m-2" onClick={()=>{updateleadstage(lead._id,20)}}>Accept</button> <button className="btn btn-dark  m-2" onClick={()=>{updateleadstage(lead._id,-10)}}>Reject</button></> : lead.property_lead_stage===(20)?<button className="btn btn-dark disabled m-2">Pending Payment</button>: lead.property_lead_stage===(30)?<button className="btn btn-dark disabled m-2">Completed</button>:<button className="btn btn-dark disabled m-2">Rejected</button>}
+            <hr/>
           </div>
         })}</Modal.Body>
         <Modal.Footer>

@@ -7,8 +7,6 @@ import Myprofile from './Profile/Myprofile'
 import { leadContext } from '../../context/LeadContext'
 import {Col,Nav,Row, Tab} from 'react-bootstrap';
 
-
-
 const Userdash = () => {
   const history = useNavigate()
   const leadcontext = useContext(leadContext)
@@ -19,7 +17,7 @@ const Userdash = () => {
       if (!localStorage.getItem("token")) {
         history("/login");
       }else{
-        Userrrprop()
+        // Userrrprop()
       }
 
     },[])
