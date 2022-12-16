@@ -53,8 +53,7 @@ const LeadState =(props)=>{
             body: JSON.stringify({ _id:lid,property_lead_stage:stage }),
           });
           const resdata = await responce.json();
-          setuserleadsdata(resdata);
-
+       console.log(resdata);
      }
     return (
         <leadContext.Provider value={{leadcreate,userlead,userleadsdata,updateleadstage,ownerlead, ownerleaddata}}>
