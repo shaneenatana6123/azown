@@ -45,7 +45,7 @@ const [handcondata,sethandcondata] = useState([])
       };
       const [handlerowner, sethandlerowner] = useState([]);
   const handreq = async (id) => {
-    const responce = await fetch(`${host}/api/property/handreqwithid/${id}`, {
+    const responce = await fetch(`${host}/api/handler/handreqwithid/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const [handcondata,sethandcondata] = useState([])
     sethandlerowner(resdata);
   };
   const accepthandler = async (bid,pid,stage) => {
-    const responce = await fetch(`${host}/api/property/accepthandler`, {
+    const responce = await fetch(`${host}/api/handler/accepthandler`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

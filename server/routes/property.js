@@ -31,45 +31,8 @@ router.post("/handlerreq", fetchuser, async (req, res) => {
     res.json({ error: "Not found" });
   }
 });
-router.put("/accepthandler", fetchuser, async (req, res) => {
-  try {
-    const {property_id,broker_id,stage} = req.body
- const property_owner_id = req.user.id
-    // console.log(property_owner_id,property_id,broker_id);
-   await handler.updateOne(
-      { property_id, broker_id,property_owner_id},
-      { $set: { stage } }
-    );
-    if (stage===10) {
-      await rr_props.updateOne({property_id}, {$set:{handlerid:broker_id}})
-      
-    }
-    res.json({res:"updated successfully"});
-  } catch {
-    res.json({ error: "Not found" });
-  }
-});
-router.get("/handreqwithid/:id", fetchuser, async (req, res) => {
-  try {
-    const data = await handler.find({
-      $and: [
-        { property_owner_id: req.user.id },
-        { property_id: req.params.id },{stage:0}
-      ],
-    });
-    console.log(data);
-   const arr =[]
-   data.forEach((element)=>{
-arr.push(element.broker_id)
-console.log(element.broker_id);
-   })
-   userdata =await   User.find({_id:{$in:arr}})
-  //  console.log(userdata);
-    res.json(userdata);
-  } catch {
-    res.json({ error: "Not found" });
-  }
-});
+
+
 router.get("/gethandler", fetchuser, async (req, res) => {
   try {
     const data = await handler.find({ broker_id: req.user.id });
