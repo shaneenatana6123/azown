@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import propertyContext from "../../context/PropertyContext";
+import { HandlerContext } from "../../../context/HandlerContext";
+
 
 const BrokerProfile = (props) => {
-  const context = useContext(propertyContext);
+  const handlercontext = useContext(HandlerContext);
   const {id} = useParams()
   const [clicked,setclick] = useState(false)
   const [reject, setreject ]= useState(false)
   const { user } = props;
-  const { accepthandler } = context;
+  const { accepthandler } = handlercontext;
   
   return (
     

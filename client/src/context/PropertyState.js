@@ -68,31 +68,8 @@ const handlereq = async (pid,uid,des) => {
   console.log(resdata);
 };
 
-const [handlerowner, sethandlerowner] = useState([]);
-  const handreq = async (id) => {
-    const responce = await fetch(`${host}/api/property/handreqwithid/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const resdata = await responce.json();
-    console.log(resdata);
-    sethandlerowner(resdata);
-  };
-  const accepthandler = async (bid,pid,stage) => {
-    const responce = await fetch(`${host}/api/property/accepthandler`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ broker_id:bid,property_id:pid,stage:stage }),
-    });
-    const res = await responce.json();
-    console.log(res);
-  };
+
+  
 
   const [gethandle, sethandler] = useState([]);
   const gethandler = async () => {
@@ -107,10 +84,7 @@ const [handlerowner, sethandlerowner] = useState([]);
     sethandler(userdetail);
     // console.log(userdetail);
   };
-// services..
 
-
-// service lead
 
 
 
@@ -279,8 +253,7 @@ const [handlerowner, sethandlerowner] = useState([]);
         addVenderService,
         fetchservice,allservice,
         rrprop,
-        handreq,
-        handlerowner,
+       
         fetchAllrrprop,
         dash,
         gethandle,
@@ -294,7 +267,6 @@ const [handlerowner, sethandlerowner] = useState([]);
         getuserdetail,
         kycupdatefun,
         handlereq,
-        accepthandler,
         addservice,
         userprofile,userdata
       }}

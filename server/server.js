@@ -14,6 +14,7 @@ app.use('/api/property', require('./routes/property'))
 app.use('/api/admin',require('./routes/admin'))
 app.use('/api/service',require('./routes/service'))
 app.use('/api/leadprop',require('./routes/leadprop'))
+app.use('/api/handler',require('./routes/handler'))
 
 app.listen(port,()=>{
     console.log(`server is run on ${port}`);

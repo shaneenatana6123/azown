@@ -10,14 +10,14 @@ import About from "./component/About";
 import Allrrprops from "./component/All_Property/Rrent/Allrrprops";
 import Userdash from "./component/UserDashboard/Userdash";
 import ResidentialRent from "./component/ResidentialRent";
-import Brokerdash from "./component/Brokerdash";
+import Brokerdash from "../src/component/BrokerDashboard/Brokerdash";
 import propertyContext from "./context/PropertyContext";
 import Adminpanel from "./component/Adminpanel";
 import Adminlogin from "./component/Adminlogin";
 import Venderdash from "./component/Venderdash";
 import Services from "./component/Services";
-import SingleRrProp from "./component/SingleRrProp";
-import OwnerRrentProp from "./component/MyRrentProp.js/OwnerRrentProp";
+import SingleRrProp from "../src/component/All_Property/Rrent/SingleRrProp";
+import OwnerRrentProp from "../src/component/UserDashboard/Property/OwnerRrentProp";
 import Alert from "./component/Alert";
 function App() {
   const context = useContext(propertyContext);

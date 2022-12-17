@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 // import singleimage from "../images/singleprop.jpg";
-import propertyContext from "../../context/PropertyContext";
+import propertyContext from "../../../context/PropertyContext";
+import { HandlerContext } from "../../../context/HandlerContext";
+
 import { useParams } from "react-router-dom";
 import { Carousel ,Modal,Button} from "react-bootstrap";
 
@@ -8,7 +10,9 @@ import BrokerProfile from "./BrokerProfile";
 
 const OwnerRrentProp = () => {
     const context = useContext(propertyContext);
-    const { singleRrProp,singlerrpropdata,handreq,handlerowner,userprofile,userdata} = context;
+    const { singleRrProp,singlerrpropdata,userprofile,userdata} = context;
+    const handlecontext = useContext(HandlerContext)
+    const {handreq,handlerowner} =handlecontext
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

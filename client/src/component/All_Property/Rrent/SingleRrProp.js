@@ -1,22 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import singleimage from "../images/singleprop.jpg";
-import propertyContext from "../context/PropertyContext";
+import singleimage from "../../../images/singleprop.jpg";
+import propertyContext from "../../../context/PropertyContext";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
+import { leadContext } from "../../../context/LeadContext";
+
 
 const SingleRrProp = () => {
   const context = useContext(propertyContext);
-  const { singleRrProp, singlerrpropdata, lead} = context;
+  const { singleRrProp, singlerrpropdata} = context;
   const [contacted,setcontacted] =useState(false)
- 
+  const leadcontext = useContext(leadContext)
+  const {leadcreate} = leadcontext
   const { id } = useParams();
   useEffect(() => {
     singleRrProp(id);
-  
   }, []);
-  
- 
-
   return (
     <div>
     <div>
@@ -499,7 +498,7 @@ const SingleRrProp = () => {
             </div>
          {/* {console.log(singlerrpropdata.lead.includes(localStorage.getItem('userId')) )} */}
             {  singlerrpropdata.lead && singlerrpropdata.lead.includes(localStorage.getItem('userId')) ?<button className="btn btn-secondary " disabled>You Contated</button>:<button className=
-            {contacted?"btn btn-secondary disabled":"btn btn-dark"} onClick={()=>{lead(singlerrpropdata._id); setcontacted(true)} }>{contacted ? "You Contacted":"Contact to Owner"}</button>}
+            {contacted?"btn btn-secondary disabled":"btn btn-dark"} onClick={()=>{leadcreate(singlerrpropdata._id); setcontacted(true)} }>{contacted ? "You Contacted":"Contact to Owner"}</button>}
 
 
             
