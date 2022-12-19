@@ -23,8 +23,8 @@ const Contected = () => {
      
       {userleadsdata && userleadsdata.map((userlead) => {
           return (
-           <Col>
-        <CardItem userlead = {userlead} key={userlead._id}/>
+           <Col key={userlead._id}>
+        <CardItem userlead = {userlead} />
            </Col>
              
              

@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import { LeadState } from "./context/LeadContext";
 import { HandlerState } from "./context/HandlerContext";
+import { UserState } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
     <PropertyState>
     <LeadState>
       <HandlerState>
+      <UserState>
       <App />
+      </UserState>
       </HandlerState>
     </LeadState>
     </PropertyState>

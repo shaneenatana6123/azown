@@ -25,7 +25,7 @@ const Myrrprop = () => {
     <>
     <Row xs={1} md={2} className="g-4">
       {dash.map((property) => (
-        <Col>
+        <Col key={property._id}>
           <Card>
             <Card.Img variant="top" style={{height:200}} src={img} />
             <Card.Body>

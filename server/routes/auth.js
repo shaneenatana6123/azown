@@ -7,6 +7,9 @@ const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "shaneisgoodboy";
 const fetchuser = require("../middleware/fetchuser");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
 router.post(
@@ -20,18 +23,8 @@ router.post(
   ],
   userController.createuser
 );
-router.put("/kycupdate",fetchuser , async (req,res)=>{
-  try{
-    const {name,email,usertype , phone , adharno}  = req.body
-    // console.log(name);
-    const updatedata = await User.updateOne({_id:req.user.id},{$set:{
-name,email,usertype,phone,adharno
-    }})
-    res.json({"success":"true"})
-  }catch{
-    res.json({"error":"not found"})
-  }
-})
+router.put("/kycupdate",upload.single("profile"),fetchuser , userController.kycupdate)
+
 router.post("/userprofile" ,async(req,res)=>{
   try{
     const {_id} =req.body
@@ -43,14 +36,7 @@ router.post("/userprofile" ,async(req,res)=>{
     res.json({error:"not found"})
   }
 })
-router.get("/getuserdetail",fetchuser ,async(req,res)=>{
-  try{
-    const userdata = await User.find({_id:req.user.id})
-    res.json(userdata)
-  }catch{
-    res.json({"error":"not found"})
-  }
-})
+router.get("/getuserdetail",fetchuser ,userController.getuserdetail)
 router.post(
   "/login",
   body("email", "Enter a valid email").isEmail(),

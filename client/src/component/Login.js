@@ -26,8 +26,8 @@ const Login = () => {
     console.log("new");
     console.log(userdetailed);
     // localStorage.setItem('userdetail',JSON.stringify(userdetailed))
-    localStorage.setItem('userType',userdetailed[0].usertype)
-    localStorage.setItem('userId',userdetailed[0]._id)
+    localStorage.setItem('userType',userdetailed.usertype)
+    localStorage.setItem('userId',userdetailed._id)
     // console.log(userdetailed.usertype);
    
   };

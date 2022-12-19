@@ -499,9 +499,6 @@ const SingleRrProp = () => {
          {/* {console.log(singlerrpropdata.lead.includes(localStorage.getItem('userId')) )} */}
             {  singlerrpropdata.lead && singlerrpropdata.lead.includes(localStorage.getItem('userId')) ?<button className="btn btn-secondary " disabled>You Contated</button>:<button className=
             {contacted?"btn btn-secondary disabled":"btn btn-dark"} onClick={()=>{leadcreate(singlerrpropdata._id); setcontacted(true)} }>{contacted ? "You Contacted":"Contact to Owner"}</button>}
-
-
-            
           </div>
         </div>
       </div>

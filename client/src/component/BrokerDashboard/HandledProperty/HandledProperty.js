@@ -4,7 +4,8 @@ import {Card,Row,Col,Button,Modal} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { leadContext } from '../../../context/LeadContext';
 import img from '../../../images/singleprop.jpg'
-import LeadProfile from '../../UserDashboard/Property/LeadProfile';
+
+import LeadProfile from './BrokerLeadProfile';
 
 
 const HandledProperty = () => {

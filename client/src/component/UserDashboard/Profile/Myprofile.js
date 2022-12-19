@@ -1,84 +1,111 @@
 import React, { useContext, useEffect, useState } from "react";
 import propertyContext from "../../../context/PropertyContext";
-
+import profile from '../../../images/image-main.jpg'
+import UpdateModal from "./UpdateModal";
 const Myprofile = () => {
   const context = useContext(propertyContext);
   const { getuserdetail, userdetail, kycupdatefun } = context;
+ 
   useEffect(() => {
     getuserdetail();
   }, []);
-  console.log(userdetail);
-  const [data, setdata] = useState({
-    name: "",
-    email: "",
-    usertype: "",
-    phone: "",
-    adharno: "",
-  });
-  function handleChange(e) {
-    setdata({ ...data, [e.target.name]: e.target.value });
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    kycupdatefun(
-      data.name,
-      data.email,
-      data.usertype,
-      data.phone,
-      data.adharno
-    );
-  }
+  
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={data.name}
-          onChange={handleChange}
-          placeholder="Full Name"
-        />
-        <input
-          type="email"
-          value={data.email}
-          name="email"
-          onChange={handleChange}
-          placeholder="enter email"
-        />
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <img src={!userdetail.imgname ? profile : userdetail.imgname} style={{ height: '5rem' }} alt='' />
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Name</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.name}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Email</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.email}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Phone</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.phone}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Description</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.description}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>D.O.B</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.dob}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>User Type</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.usertype}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Adhaar No.</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.adharno}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>PanCard No.</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.pancardno}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>LandMark</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.landmark}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Street</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.street}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>City</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.city}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>State</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.state}</h5>
+        </div>
+        <div className='col-4 m-2'>
+          <h5><b>Country</b></h5>
+        </div>
+        <div className="col-6 m-2">
+          <h5>{userdetail && userdetail.country}</h5>
+        </div>
+       
 
-        <select
-          name="usertype"
-          onChange={handleChange}
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option value="visiter" selected>
-            Choose...
-          </option>
-          <option value="visiter">visiter</option>
-          <option value="broker">broker</option>
-          <option value="vender">vender</option>
-        </select>
-        <input
-          type="text"
-          value={data.phone}
-          name="phone"
-          onChange={handleChange}
-          placeholder="Phone no"
-        />
-        <input
-          type="text"
-          value={data.adharno}
-          name="adharno"
-          onChange={handleChange}
-          placeholder="adharno no"
-        />
-        <button type="submit" className="btn btn-dark m-2">
-          update
-        </button>
-      </form>
+      </div>
+      <div>
+        <UpdateModal userdetail={userdetail}/>
+       </div>
     </div>
-  );
+
+  )
 };
 
 export default Myprofile;
+
+
+

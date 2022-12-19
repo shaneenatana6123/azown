@@ -3,6 +3,10 @@ const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "shaneisgoodboy";
+const { uploadFile, getObjectSignedUrl, deleteFile } = require("../Storage/s3");
+const crypto = require("crypto");
+const generateFileName = (bytes = 32) =>
+  crypto.randomBytes(bytes).toString("hex");
 
 const createuser = async (req, res) => {
   const errors = validationResult(req);
@@ -42,7 +46,7 @@ const createuser = async (req, res) => {
 };
 
 
-const login =  async (req, res) => {
+const login = async (req, res) => {
   const err = validationResult(req);
   if (!err.isEmpty()) {
     return res.status(404).json({ err: err.array() });
@@ -71,5 +75,43 @@ const login =  async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 }
+const kycupdate = async (req, res) => {
+  try {
+    // console.log(req.body);
+    // console.log(req.file);
+    const file = req.file
+    const fileBuffer = file.buffer;
+    const imageName = generateFileName();
 
-module.exports ={ createuser, login}
+    const fileType = file.mimetype;
+    uploadFile(fileBuffer, imageName, fileType);
+
+    req.body = { ...req.body, ...{ imgname: imageName } }
+    const { name, email, phone, description, dob, imgname, usertype, adharno, pancardno, landmark, street, city, state, country } = req.body
+
+    // console.log(name);
+    // console.log(imgname);
+    const updatedata = await User.updateOne({ _id: req.user.id }, {
+      $set: {
+        name, email, phone, description, dob, usertype, adharno, pancardno, landmark, street, city, state, country, imgname
+      }
+    })
+    res.json({ "success": "true" })
+  } catch {
+    res.json({ "error": "not found" })
+  }
+}
+
+
+const getuserdetail = async(req,res)=>{
+  try{
+    const userdata = await User.findOne({_id:req.user.id})
+     const imgurl   =await getObjectSignedUrl(userdata.imgname)
+     userdata.imgname= imgurl
+    
+    res.json(userdata)
+  }catch{
+    res.json({"error":"not found"})
+  }
+}
+module.exports = { createuser, login, kycupdate ,getuserdetail}
