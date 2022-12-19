@@ -3,12 +3,16 @@ import propertyContext from "../../../context/PropertyContext";
 import { useNavigate ,Link} from "react-router-dom";
 
 import RrentProp from "./RrentProp";
+import FilterRrent from "./FilterRrent";
 const Allrrprops = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
   
   
   const { rrprop, fetchAllrrprop} = context;
+
+  const [RrentData, setData] = useState(rrprop);
+  
   useEffect(() => {
     if (localStorage.getItem("token")) {
       fetchAllrrprop();
@@ -33,156 +37,7 @@ const Allrrprops = () => {
             
             <div className="filter_div">
               
-              <form>
-                <div class="container m-3">
-                  <h5>Property Type</h5>
-                  <div class="form-check">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="propertytype"
-                    value="Apartment"
-                    id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <p>Apartment</p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="propertytype"
-                    value="Independent House/Villa"
-                    id="flexCheckChecked"
-                    />
-                    <label class="form-check-label" for="flexCheckChecked">
-                      <p>Independent House/Villa</p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="propertytype"
-                    value="Gate Community Villa"
-                    id="flexCheckChecked"
-                    />
-                    <label class="form-check-label" for="flexCheckChecked">
-                      <p>Gate Community Villa</p>
-                    </label>
-                  </div>
-                </div>
-                <div class="container m-3">
-                  <h5>BHK Type</h5>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="option1"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox1">
-                     <p>1 BHK</p> 
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox2"
-                    value="option2"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox2">
-                      <p>2 BHK</p>
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox3"
-                    value="option3"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox3">
-                      <p>3 BHK</p>
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox3"
-                    value="option3"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox3">
-                      <p>4 BHK</p>
-                    </label>
-                  </div>
-                </div>
-                <div class="container m-3">
-                  <h5>Parking</h5>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="option1"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox1">
-                    <p>2 Wheeler</p> 
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox2"
-                    value="option2"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox2">
-                     <p>4 Wheeler</p> 
-                    </label>
-                  </div>
-                </div>
-                <div class="container m-3">
-                  <h5>Furnishing</h5>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="option1"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox1">
-                     <p>Full</p> 
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox2"
-                    value="option2"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox2">
-                     <p>Semi</p> 
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox3"
-                    value="option3"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox3">
-                     <p>None</p> 
-                    </label>
-                  </div>
-                </div>
-                <button class="btn">Filter</button>
-              </form>
+              <FilterRrent/>
             </div>
           </div>
       
