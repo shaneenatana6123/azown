@@ -12,7 +12,7 @@ const Allrrprops = () => {
   const { rrprop, fetchAllrrprop} = context;
 
   const [RrentData, setData] = useState(rrprop);
-  
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       fetchAllrrprop();
@@ -20,6 +20,43 @@ const Allrrprops = () => {
       history("/login");
     }
   }, []);
+ 
+  function handlebhkType(value){
+    console.log(value);
+    const filterData = rrprop.filter((prop)=>{
+      return (value.includes(prop.rr_detail_bhk_type))
+    })
+setData(filterData)
+  }
+  function handlePropType(value){
+    console.log(value);
+    const filterData = rrprop.filter((prop)=>{
+      return (value.includes(prop.rr_detail_app_type))
+    })
+setData(filterData)
+  }
+  function handleParking(value){
+    console.log(value);
+    const filterData = rrprop.filter((prop)=>{
+      return (value.includes(prop.rr_detail_parking))
+    })
+setData(filterData)
+  }
+  function handleFurnish(value){
+    console.log(value);
+    const filterData = rrprop.filter((prop)=>{
+      return (value.includes(prop.rr_detail_furnishing))
+    })
+setData(filterData)
+  }
+  function handleRrentRange(value){
+    console.log(value);
+    const filterData = rrprop.filter((prop)=>{
+      return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
+    })
+setData(filterData)
+
+  }
   return (
     <div className="container-fluid">
       <h1 class="text-center">Residential Rent Property</h1>
@@ -37,7 +74,7 @@ const Allrrprops = () => {
             
             <div className="filter_div">
               
-              <FilterRrent/>
+              <FilterRrent onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType}/>
             </div>
           </div>
       
@@ -47,7 +84,7 @@ const Allrrprops = () => {
         <div className="col-md-8">
           <div className="row">
             <div className="col-md-12 col-sm-8">
-          {rrprop.map((property) => {
+          {RrentData.map((property) => {
           
           return (
 
