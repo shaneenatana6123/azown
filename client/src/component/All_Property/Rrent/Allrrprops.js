@@ -58,12 +58,14 @@ setData(filterData)
 
   }
   return (
-    <div className="container-fluid">
+    <div className="container">
       <h1 class="text-center">Residential Rent Property</h1>
+      {/* <input className="" placeholder="Serarch..."/> */}
+      {/* <button className="">Serarch</button> */}
       <hr />
      
       <div className="row">
-        <div className="col-lg-4 col-xs-4">
+        <div className="col-lg-4 col-xs-4" style={{color:"black" }}>
 
        
           <div className="headding_f">

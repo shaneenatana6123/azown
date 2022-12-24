@@ -266,7 +266,7 @@ const FilterRrent = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 </div>
                 <div className='container m-3'>
                 <label for="customRange2" class="form-label">Rent Range Rs. 0 to Rs. 1 Lac</label>
-<input type="range" class="form-range"  min="0" max="100000" onChange={handleInput("range")} id="customRange2" />
+<input type="range" className="form-range"  style={{width:"80%"}} min="0" max="100000" onChange={handleInput("range")} id="customRange2" />
                 </div>
                 {/* <button class="btn">Filter</button> */}
               </form>
