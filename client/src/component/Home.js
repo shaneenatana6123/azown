@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import About from './About'
 import HomeService from './HomeService'
+import Navbar from './Navbar/Navbar'
+
 const Home = () => {
   return (
     <div>
-       <div class="conatiner">
+    {/* <Navbar/> */}
+   <About/>
+       {/* <div class="conatiner">
             <div class="container search">
                 <h1 class="text-center m-5">World's Largest <b>Azown</b> Property Site</h1>
                 <nav>
@@ -46,8 +51,8 @@ const Home = () => {
                 </div>
 
             </div>
-        </div>
-        <HomeService/>
+        </div> */}
+        {/* <HomeService/> */}
     </div>
   )
 }

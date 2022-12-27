@@ -4,6 +4,7 @@ import propertyContext from "../../../context/PropertyContext";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { leadContext } from "../../../context/LeadContext";
+import Navbar from "../../Navbar/Navbar";
 
 
 const SingleRrProp = () => {
@@ -18,6 +19,7 @@ const SingleRrProp = () => {
   }, []);
   return (
     <div>
+    <Navbar/>
     <div>
     <Carousel>
    {singlerrpropdata.images && singlerrpropdata.images.map((url)=>{

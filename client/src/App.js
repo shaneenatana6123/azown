@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useContext, useEffect, useState } from "react";
-import Navbar from "./component/Navbar";
+import Navbar from "./component/Navbar/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CreateProperty from "./component/CreateProperty";
 import Home from "./component/Home";
@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
        
         <Routes>
         <Route path="/admin" element={<Adminlogin/>} ></Route>

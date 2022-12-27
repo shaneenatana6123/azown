@@ -4,6 +4,7 @@ import { useNavigate ,Link} from "react-router-dom";
 
 import RrentProp from "./RrentProp";
 import FilterRrent from "./FilterRrent";
+import Navbar from "../../Navbar/Navbar";
 const Allrrprops = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
@@ -58,11 +59,16 @@ setData(filterData)
 
   }
   return (
-    <div className="container">
-      <h1 class="text-center">Residential Rent Property</h1>
-      {/* <input className="" placeholder="Serarch..."/> */}
-      {/* <button className="">Serarch</button> */}
+    <>
+      <Navbar/>
+      {/* <div className="mt-5 fixed-top">
+      <input className="" placeholder="Serarch..."/> 
+       <button className="">Serarch</button>
       <hr />
+      </div> */}
+      <div className="container  " style={{marginTop:"6%"}}>
+      {/* <h1 class="text-center">Residential Rent Property</h1> */}
+     
      
       <div className="row">
         <div className="col-lg-4 col-xs-4" style={{color:"black" }}>
@@ -105,6 +111,8 @@ setData(filterData)
       </div>
 
     </div>
+    </>
+   
   );
 };
 
