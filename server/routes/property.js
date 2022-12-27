@@ -83,6 +83,14 @@ router.post(
   fetchuser,
   rrpropconroller.add_rr_prop
 );
+router.post(
+  "/add-rrs-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_rrs_prop
+);
+
+
 router.get("/singlerrprop/:id", rrpropconroller.single_rr_prop);
 
 router.get("/getrrprop", fetchuser, rrpropconroller.get_rr_prop);

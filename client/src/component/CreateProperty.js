@@ -18,6 +18,7 @@ const CreateProperty = () => {
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <Link class="btn btn-primary m-4 p-2" to="/rr-create-property">Rent</Link>
+            <Link class="btn btn-primary m-4 p-2" to="/resdential-resale">Resale</Link>
                 <button class="btn btn-light m-4 p-2">Reasle</button>
                 <button class="btn btn-light m-4 p-2">PG/Hostal</button>
                 <button class="btn btn- m-4 p-2">Flatmates</button>

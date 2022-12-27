@@ -18,6 +18,7 @@ import Venderdash from "./component/Venderdash";
 import Services from "./component/Services";
 import SingleRrProp from "../src/component/All_Property/Rrent/SingleRrProp";
 import OwnerRrentProp from "../src/component/UserDashboard/Property/OwnerRrentProp";
+import ResidentialSale from "./component/ResidentialSale";
 import Alert from "./component/Alert";
 function App() {
   const context = useContext(propertyContext);
@@ -50,6 +51,7 @@ function App() {
             path="/rr-create-property"
             element={<ResidentialRent />}
           ></Route>
+          <Route path="resdential-resale"  element={<ResidentialSale/>}></Route>
         </Routes>
       </Router>
     </div>
