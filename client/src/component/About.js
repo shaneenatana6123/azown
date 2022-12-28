@@ -157,9 +157,9 @@ const About = () => {
                         {data.proptype.map(item => { return <option value={item}>{item}</option> })}
                       </select>
                     </div>
-                    <div class="col-md-2 col-xs-12">
+                    {/* <div class="col-md-2 col-xs-12">
                       <input type="text" class="form-control" id="fields" placeholder="Location " />
-                    </div>
+                    </div> */}
 
                     <div class="col-md-3 col-xs-12">
                       <button type='submit' class="form-control btn-theme" >Search</button>
