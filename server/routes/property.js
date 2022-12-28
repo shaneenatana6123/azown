@@ -107,6 +107,18 @@ router.post(
   fetchuser,
   rrpropconroller.add_cmr_prop
 );
+router.post(
+  "/add-cms-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_cms_prop
+);
+router.post(
+  "/add-plot-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_plot_prop
+);
 router.get("/singlerrprop/:id", rrpropconroller.single_rr_prop);
 
 router.get("/getrrprop", fetchuser, rrpropconroller.get_rr_prop);

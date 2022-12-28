@@ -24,6 +24,7 @@ import ResidentialFlats from "./component/Props_Forms/ResidentialFlats"
 import CommerRent from "./component/Props_Forms/CommerRent";
 import CommerSale from './component/Props_Forms/CommerSale'
 import LandPlots from "./component/All_Property/Plot-Lands/LandPlots";
+import PlotResale from "./component/Props_Forms/PlotResale";
 
 function App() {
   const context = useContext(propertyContext);
@@ -61,7 +62,7 @@ function App() {
           <Route path="/resdential-flat"  element={<ResidentialFlats/>}></Route>
           <Route path="/commertial-rent" element={<CommerRent/>}></Route>
           <Route path="/commertial-sale" element={<CommerSale/>}></Route>
-          <Route path="/land-plot" element={<LandPlots/>}></Route>
+          <Route path="/land-plot" element={<PlotResale/>}></Route>
         </Routes>
       </Router>
     </div>
