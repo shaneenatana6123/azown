@@ -9,7 +9,7 @@ import Signup from "./component/Signup";
 import About from "./component/About";
 import Allrrprops from "./component/All_Property/Rrent/Allrrprops";
 import Userdash from "./component/UserDashboard/Userdash";
-import ResidentialRent from "./component/ResidentialRent";
+import ResidentialRent from "./component/Props_Forms/ResidentialRent";
 import Brokerdash from "../src/component/BrokerDashboard/Brokerdash";
 import propertyContext from "./context/PropertyContext";
 import Adminpanel from "./component/Adminpanel";
@@ -18,8 +18,8 @@ import Venderdash from "./component/Venderdash";
 import Services from "./component/Services";
 import SingleRrProp from "../src/component/All_Property/Rrent/SingleRrProp";
 import OwnerRrentProp from "../src/component/UserDashboard/Property/OwnerRrentProp";
-import ResidentialSale from "./component/ResidentialSale";
-import Alert from "./component/Alert";
+import ResidentialSale from "./component/Props_Forms/ResidentialSale";
+
 function App() {
   const context = useContext(propertyContext);
   const { userdeatils } = context;

@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Login from "../Login";
 import Signup from "../Signup";
 import DashIcon from "./DashIcon";
+import SubmitProps from "./SubmitProps";
 
 const HomeNav = () => {
   
@@ -49,27 +50,11 @@ const HomeNav = () => {
               </li>
              
              
-              <li className="nav-item">
-                <Link className="btn btn-rounded btn-light rounded-pill  me-3" to="/createproperty">
+              {/* <li className="nav-item">
+                <Link className="btn btn-rounded btn-light rounded-pill  " to="/createproperty">
                 <i class="fa-solid fa-plus"></i>  Submit Property
                 </Link>
-              </li>
-              {/* <li className="nav-item">
-                {localStorage.getItem("token") && <Link className="nav-link me-3" to="/userdash">
-                  UserdashBoard
-                </Link>}
               </li> */}
-              {/* {localStorage.getItem("token") ? <button onClick={handleClick} className="btn btn-dark">Logout</button> : <>              <li class="nav-item">
-                <Link class="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/signup">
-                    Signup
-                  </Link>
-                </li>
-              </>} */}
               {!localStorage.getItem("token") && <>
               <i class="fa-solid fa-user"></i>
               <li className="nav-item">
@@ -109,14 +94,32 @@ const HomeNav = () => {
               </li>
               </>
               }
+
+
+              <li className="nav-item">
+                <SubmitProps/>
+              </li>
+              {/* <li className="nav-item">
+                {localStorage.getItem("token") && <Link className="nav-link me-3" to="/userdash">
+                  UserdashBoard
+                </Link>}
+              </li> */}
+              {/* {localStorage.getItem("token") ? <button onClick={handleClick} className="btn btn-dark">Logout</button> : <>              <li class="nav-item">
+                <Link class="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+                <li class="nav-item">
+                  <Link class="nav-link" to="/signup">
+                    Signup
+                  </Link>
+                </li>
+              </>} */}
+             
              
               <li className="nav-item">
 
-             {/* {localStorage.getItem("token") ? <DashIcon/>:  <li className="nav-item">
-                <Link className="btn btn-rounded btn-light rounded-pill  me-3" to="/createproperty">
-                <i class="fa-solid fa-plus"></i>  Submit Property
-                </Link>
-              </li> }  */}
+             {localStorage.getItem("token")&& <DashIcon/>} 
               </li>
 
             </ul>

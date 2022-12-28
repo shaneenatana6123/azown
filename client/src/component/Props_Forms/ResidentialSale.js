@@ -988,7 +988,7 @@ export default function ResidentialSale() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   return (
-    <Box sx={{ width: '100%' }} style={{ padding: "5rem", backgroundColor: "#FFB100", color: "black" }}>
+    <Box sx={{ width: '100%' }} style={{ padding: "5rem", color: "black" }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
