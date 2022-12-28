@@ -89,8 +89,24 @@ router.post(
   fetchuser,
   rrpropconroller.add_rrs_prop
 );
-
-
+router.post(
+  "/add-rpg-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_rpg_prop
+);
+router.post(
+  "/add-rfm-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_rfm_prop
+);
+router.post(
+  "/add-cmr-prop",
+  upload.array("image"),
+  fetchuser,
+  rrpropconroller.add_cmr_prop
+);
 router.get("/singlerrprop/:id", rrpropconroller.single_rr_prop);
 
 router.get("/getrrprop", fetchuser, rrpropconroller.get_rr_prop);

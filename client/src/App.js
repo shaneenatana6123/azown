@@ -19,6 +19,11 @@ import Services from "./component/Services";
 import SingleRrProp from "../src/component/All_Property/Rrent/SingleRrProp";
 import OwnerRrentProp from "../src/component/UserDashboard/Property/OwnerRrentProp";
 import ResidentialSale from "./component/Props_Forms/ResidentialSale";
+import ResidentialPG from "./component/Props_Forms/ResidentialPG";
+import ResidentialFlats from "./component/Props_Forms/ResidentialFlats"
+import CommerRent from "./component/Props_Forms/CommerRent";
+import CommerSale from './component/Props_Forms/CommerSale'
+import LandPlots from "./component/All_Property/Plot-Lands/LandPlots";
 
 function App() {
   const context = useContext(propertyContext);
@@ -51,7 +56,12 @@ function App() {
             path="/rr-create-property"
             element={<ResidentialRent />}
           ></Route>
-          <Route path="resdential-resale"  element={<ResidentialSale/>}></Route>
+          <Route path="/resdential-resale"  element={<ResidentialSale/>}></Route>
+          <Route path="/residential-pg" element={<ResidentialPG/>}> </Route>
+          <Route path="/resdential-flat"  element={<ResidentialFlats/>}></Route>
+          <Route path="/commertial-rent" element={<CommerRent/>}></Route>
+          <Route path="/commertial-sale" element={<CommerSale/>}></Route>
+          <Route path="/land-plot" element={<LandPlots/>}></Route>
         </Routes>
       </Router>
     </div>

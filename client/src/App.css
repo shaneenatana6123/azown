@@ -1,6 +1,4 @@
 
-
-
 .App {
   text-align: center;
 }
@@ -166,7 +164,7 @@
 /* Rent Property
  */
 
- .head{
+ /* .head{
   border-bottom: 1px solid  rgba(213, 213, 213, 0.685);
   width: 100%;
   background-color: #f8f8f8;
@@ -235,7 +233,7 @@ input[type=checkbox]{
   margin:10px 18px 0px;
   padding: 10px 5px;
   cursor: pointer;
-}
+} */
 
 
 
@@ -384,7 +382,7 @@ body {
 }
 
 .page-header .top-menu-wrapper {
-  color: var(--black);
+  color: var(--white);
 }
 
 .page-header .top-menu-wrapper::before {
