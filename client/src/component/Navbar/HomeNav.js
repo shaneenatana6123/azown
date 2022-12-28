@@ -22,8 +22,9 @@ const HomeNav = () => {
     <div className="">
       <nav class="navbar navbar-expand-lg text-light " >
         <div class="container-fluid">
-          <Link class="navbar-brand ms-4 " to="/">
-            <b>Azown</b>
+    
+          <Link class="navbar-brand ms-4" to="/">
+            <b class="font1">Azown</b>
           </Link>
           <button
             class="navbar-toggler"
@@ -40,12 +41,12 @@ const HomeNav = () => {
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <Link class="nav-link " aria-current="page" to="/">
-                  Home
+                  <b class="font2">Home</b>
                 </Link>
               </li>
               <li class="nav-item">
                 <Link class="nav-link" to="/about">
-                  About
+                <b class="font3">About</b>
                 </Link>
               </li>
              
@@ -56,13 +57,17 @@ const HomeNav = () => {
                 </Link>
               </li> */}
               {!localStorage.getItem("token") && <>
-              <i class="fa-solid fa-user"></i>
               <li className="nav-item">
+                <div class="pad">
+                <i class="fa-solid fa-user"></i>
+
+                <span onClick={() => setSmShow(true)} className="text-light ps-2">
                 
-                <span onClick={() => setSmShow(true)} className="text-light">
-                  Login
-                </span>/
-                <span onClick={() => setLgShow(true)} className="text-light">Sign up</span>
+               Login
+                  
+                </span>  /
+                <span onClick={() => setLgShow(true)} className="text-light ps-1">Sign up
+                </span>
                 <Modal
                   size="lg"
                   show={smShow}
@@ -71,7 +76,9 @@ const HomeNav = () => {
                 >
                   <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-sm">
-                      Login
+               
+                  Login
+                 
                     </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
@@ -91,12 +98,13 @@ const HomeNav = () => {
                   </Modal.Header>
                   <Modal.Body><Signup/> </Modal.Body>
                 </Modal>
+                </div>
               </li>
               </>
               }
 
 
-              <li className="nav-item">
+              <li className="nav-item pt-2 ps-3">
                 <SubmitProps/>
               </li>
               {/* <li className="nav-item">
@@ -124,6 +132,7 @@ const HomeNav = () => {
 
             </ul>
           </div>
+        
         </div>
       </nav>
     </div>

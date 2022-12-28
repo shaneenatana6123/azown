@@ -15,7 +15,7 @@ const SubmitProps = () => {
     return (
         <>
             <Button className='btn btn-rounded btn-light rounded-pill'  onClick={handleShow}>
-   <i class="fa-solid fa-plus"></i>Submit Property
+   <i class="fa-solid fa-plus"></i>&nbsp;Submit Property
             </Button>
 
             <Modal show={show} onHide={handleClose} 

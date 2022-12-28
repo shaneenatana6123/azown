@@ -114,11 +114,12 @@ const About = () => {
       </div>
     </nav> */}
         <section class="header-section">
+         
           <div class="center-div">
             <h1>Find Your Dream Home</h1>
             <p>From as low as $10 per day with limited time offer discounts</p>
 
-
+          
             <div id='section-control'>
               <span id='display-tab-control'>
                 <button class='tab-control' onClick={() => { setdata(propdata[0]) }} >Residential</button>
@@ -127,14 +128,15 @@ const About = () => {
 
               </span>
             </div>
-
+            
+            <div class="center-bg">
             <div id='section-tabs'>
 
               <div className='tab' >
                 {/* <h4>Rent</h4> */}
                 <form onSubmit={handleClick}>
                   <div class="row">
-                    <div class="col-md-2 col-xs-12">
+                    <div class="col-md-3 col-xs-12">
                       <select class="form-control" name='city' onChange={handleForm} id="fields">
                         <option selected>Pune</option>
                         {city.map((city => { return <option value={city}>{city}</option> }))}
@@ -151,7 +153,7 @@ const About = () => {
                       </div> */}
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                       <select class="form-control" name='proptype' onChange={handleForm} id="fields">
                         <option selected>Property Type</option>
                         {data.proptype.map(item => { return <option value={item}>{item}</option> })}
@@ -161,8 +163,8 @@ const About = () => {
                       <input type="text" class="form-control" id="fields" placeholder="Location " />
                     </div> */}
 
-                    <div class="col-md-3 col-xs-12">
-                      <button type='submit' class="form-control btn-theme" >Search</button>
+                    <div class="col-md-3 col-xs-12 s">
+                      <button type='submit' class="form-control btn-theme">Search</button>
                     </div>
                   </div>
                 </form>
@@ -242,7 +244,9 @@ const About = () => {
               </div> */}
 
             </div>
+            </div>
           </div>
+        
         </section>
 
       </header>
