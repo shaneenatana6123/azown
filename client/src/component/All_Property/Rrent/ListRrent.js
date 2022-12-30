@@ -66,7 +66,7 @@ setData(filterData)
        <button className="">Serarch</button>
       <hr />
       </div> */}
-      <div className="container  " style={{marginTop:"6%"}}>
+      <div className="container" style={{marginTop:"6%"}}>
       {/* <h1 class="text-center">Residential Rent Property</h1> */}
      
      

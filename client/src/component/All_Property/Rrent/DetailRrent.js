@@ -7,7 +7,7 @@ import { leadContext } from "../../../context/LeadContext";
 import Navbar from "../../Navbar/Navbar";
 
 
-const SingleRrProp = () => {
+const DetailRrent = () => {
   const context = useContext(propertyContext);
   const { singleRrProp, singlerrpropdata} = context;
   const [contacted,setcontacted] =useState(false)
@@ -508,4 +508,4 @@ const SingleRrProp = () => {
   );
 };
 
-export default SingleRrProp;
+export default DetailRrent;
