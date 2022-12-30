@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import propertyContext from "../../../context/PropertyContext";
-import { useNavigate ,Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import RrentProp from "./RrentProp";
 import FilterRrent from "./FilterRrent";
 import Navbar from "../../Navbar/Navbar";
-const Allrrprops = () => {
+const ListRrent = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
   
   
-  const { rrprop, fetchAllrrprop} = context;
+  const { rrprop, fetchAllrrprop } = context;
 
   const [RrentData, setData] = useState(rrprop);
 
@@ -95,9 +95,6 @@ setData(filterData)
           {RrentData.map((property) => {
           
           return (
-
-          
-          
           
           <RrentProp property={property} key={property._id}/>
           
@@ -116,4 +113,4 @@ setData(filterData)
   );
 };
 
-export default Allrrprops;
+export default ListRrent;
