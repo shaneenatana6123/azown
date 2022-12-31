@@ -81,7 +81,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
     <div>
     <form>
             <div class="container m-3">
-              <h5>Property Type</h5>
+              <h5>Food Included</h5>
               <div class="form-check">
                 <input
                 class="form-check-input"
@@ -92,7 +92,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("prop")}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
-                  <p>Apartment</p>
+                  <p>Yes</p>
                 </label>
               </div>
               <div class="form-check">
@@ -105,25 +105,13 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("prop")}
                 />
                 <label class="form-check-label" for="flexCheckChecked">
-                  <p>Independent House/Villa</p>
+                  <p>No</p>
                 </label>
               </div>
-              <div class="form-check">
-                <input
-                class="form-check-input"
-                type="checkbox"
-                name="prop"
-                value="gated community villa"
-                id="flexCheckChecked"
-                onChange={handleInput("prop")}
-                />
-                <label class="form-check-label" for="flexCheckChecked">
-                  <p>Gate Community Villa</p>
-                </label>
-              </div>
+            
             </div>
             <div class="container m-3">
-              <h5>BHK Type</h5>
+              <h5>Occupency</h5>
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"
@@ -133,7 +121,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                 <p>1 BHK</p>
+                 <p>Single Occupancy</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -145,7 +133,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                  <p>2 BHK</p>
+                  <p>Double Occupancy</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -157,7 +145,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox3">
-                  <p>3 BHK</p>
+                  <p>Triple Occupancy</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -169,12 +157,12 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox3">
-                  <p>4 BHK</p>
+                  <p>Four Occupancy</p>
                 </label>
               </div>
             </div>
             <div class="container m-3">
-              <h5>Parking</h5>
+              <h5>PG For</h5>
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"
@@ -185,7 +173,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
 
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                <p>Car</p>
+                <p>Male</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -197,7 +185,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("park")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Bike</p>
+                 <p>Female</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -212,21 +200,10 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                  <p>Both</p>
                 </label>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="none"
-                onChange={handleInput("park")}
-                />
-                <label class="form-check-label" for="inlineCheckbox2">
-                 <p>None</p>
-                </label>
-              </div>
+             
             </div>
             <div class="container m-3">
-              <h5>Furnishing</h5>
+              <h5>Preferred Guest</h5>
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"
@@ -236,7 +213,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("furnish")}
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                 <p>Furnished</p>
+                 <p>Student</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -248,7 +225,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("furnish")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Unfurnished</p>
+                 <p>Professional</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -260,7 +237,7 @@ const FilterRpg = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) =
                 onChange={handleInput("furnish")}
                 />
                 <label class="form-check-label" for="inlineCheckbox3">
-                 <p>Semi Furnished</p>
+                 <p>Both</p>
                 </label>
               </div>
             </div>

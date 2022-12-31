@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import RrentProp from "./RrentProp";
 import FilterRrent from "./FilterRrent";
 import Navbar from "../../Navbar/Navbar";
+
 const ListRrent = () => {
   let history = useNavigate();
   const context = useContext(propertyContext);
@@ -12,47 +13,70 @@ const ListRrent = () => {
   
   const { rrprop, fetchAllrrprop } = context;
 
-  const [RrentData, setData] = useState(rrprop);
+  const [RrentData, setData] = useState([]);
+  const [rr,setrr] = useState([])
 
-  useEffect(() => {
+  useEffect(  () => {
     if (localStorage.getItem("token")) {
-      fetchAllrrprop();
+      // fetchAllrrprop();
+      // console.log(rrprop)
+      // setData(rrprop)
+      async function listrrprop(){
+        const responce =await  fetch("http://localhost:5000/api/property/getrrprop", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        });
+        const resdata =await  responce.json();
+        setData(resdata);
+        setrr(resdata)
+      } 
+      listrrprop()
     } else {
       history("/login");
     }
   }, []);
- 
+
+
   function handlebhkType(value){
     console.log(value);
-    const filterData = rrprop.filter((prop)=>{
-      return (value.includes(prop.rr_detail_bhk_type))
+    console.log(rr)
+    setData(rr)
+    const filterData = RrentData.filter((prop)=>{
+      return (!value.includes(prop.rr_detail_bhk_type))
     })
 setData(filterData)
   }
   function handlePropType(value){
     console.log(value);
-    const filterData = rrprop.filter((prop)=>{
-      return (value.includes(prop.rr_detail_app_type))
+    setData(rr)
+    const filterData = RrentData.filter((prop)=>{
+      return (!value.includes(prop.rr_detail_app_type))
     })
 setData(filterData)
   }
   function handleParking(value){
     console.log(value);
-    const filterData = rrprop.filter((prop)=>{
-      return (value.includes(prop.rr_detail_parking))
+    setData(rr)
+    const filterData = RrentData.filter((prop)=>{
+      return (!value.includes(prop.rr_detail_parking))
     })
 setData(filterData)
   }
   function handleFurnish(value){
     console.log(value);
-    const filterData = rrprop.filter((prop)=>{
-      return (value.includes(prop.rr_detail_furnishing))
+    setData(rr)
+    const filterData = RrentData.filter((prop)=>{
+      return (!value.includes(prop.rr_detail_furnishing))
     })
 setData(filterData)
   }
   function handleRrentRange(value){
     console.log(value);
-    const filterData = rrprop.filter((prop)=>{
+    setData(rr)
+    const filterData = RrentData.filter((prop)=>{
       return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
     })
 setData(filterData)
@@ -66,7 +90,7 @@ setData(filterData)
        <button className="">Serarch</button>
       <hr />
       </div> */}
-      <div className="container" style={{marginTop:"6%"}}>
+      <div className="container-fluid" style={{marginTop:"6%"}}>
       {/* <h1 class="text-center">Residential Rent Property</h1> */}
      
      

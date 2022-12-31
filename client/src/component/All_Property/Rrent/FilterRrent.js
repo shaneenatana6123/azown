@@ -3,10 +3,10 @@ import React,{useState} from 'react'
 const FilterRrent = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) => {
     const [filters, setFilters] = useState({
         prop: [],
-        bhk: [],
-        park: [],
-        furnish:[],
-        range:100000
+        bhk: ['1 BHK', '2 BHK', '3 BHK', '4 BHK'],
+        park: ['car', 'bike', 'both', 'none'],
+        furnish:['furnished', 'unfurnished', 'semi furnished'],
+        range:0
       });
       const handleInput = (field) => (event) => {
         const { value } = event.target;

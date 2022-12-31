@@ -92,7 +92,7 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("prop")}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
-                  <p>Apartment</p>
+                  <p>Office Space</p>
                 </label>
               </div>
               <div class="form-check">
@@ -105,7 +105,33 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("prop")}
                 />
                 <label class="form-check-label" for="flexCheckChecked">
-                  <p>Independent House/Villa</p>
+                  <p>Co-Working</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="independent"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>Shop</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="independent"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>Showroom</p>
                 </label>
               </div>
               <div class="form-check">
@@ -118,12 +144,64 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("prop")}
                 />
                 <label class="form-check-label" for="flexCheckChecked">
-                  <p>Gate Community Villa</p>
+                  <p>Godown/Warehouse</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="gated community villa"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>IndustrialShed</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="gated community villa"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>Industrial Building</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="gated community villa"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>Othe Building</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                name="prop"
+                value="independent"
+                id="flexCheckChecked"
+                onChange={handleInput("prop")}
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  <p>Restaurant/Cafe</p>
                 </label>
               </div>
             </div>
             <div class="container m-3">
-              <h5>BHK Type</h5>
+              <h5>Building Type</h5>
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"
@@ -133,7 +211,7 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                 <p>1 BHK</p>
+                 <p>Independent House</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -145,7 +223,7 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                  <p>2 BHK</p>
+                  <p>Business Park</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -157,7 +235,7 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox3">
-                  <p>3 BHK</p>
+                  <p>Mall</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -169,7 +247,19 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("bhk")}
                 />
                 <label class="form-check-label" for="inlineCheckbox3">
-                  <p>4 BHK</p>
+                  <p>Standalone Building</p>
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox3"
+                value="4 BHK"
+                onChange={handleInput("bhk")}
+                />
+                <label class="form-check-label" for="inlineCheckbox3">
+                  <p>Independent Shop</p>
                 </label>
               </div>
             </div>
@@ -185,7 +275,7 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
 
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                <p>Car</p>
+                <p>Public</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -197,33 +287,11 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("park")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Bike</p>
+                 <p>Reserved</p>
                 </label>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="both"
-                onChange={handleInput("park")}
-                />
-                <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Both</p>
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="none"
-                onChange={handleInput("park")}
-                />
-                <label class="form-check-label" for="inlineCheckbox2">
-                 <p>None</p>
-                </label>
-              </div>
+              
+            
             </div>
             <div class="container m-3">
               <h5>Furnishing</h5>
@@ -265,8 +333,8 @@ const FilterCsale = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
               </div>
             </div>
             <div className='container m-3'>
-            <label for="customRange2" class="form-label">Rent Range Rs. 0 to Rs. 1 Lac</label>
-<input type="range" className="form-range"  style={{width:"80%"}} min="0" max="100000" onChange={handleInput("range")} id="customRange2" />
+            <label for="customRange2" class="form-label">Rent Range Rs. 0 to Rs. 100  Cr</label>
+<input type="range" className="form-range"  style={{width:"80%"}} min="0" max="1000000000" onChange={handleInput("range")} id="customRange2" />
             </div>
             {/* <button class="btn">Filter</button> */}
           </form>

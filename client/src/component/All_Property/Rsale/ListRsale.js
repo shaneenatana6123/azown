@@ -1,11 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState,useEffect } from 'react'
 import Navbar from '../../Navbar/Navbar'
+import { useNavigate } from 'react-router-dom';
 import Rsale from './Rsale'
 import FilterRsale from './FilterRsale'
+import propertyContext from '../../../context/PropertyContext'
+
+
 
 
 const ListRsale = () => {
-    const [data,setdata] = useState(["1","2"])
+    let history = useNavigate();
+  const context = useContext(propertyContext);
+  const { rrs, listrrs } = context;
+
+  const [data, setdata] = useState(rrs);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      listrrs()
+    } else {
+      history("/login");
+    }
+  }, []);
+
+
+
     function handlebhkType(value){
         console.log(value);
         const filterData = data.filter((prop)=>{
@@ -78,11 +96,8 @@ const ListRsale = () => {
             <div className="col-md-12 col-sm-8">
           {data.map((property) => {
           
-          return (
-          
-          <Rsale property={property} />
-          
-          
+          return (   
+          <Rsale property={property} key={property._id} />
           
           );
         })}

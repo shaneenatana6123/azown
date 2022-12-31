@@ -174,7 +174,7 @@ const FilterRflat = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
               </div>
             </div>
             <div class="container m-3">
-              <h5>Parking</h5>
+              <h5>Tenant Type</h5>
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"
@@ -185,7 +185,7 @@ const FilterRflat = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
 
                 />
                 <label class="form-check-label" for="inlineCheckbox1">
-                <p>Car</p>
+                <p>Male</p>
                 </label>
               </div>
               <div class="form-check form-check-inline">
@@ -197,21 +197,10 @@ const FilterRflat = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                 onChange={handleInput("park")}
                 />
                 <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Bike</p>
+                 <p>Female</p>
                 </label>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="both"
-                onChange={handleInput("park")}
-                />
-                <label class="form-check-label" for="inlineCheckbox2">
-                 <p>Both</p>
-                </label>
-              </div>
+             
               <div class="form-check form-check-inline">
                 <input
                 class="form-check-input"

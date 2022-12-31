@@ -37,7 +37,7 @@ const Crent = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Rent (Negotable)</small></p>
             </div>
           </div>
           <div className="col-md-4" style={{ borderRight: "2px solid lightgray" }}>
@@ -45,7 +45,7 @@ const Crent = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Deposite (negotable)</small></p>
             </div>
           </div>
           <div className="col-md-4" >
@@ -53,7 +53,7 @@ const Crent = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Build Up Area</small></p>
             </div>
           </div>
 
@@ -76,19 +76,30 @@ const Crent = (props) => {
                 <div className="row">
                   <div className="col-md-3">
                     {/* <i class="fa-solid fa-chair fs-3 p-2"></i> */}
-                    <img src={like} alt="like" style={{width:"65%"}} />
+                    <i class="fa-solid fa-building fs-3 p-2"></i>
                                         
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Property Type</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fa-solid fa-square-parking fs-3 p-2"></i>
+                  </div>
+                  <div className="col-md-9 ">
+                    <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Parking</b></p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
+                <div className="row">
+                  <div className="col-md-3">
+                  <i class="fa-solid fa-couch fs-3 p-2"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
@@ -99,22 +110,11 @@ const Crent = (props) => {
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fa-solid fa-calendar-days fs-3 p-2"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
-                <div className="row">
-                  <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
-                  </div>
-                  <div className="col-md-9 ">
-                    <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Available From</b></p>
                   </div>
                 </div>
               </div>

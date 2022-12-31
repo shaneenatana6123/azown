@@ -24,7 +24,7 @@ const Rsale = (props) => {
       <div class=" card mb-3" style={{ boxShadow: "1px 4px 6px 2px  gray ", background: "f8f8f8", padding: "25px" }}>
         <div className="row" style={{ borderBottom: "2px solid lightgray" }}>
           <div class="col-sm-9" >
-            <h5 className="fs-8 mb-0"> <b>{property.rr_detail_description}</b> <i class="fa-solid fs-4 fa-square-arrow-up-right"></i> </h5>
+            <h5 className="fs-8 mb-0"> <b>{property.rrs_detail_description}</b> <i class="fa-solid fs-4 fa-square-arrow-up-right"></i> </h5>
             <p><span> {property.rr_location_city} , {property.rr_location_state} </span><img style={{ width: "20px" }} src={locationImg} alt="location" /></p>
           </div>
           <div className="col-sm-3">
@@ -37,7 +37,7 @@ const Rsale = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Expected Ammount</small></p>
             </div>
           </div>
           <div className="col-md-4" style={{ borderRight: "2px solid lightgray" }}>
@@ -45,7 +45,7 @@ const Rsale = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Monthly Maintenance</small></p>
             </div>
           </div>
           <div className="col-md-4" >
@@ -53,7 +53,7 @@ const Rsale = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Build up Area</small></p>
             </div>
           </div>
 
@@ -76,45 +76,45 @@ const Rsale = (props) => {
                 <div className="row">
                   <div className="col-md-3">
                     {/* <i class="fa-solid fa-chair fs-3 p-2"></i> */}
-                    <img src={like} alt="like" style={{width:"65%"}} />
+                    <i class="fs-3 fa-solid fa-compass"></i>
                                         
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Facing</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fs-3 fa-solid fa-building"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>BHK type</b></p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
+                <div className="row">
+                  <div className="col-md-3 p-1" style={{textAlign:"center", alignItems:"center"}}>
+                  <i class="fs-3 fa-solid fa-bath" ></i>
+                  </div>
+                  <div className="col-md-9 ">
+                    <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Bathrooms</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fs-3 fa-solid fa-square-parking"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
-                <div className="row">
-                  <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
-                  </div>
-                  <div className="col-md-9 ">
-                    <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Parking</b></p>
                   </div>
                 </div>
               </div>
@@ -136,17 +136,7 @@ const Rsale = (props) => {
 
             </div>
           </div>
-
         </div>
-
-
-        
-
-
-
-       
-
-       
       </div>
     </div>
   )

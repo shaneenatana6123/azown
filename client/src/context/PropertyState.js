@@ -6,6 +6,12 @@ const PropertyState = (props) => {
   const host = "http://localhost:5000";
   
   const [rrprop, setrrprop] = useState([]);
+  const [rrs,setrrs]  = useState([])
+  const [ rpg, setrpg] = useState([])
+  const [rfm ,setrfm] = useState([])
+  const [ cmr , setcmr] = useState([])
+  const [ cms , setcms] = useState([])
+  const [ plot , setplot] = useState([])
   const [dash, setdash] = useState([]);
   const [userdetail, setuserdetail] = useState([]);
   const [userdata , setuserdata] = useState([])
@@ -49,7 +55,78 @@ const fetchAllrrprop = async () => {
   setrrprop(resdata);
 };
 
+const listrrs = async () => {
+  const responce = await fetch(`${host}/api/property/getrrs`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setrrs(resdata);
+};
 
+const listrfm = async () => {
+  const responce = await fetch(`${host}/api/property/getrfm`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setrfm(resdata);
+};
+
+const listrpg = async () => {
+  const responce = await fetch(`${host}/api/property/getrpg`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setrpg(resdata);
+};
+
+
+const listcms = async () => {
+  const responce = await fetch(`${host}/api/property/getcms`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setcms(resdata);
+};
+
+const listcmr = async () => {
+  const responce = await fetch(`${host}/api/property/getcmr`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setcmr(resdata);
+};
+
+const listplot = async () => {
+  const responce = await fetch(`${host}/api/property/getplot`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const resdata = await responce.json();
+  setplot(resdata);
+};
 
 
 //Rrent leads data
@@ -268,7 +345,14 @@ const handlereq = async (pid,uid,des) => {
         kycupdatefun,
         handlereq,
         addservice,
-        userprofile,userdata
+        userprofile,userdata,
+        rrs,listrrs,
+        rpg,listrpg,
+        rfm,listrfm,
+        cmr,listcmr,
+        cms, listcms,
+        plot,listplot
+        
       }}
     >
       {props.children}

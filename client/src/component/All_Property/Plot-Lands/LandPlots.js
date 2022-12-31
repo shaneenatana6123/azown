@@ -37,7 +37,7 @@ const LandPlots = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Price (negotable)</small></p>
             </div>
           </div>
           <div className="col-md-4" style={{ borderRight: "2px solid lightgray" }}>
@@ -45,7 +45,7 @@ const LandPlots = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Per sq. ft.</small></p>
             </div>
           </div>
           <div className="col-md-4" >
@@ -53,7 +53,7 @@ const LandPlots = (props) => {
               <div>
                 <span style={{ fontSize: "20px", fontWeight: "700" }}>₹1500</span>
               </div>
-              <p className="mb-0" ><small>Rent (negotable)</small></p>
+              <p className="mb-0" ><small>Plot Area</small></p>
             </div>
           </div>
 
@@ -76,45 +76,44 @@ const LandPlots = (props) => {
                 <div className="row">
                   <div className="col-md-3">
                     {/* <i class="fa-solid fa-chair fs-3 p-2"></i> */}
-                    <img src={like} alt="like" style={{width:"65%"}} />
+                    <i class="fa-solid fa-key fs-3 p-2"></i>
                                         
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Available From</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fa-solid fa-calendar-days fs-3 p-2"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Posted Date</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
-                  </div>
+                  <i class="fa-solid fa-ruler-combined fs-3 p-2"></i>             </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Dimention (L X B)</b></p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">
                   <div className="col-md-3">
-                    <i class="fa-solid fa-chair fs-3 p-2"></i>
+                  <i class="fa-solid fa-xmarks-lines fs-3 p-2"></i>
                   </div>
                   <div className="col-md-9 ">
                     <p className="m-0 " style={{ fontSize: "12px" }}>Semi Furnished</p>
-                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Furnishing</b></p>
+                    <p className="m-0 " style={{ fontSize: "14px" }}><b>Boundary Wall</b></p>
                   </div>
                 </div>
               </div>
