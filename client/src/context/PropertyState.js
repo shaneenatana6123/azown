@@ -3,7 +3,7 @@ import PropertyContext from "./PropertyContext";
 
 
 const PropertyState = (props) => {
-  const host = "54.168.246.201:5000";
+  const host = "http://54.199.1.10:5000";
   
   const [rrprop, setrrprop] = useState([]);
   const [rrs,setrrs]  = useState([])

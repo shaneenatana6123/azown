@@ -4,7 +4,7 @@ import axios from "axios";
 const UserContext = createContext()
 
 const UserState =(props)=>{
-    const host = "54.168.246.201:5000"
+    const host = "http://54.199.1.10:5000"
 
     const kycupdate =async (formData)=>{
         console.log(formData)
