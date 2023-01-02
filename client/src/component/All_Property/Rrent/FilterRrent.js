@@ -1,13 +1,14 @@
 import React,{useState} from 'react'
 
-const FilterRrent = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange}) => {
+const FilterRrent = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange,onFilter}) => {
     const [filters, setFilters] = useState({
         prop: [],
-        bhk: ['1 BHK', '2 BHK', '3 BHK', '4 BHK'],
-        park: ['car', 'bike', 'both', 'none'],
-        furnish:['furnished', 'unfurnished', 'semi furnished'],
+        bhk: [],
+        park: [],
+        furnish:[],
         range:0
       });
+      // 'appartment', 'independent', 'gated community villa''1 BHK', '2 BHK', '3 BHK', '4 BHK''car', 'bike', 'both', 'none''furnished', 'unfurnished', 'semi furnished'
       const handleInput = (field) => (event) => {
         const { value } = event.target;
         if (field==="bhk") {
@@ -51,31 +52,31 @@ const FilterRrent = ({onPropType, onBhkType, onParking ,onFurnish,onRrentRange})
                     setFilters({...filters,[field]:filters.furnish })
                 }
         }else if (field==="range"){
-
+filters.range=value
             setFilters({...filters,[field]:value })
         }
+    onFilter(filters)
     
-    
-        switch (field) {
-          case "prop":
-            onPropType(filters.prop);
-            break;
-          case "bhk":
-            onBhkType(filters.bhk);
-            break;
-          case "park":
-            onParking(filters.park);
-            break;
-            case "furnish":
-            onFurnish(filters.furnish);
-            break;
-            case "range":
-                onRrentRange(value);
-                break;
-            default:
-        break;
+        // switch (field) {
+        //   case "prop":
+        //     onPropType(filters.prop);
+        //     break;
+        //   case "bhk":
+        //     onBhkType(filters.bhk);
+        //     break;
+        //   case "park":
+        //     onParking(filters.park);
+        //     break;
+        //     case "furnish":
+        //     onFurnish(filters.furnish);
+        //     break;
+        //     case "range":
+        //         onRrentRange(value);
+        //         break;
+        //     default:
+        // break;
           
-        }
+        // }
       };
   return (
     <div>

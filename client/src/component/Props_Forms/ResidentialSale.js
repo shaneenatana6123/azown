@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -7,12 +7,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import propertyContext from '../../context/PropertyContext';
 
 const steps = ['Property Detail', 'Location', 'Resale Detail', 'Amenities', 'Gallery'];
 
 
 export default function ResidentialSale() {
+  const context = useContext(propertyContext)
+  const {host} = context
   const history = useNavigate()
   const [activeStep, setActiveStep] = useState(0);
   const [data, setdata] = useState({
@@ -970,7 +972,7 @@ export default function ResidentialSale() {
       Array.from(file).forEach((item) => {
         formData.append("image", item);
       });
-      const responce = await axios.post("http://localhost:5000/api/property/add-rrs-prop", formData, {
+      const responce = await axios.post(`${host}/api/property/add-rrs-prop`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "auth-token": localStorage.getItem("token"),

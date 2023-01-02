@@ -4,7 +4,7 @@ const leadContext = createContext()
 const LeadState =(props)=>{
     const [userleadsdata, setuserleadsdata] = useState([]);
     const [ownerleaddata, setownerleaddata] = useState([])
-    const host = "http://localhost:5000"
+    const host = "54.168.246.201:5000"
     
     const leadcreate = async (id) => {
         const responce = await fetch(`${host}/api/leadprop/leadcreate`, {

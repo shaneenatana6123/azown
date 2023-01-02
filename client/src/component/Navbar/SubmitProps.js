@@ -15,7 +15,7 @@ const SubmitProps = () => {
     return (
         <>
             <Button className='btn btn-rounded btn-light rounded-pill'  onClick={handleShow}>
-   <i class="fa-solid fa-plus"></i>&nbsp;Submit Property
+   <i class="fa-solid fa-plus"></i>Submit Property
             </Button>
 
             <Modal show={show} onHide={handleClose} 
@@ -27,7 +27,7 @@ const SubmitProps = () => {
                 <Modal.Body>
                     
                 <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey="home"
       id="fill-tab-example"
       className="mb-3"
 

@@ -3,7 +3,7 @@ import PropertyContext from "./PropertyContext";
 
 
 const PropertyState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "54.168.246.201:5000";
   
   const [rrprop, setrrprop] = useState([]);
   const [rrs,setrrs]  = useState([])
@@ -351,7 +351,8 @@ const handlereq = async (pid,uid,des) => {
         rfm,listrfm,
         cmr,listcmr,
         cms, listcms,
-        plot,listplot
+        plot,listplot,
+        host,
         
       }}
     >

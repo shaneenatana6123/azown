@@ -11,7 +11,7 @@ const ListRrent = () => {
   const context = useContext(propertyContext);
   
   
-  const { rrprop, fetchAllrrprop } = context;
+  const { rrprop, fetchAllrrprop,host } = context;
 
   const [RrentData, setData] = useState([]);
   const [rr,setrr] = useState([])
@@ -22,7 +22,7 @@ const ListRrent = () => {
       // console.log(rrprop)
       // setData(rrprop)
       async function listrrprop(){
-        const responce =await  fetch("http://localhost:5000/api/property/getrrprop", {
+        const responce =await  fetch(`${host}/api/property/getrrprop`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -41,46 +41,75 @@ const ListRrent = () => {
 
 
   function handlebhkType(value){
-    console.log(value);
-    console.log(rr)
-    setData(rr)
-    const filterData = RrentData.filter((prop)=>{
-      return (!value.includes(prop.rr_detail_bhk_type))
-    })
-setData(filterData)
+    // console.log(rr)
+    // console.log(value);
+    // // console.log(RrentData)
+    // if (value.length===0){
+    //   setData(rr)  
+    // }else{
+    //   const filterData = rr.filter((prop)=>{
+    //     return (value.includes(prop.rr_detail_bhk_type))
+    //   })
+    //   console.log(filterData)
+    //   setData(filterData)
+    // }  
   }
   function handlePropType(value){
-    console.log(value);
-    setData(rr)
-    const filterData = RrentData.filter((prop)=>{
-      return (!value.includes(prop.rr_detail_app_type))
-    })
-setData(filterData)
-  }
+    // console.log(value)
+    // if (value===0){
+    //   setData(rr)
+    // }else{
+    //   const filterData = rr.filter((prop)=>{
+    //     return (value.includes(prop.rr_detail_app_type))
+    //   })
+    //  setData(filterData)
+    // }
+
+    }
+    
+    
   function handleParking(value){
-    console.log(value);
-    setData(rr)
-    const filterData = RrentData.filter((prop)=>{
-      return (!value.includes(prop.rr_detail_parking))
-    })
-setData(filterData)
+//     console.log(value);
+//     setData(rr)
+//     const filterData = RrentData.filter((prop)=>{
+//       return (!value.includes(prop.rr_detail_parking))
+//     })
+// setData(filterData)
   }
   function handleFurnish(value){
-    console.log(value);
-    setData(rr)
-    const filterData = RrentData.filter((prop)=>{
-      return (!value.includes(prop.rr_detail_furnishing))
-    })
-setData(filterData)
+//     console.log(value);
+//     setData(rr)
+//     const filterData = RrentData.filter((prop)=>{
+//       return (!value.includes(prop.rr_detail_furnishing))
+//     })
+// setData(filterData)
   }
   function handleRrentRange(value){
-    console.log(value);
-    setData(rr)
-    const filterData = RrentData.filter((prop)=>{
-      return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
-    })
-setData(filterData)
+//     console.log(value);
+//     setData(rr)
+//     const filterData = RrentData.filter((prop)=>{
+//       return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
+//     })
+// setData(filterData)
 
+  }
+  function handleFilter(value){
+    console.log(value)
+    if (value.prop.length===0 && value.bhk.length===0 && value.park.length===0 && value.furnish.length===0 &&value.range===0){
+      setData(rr)
+    }else{
+     
+
+      console.log(value.range)
+
+      const filterData = rr.filter((property)=>{
+        
+              return (value.bhk.includes(property.rr_detail_bhk_type) || value.prop.includes(property.rr_detail_parking) || value.furnish.includes(property.rr_detail_furnishing) || value.park.includes(property.rr_detail_parking) || (parseInt(property.rr_rental_detail_exp_deposit)  < value.range) )
+            })
+        setData(filterData)
+
+      console.log(filterData)
+    }
   }
   return (
     <>
@@ -106,7 +135,7 @@ setData(filterData)
             
             <div className="filter_div">
               
-              <FilterRrent onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType}/>
+              <FilterRrent onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType} onFilter={handleFilter}/>
             </div>
           </div>
       

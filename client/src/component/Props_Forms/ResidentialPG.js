@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -8,10 +8,14 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import propertyContext from '../../context/PropertyContext';
+
 
 
 const steps = ['Property Detail', 'Location',  'Amenities','Rules', 'Gallery'];
 const ResidentialPG = () => {
+  const context = useContext(propertyContext)
+  const {host} = context
   const history = useNavigate()
   const [activeStep, setActiveStep] = useState(0);
   const [data, setdata] = useState({
@@ -755,7 +759,7 @@ formData.append("rpg_detail_parking ",data.rpg_detail_parking)
       Array.from(file).forEach((item) => {
         formData.append("image", item);
       });
-      const responce = await axios.post("http://localhost:5000/api/property/add-rpg-prop", formData, {
+      const responce = await axios.post(`${host}/api/property/add-rpg-prop`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "auth-token": localStorage.getItem("token"),

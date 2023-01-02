@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -7,12 +7,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import propertyContext from '../../context/PropertyContext';
 
 const steps = ['Property Detail', 'Location', 'Resale Detail', 'Amenities', 'Gallery'];
 
 
 export default function ResidentialSale() {
+  const context = useContext(propertyContext)
+  const {host} = context
   const history = useNavigate()
   const [activeStep, setActiveStep] = useState(0);
   const [data, setdata] = useState({
@@ -271,7 +273,7 @@ export default function ResidentialSale() {
                 onChange={handleChange}
                 required
               >
-                <option selected disabled value="">
+                <option selected >
                   Select
                 </option>
                 <option value="north">north</option>
@@ -290,7 +292,7 @@ export default function ResidentialSale() {
                 Build Up Area
               </label>
               <input
-                type="text"
+                type="number"
                 name="rr_detail_builtup_area"
                 class="form-control"
                 placeholder="Enter the Area"
@@ -307,7 +309,7 @@ export default function ResidentialSale() {
                 Carpet Area
               </label>
               <input
-                type="text"
+                type="number"
                 name="rr_detail_carpet_area"
                 class="form-control"
                 placeholder="Enter the Area"
@@ -515,12 +517,29 @@ export default function ResidentialSale() {
         return (
           <div>
               <div class="row">
+              
+              <div class="col-md-3">
+                  <label for="validationCustom04" class="form-label">
+                    Expected Rent
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="rr_rental_detail_rent"
+                    placeholder="Enter the Amount"
+                    aria-label="First name"
+                    onChange={handleChange}
+                  />
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
+                </div>
                 <div class="col-md-3">
                   <label for="validationCustom04" class="form-label">
                     Expected Deposite
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     name="rr_rental_detail_exp_deposit"
                     placeholder="Enter the Amount"
@@ -556,12 +575,12 @@ export default function ResidentialSale() {
                       type="radio"
                       name="rr_rental_detail_is_nogotiable"
                       id="inlineRadio2"
-                      value="true"
+                      value="false"
                       onChange={handleChange}
                     />
                     <label
                       class="form-check-label"
-                      value="No"
+                    
                       for="inlineRadio2"
                     >
                       No
@@ -1024,6 +1043,7 @@ export default function ResidentialSale() {
       formData.append("rr_location_city",data.rr_location_city)
       formData.append("rr_location_latitude",data.rr_location_latitude)
       formData.append("rr_location_longitude",data.rr_location_longitude)
+
       formData.append("rr_rental_detail_rent",data.rr_rental_detail_rent)
       formData.append("rr_rental_detail_exp_deposit",data.rr_rental_detail_exp_deposit)
       formData.append("rr_rental_detail_is_nogotiable",data.rr_rental_detail_is_nogotiable)
@@ -1034,6 +1054,7 @@ export default function ResidentialSale() {
       formData.append("rr_rental_detail_is_allowed_nonveg",data.rr_rental_detail_is_allowed_nonveg)
       formData.append("rr_rental_detail_shown_by",data.rr_rental_detail_shown_by)
       formData.append("rr_rental_detail_shown_by_number",data.rr_rental_detail_shown_by_number)
+
       formData.append("rr_amenities_lift",data.rr_amenities_lift)
       formData.append("rr_amenities_ac",data.rr_amenities_ac)
       formData.append("rr_amenities_intercom",data.rr_amenities_intercom)
@@ -1057,7 +1078,7 @@ export default function ResidentialSale() {
       Array.from(file).forEach((item) => {
         formData.append("image", item);
       });
-      const responce = await axios.post("http://localhost:5000/api/property/addprop", formData, {
+      const responce = await axios.post(`${host}/api/property/addprop`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "auth-token": localStorage.getItem("token"),
@@ -1116,7 +1137,7 @@ export default function ResidentialSale() {
                 Skip
               </Button>
             )} */}
-            <Button onClick={handleNext} >
+            <Button  onClick={handleNext} >
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>

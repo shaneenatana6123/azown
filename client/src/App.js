@@ -93,12 +93,6 @@ function App() {
           <Route path="/plot-list" element={<ListPlot/>}></Route>
           <Route path="/plot-detail/:id" element={<DetailPlot/>}></Route>
 
-
-
-
-
-
-
         </Routes>
       </Router>
     </div>

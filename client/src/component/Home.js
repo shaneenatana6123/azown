@@ -12,16 +12,16 @@ import HomeNav from './Navbar/HomeNav'
 
 const Home = () => {
     const history = useNavigate()
-    const tab = {
-        padding:"1.2rem",
-  margin: "0.5rem",
- borderRadius: "5px",
-  fontWeight: "400px",
-  border: "1px  #fff",
-  backgroundColor: "#f34" ,
-  color: "#fff",
-  fontSize: "18px"
-    }
+//     const tab = {
+//         padding:"1.2rem",
+//   margin: "0.5rem",
+//  borderRadius: "5px",
+//   fontWeight: "400px",
+//   border: "1px  #fff",
+//   backgroundColor: "#f34" ,
+//   color: "#fff",
+//   fontSize: "18px"
+//     }
 
     const [formData, setFormData] = useState({
         city: "", area: "", proptype: ""
@@ -71,6 +71,7 @@ const Home = () => {
         }
 
     }
+   
     return (
         <div>
             {/* <Navbar/> */}
@@ -153,9 +154,9 @@ const Home = () => {
 
                             <div id='section-control'>
                                 <span id='display-tab-control'>
-                                    <button class={  "tab-control"} onClick={() => { setdata(propdata[0]) }} >Residential</button>
-                                    <button class='tab-control' onClick={() => { setdata(propdata[1]) }}>Commertial</button>
-                                    <button class='tab-control' onClick={() => { setdata(propdata[2]) }} >Plot/Land</button>
+                                    <button className={data.id==="0" ? "tab-click" :"tab-control"}  onClick={() => { setdata(propdata[0]) }} >Residential</button>
+                                    <button className={data.id==="1" ? "tab-click" :"tab-control"} onClick={() => { setdata(propdata[1]) }}>Commertial</button>
+                                    <button className={data.id==="2" ? "tab-click" :"tab-control"} onClick={() => { setdata(propdata[2]) }} >Plot/Land</button>
 
                                 </span>
                             </div>

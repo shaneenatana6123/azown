@@ -956,3 +956,198 @@ body {
   border: none!important;
   height: 40px;
 }
+
+/* ======================= */
+.col1{
+  border: 1px solid lightgray;
+  margin-top: 50px;
+  text-align: center;
+}
+.txt1{
+  font-size: 12px;
+  text-align: left;
+}
+.dtl{
+  padding-top: 7px;
+  font-weight: 700;
+  text-align: left;
+}
+.ptr5{
+  padding-top: 5px;
+
+}
+.ptr7{
+  padding-top: 7px;
+}
+.ptr10{
+  padding-top: 10px;
+}
+.icow{
+  height: 13px;
+  width: 13px;
+  color: gray;
+}
+.fntsz{
+  font-size: 13px;
+}
+.mybdcm{
+  color: black;
+}
+.mxh{
+  height: 500px;
+}
+.mxw{
+  width: 100%;
+}
+.sml10{
+  font-size: 10px;
+}
+.bd{
+  padding-top: 17px;
+  font-size: 20px;
+  color: gray;
+}
+.cm4{
+  border: 1px solid lightgray;
+   }
+.r1{
+  padding: 10px;
+}
+.sm6{
+  padding: 10px; border: 1px solid lightgray;
+}
+.smin6{
+  padding:px;
+}
+.sm12{
+  padding: 10px; border: 1px solid lightgray;
+    background-color:#f2f2f2 ;
+}
+.tct{
+  text-align: center;
+
+}
+.btn1 {
+  padding: 8px 60px 8px 60px;
+  border-radius: 3px;
+
+}
+
+
+
+.btndf{ 
+  border: 2px solid red;
+  background: none;
+}
+.sec{
+  padding-top: 20px;
+
+
+}
+.ove{
+   border-bottom: 2px solid red;
+  width: 150px;
+  line-height: 70px;
+  font-size:22px;
+  margin-left:3%!important;
+  text-align: left  ;
+
+}
+.dis{
+  border-bottom: 2px solid red;
+  width: 150px;
+  line-height: 70px;
+  font-size:22px;
+  margin-left:5%!important;
+  text-align: left  ;
+
+}
+.tbl25{
+  padding-top: 100px;
+}
+.parag{
+    background-color: white;
+   border: 1px solid lightgray;
+   
+  
+}
+.paragraph{
+    background-color: white;
+   border: 1px solid lightgray;
+   margin-bottom: 50px;
+   padding-top: 20px!important;
+}
+.para_div p{
+  padding: 10px 30px;
+  text-align: justify;
+  font-size: 13px;
+}
+.show_more p {
+  text-align: center; 
+  color: red;
+}
+.Overview{
+   border: 1px solid lightgray;
+   padding: 0px 30px;
+   background-color: white;
+}
+
+
+/*  cards  */
+
+
+.img-account-profile {
+height:7rem;
+}
+.rounded-circle {
+border-radius: 50% !important;
+}
+.card {
+box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+border-radius: 0;
+}
+.card .card-header {
+font-weight: 500;
+}
+.card-header:first-child {
+border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+padding: 1rem 1.35rem;
+margin-bottom: 0;
+background-color: rgba(33, 40, 50, 0.03);
+border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.small{
+text-align: left;
+line-height:1px;
+}
+.Amenities_div{
+
+font-size: 12px;
+text-align: center;
+background-color: #f2f2f2;
+margin:5px;
+padding: 8px 8px;
+
+}
+.Amenitie{
+padding: 0px 30px 20px;
+}
+
+.tab-click{
+  padding:1rem;
+  margin: 0.5rem;
+ border-radius: 5px;
+  font-weight: 400;
+  border: 1px  #fff;
+  background-color: #f34;
+  color: #fff;
+  font-size: 14px;
+ 
+ 
+   
+  
+   
+
+}

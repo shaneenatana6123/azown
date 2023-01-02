@@ -132,7 +132,7 @@ const RrentProp = (props) => {
                     </Link>
                 </div>
                 <div className="col-md-3 col-sm-6">
-                    <Link className="btn btn-outline-dark m-1" style={{ borderRadius: "0px", width: "90px" }} to={`/rrprop/${property._id}`}>
+                    <Link className="btn btn-outline-dark m-1" style={{ borderRadius: "0px", width: "90px" }} to={`/rrent-detail/${property._id}`}>
                     More
                   </Link>
                 </div>

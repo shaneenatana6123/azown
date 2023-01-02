@@ -6,12 +6,12 @@ import propertyContext from "../context/PropertyContext";
 const Login = () => {
   const [credential, setcredential] = useState({ email: "", password: "" });
   const context = useContext(propertyContext)
-  const {  userdetails}=context
+  const {  userdetails,host}=context
   useEffect(()=>{
     // getuserdetail()
   },[])
   const history = useNavigate();
-  const host = "http://localhost:5000";
+  
 
 
   const getuserdetail = async () => {

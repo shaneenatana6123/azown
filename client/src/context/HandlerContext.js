@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 const HandlerContext = createContext()
 
 const HandlerState =(props)=>{
-    const host = "http://localhost:5000"
+    const host = "54.168.246.201:5000"
     const [handpropsdata , sethandpropsdata ] = useState([])
 
     const handprops = async ()=>{
