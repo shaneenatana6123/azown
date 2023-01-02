@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb+srv://shane6123:shane6123@cluster0.jx2dhyr.mongodb.net/TestAzown"
+const mongoURI = "mongodb+srv://azown:azownali123@cluster0.fkcjj3d.mongodb.net/Azown"
 const connectToMongo = ()=>{
     mongoose.connect(mongoURI, ()=>{
         console.log("Connected to Mongo Successfully");
@@ -7,3 +7,4 @@ const connectToMongo = ()=>{
 }
 
 module.exports = connectToMongo;
+
