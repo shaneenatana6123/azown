@@ -6,9 +6,9 @@ import propertyContext from "../context/PropertyContext";
 const Adminlogin = () => {
     const [credential, setcredential] = useState({ email: "", password: "" });
     const context = useContext(propertyContext)
-    const {  getuserdetail}=context
+    const {  getuserdetail,host}=context
     const history = useNavigate();
-    const host = "http://localhost:5000";
+   
     const login = async (email, password) => {
       const responce = await fetch(`${host}/api/admin/adminlogin`, {
         method: "POST",

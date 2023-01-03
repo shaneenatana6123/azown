@@ -9,11 +9,11 @@ const Services = () => {
     client_lead_data,
     client_service_lead,
     userdetail,
-    getuserdetail,
+    getuserdetail,host
   } = context;
   const [loading, setloading] = useState(false);
   const [service, setservice] = useState([]);
-  const host = "http://localhost:5000";
+ 
   const { name } = useParams();
   console.log(name);
   const getservice = async () => {
