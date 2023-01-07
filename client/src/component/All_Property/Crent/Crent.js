@@ -128,7 +128,7 @@ const Crent = (props) => {
               <Link className=" col-md-2 m-1 " style={{ border: "1px solid black", textAlign: "center", alignItems: "center" }} to={`/rrprop/${property._id}`}>
                 <img src={like} style={{ width: "30px" }} alt="unlike" />
               </Link>
-              <Link className="btn btn-outline-dark col-md-2 m-1 " style={{ borderRadius: "0px" }} to={`/rrent-detail/${property._id}`}>
+              <Link className="btn btn-outline-dark col-md-2 m-1 " style={{ borderRadius: "0px" }} to={`/cmr-detail/${property._id}`}>
                 More
               </Link>
             </div>

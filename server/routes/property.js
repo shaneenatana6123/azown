@@ -119,7 +119,13 @@ router.post(
   fetchuser,
   rrpropconroller.add_plot_prop
 );
-router.get("/singlerrprop/:id", rrpropconroller.single_rr_prop);
+router.get("/rr-detail/:id", rrpropconroller.single_rr_prop);
+router.get("/rrs-detail/:id", rrpropconroller.single_rrs_prop);
+router.get("/rfm-detail/:id", rrpropconroller.single_rfm_prop);
+router.get("/rpg-detail/:id", rrpropconroller.single_rpg_prop);
+router.get("/cmr-detail/:id", rrpropconroller.single_cmr_prop);
+router.get("/cms-detail/:id", rrpropconroller.single_cms_prop);
+router.get("/plot-detail/:id", rrpropconroller.single_plot_prop);
 
 router.get("/getrrprop", fetchuser, rrpropconroller.get_rr_prop);
  

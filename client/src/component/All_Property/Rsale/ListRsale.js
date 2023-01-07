@@ -9,57 +9,51 @@ import propertyContext from '../../../context/PropertyContext'
 
 
 const ListRsale = () => {
-    let history = useNavigate();
+  let history = useNavigate();
   const context = useContext(propertyContext);
-  const { rrs, listrrs } = context;
+  const { host } = context;
 
-  const [data, setdata] = useState(rrs);
-  useEffect(() => {
+  const [RsaleData, setData] = useState([]);
+  const [rr,setrr] = useState([])
+
+  useEffect(  () => {
     if (localStorage.getItem("token")) {
-      listrrs()
+      async function listrrprop(){
+        const responce =await  fetch(`${host}/api/property/getrrs`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        });
+        const resdata =await  responce.json();
+        setData(resdata);
+        setrr(resdata)
+      } 
+      listrrprop()
     } else {
       history("/login");
     }
   }, []);
+ 
+  function handleFilter(value){
+    console.log(value)
+    if (value.prop.length===0 && value.bhk.length===0 && value.park.length===0 && value.furnish.length===0 &&value.range===0){
+      setData(rr)
+    }else{
+     
 
+      console.log(value.range)
 
+      const filterData = rr.filter((property)=>{
+        
+              return (value.bhk.includes(property.rr_detail_bhk_type) || value.prop.includes(property.rr_detail_parking) || value.furnish.includes(property.rr_detail_furnishing) || value.park.includes(property.rr_detail_parking) || (parseInt(property.rr_rental_detail_exp_deposit)  < value.range) )
+            })
+        setData(filterData)
 
-    function handlebhkType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_bhk_type))
-        })
-    setdata(filterData)
-      }
-      function handlePropType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_app_type))
-        })
-    setdata(filterData)
-      }
-      function handleParking(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_parking))
-        })
-    setdata(filterData)
-      }
-      function handleFurnish(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_furnishing))
-        })
-    setdata(filterData)
-      }
-      function handleRrentRange(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
-        })
-    setdata(filterData)
-    
-      }
+      console.log(filterData)
+    }
+  }
   return (
     <>
       <Navbar/>
@@ -84,7 +78,7 @@ const ListRsale = () => {
             
             <div className="filter_div">
               
-              <FilterRsale onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType}/>
+              <FilterRsale onFilter={handleFilter}/>
             </div>
           </div>
       
@@ -94,7 +88,7 @@ const ListRsale = () => {
         <div className="col-md-8">
           <div className="row">
             <div className="col-md-12 col-sm-8">
-          {data.map((property) => {
+          {RsaleData.map((property) => {
           
           return (   
           <Rsale property={property} key={property._id} />

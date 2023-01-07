@@ -11,13 +11,14 @@ import nobroker from "../PropImg/no.jpeg"
 
 const DetailRrent = () => {
   const context = useContext(propertyContext);
-  const { singleRrProp, singlerrpropdata } = context;
+  const { rrdata,rrDetail} = context;
   const [contacted, setcontacted] = useState(false)
   const leadcontext = useContext(leadContext)
   const { leadcreate } = leadcontext
   const { id } = useParams();
   useEffect(() => {
-    singleRrProp(id);
+    rrDetail(id);
+    console.log(rrdata)
   }, []);
   return (
     <>
@@ -29,19 +30,19 @@ const DetailRrent = () => {
             <div><small>Rent</small></div>
           </div>
           <div className="col-md-4 col1">
-            <h6 className="dtl">{singlerrpropdata.rr_detail_description}</h6>
-            <p className="txt1">{singlerrpropdata.rr_location_city}, {singlerrpropdata.rr_location_state}</p>
+            <h6 className="dtl">{rrdata.rr_detail_description}</h6>
+            <p className="txt1">{rrdata.rr_location_city}, {rrdata.rr_location_state}</p>
           </div>
           <div className="col-md-2 col1">
-            <h6 className="ptr7">₹{singlerrpropdata.rr_rental_detail_rent}/M+<span> </span></h6>
+            <h6 className="ptr7">₹{rrdata.rr_rental_detail_rent}/M+<span> </span></h6>
             <div><small>Negotiable</small></div>
           </div>
           <div className="col-md-2 col1">
-            <h6 className="ptr7">{singlerrpropdata.rr_detail_builtup_area}</h6>
+            <h6 className="ptr7">{rrdata.rr_detail_builtup_area}</h6>
             <div><small>Sq.Ft</small></div>
           </div>
           <div className="col-md-2 col1">
-            <h6 className="ptr7">₹ {singlerrpropdata.rr_rental_detail_exp_deposit}</h6>
+            <h6 className="ptr7">₹ {rrdata.rr_rental_detail_exp_deposit}</h6>
             <div><small>Deposit</small></div>
           </div>
           <div className="col-md-1 col1">
@@ -72,7 +73,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-bed fs-4 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_detail_bhk_type}</b><br /><span className="sml10"> No. of Bedroom</span></div>
+                    <div><b>{rrdata.rr_detail_bhk_type}</b><br /><span className="sml10"> No. of Bedroom</span></div>
                   </div>
                 </div>
               </div>
@@ -80,7 +81,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-building fs-4 p-2"></i></div>
                   <div className="col-sm-9 ">
-                    <div><b>{singlerrpropdata.rr_detail_app_type}</b><br /><span className="sml10"> Apartment Type</span></div>
+                    <div><b>{rrdata.rr_detail_app_type}</b><br /><span className="sml10"> Apartment Type</span></div>
                   </div>
                 </div>
               </div>
@@ -88,7 +89,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-users fs-4 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_rental_detail_pref_tenent}</b><br /><span className="sml10"> Prefer Tenants</span></div>
+                    <div><b>{rrdata.rr_rental_detail_pref_tenent}</b><br /><span className="sml10"> Prefer Tenants</span></div>
                   </div>
                 </div>
               </div>
@@ -96,7 +97,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-calendar-days fs-3 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_rental_detail_avail_from}</b><br /><span className="sml10"> Available From</span></div>
+                    <div><b>{rrdata.rr_rental_detail_avail_from}</b><br /><span className="sml10"> Available From</span></div>
                   </div>
                 </div>
               </div>
@@ -104,7 +105,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-square-parking fs-3 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_deatil_parking}</b><br /><span className="sml10"> Parking</span></div>
+                    <div><b>{rrdata.rr_deatil_parking}</b><br /><span className="sml10"> Parking</span></div>
                   </div>
                 </div>
               </div>
@@ -112,7 +113,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-cake-candles fs-3 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_detail_prop_age}</b><br /><span className="sml10">Age Of Building</span></div>
+                    <div><b>{rrdata.rr_detail_prop_age}</b><br /><span className="sml10">Age Of Building</span></div>
                   </div>
                 </div>
               </div>
@@ -120,7 +121,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-door-closed fs-3 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.rr_detail_balcony}</b><br /><span className="sml10"> No of Balcony</span></div>
+                    <div><b>{rrdata.rr_detail_balcony}</b><br /><span className="sml10"> No of Balcony</span></div>
                   </div>
                 </div>
               </div>
@@ -128,7 +129,7 @@ const DetailRrent = () => {
                 <div className="row smin6">
                   <div className="col-sm-3"><i class="fa-solid fa-calendar-days fs-3 p-2"></i></div>
                   <div className="col-sm-9">
-                    <div><b>{singlerrpropdata.date}</b><br /><span className="sml10"> Post Date</span></div>
+                    <div><b>{rrdata.date}</b><br /><span className="sml10"> Post Date</span></div>
                   </div>
                 </div>
               </div>
@@ -169,7 +170,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_detail_furnishing}</p>
+                  <p>{rrdata.rr_detail_furnishing}</p>
 
                 </div>
 
@@ -181,7 +182,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_detail_facing}</p>
+                  <p>{rrdata.rr_detail_facing}</p>
 
                 </div>
 
@@ -196,7 +197,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  {/* <p>{singlerrpropdata.rr_detail_furnishing}</p> */}
+                  {/* <p>{rrdata.rr_detail_furnishing}</p> */}
                   <p>NA</p>
 
                 </div>
@@ -209,7 +210,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_detail_floor}/{singlerrpropdata.rr_detail_total_floor}</p>
+                  <p>{rrdata.rr_detail_floor}/{rrdata.rr_detail_total_floor}</p>
 
                 </div>
 
@@ -223,7 +224,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_detail_bathroom}</p>
+                  <p>{rrdata.rr_detail_bathroom}</p>
 
                 </div>
 
@@ -235,7 +236,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_rental_detail_is_allowed_nonveg}</p>
+                  <p>{rrdata.rr_rental_detail_is_allowed_nonveg}</p>
 
                 </div>
 
@@ -249,7 +250,7 @@ const DetailRrent = () => {
 
                 <div className="col-sm-3">
 
-                  <p>{singlerrpropdata.rr_amenities_gated_security}</p>
+                  <p>{rrdata.rr_amenities_gated_security}</p>
 
                 </div>
 

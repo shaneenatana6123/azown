@@ -11,16 +11,13 @@ const ListRrent = () => {
   const context = useContext(propertyContext);
   
   
-  const { rrprop, fetchAllrrprop,host } = context;
+  const { host } = context;
 
   const [RrentData, setData] = useState([]);
   const [rr,setrr] = useState([])
 
   useEffect(  () => {
     if (localStorage.getItem("token")) {
-      // fetchAllrrprop();
-      // console.log(rrprop)
-      // setData(rrprop)
       async function listrrprop(){
         const responce =await  fetch(`${host}/api/property/getrrprop`, {
           method: "GET",
@@ -66,7 +63,6 @@ const ListRrent = () => {
     // }
 
     }
-    
     
   function handleParking(value){
 //     console.log(value);

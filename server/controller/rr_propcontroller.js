@@ -13,6 +13,7 @@ const generateFileName = (bytes = 32) =>
 
 
 const single_rr_prop = async (req, res) => {
+
   try {
     const _id = req.params.id
     const imageurls = []
@@ -31,6 +32,131 @@ const single_rr_prop = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 }
+
+const single_rrs_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await rrs_props.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+const single_rpg_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await rpg_prop.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const single_rfm_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await rfm_prop.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+const single_cmr_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await cmr_prop.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+const single_cms_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await cms_prop.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const single_plot_prop = async (req, res) => {
+
+  try {
+    const _id = req.params.id
+    const imageurls = []
+    const data = await plot_prop.findOne({ _id })
+
+    // console.log(data);
+    for (let post of data.images) {
+      let posturl = await getObjectSignedUrl(post)
+      imageurls.push(posturl)
+    }
+    //  console.log(imageurls);
+    data.images = imageurls
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+
 const add_rr_prop = async (req, res) => {
   try {
     const user = { userid: req.user.id };
@@ -293,4 +419,4 @@ const get_plot = async (req, res) => {
   }
 }
 
-module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs };
+module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs ,single_rrs_prop,single_rpg_prop,single_rfm_prop, single_cmr_prop,single_cms_prop,single_plot_prop};

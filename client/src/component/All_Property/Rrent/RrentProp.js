@@ -69,7 +69,7 @@ const RrentProp = (props) => {
               </Carousel.Item>
             </Carousel>
           </div>
-          <div class="col-md-8 p-2">
+          <div class="col-md-8 p-2 ">
             <div className="row  border border-2 ms-1">
               <div className="col-md-6 p-2" style={{ borderRight: "2px solid lightgrey", borderBottom: "2px solid lightgrey" }}>
                 <div className="row">

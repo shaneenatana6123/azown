@@ -3,18 +3,21 @@ import PropertyContext from "./PropertyContext";
 
 
 const PropertyState = (props) => {
-  const host = "http://54.199.1.10:5000";
+  // const host = "http://54.199.1.10:5000";
+  const host = "http://localhost:5000"
   
   const [rrprop, setrrprop] = useState([]);
-  const [rrs,setrrs]  = useState([])
-  const [ rpg, setrpg] = useState([])
-  const [rfm ,setrfm] = useState([])
-  const [ cmr , setcmr] = useState([])
-  const [ cms , setcms] = useState([])
-  const [ plot , setplot] = useState([])
+  
   const [dash, setdash] = useState([]);
   const [userdetail, setuserdetail] = useState([]);
   const [userdata , setuserdata] = useState([])
+  const [rrdata, setrrdata] =useState([])
+  const [rrsdata, setrrsdata] =useState([])
+  const [rfmdata, setrfmdata] =useState([])
+  const [rpgdata, setrpgdata] =useState([])
+  const [cmrdata, setcmrdata] =useState([])
+  const [cmsdata, setcmsdata] =useState([])
+  const [plotdata, setplotdata] =useState([])
 
 // userdetails
 const getuserdetail = async () => {
@@ -55,78 +58,16 @@ const fetchAllrrprop = async () => {
   setrrprop(resdata);
 };
 
-const listrrs = async () => {
-  const responce = await fetch(`${host}/api/property/getrrs`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setrrs(resdata);
-};
-
-const listrfm = async () => {
-  const responce = await fetch(`${host}/api/property/getrfm`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setrfm(resdata);
-};
-
-const listrpg = async () => {
-  const responce = await fetch(`${host}/api/property/getrpg`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setrpg(resdata);
-};
 
 
-const listcms = async () => {
-  const responce = await fetch(`${host}/api/property/getcms`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setcms(resdata);
-};
 
-const listcmr = async () => {
-  const responce = await fetch(`${host}/api/property/getcmr`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setcmr(resdata);
-};
 
-const listplot = async () => {
-  const responce = await fetch(`${host}/api/property/getplot`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    },
-  });
-  const resdata = await responce.json();
-  setplot(resdata);
-};
+
+
+
+
+
+
 
 
 //Rrent leads data
@@ -302,10 +243,10 @@ const handlereq = async (pid,uid,des) => {
       const client_data = await responce.json(); 
       set_lead_data(client_data)
     }
-    const [singlerrpropdata, setsinglerrpropdata] =useState([])
-    const singleRrProp = async (id) => {
-      // console.log(id);
-      const responce = await fetch(`${host}/api/property/singlerrprop/${id}`, {
+    
+
+    const rrDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/rr-detail/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -313,15 +254,106 @@ const handlereq = async (pid,uid,des) => {
         },
       });
       let propdata = await responce.json();
-      console.log(propdata);
-      setsinglerrpropdata(propdata)
+      // console.log(propdata);
+      setrrdata(propdata)
+
+    };
+
+    const rrsDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/rrs-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setrrsdata(propdata)
+
+    };
+    const rfmDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/rfm-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setrfmdata(propdata)
+
+    };
+    const rpgDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/rpg-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setrpgdata(propdata)
+    };
+
+    const cmrDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/cmr-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setcmrdata(propdata)
+    };
+
+    const cmsDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/cms-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setcmsdata(propdata)
+
+    };
+    const plotDetail = async (id) => {
+      const responce = await fetch(`${host}/api/property/plot-detail/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": localStorage.getItem("token"),
+        },
+      });
+      let propdata = await responce.json();
+      // console.log(propdata);
+      setplotdata(propdata)
 
     };
   return (
     <PropertyContext.Provider
       value={{
-        singleRrProp,
-        singlerrpropdata,
+        rrdata,
+        rrDetail,
+        rrsDetail,
+        rrsdata,
+        rpgDetail,
+        rpgdata,
+        rfmDetail,
+        rfmdata,
+        cmrDetail,
+        cmrdata,
+        cmsDetail,
+        cmsdata,
+        plotDetail,
+        plotdata,
         client_lead_data,
         client_service_lead,
         createservicelead,
@@ -346,12 +378,6 @@ const handlereq = async (pid,uid,des) => {
         handlereq,
         addservice,
         userprofile,userdata,
-        rrs,listrrs,
-        rpg,listrpg,
-        rfm,listrfm,
-        cmr,listcmr,
-        cms, listcms,
-        plot,listplot,
         host,
         
       }}

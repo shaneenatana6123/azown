@@ -1,49 +1,58 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../../Navbar/Navbar'
 import Crent from './Crent'
 import FilterCrent from './FilterCrent'
-
+import propertyContext from '../../../context/PropertyContext'
 
 
 
 const ListCrent = () => {
-    const [data,setdata] = useState(["1","2"])
-    function handlebhkType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_bhk_type))
-        })
-    setdata(filterData)
-      }
-      function handlePropType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_app_type))
-        })
-    setdata(filterData)
-      }
-      function handleParking(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_parking))
-        })
-    setdata(filterData)
-      }
-      function handleFurnish(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_furnishing))
-        })
-    setdata(filterData)
-      }
-      function handleRrentRange(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
-        })
-    setdata(filterData)
-    
-      }
+  let history = useNavigate();
+  const context = useContext(propertyContext);
+  const { host } = context;
+
+  const [CmrData, setData] = useState([]);
+  const [rr,setrr] = useState([])
+
+  useEffect(  () => {
+    if (localStorage.getItem("token")) {
+      async function listrrprop(){
+        const responce =await  fetch(`${host}/api/property/getcmr`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        });
+        const resdata =await  responce.json();
+        setData(resdata);
+        setrr(resdata)
+      } 
+      listrrprop()
+    } else {
+      history("/login");
+    }
+  }, []);
+ 
+  function handleFilter(value){
+    console.log(value)
+    if (value.prop.length===0 && value.bhk.length===0 && value.park.length===0 && value.furnish.length===0 &&value.range===0){
+      setData(rr)
+    }else{
+     
+
+      console.log(value.range)
+
+      const filterData = rr.filter((property)=>{
+        
+              return (value.bhk.includes(property.rr_detail_bhk_type) || value.prop.includes(property.rr_detail_parking) || value.furnish.includes(property.rr_detail_furnishing) || value.park.includes(property.rr_detail_parking) || (parseInt(property.rr_rental_detail_exp_deposit)  < value.range) )
+            })
+        setData(filterData)
+
+      console.log(filterData)
+    }
+  }
   return (
     <>
       <Navbar/>
@@ -64,7 +73,7 @@ const ListCrent = () => {
             
             <div className="filter_div">
               
-              <FilterCrent onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType}/>
+              <FilterCrent onFilter={handleFilter}/>
             </div>
           </div>
       
@@ -74,7 +83,7 @@ const ListCrent = () => {
         <div className="col-md-8">
           <div className="row">
             <div className="col-md-12 col-sm-8">
-          {data.map((property) => {
+          {CmrData.map((property) => {
           
           return (   
           <Crent property={property} />

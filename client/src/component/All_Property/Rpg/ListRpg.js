@@ -1,57 +1,64 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../../Navbar/Navbar'
 import Rpg from "./Rpg"
 import FilterRpg from './FilterRpg'
+import { useNavigate } from 'react-router-dom'
+import propertyContext from '../../../context/PropertyContext'
 
 
 const ListRpg = () => {
-    const [data,setdata] = useState(["1","2"])
-    function handlebhkType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_bhk_type))
-        })
-    setdata(filterData)
+    let history = useNavigate();
+    const context = useContext(propertyContext);    
+    const { host } = context;
+  
+    const [RpgData, setData] = useState([]);
+  const [rpg,setrpg] = useState([])
+    useEffect(  () => {
+      if (localStorage.getItem("token")) {
+       
+        async function listrrsprop(){
+          const responce =await  fetch(`${host}/api/property/getrpg`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("token"),
+            },
+          });
+          const resdata =await  responce.json();
+          setData(resdata);
+          setrpg(resdata)
+          console.log(resdata);
+        } 
+        listrrsprop()
+      } else {
+        history("/login");
       }
-      function handlePropType(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_app_type))
-        })
-    setdata(filterData)
+    }, []);
+  
+
+      
+   
+    function handleFilter(value){
+      console.log(value)
+      if (value.prop.length===0 && value.bhk.length===0 && value.park.length===0 && value.furnish.length===0 &&value.range===0){
+        setData(rpg)
+      }else{
+        // console.log(value.range)
+  
+        const filterData = rpg.filter((property)=>{
+                return (value.bhk.includes(property.rr_detail_bhk_type) || value.prop.includes(property.rr_detail_parking) || value.furnish.includes(property.rr_detail_furnishing) || value.park.includes(property.rr_detail_parking) || (parseInt(property.rr_rental_detail_exp_deposit)  < value.range) )
+              })
+          setData(filterData)
+  
+        console.log(filterData)
       }
-      function handleParking(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_parking))
-        })
-    setdata(filterData)
-      }
-      function handleFurnish(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (value.includes(prop.rr_detail_furnishing))
-        })
-    setdata(filterData)
-      }
-      function handleRrentRange(value){
-        console.log(value);
-        const filterData = data.filter((prop)=>{
-          return (parseInt(prop.rr_rental_detail_exp_deposit)   < value)
-        })
-    setdata(filterData)
-    
-      }
+    }
   return (
     <>
       <Navbar/>
-      {/* <div className="mt-5 fixed-top">
-      <input className="" placeholder="Serarch..."/> 
-       <button className="">Serarch</button>
-      <hr />
-      </div> */}
+      
       <div className="container" style={{marginTop:"6%"}}>
-      {/* <h1 class="text-center">Residential Rent Property</h1> */}
+  
      
      
       <div className="row">
@@ -66,7 +73,7 @@ const ListRpg = () => {
             
             <div className="filter_div">
               
-              <FilterRpg onPropType={handlePropType} onRrentRange={handleRrentRange}  onParking={handleParking} onFurnish={handleFurnish} onBhkType={handlebhkType}/>
+              <FilterRpg onFilter={handleFilter}  />
             </div>
           </div>
       
@@ -76,10 +83,10 @@ const ListRpg = () => {
         <div className="col-md-8">
           <div className="row">
             <div className="col-md-12 col-sm-8">
-          {data.map((property) => {
+          {RpgData.map((property) => {
           
           return (   
-          <Rpg property={property} />
+          <Rpg property={property} key={property._id} />
           
           );
         })}

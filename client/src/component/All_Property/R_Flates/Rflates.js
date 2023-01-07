@@ -24,7 +24,7 @@ const Rflates = (props) => {
       <div class=" card mb-3" style={{ boxShadow: "1px 4px 6px 2px  gray ", background: "f8f8f8", padding: "25px" }}>
         <div className="row" style={{ borderBottom: "2px solid lightgray" }}>
           <div class="col-sm-9" >
-            <h5 className="fs-8 mb-0"> <b>{property.rr_detail_description}</b> <i class="fa-solid fs-4 fa-square-arrow-up-right"></i> </h5>
+            <h5 className="fs-8 mb-0"> <b>{property.rfm_detail_description}</b> <i class="fa-solid fs-4 fa-square-arrow-up-right"></i> </h5>
             <p><span> {property.rr_location_city} , {property.rr_location_state} </span><img style={{ width: "20px" }} src={locationImg} alt="location" /></p>
           </div>
           <div className="col-sm-3">
@@ -129,7 +129,7 @@ const Rflates = (props) => {
               <Link className=" col-md-2 m-1 " style={{ border: "1px solid black", textAlign: "center", alignItems: "center" }} to={`/rrprop/${property._id}`}>
                 <img src={like} style={{ width: "30px" }} alt="unlike" />
               </Link>
-              <Link className="btn btn-outline-dark col-md-2 m-1 " style={{ borderRadius: "0px" }} to={`/rrent-detail/${property._id}`}>
+              <Link className="btn btn-outline-dark col-md-2 m-1 " style={{ borderRadius: "0px" }} to={`/rfm-detail/${property._id}`}>
                 More
               </Link>
 
