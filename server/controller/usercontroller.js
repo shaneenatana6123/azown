@@ -106,8 +106,8 @@ const kycupdate = async (req, res) => {
 const getuserdetail = async(req,res)=>{
   try{
     const userdata = await User.findOne({_id:req.user.id})
-     const imgurl   =await getObjectSignedUrl(userdata.imgname)
-     userdata.imgname= imgurl
+    //  const imgurl   =await getObjectSignedUrl(userdata.imgname)
+    //  userdata.imgname= imgurl
     
     res.json(userdata)
   }catch{

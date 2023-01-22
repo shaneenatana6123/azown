@@ -5,6 +5,5 @@ const connectToMongo = ()=>{
         console.log("Connected to Mongo Successfully");
     })
 }
-
 module.exports = connectToMongo;
 

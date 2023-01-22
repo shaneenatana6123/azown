@@ -115,80 +115,61 @@ const rr_PropSchema = new Schema({
         type:String
       },
       rr_amenities_lift :{
-        type:String,
-        default:"false"
+        type:Boolean
       },
     rr_amenities_ac :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_intercom :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_children_play_area :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_servant_room :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_gas_pipeline :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_rainwater_harvesting :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_housekeepiing :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_visitor_parking :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_internet :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_club_house :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_swimming_pool :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_fire_safety :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_shopping_center :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_park :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_sewage_treatment :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_power_backup :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_gated_security :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rr_amenities_gym :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     images:{
         type:[]
