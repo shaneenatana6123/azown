@@ -54,24 +54,19 @@ const rpg_PropSchema = new Schema({
     },
     
     rpg_rules_no_smoking:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_rules_no_guardian_stay:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_rules_no_girls_entry :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_rules_no_drinking :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_rules_no_non_veg :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     
     rpg_location_state:{
@@ -91,67 +86,52 @@ const rpg_PropSchema = new Schema({
     },
     
     rpg_amenities_cupboard :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_tv :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_bed :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_geyser :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_ac :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_attached_bathroom :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_laundry :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_room_cleaning :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_warden_facility :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_common_tv :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_lift :{
-        type:String
+        type:Boolean
     },
     rpg_amenities_wifi :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_power_backup :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_mess :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_fridge :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     rpg_amenities_mess_cooking :{
-        type:String,
-        default:"false"
+        type:Boolean
     },
    
     images:{

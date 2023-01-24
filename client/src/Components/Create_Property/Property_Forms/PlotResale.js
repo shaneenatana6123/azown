@@ -153,29 +153,34 @@ const PlotResale = () => {
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="ps_detail_description" className="form-control" />
+                          <input type="text" name="ps_detail_description" onChange={handleChange}  value={data.ps_detail_description}
+                           className="form-control" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Plot Length (.ft)</label>
-                          <input type="number" name="ps_detail_plot_length" className="form-control" />
+                          <input type="number" name="ps_detail_plot_length" onChange={handleChange}  value={data.ps_detail_plot_length} className="form-control" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Plot Width (.ft)</label>
-                          <input type="number" name="ps_detail_plot_width" className="form-control" />
+                          <input type="number" name="ps_detail_plot_width" onChange={handleChange}  value={data.ps_detail_plot_width} className="form-control" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Width of Facing Road (.ft)</label>
-                          <input type="number" name="ps_detail_width_of_facing_road" className="form-control" />
+                          <input type="number" name="ps_detail_width_of_facing_road" onChange={handleChange}  value={data.ps_detail_width_of_facing_road} className="form-control" />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-12 py-3">
                           <ul className="no-ul-list third-row">
                             <li>
-                              <input id="a-7" className="checkbox-custom" name="ps_detail_has_boundary" type="checkbox" />
+                              <input id="a-7" className="checkbox-custom" onChange={handleChange}  checked={data.ps_detail_has_boundary} name="ps_detail_has_boundary" type="checkbox" />
                               <label htmlFor="a-7" className="checkbox-custom-label">Boundary</label>
                             </li>
                             <li>
-                              <input id="a-8" className="checkbox-custom" name="ps_detail_inside_gated_project" type="checkbox" />
+                              <input id="a-8" className="checkbox-custom" onChange={handleChange}  checked={data.ps_detail_inside_gated_project} name="ps_detail_inside_gated_project" type="checkbox" />
                               <label htmlFor="a-8" className="checkbox-custom-label">Gated Security</label>
+                            </li>
+                            <li>
+                              <input hidden id="a-8" className="checkbox-custom"  type="checkbox" />
+                              <label hidden htmlFor="a-8" className="checkbox-custom-label">Gated Security</label>
                             </li>
                           </ul>
                         </div>
@@ -193,7 +198,7 @@ const PlotResale = () => {
                         <div className="form-group col-md-6">
                           <label>Locality</label>
                           {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.rrs_location_city} onChange={handleChange} name="rrs_location_city" />
+                          <input type="text" className="form-control" value={data.ps_location_city} onChange={handleChange} name="ps_location_city" />
                           {/* </Autocomplete> */}
 
                         </div>
@@ -214,7 +219,7 @@ const PlotResale = () => {
                       <div className="form-row">
                         <div className="form-group col-md-4">
                           <label>Allowed Floors</label>
-                          <input type="number" className="form-control h-120" name="ps_rules_allowed_floors" />
+                          <input type="number" onChange={handleChange}  value={data.ps_rules_allowed_floors} className="form-control h-120" name="ps_rules_allowed_floors" />
                         </div>
                       </div>
                     </div>
@@ -227,21 +232,25 @@ const PlotResale = () => {
                       <div className="form-row">
                         <div className="form-group col-md-4">
                           <label>Sale</label>
-                          <input type="number" className="form-control h-120" name="ps_sale_detail_price" />
+                          <input type="number" onChange={handleChange}  value={data.ps_sale_detail_price} className="form-control h-120" name="ps_sale_detail_price" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Available From</label>
-                          <input type="date" className="form-control h-120" name="ps_sale_detail_available_from" />
+                          <input type="date" className="form-control h-120" onChange={handleChange}  value={data.ps_sale_detail_available_from} name="ps_sale_detail_available_from" />
                         </div>
-                        <div className="form-group col-md-4">
+                        <div className="form-group col-md-12 py-3">
                           <ul className="no-ul-list third-row">
                             <li>
-                              <input id="a-9" className="checkbox-custom" name="ps_sale_detail_is_negotiable" type="checkbox" />
+                              <input id="a-9" className="checkbox-custom" onChange={handleChange}  checked={data.ps_sale_detail_is_negotiable} name="ps_sale_detail_is_negotiable" type="checkbox" />
                               <label htmlFor="a-9" className="checkbox-custom-label">Negotiable</label>
                             </li>
                             <li>
-                              <input id="a-10" className="checkbox-custom" name="ps_sale_detail_currently_under_loan" type="checkbox" />
+                              <input id="a-10" className="checkbox-custom"   onChange={handleChange}  checked={data.ps_sale_detail_currently_under_loan} name="ps_sale_detail_currently_under_loan" type="checkbox" />
                               <label htmlFor="a-10" className="checkbox-custom-label">Currently Under Loan</label>
+                            </li>
+                            <li>
+                              <input id="a-10" hidden className="checkbox-custom" name="ps_sale_detail_currently_under_loan" type="checkbox" />
+                              <label htmlFor="a-10" hidden className="checkbox-custom-label">Currently Under Loan</label>
                             </li>
                           </ul>
                         </div>
@@ -250,20 +259,28 @@ const PlotResale = () => {
                           <div className="o-features">
                             <ul className="no-ul-list third-row">
                               <li>
-                                <input id="a-1" className="checkbox-custom" name="ps_amenities_water" type="checkbox" />
+                                <input id="a-1" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_water} name="ps_amenities_water" type="checkbox" />
                                 <label htmlFor="a-1" className="checkbox-custom-label">Water</label>
                               </li>
                               <li>
-                                <input id="a-2" className="checkbox-custom" name="ps_amenities_sewage_connection" type="checkbox" />
+                                <input id="a-2" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_sewage_connection} name="ps_amenities_sewage_connection" type="checkbox" />
                                 <label htmlFor="a-2" className="checkbox-custom-label">Sewage Connection</label>
                               </li>
                               <li>
-                                <input id="a-3" className="checkbox-custom" name="ps_amenities_gated_security" type="checkbox" />
+                                <input id="a-3" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_gated_security} name="ps_amenities_gated_security" type="checkbox" />
                                 <label htmlFor="a-3" className="checkbox-custom-label">Gated Security</label>
                               </li>
                               <li>
-                                <input id="a-4" className="checkbox-custom" name="ps_amenities_electricity_connection" type="checkbox" />
+                                <input id="a-4" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_electricity_connection} name="ps_amenities_electricity_connection" type="checkbox" />
                                 <label htmlFor="a-4" className="checkbox-custom-label">Electricity Connection</label>
+                              </li>
+                              <li>
+                                <input id="a-4" className="checkbox-custom " hidden  name="ps_amenities_electricity_connection" type="checkbox" />
+                                <label htmlFor="a-4" hidden className="checkbox-custom-label">Electricity Connection</label>
+                              </li>
+                              <li>
+                                <input id="a-4" hidden className="checkbox-custom " name="ps_amenities_electricity_connection" type="checkbox" />
+                                <label htmlFor="a-4" hidden className="checkbox-custom-label">Electricity Connection</label>
                               </li>
                             </ul>
                           </div>
@@ -275,7 +292,7 @@ const PlotResale = () => {
                             <div className="form-row">
                               <div className="form-group col-md-6">
                                 <label>Ownership</label>
-                                <select id="status" name="ps_info_ownership" className="form-control">
+                                <select id="status" name="ps_info_ownership" onChange={handleChange}  value={data.ps_info_ownership} className="form-control">
                                   <option value>&nbsp;</option>
                                   <option value="Freehold">Freehold</option>
                                   <option value="Leasehold">Leasehold</option>
@@ -285,23 +302,23 @@ const PlotResale = () => {
                               </div>
                               <ul className="no-ul-list third-row">
                                 <li>
-                                  <input id="a-5" className="checkbox-custom" name="ps_info_khata_certificate_is_available" type="checkbox" />
+                                  <input id="a-5" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_khata_certificate_is_available} name="ps_info_khata_certificate_is_available" type="checkbox" />
                                   <label htmlFor="a-5" className="checkbox-custom-label">Khata Certificate is Available</label>
                                 </li>
                                 <li>
-                                  <input id="a-6" className="checkbox-custom" name="ps_info_conversion_certificate_is_available" type="checkbox" />
+                                  <input id="a-6" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_conversion_certificate_is_available} name="ps_info_conversion_certificate_is_available" type="checkbox" />
                                   <label htmlFor="a-6" className="checkbox-custom-label">Conversion Certificate is Available</label>
                                 </li>
                                 <li>
-                                  <input id="a-7" className="checkbox-custom" name="ps_info_sale_deed_certificate_is_available" type="checkbox" />
+                                  <input id="a-7" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_sale_deed_certificate_is_available}  name="ps_info_sale_deed_certificate_is_available" type="checkbox" />
                                   <label htmlFor="a-7" className="checkbox-custom-label">Sale Deed Certificate is Available</label>
                                 </li>
                                 <li>
-                                  <input id="a-11" className="checkbox-custom" name="ps_info_encumbrance_certificate_is_available" type="checkbox" />
+                                  <input id="a-11" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_encumbrance_certificate_is_available} name="ps_info_encumbrance_certificate_is_available" type="checkbox" />
                                   <label htmlFor="a-11" className="checkbox-custom-label">Encumbrance Certificate is Available</label>
                                 </li>
                                 <li>
-                                  <input id="a-12" className="checkbox-custom" name="ps_info_is_rera_approved" type="checkbox" />
+                                  <input id="a-12" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_is_rera_approved}  name="ps_info_is_rera_approved" type="checkbox" />
                                   <label htmlFor="a-12" className="checkbox-custom-label">Rera Approved</label>
                                 </li>
                                 <li>

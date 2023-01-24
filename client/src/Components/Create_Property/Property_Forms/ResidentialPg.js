@@ -22,17 +22,20 @@ const ResidentialPg = () => {
     rpg_detail_gate_shut_time: "",
     rpg_detail_parking: "",
 
-    rpg_rules_no_smoking: "",
-    rpg_rules_no_guardian_stay: "",
-    rpg_rules_no_girls_entry: "",
-    rpg_rules_no_drinking: "",
-    rpg_rules_no_non_veg: "",
+    rpg_detail_room_rent:"",
+
+    rpg_rules_no_smoking:false,
+    rpg_rules_no_guardian_stay:false,
+    rpg_rules_no_girls_entry:false,
+    rpg_rules_no_drinking:false,
+    rpg_rules_no_non_veg:false,
 
     rpg_location_state: "",
     rpg_location_city: "",
     rpg_location_latitiude: "",
     rpg_location_longitude: "",
     rpg_location_iframe: "",
+
 
     rpg_amenities_cupboard: "",
     rpg_amenities_tv: "",
@@ -85,6 +88,8 @@ const ResidentialPg = () => {
     formData.append("rpg_rules_no_girls_entry", data.rpg_rules_no_girls_entry)
     formData.append("rpg_rules_no_drinking", data.rpg_rules_no_drinking)
     formData.append("rpg_rules_no_non_veg", data.rpg_rules_no_non_veg)
+
+    formData.append("rpg_detail_room_rent",data.rpg_detail_room_rent) 
 
     formData.append("rpg_location_state", data.rpg_location_state)
     formData.append("rpg_location_city", data.rpg_location_city)
@@ -162,12 +167,12 @@ const ResidentialPg = () => {
                     <div className="frm_submit_wrap">
                       <div className="form-row">
                         <div className="form-group col-md-12">
-                          <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="rpg_detail_description" className="form-control" />
+                          <label>Property Title<a href className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
+                          <input type="text" name="rpg_detail_description" onChange={handleChange}  value={data.rpg_detail_description} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Room Occupany</label>
-                          <select id="status" className="form-control" name="rpg_detail_room_occupany">
+                          <select id="status" className="form-control" onChange={handleChange} value={data.rpg_detail_room_occupany}  name="rpg_detail_room_occupany">
                             <option value>&nbsp;</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -177,7 +182,7 @@ const ResidentialPg = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Prefered Guest</label>
-                          <select id="ptypes" name="rpg_detail_pref_guest" className="form-control">
+                          <select id="ptypes" name="rpg_detail_pref_guest" onChange={handleChange} value={data.rpg_detail_pref_guest}   className="form-control">
                             <option value>&nbsp;</option>
                             <option value="working professional">Working Professional</option>
                             <option value="student">Student</option>
@@ -186,15 +191,15 @@ const ResidentialPg = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Rent</label>
-                          <input type="number" name="rpg_detail_room_rent" className="form-control" />
+                          <input type="number" name="rpg_detail_room_rent" onChange={handleChange} value={data.rpgde}   className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Room Deposit</label>
-                          <input name="rpg_detail_room_deposit" type="text" className="form-control" />
+                          <input name="rpg_detail_room_deposit" type="number" onChange={handleChange} value={data.rpg_detail_room_deposit}   className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Available For</label>
-                          <select id="bedrooms" name="rpg_detail_availablefor" className="form-control">
+                          <select id="bedrooms" name="rpg_detail_availablefor" onChange={handleChange} value={data.rpg_detail_availablefor}   className="form-control">
                             <option value>&nbsp;</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -203,7 +208,7 @@ const ResidentialPg = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Parking</label>
-                          <select id="bathrooms" name="rpg_detail_parking" className="form-control">
+                          <select id="bathrooms" name="rpg_detail_parking" onChange={handleChange} value={data.rpg_detail_parking}   className="form-control">
                             <option value>&nbsp;</option>
                             <option value="car">Car</option>
                             <option value="bike">Bike</option>
@@ -213,11 +218,11 @@ const ResidentialPg = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Available From</label>
-                          <input name="rpg_detail_available_from" type="date" className="form-control" />
+                          <input name="rpg_detail_available_from" onChange={handleChange} value={data.rpg_detail_available_from}   type="date" className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Gate Close Time</label>
-                          <input name="rpg_detail_gate_shut_time" type="time" className="form-control" />
+                          <input name="rpg_detail_gate_shut_time" onChange={handleChange} value={data.rpg_detail_gate_shut_time}   type="time" className="form-control" />
                         </div>
                       </div>
                     </div>
@@ -233,7 +238,7 @@ const ResidentialPg = () => {
                         <div className="form-group col-md-6">
                           <label>Locality</label>
                           {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.rpg_location_city} onChange={handleChange} name="rpg_location_city" />
+                          <input type="text" className="form-control" onChange={handleChange} value={data.rpg_location_city}  name="rpg_location_city" />
                           {/* </Autocomplete> */}
 
                         </div>
@@ -255,67 +260,64 @@ const ResidentialPg = () => {
                           <div className="o-features">
                             <ul className="no-ul-list third-row">
                               <li>
-                                <input id="a-6" className="checkbox-custom" name="rpg_amenities_cupboard" type="checkbox" />
+                                <input id="a-6" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_cupboard}    name="rpg_amenities_cupboard" type="checkbox" />
                                 <label htmlFor="a-6" className="checkbox-custom-label">Cupboard</label>
                               </li>
                               <li>
-                                <input id="a-7" className="checkbox-custom" name="rpg_amenities_tv" type="checkbox" />
+                                <input id="a-7" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_tv} name="rpg_amenities_tv" type="checkbox" />
                                 <label htmlFor="a-7" className="checkbox-custom-label">TV</label>
                               </li>
                               <li>
-                                <input id="a-8" className="checkbox-custom" name="rpg_amenities_bed" type="checkbox" />
+                                <input id="a-8" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_bed} name="rpg_amenities_bed" type="checkbox" />
                                 <label htmlFor="a-8" className="checkbox-custom-label">Bed</label>
                               </li>
                               <li>
-                                <input id="a-9" className="checkbox-custom" name="rpg_amenities_geyser" type="checkbox" />
+                                <input id="a-9" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_geyser} name="rpg_amenities_geyser" type="checkbox" />
                                 <label htmlFor="a-9" className="checkbox-custom-label">Geyser</label>
                               </li>
                               <li>
-                                <input id="a-10" className="checkbox-custom" name="rpg_amenities_ac" type="checkbox" />
+                                <input id="a-10" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_ac} name="rpg_amenities_ac" type="checkbox" />
                                 <label htmlFor="a-10" className="checkbox-custom-label">AC</label>
                               </li>
                               <li>
-                                <input id="a-11" className="checkbox-custom" name="rpg_amenities_attached_bathroom" type="checkbox" />
+                                <input id="a-11" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_attached_bathroom} name="rpg_amenities_attached_bathroom" type="checkbox" />
                                 <label htmlFor="a-11" className="checkbox-custom-label">Attached Bathroom</label>
                               </li>
                               <li>
-                                <input id="a-12" className="checkbox-custom" name="rpg_amenities_laundry" type="checkbox" />
+                                <input id="a-12" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_laundry} name="rpg_amenities_laundry" type="checkbox" />
                                 <label htmlFor="a-12" className="checkbox-custom-label">Laundry</label>
                               </li>
                               <li>
-                                <input id="a-13" className="checkbox-custom" name="rpg_amenities_room_cleaning" type="checkbox" />
+                                <input id="a-13" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_room_cleaning} name="rpg_amenities_room_cleaning" type="checkbox" />
                                 <label htmlFor="a-13" className="checkbox-custom-label">Room Cleaning</label>
                               </li>
-                              <li>
-                                <input id="a-14" className="checkbox-custom" name="rpg_amenities_warden_facility" type="checkbox" />
+                              {/* <li>
+                                <input id="a-14" className="checkbox-custom" onChange={handleChange} checked={} name="rpg_amenities_warden_facility" type="checkbox" />
                                 <label htmlFor="a-14" className="checkbox-custom-label">Warden Facility</label>
-                              </li>
+                              </li> */}
+                              
                               <li>
-                                <input id="a-15" className="checkbox-custom" name="rpg_amenities_common_tv" type="checkbox" />
-                                <label htmlFor="a-15" className="checkbox-custom-label">Common TV</label>
-                              </li>
-                              <li>
-                                <input id="a-16" className="checkbox-custom" name="rpg_amenities_lift" type="checkbox" />
+                                <input id="a-16" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_lift} name="rpg_amenities_lift" type="checkbox" />
                                 <label htmlFor="a-16" className="checkbox-custom-label">Lift</label>
                               </li>
                               <li>
-                                <input id="a-17" className="checkbox-custom" name="rpg_amenities_wifi" type="checkbox" />
+                                <input id="a-17" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_wifi} name="rpg_amenities_wifi" type="checkbox" />
                                 <label htmlFor="a-17" className="checkbox-custom-label">WiFi</label>
                               </li>
                               <li>
-                                <input id="a-18" className="checkbox-custom" name="rpg_amenities_power_backup" type="checkbox" />
+                                <input id="a-18" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_power_backup} name="rpg_amenities_power_backup" type="checkbox" />
                                 <label htmlFor="a-18" className="checkbox-custom-label">Power Bakup</label>
                               </li>
                               <li>
-                                <input id="a-19" className="checkbox-custom" name="rpg_amenities_mess" type="checkbox" />
+                                <input id="a-19" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_mess} name="rpg_amenities_mess" type="checkbox" />
                                 <label htmlFor="a-19" className="checkbox-custom-label">Mess</label>
                               </li>
                               <li>
-                                <input id="a-20" className="checkbox-custom" name="rpg_amenities_fridge" type="checkbox" />
+                                <input id="a-20" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_fridge} name="rpg_amenities_fridge" type="checkbox" />
                                 <label htmlFor="a-20" className="checkbox-custom-label">Mess</label>
                               </li>
                               <li>
-                                <input id="a-21" className="checkbox-custom" name="rpg_amenities_mess_cooking" type="checkbox" />
+                                <input id="a-21" className="checkbox-custom" onChange={handleChange} checked={data.rpg_amenities_mess_cooking} name="rpg_amenities_mess_cooking" type="checkbox" />
                                 <label htmlFor="a-21" className="checkbox-custom-label">Mess Cooking</label>
                               </li>
                             </ul>
@@ -332,27 +334,27 @@ const ResidentialPg = () => {
                       <div className="form-row">
                         <ul className="no-ul-list third-row">
                           <li>
-                            <input id="a-1" className="checkbox-custom" name="rpg_rules_no_smoking" type="checkbox" />
+                            <input id="a-1" className="checkbox-custom" onChange={handleChange} checked={data.rpg_rules_no_smoking}  name="rpg_rules_no_smoking" type="checkbox" />
                             <label htmlFor="a-1" className="checkbox-custom-label">No Smoking</label>
                           </li>
                           <li>
-                            <input id="a-2" className="checkbox-custom" name="rpg_rules_no_guardian_stay" type="checkbox" />
+                            <input id="a-2" className="checkbox-custom" onChange={handleChange} checked={data.rpg_rules_no_guardian_stay} name="rpg_rules_no_guardian_stay" type="checkbox" />
                             <label htmlFor="a-2" className="checkbox-custom-label">No Guardian Stay</label>
                           </li>
                           <li>
-                            <input id="a-3" className="checkbox-custom" name="rpg_rules_no_girls_entry" type="checkbox" />
+                            <input id="a-3" className="checkbox-custom" onChange={handleChange} checked={data.rpg_rules_no_girls_entry} name="rpg_rules_no_girls_entry" type="checkbox" />
                             <label htmlFor="a-3" className="checkbox-custom-label">No Girls Entry</label>
                           </li>
                           <li>
-                            <input id="a-4" className="checkbox-custom" name="rpg_rules_no_drinking" type="checkbox" />
+                            <input id="a-4" className="checkbox-custom" onChange={handleChange} checked={data.rpg_rules_no_drinking}  name="rpg_rules_no_drinking" type="checkbox" />
                             <label htmlFor="a-4" className="checkbox-custom-label">No Drinking</label>
                           </li>
                           <li>
-                            <input id="a-5" className="checkbox-custom" name="rpg_rules_no_non_veg" type="checkbox" />
+                            <input id="a-5" className="checkbox-custom" onChange={handleChange} checked={data.rpg_rules_no_non_veg}  name="rpg_rules_no_non_veg" type="checkbox" />
                             <label htmlFor="a-5" className="checkbox-custom-label">No Non-Veg</label>
                           </li>
                           <li>
-                            <input hidden id="a-5" className="checkbox-custom" type="checkbox" />
+                            <input hidden id="a-5" className="checkbox-custom" onChange={handleChange}   type="checkbox" />
                             <label hidden htmlFor="a-5" className="checkbox-custom-label">No Non-Veg</label>
                           </li>
                         </ul>

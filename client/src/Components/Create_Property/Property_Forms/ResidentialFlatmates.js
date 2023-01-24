@@ -198,11 +198,11 @@ const ResidentialFlatmates = () => {
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="rfm_detail_description" className="form-control" />
+                          <input type="text" name="rfm_detail_description" onChange={handleChange} value={data} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>BHK Type</label>
-                          <select id="status" name="rfm_detail_bhk_type" className="form-control">
+                          <select id="status" name="rfm_detail_bhk_type" onChange={handleChange} value={data} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="1 RK">1 RK</option>
                             <option value="1 bhk">1 BHK</option>
@@ -213,7 +213,7 @@ const ResidentialFlatmates = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Property Type</label>
-                          <select id="ptypes" className="form-control" name="rfm_detail_app_type">
+                          <select id="ptypes" className="form-control" onChange={handleChange}  name="rfm_detail_app_type">
                             <option value>&nbsp;</option>
                             <option value="appartment">Appartment</option>
                             <option value="independent house villa">Independent House Villa</option>
