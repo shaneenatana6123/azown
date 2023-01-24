@@ -85,32 +85,25 @@ const cmr_PropSchema = new Schema({
     },
     
     cr_amenities_power_backup : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_lift: {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_parking : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_washroom : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_water_storage  : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_security : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
     cr_amenities_wifi : {
-        type:String,
-        default:"false"
+        type:Boolean
     },
    
     

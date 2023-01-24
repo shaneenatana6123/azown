@@ -75,32 +75,25 @@ cs_resale_details_available_from :{
 },
 
 cs_amenities_power_backup  :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_lift :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_parking :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_washroom :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_water_storage  :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_security :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
 cs_amenities_wifi :{
-    type:String,
-    default:"false"
+    type:Boolean
 },
    
 

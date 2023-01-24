@@ -35,10 +35,10 @@ const plot_PropSchema = new Schema({
         type:String
     },
     ps_detail_has_boundary :{
-        type:String
+        type:Boolean
     },
     ps_detail_inside_gated_project:{
-        type:String
+        type:Boolean
     },
     
     ps_rules_allowed_floors :{
@@ -65,47 +65,43 @@ const plot_PropSchema = new Schema({
         type:String
     },
     ps_sale_detail_is_negotiable:{
-        type:String
+        type:Boolean
     },
     ps_sale_detail_currently_under_loan:{
-        type:String,
+        type:Boolean
 
     },
     
     ps_amenities_water:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     ps_amenities_sewage_connection:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     ps_amenities_gated_security:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     ps_amenities_electricity_connection:{
-        type:String,
-        default:"false"
+        type:Boolean
     },
     
     ps_info_ownership :{
         type:String
     },
     ps_info_khata_certificate_is_available:{
-        type:String
+        type:Boolean
     },
     ps_info_conversion_certificate_is_available:{
-        type:String
+        type:Boolean
     },
     ps_info_sale_deed_certificate_is_available:{
-        type:String
+        type:Boolean
     },
     ps_info_encumbrance_certificate_is_available:{
-        type:String
+        type:Boolean
     },
     ps_info_is_rera_approved:{
-        type:String
+        type:Boolean
     },
     
    
