@@ -154,43 +154,43 @@ const CommercialSale = () => {
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="cs_detail_description" className="form-control" />
+                          <input type="text" name="cs_detail_description" onChange={handleChange} value={data.cs_detail_description} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Property Type</label>
-                          <select id="ptypes" name="cs_detail_property_type" className="form-control">
+                          <select id="ptypes" name="cs_detail_property_type" onChange={handleChange} value={data.cs_detail_property_type} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="office space">Office Space</option>
-                            <option value="co-working">co-working</option>
-                            <option value="shop">Shop</option>
-                            <option value="showroom">Showroom</option>
-                            <option value="godown">Godown</option>
-                            <option value="warehouse">Warehouse</option>
-                            <option value="industrial shed">Industrial Shed</option>
-                            <option value="industrial building">Industrial Building</option>
-                            <option value="restaurant">Restaurant</option>
-                            <option value="cafe">Cafe</option>
-                            <option value="other business">Other Business</option>
+                            <option value="Office Space">Office Space</option>
+                            <option value="Co-Working">Co-Working</option>
+                            <option value="Shop">Shop</option>
+                            <option value="Showroom">Showroom</option>
+                            <option value="Godown">Godown</option>
+                            <option value="Warehouse">Warehouse</option>
+                            <option value="Industrial Shed">Industrial Shed</option>
+                            <option value="Industrial Building">Industrial Building</option>
+                            <option value="Restaurant">Restaurant</option>
+                            <option value="Cafe">Cafe</option>
+                            <option value="Other Business">Other Business</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Builtup Area</label>
-                          <input type="text" name="cs_detail_builtup_area" className="form-control" />
+                          <input type="text" name="cs_detail_builtup_area" onChange={handleChange} value={data.cs_detail_builtup_area} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Building Type</label>
-                          <select id="bedrooms" name="cs_detail_building_type" className="form-control">
+                          <select id="bedrooms" name="cs_detail_building_type" onChange={handleChange} value={data.cs_detail_building_type} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="independent house">Independent House</option>
-                            <option value="business park">Business Park</option>
-                            <option value="mall">Mall</option>
-                            <option value="standalone building">Standalone Building</option>
-                            <option value="independent shop">Independent Shop</option>
+                            <option value="Independent House">Independent House</option>
+                            <option value="Business Park">Business Park</option>
+                            <option value="Mall">Mall</option>
+                            <option value="Standalone Building">Standalone Building</option>
+                            <option value="Independent Shop">Independent Shop</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>property Age</label>
-                          <select id="bathrooms" name="cs_detail_prop_age" className="form-control">
+                          <select id="bathrooms" name="cs_detail_prop_age" onChange={handleChange} value={data.cs_detail_prop_age} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="0-10 yrs">0-10 yrs</option>
                             <option value="10-20 yrs">00-20 yrs</option>
@@ -202,7 +202,7 @@ const CommercialSale = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Floor</label>
-                          <select id="bathrooms" name="cs_detail_floor" className="form-control">
+                          <select id="bathrooms" name="cs_detail_floor" onChange={handleChange} value={data.cs_detail_floor} className="form-control">
                             <option value>&nbsp;</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -218,23 +218,23 @@ const CommercialSale = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Total Floor</label>
-                          <select id="bathrooms" name="cs_detail_total_floor" className="form-control">
+                          <select id="bathrooms" name="cs_detail_total_floor" onChange={handleChange} value={data.cs_detail_total_floor} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="0-10 floor">0-10 Floor</option>
-                            <option value="10-20 floor">10-20 Floor</option>
-                            <option value="20-30 floor">20-30 Floor</option>
-                            <option value="30-40 floor">30-40 Floor</option>
-                            <option value="40-50 floor">40-50 Floor</option>
-                            <option value="50+ floor">50+ Floor</option>
+                            <option value="0-10 Floor">0-10 Floor</option>
+                            <option value="10-20 Floor">10-20 Floor</option>
+                            <option value="20-30 Floor">20-30 Floor</option>
+                            <option value="30-40 Floor">30-40 Floor</option>
+                            <option value="40-50 Floor">40-50 Floor</option>
+                            <option value="50+ Floor">50+ Floor</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Furnishing</label>
-                          <select id="bathrooms" name="cs_detail_furnishing" className="form-control">
+                          <select id="bathrooms" name="cs_detail_furnishing" onChange={handleChange} value={data.cs_detail_furnishing} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="furnished">Furnished</option>
-                            <option value="unfurnished">Unfurnished</option>
-                            <option value="semi furnished">Semi Furnished</option>
+                            <option value="Furnished">Furnished</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                            <option value="Semi Furnished">Semi Furnished</option>
                           </select>
                         </div>
                       </div>
@@ -252,7 +252,7 @@ const CommercialSale = () => {
                         <div className="form-group col-md-6">
                           <label>Locality</label>
                           {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.rrs_location_city} onChange={handleChange} name="rrs_location_city" />
+                          <input type="text" className="form-control" value={data.cs_location_city} onChange={handleChange} name="cs_location_city" />
                           {/* </Autocomplete> */}
 
                         </div>
@@ -272,50 +272,50 @@ const CommercialSale = () => {
                       <div className="form-row">
                         <div className="form-group col-md-4">
                           <label>Resale</label>
-                          <input type="number" className="form-control h-120" name="cs_resale_details_exp_price" />
+                          <input type="number" className="form-control h-120" onChange={handleChange} value={data.cs_resale_details_exp_price} name="cs_resale_details_exp_price" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Maintenance</label>
-                          <select id="bage" name="cs_resale_details_maintenance" className="form-control">
+                          <select id="bage" name="cs_resale_details_maintenance" onChange={handleChange} value={data.cs_resale_details_maintenance} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="maintenance included">Maintenance Included</option>
-                            <option value="maintenance extra">Maintenance Extra</option>
+                            <option value="Maintenance Included">Maintenance Included</option>
+                            <option value="Maintenance Extra">Maintenance Extra</option>
                           </select>
                         </div>
                         <div className="form-group col-md-4">
                           <label>Available From</label>
-                          <input type="date" className="form-control h-120" name="cs_resale_details_available_from" />
+                          <input type="date" className="form-control h-120" onChange={handleChange} value={data.cs_resale_details_available_from} name="cs_resale_details_available_from" />
                         </div>
                         <div className="form-group col-md-12">
                           <label>Other Features (optional)</label>
                           <div className="o-features">
                             <ul className="no-ul-list third-row">
                               <li>
-                                <input id="a-1" className="checkbox-custom" name="cs_amenities_power_backup" type="checkbox" />
+                                <input id="a-1" className="checkbox-custom" name="cs_amenities_power_backup" onChange={handleChange} checked={data.cs_amenities_power_backup} type="checkbox" />
                                 <label htmlFor="a-1" className="checkbox-custom-label">Power Backup</label>
                               </li>
                               <li>
-                                <input id="a-2" className="checkbox-custom" name="cs_amenities_lift" type="checkbox" />
+                                <input id="a-2" className="checkbox-custom" name="cs_amenities_lift" onChange={handleChange} checked={data.cs_amenities_lift} type="checkbox" />
                                 <label htmlFor="a-2" className="checkbox-custom-label">Lift</label>
                               </li>
                               <li>
-                                <input id="a-3" className="checkbox-custom" name="cs_amenities_parking" type="checkbox" />
+                                <input id="a-3" className="checkbox-custom" name="cs_amenities_parking" onChange={handleChange} checked={data.cs_amenities_parking} type="checkbox" />
                                 <label htmlFor="a-3" className="checkbox-custom-label">Parking</label>
                               </li>
                               <li>
-                                <input id="a-4" className="checkbox-custom" name="cs_amenities_washroom" type="checkbox" />
+                                <input id="a-4" className="checkbox-custom" name="cs_amenities_washroom" onChange={handleChange} checked={data.cs_amenities_washroom} type="checkbox" />
                                 <label htmlFor="a-4" className="checkbox-custom-label">Washroom</label>
                               </li>
                               <li>
-                                <input id="a-5" className="checkbox-custom" name="cs_amenities_water_storage" type="checkbox" />
+                                <input id="a-5" className="checkbox-custom" name="cs_amenities_water_storage" onChange={handleChange} checked={data.cs_amenities_water_storage} type="checkbox" />
                                 <label htmlFor="a-5" className="checkbox-custom-label">Water Storage</label>
                               </li>
                               <li>
-                                <input id="a-6" className="checkbox-custom" name="cs_amenities_security" type="checkbox" />
+                                <input id="a-6" className="checkbox-custom" name="cs_amenities_security" onChange={handleChange} checked={data.cs_amenities_security} type="checkbox" />
                                 <label htmlFor="a-6" className="checkbox-custom-label">Security</label>
                               </li>
                               <li>
-                                <input id="a-7" className="checkbox-custom" name="cs_amenities_wifi" type="checkbox" />
+                                <input id="a-7" className="checkbox-custom" name="cs_amenities_wifi" onChange={handleChange} checked={data.cs_amenities_power_wifi} type="checkbox" />
                                 <label htmlFor="a-7" className="checkbox-custom-label">WiFi</label>
                               </li>
                             </ul>

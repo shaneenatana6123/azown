@@ -15073,3 +15073,15 @@ h1, .h1 {
 }
 
 
+.rr_list{
+    color: black;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.location_fuzail{
+line-height: 1px; font-size: 12px; margin: -22px 0 0px;
+}

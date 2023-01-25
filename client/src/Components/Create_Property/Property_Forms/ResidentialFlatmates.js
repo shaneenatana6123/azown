@@ -29,7 +29,7 @@ const ResidentialFlatmates = () => {
     rfm_detail_balcony: "",
     rfm_detail_water_supply: "",
 
-    rfm_rules_is_non_veg_allowed: "",
+    rfm_rules_is_non_veg_allowed: false,
 
     rfm_location_state: "",
     rfm_location_city: "",
@@ -43,25 +43,25 @@ const ResidentialFlatmates = () => {
     rfm_rental_detail_monthly_maintenance: "",
     rfm_rental_detail_avail_from: "",
 
-    rfm_amenities_lift: "",
-    rfm_amenities_ac: "",
-    rfm_amenities_intercom: "",
-    rfm_amenities_children_play_area: "",
-    rfm_amenities_servant_room: "",
-    rfm_amenities_gas_pipeline: "",
-    rfm_amenities_rainwater_harvesting: "",
-    rfm_amenities_housekeepiing: "",
-    rfm_amenities_visitor_parking: "",
-    rfm_amenities_internet: "",
-    rfm_amenities_club_house: "",
-    rfm_amenities_swimming_pool: "",
-    rfm_amenities_fire_safety: "",
-    rfm_amenities_shopping_center: "",
-    rfm_amenities_park: "",
-    rfm_amenities_sewage_treatment: "",
-    rfm_amenities_power_backup: "",
-    rfm_amenities_gated_security: "",
-    rfm_amenities_gym: "",
+    rfm_amenities_lift: false,
+    rfm_amenities_ac: false,
+    rfm_amenities_intercom: false,
+    rfm_amenities_children_play_area: false,
+    rfm_amenities_servant_room: false,
+    rfm_amenities_gas_pipeline: false,
+    rfm_amenities_rainwater_harvesting: false,
+    rfm_amenities_housekeepiing: false,
+    rfm_amenities_visitor_parking: false,
+    rfm_amenities_internet: false,
+    rfm_amenities_club_house: false,
+    rfm_amenities_swimming_pool: false,
+    rfm_amenities_fire_safety: false,
+    rfm_amenities_shopping_center: false,
+    rfm_amenities_park: false,
+    rfm_amenities_sewage_treatment: false,
+    rfm_amenities_power_backup: false,
+    rfm_amenities_gated_security: false,
+    rfm_amenities_gym: false,
   })
   const nextStep = () => {
     setCurrentStep(currentStep + 1);
@@ -184,8 +184,7 @@ const ResidentialFlatmates = () => {
           <div className="row">
             <div className="col-lg-12 col-md-12">
               <div className="alert alert-info" role="alert">
-                <p>If you don't have an account you can create one by <a href="#">Click Here</a></p>
-              </div>
+                <p>If you don't have an account you can create one by <a href="#">Click Here</a></p>              </div>
             </div>
             {/* Submit Form */}
             <div className="col-lg-12 col-md-12">
@@ -198,58 +197,58 @@ const ResidentialFlatmates = () => {
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="rfm_detail_description" onChange={handleChange} value={data} className="form-control" />
+                          <input type="text" name="rfm_detail_description" onChange={handleChange} value={data.rfm_detail_description} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>BHK Type</label>
-                          <select id="status" name="rfm_detail_bhk_type" onChange={handleChange} value={data} className="form-control">
+                          <select id="status" name="rfm_detail_bhk_type" onChange={handleChange} value={data.rfm_detail_bhk_type} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="1 RK">1 RK</option>
-                            <option value="1 bhk">1 BHK</option>
-                            <option value="2 bhk">2 BHK</option>
-                            <option value="3 bhk">3 BHK</option>
-                            <option value="4 bhk">4 BHK</option>
+                            <option value="1 BHK">1 BHK</option>
+                            <option value="2 BHK">2 BHK</option>
+                            <option value="3 BHK">3 BHK</option>
+                            <option value="4 BHK">4 BHK</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Property Type</label>
-                          <select id="ptypes" className="form-control" onChange={handleChange}  name="rfm_detail_app_type">
+                          <select id="ptypes" className="form-control" onChange={handleChange}  name="rfm_detail_app_type"  value={data.rfm_detail_app_type}>
                             <option value>&nbsp;</option>
-                            <option value="appartment">Appartment</option>
-                            <option value="independent house villa">Independent House Villa</option>
-                            <option value="gateed community villa">Gated Community Villa</option>
+                            <option value="Appartment">Appartment</option>
+                            <option value="Independent House Villa">Independent House Villa</option>
+                            <option value="Gateed Community Villa">Gated Community Villa</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Floor</label>
-                          <select id="ptypes" className="form-control" name="rfm_detail_floor">
+                          <select id="ptypes" className="form-control" onChange={handleChange} value={data.rfm_detail_floor} name="rfm_detail_floor">
                             <option value>&nbsp;</option>
-                            <option value="1 floor">1 Floor</option>
-                            <option value="2 floor">2 Floor</option>
-                            <option value="3 floor">3 Floor</option>
-                            <option value="4 floor">4 Floor</option>
-                            <option value="5 floor">5 Floor</option>
-                            <option value="6 floor">6 Floor</option>
-                            <option value="7 floor">7 Floor</option>
-                            <option value="8 floor">8 Floor</option>
-                            <option value="9 floor">9 Floor</option>
+                            <option value="1 Floor">1 Floor</option>
+                            <option value="2 Floor">2 Floor</option>
+                            <option value="3 Floor">3 Floor</option>
+                            <option value="4 Floor">4 Floor</option>
+                            <option value="5 Floor">5 Floor</option>
+                            <option value="6 Floor">6 Floor</option>
+                            <option value="7 Floor">7 Floor</option>
+                            <option value="8 Floor">8 Floor</option>
+                            <option value="9 Floor">9 Floor</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Total Floor</label>
-                          <select id="ptypes" className="form-control" name="rfm_detail_total_floor">
+                          <select id="ptypes" className="form-control" onChange={handleChange} value={data.rfm_detail_total_floor} name="rfm_detail_total_floor">
                             <option value>&nbsp;</option>
-                            <option value="0-10 floor">0-10 Floor</option>
-                            <option value="10-20 floor">10-20 Floor</option>
-                            <option value="20-30 floor">20-30 Floor</option>
-                            <option value="30-40 floor">30-40 Floor</option>
-                            <option value="40-50 floor">40-50 Floor</option>
-                            <option value="50+ floor">50+ Floor</option>
+                            <option value="0-10 Floor">0-10 Floor</option>
+                            <option value="10-20 Floor">10-20 Floor</option>
+                            <option value="20-30 Floor">20-30 Floor</option>
+                            <option value="30-40 Floor">30-40 Floor</option>
+                            <option value="40-50 Floor">40-50 Floor</option>
+                            <option value="50+ Floor">50+ Floor</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Property Age</label>
-                          <select id="ptypes" className="form-control" name="rfm_detail_prop_age">
+                          <select id="ptypes" className="form-control" onChange={handleChange} value={data.rfm_detail_prop_age} name="rfm_detail_prop_age">
                             <option value>&nbsp;</option>
                             <option value="0-10 yrs">0-10 yrs</option>
                             <option value="10-20 yrs">10-20 yrs</option>
@@ -261,56 +260,56 @@ const ResidentialFlatmates = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Facing</label>
-                          <select id="ptypes" className="form-control" name="rfm_detail_facing">
+                          <select id="ptypes" className="form-control" onChange={handleChange} value={data.rfm_detail_facing} name="rfm_detail_facing">
                             <option value>&nbsp;</option>
-                            <option value="north">North</option>
-                            <option value="east">East</option>
-                            <option value="west">West</option>
-                            <option value="south">South</option>
+                            <option value="North">North</option>
+                            <option value="East">East</option>
+                            <option value="West">West</option>
+                            <option value="South">South</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Builtup Area</label>
-                          <input type="text" name="rfm_detail_builtup_area" className="form-control" />
+                          <input type="number" name="rfm_detail_builtup_area" onChange={handleChange} value={data.rfm_detail_builtup_area} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Room Type</label>
-                          <select id="bedrooms" name="rfm_detail_room_type" className="form-control">
+                          <select id="bedrooms" name="rfm_detail_room_type" onChange={handleChange} value={data.rfm_detail_room_type} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="single">Single</option>
-                            <option value="single">Shared</option>
+                            <option value="Single">Single</option>
+                            <option value="Shared">Shared</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Tenent Type</label>
-                          <select id="bathrooms" name="rfm_detail_tenent_type" className="form-control">
+                          <select id="bathrooms" name="rfm_detail_tenent_type" onChange={handleChange} value={data.rfm_detail_tenent_type} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Furnishing</label>
-                          <select name="rfm_detail_furnishing" id="bathrooms" className="form-control">
+                          <select name="rfm_detail_furnishing" onChange={handleChange} value={data.rfm_detail_furnishing} id="bathrooms" className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="furnished">Furnished</option>
-                            <option value="unfurnished">Unfurnished</option>
-                            <option value="semi furnished">Semi Furnished</option>
+                            <option value="Furnished">Furnished</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                            <option value="Semi Furnished">Semi Furnished</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Parking</label>
-                          <select name="rfm_detail_parking" id="bathrooms" className="form-control">
+                          <select name="rfm_detail_parking" id="bathrooms" onChange={handleChange} value={data.rfm_detail_parking} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="car">Car</option>
-                            <option value="bike">Bike</option>
-                            <option value="both">Both</option>
-                            <option value="none">none</option>
+                            <option value="Car">Car</option>
+                            <option value="Bike">Bike</option>
+                            <option value="Both">Both</option>
+                            <option value="None">none</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Bathrooms</label>
-                          <select name="rfm_detail_bathroom" id="bathrooms" className="form-control">
+                          <select name="rfm_detail_bathroom" onChange={handleChange} value={data.rfm_detail_bathroom} id="bathrooms" className="form-control">
                             <option value>&nbsp;</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -321,7 +320,7 @@ const ResidentialFlatmates = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Balcony</label>
-                          <select name="rfm_detail_balcony" id="bathrooms" className="form-control">
+                          <select name="rfm_detail_balcony" onchange={handleChange} value={data.rfm_detail_balcony} id="bathrooms" className="form-control">
                             <option value>&nbsp;</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -332,12 +331,12 @@ const ResidentialFlatmates = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Water Supply</label>
-                          <select name="rfm_detail_water_supply" id="bathrooms" className="form-control">
+                          <select name="rfm_detail_water_supply" onChange={handleChange} value={data.rfm_detail_water_supply} id="bathrooms" className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="borewell">Borewell</option>
-                            <option value="corporation">Corporation</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Borewell">Borewell</option>
+                            <option value="Corporation">Corporation</option>
                           </select>
                         </div>
                       </div>
@@ -350,7 +349,7 @@ const ResidentialFlatmates = () => {
                         <div className="form-row">
                           <div className="form-group col-md-6">
                             <label>Locality</label>
-                            <input type="text" className="form-control" />
+                            <input type="text"  name="rfm_location_city" onchange={handleChange}   className="form-control" />
                           </div>
                           <div className="form-group col-md-12">
                             <LocationPicker />
@@ -367,31 +366,31 @@ const ResidentialFlatmates = () => {
                       <div className="form-row">
                         <div className="form-group col-md-4">
                           <label>Rent</label>
-                          <input name="rfm_rental_detail_rent " className="form-control h-120" type="number" />
+                          <input name="rfm_rental_detail_rent" onChange={handleChange} value={data.rfm_rental_detail_rent} className="form-control h-120" type="number" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Expected Deposit</label>
-                          <input name="rfm_rental_detail_exp_deposit " className="form-control h-120" type="number" />
+                          <input name="rfm_rental_detail_exp_deposit" onChange={handleChange} value={data.rfm_rental_detail_exp_deposit} className="form-control h-120" type="number" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Negotiable </label>
-                          <select id="bage" name="rfm_rental_detail_is_nogotiable" className="form-control">
-                            <option value>&nbsp;</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                          <select id="bage" name="rfm_rental_detail_is_nogotiable" onChange={handleChange} value={data.rfm_rental_detail_is_nogotiable} className="form-control">
+                            <option value>Select Negotiable Type</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                           </select>
                         </div>
                         <div className="form-group col-md-4">
                           <label>Monthly Maintenance</label>
-                          <select id="bage" name="rfm_rental_detail_monthly_maintenance" className="form-control">
-                            <option value>&nbsp;</option>
-                            <option value="maintenance included">Maintenance Included</option>
-                            <option value="maintenance extra">Maintenance Extra</option>
+                          <select id="bage" name="rfm_rental_detail_monthly_maintenance" onChange={handleChange} value={data.rfm_rental_detail_monthly_maintenance} className="form-control">
+                            <option>Select Monthly Maintenance</option>
+                            <option value="Maintenance Included">Maintenance Included</option>
+                            <option value="Maintenance Extra">Maintenance Extra</option>
                           </select>
                         </div>
                         <div className="form-group col-md-4">
                           <label>Available From</label>
-                          <input name="rfm_rental_detail_avail_from " className="form-control h-120" type="date" />
+                          <input name="rfm_rental_detail_avail_from" onChange={handleChange} value={data.rfm_rental_detail_avail_from} className="form-control h-120" type="date" />
                         </div>
                       </div>
                     </div>
@@ -405,84 +404,84 @@ const ResidentialFlatmates = () => {
                           <div className="o-features">
                             <ul className="no-ul-list third-row">
                               <li>
-                                <input id="a-1" className="checkbox-custom" name="rfm_amenities_ac" type="checkbox" />
+                                <input id="a-1" className="checkbox-custom" onChange={handleChange} checked={data.rfm_amenities_ac} name="rfm_amenities_ac" type="checkbox" />
                                 <label htmlFor="a-1" className="checkbox-custom-label">Air Condition</label>
                               </li>
                               <li>
-                                <input id="a-2" className="checkbox-custom" name="rfm_amenities_lift" type="checkbox" />
+                                <input id="a-2" className="checkbox-custom" name="rfm_amenities_lift" onChange={handleChange} checked={data.rfm_amenities_lift} type="checkbox" />
                                 <label htmlFor="a-2" className="checkbox-custom-label">Lift</label>
                               </li>
                               <li>
-                                <input id="a-3" className="checkbox-custom" name="rfm_amenities_intercom" type="checkbox" />
+                                <input id="a-3" className="checkbox-custom" name="rfm_amenities_intercom" onChange={handleChange} checked={data.rfm_amenities_intercom} type="checkbox" />
                                 <label htmlFor="a-3" className="checkbox-custom-label">Inter communication</label>
                               </li>
                               <li>
-                                <input id="a-4" className="checkbox-custom" name="rfm_amenities_internet" type="checkbox" />
+                                <input id="a-4" className="checkbox-custom" name="rfm_amenities_internet" onChange={handleChange} checked={data.rfm_amenities_internet} type="checkbox" />
                                 <label htmlFor="a-4" className="checkbox-custom-label">Internet</label>
                               </li>
                               <li>
-                                <input id="a-5" className="checkbox-custom" name="rfm_amenities_children_play_area" type="checkbox" />
+                                <input id="a-5" className="checkbox-custom" name="rfm_amenities_children_play_area" onChange={handleChange} checked={data.rfm_amenities_children_play_area} type="checkbox" />
                                 <label htmlFor="a-5" className="checkbox-custom-label">Children Play Area</label>
                               </li>
                               <li>
-                                <input id="a-6" className="checkbox-custom" name="rfm_amenities_servant_room" type="checkbox" />
+                                <input id="a-6" className="checkbox-custom" name="rfm_amenities_servant_room" onChange={handleChange} checked={data.rfm_amenities_servant_room} type="checkbox" />
                                 <label htmlFor="a-6" className="checkbox-custom-label">Servant Room</label>
                               </li>
                               <li>
-                                <input id="a-7" className="checkbox-custom" name="rfm_amenities_gas_pipeline" type="checkbox" />
+                                <input id="a-7" className="checkbox-custom" name="rfm_amenities_gas_pipeline" onChange={handleChange} checked={data.rfm_amenities_gas_pipeline} type="checkbox" />
                                 <label htmlFor="a-7" className="checkbox-custom-label">Gas Pipeline</label>
                               </li>
                               <li>
-                                <input id="a-8" className="checkbox-custom" name="rfm_amenities_rainwater_harvesting" type="checkbox" />
+                                <input id="a-8" className="checkbox-custom" onChange={handleChange} checked={data.rfm_amenities_rainwater_harvesting} name="rfm_amenities_rainwater_harvesting" type="checkbox" />
                                 <label htmlFor="a-8" className="checkbox-custom-label">Rainwater Harvesting</label>
                               </li>
                               <li>
-                                <input id="a-9" className="checkbox-custom" name="rfm_amenities_housekeepiing" type="checkbox" />
+                                <input id="a-9" className="checkbox-custom" onChange={handleChange} checked={data.rfm_amenities_housekeepiing} name="rfm_amenities_housekeepiing" type="checkbox" />
                                 <label htmlFor="a-9" className="checkbox-custom-label">Housekeepiing</label>
                               </li>
                               <li>
-                                <input id="a-10" className="checkbox-custom" name="rfm_amenities_club_house" type="checkbox" />
+                                <input id="a-10" className="checkbox-custom" name="rfm_amenities_club_house" onChange={handleChange} checked={data.rfm_amenities_club_house} type="checkbox" />
                                 <label htmlFor="a-10" className="checkbox-custom-label">Club House</label>
                               </li>
                               <li>
-                                <input id="a-11" className="checkbox-custom" name="rfm_amenities_visitor_parking" type="checkbox" />
+                                <input id="a-11" className="checkbox-custom" name="rfm_amenities_visitor_parking" onChange={handleChange} checked={data.rfm_amenities_visitor_parking} type="checkbox" />
                                 <label htmlFor="a-11" className="checkbox-custom-label">Visitor Parking</label>
                               </li>
                               <li>
-                                <input id="a-12" className="checkbox-custom" name="rfm_amenities_swimming_pool" type="checkbox" />
+                                <input id="a-12" className="checkbox-custom" name="rfm_amenities_swimming_pool" onChange={handleChange} checked={data.rfm_amenities_swimming_pool} type="checkbox" />
                                 <label htmlFor="a-12" className="checkbox-custom-label">Swimming Pool</label>
                               </li>
                               <li>
-                                <input id="a-14" className="checkbox-custom" name="rfm_amenities_fire_safety" type="checkbox" />
+                                <input id="a-14" className="checkbox-custom" name="rfm_amenities_fire_safety" onChange={handleChange} checked={data.rfm_amenities_fire_safety} type="checkbox" />
                                 <label htmlFor="a-14" className="checkbox-custom-label">Fire Safety</label>
                               </li>
                               <li>
-                                <input id="a-15" className="checkbox-custom" name="rfm_amenities_shopping_center" type="checkbox" />
+                                <input id="a-15" className="checkbox-custom" name="rfm_amenities_shopping_center" onChange={handleChange} checked={data.rfm_amenities_shopping_center} type="checkbox" />
                                 <label htmlFor="a-15" className="checkbox-custom-label">Shopping Center</label>
                               </li>
                               <li>
-                                <input id="a-16" className="checkbox-custom" name="rfm_amenities_park" type="checkbox" />
+                                <input id="a-16" className="checkbox-custom" name="rfm_amenities_park" onChange={handleChange} checked={data.rfm_amenities_park} type="checkbox" />
                                 <label htmlFor="a-16" className="checkbox-custom-label">Park</label>
                               </li>
                               <li>
-                                <input id="a-17" className="checkbox-custom" name="rfm_amenities_sewage_treatment" type="checkbox" />
+                                <input id="a-17" className="checkbox-custom" name="rfm_amenities_sewage_treatment" onChange={handleChange} checked={data.rfm_amenities_internet} type="checkbox" />
                                 <label htmlFor="a-17" className="checkbox-custom-label">Sewage Treatment</label>
                               </li>
                               <li>
-                                <input id="a-18" className="checkbox-custom" name="rfm_amenities_power_backup" type="checkbox" />
+                                <input id="a-18" className="checkbox-custom" name="rfm_amenities_power_backup" onChange={handleChange} checked={data.rfm_amenities_power_backup} type="checkbox" />
                                 <label htmlFor="a-18" className="checkbox-custom-label">Power Backup</label>
                               </li>
                               <li>
-                                <input id="a-19" className="checkbox-custom" name="rfm_amenities_gated_security" type="checkbox" />
+                                <input id="a-19" className="checkbox-custom" name="rfm_amenities_gated_security" onChange={handleChange} checked={data.rfm_amenities_gated_security} type="checkbox" />
                                 <label htmlFor="a-19" className="checkbox-custom-label">Gated Security</label>
                               </li>
                               <li>
-                                <input id="a-20" className="checkbox-custom" name="rfm_amenities_gym" type="checkbox" />
+                                <input id="a-20" className="checkbox-custom" name="rfm_amenities_gym" onChange={handleChange} checked={data.rfm_amenities_gym} type="checkbox" />
                                 <label htmlFor="a-20" className="checkbox-custom-label">GYM</label>
                               </li>
                               {/* //////////////// */}
                               <li>
-                                <input id="a-21" className="checkbox-custom" name="rfm_amenities_gym" hidden type="checkbox" />
+                                <input id="a-21" className="checkbox-custom" name="rfm_amenities_gym"  hidden type="checkbox" />
                                 <label htmlFor="a-21" hidden className="checkbox-custom-label">GYM</label>
                               </li><li>
                                 <input id="a-22" hidden className="checkbox-custom" name="rfm_amenities_gym" type="checkbox" />
@@ -502,16 +501,16 @@ const ResidentialFlatmates = () => {
                             <div className="o-features">
                               <ul className="no-ul-list third-row">
                                 <li>
-                                  <input id="a-13" className="checkbox-custom" name="rfm_rules_is_non_veg_allowed" type="checkbox" />
+                                  <input id="a-13" className="checkbox-custom" onchange={handleChange} checked={data.rfm_rules_is_non_veg_allowed} name="rfm_rules_is_non_veg_allowed" type="checkbox" />
                                   <label htmlFor="a-13" className="checkbox-custom-label">Non-Veg Allowed</label>
                                 </li>
                                 {/* //////////////// */}
                                 <li>
-                                  <input id="a-13" className="checkbox-custom" name="rfm_rules_is_non_veg_allowed" type="checkbox" hidden />
+                                  <input id="a-13" className="checkbox-custom"  type="checkbox" hidden />
                                   <label hidden htmlFor="a-13" className="checkbox-custom-label">Non-Veg Allowed</label>
                                 </li>
                                 <li>
-                                  <input id="a-13" className="checkbox-custom" name="rfm_rules_is_non_veg_allowed" type="checkbox" hidden />
+                                  <input id="a-13" className="checkbox-custom" type="checkbox" hidden />
                                   <label hidden htmlFor="a-13" className="checkbox-custom-label">Non-Veg Allowed</label>
                                 </li>
                               </ul>

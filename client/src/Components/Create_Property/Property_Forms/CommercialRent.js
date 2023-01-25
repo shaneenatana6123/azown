@@ -15,12 +15,12 @@ const CommercialRent = () => {
   const [data, setdata] = useState({
 
     cr_detail_description:"",
-    cr_detail_property_type  :"",
+    cr_detail_property_type:"",
     cr_detail_building_type :"",
-    cr_detail_prop_age :"",
-    cr_detail_floor :"",
+    cr_detail_prop_age:"",
+    cr_detail_floor:"",
     cr_detail_total_floor:"",
-    cr_detail_builtup_area :"",
+    cr_detail_builtup_area:"",
     cr_detail_furnishing :"",
     
     cr_location_state:"",
@@ -117,17 +117,11 @@ const CommercialRent = () => {
   }
   return (
     <div id="main-wrapper">
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* Start Navigation */}
+    
       <Navbar />
-      {/* End Navigation */}
+ 
       <div className="clearfix" />
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* ============================ Page Title Start================================== */}
+     
       <div className="page-title" style={{ background: '#f4f4f4 url(assets/img/bg.jpg)' }} data-overlay={5}>
         <div className="container">
           <div className="row">
@@ -163,43 +157,43 @@ const CommercialRent = () => {
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="cr_detail_description" className="form-control" />
+                          <input type="text" name="cr_detail_description" onChange={handleChange} value={data.cr_detail_description} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Property Type</label>
-                          <select id="ptypes" name="cr_detail_property_type" className="form-control">
+                          <select id="ptypes" name="cr_detail_property_type" onChange={handleChange} value={data.cr_detail_property_type} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="office space">Office Space</option>
-                            <option value="co-working">co-working</option>
-                            <option value="shop">Shop</option>
-                            <option value="showroom">Showroom</option>
-                            <option value="godown">Godown</option>
-                            <option value="warehouse">Warehouse</option>
-                            <option value="industrial shed">Industrial Shed</option>
-                            <option value="industrial building">Industrial Building</option>
-                            <option value="restaurant">Restaurant</option>
-                            <option value="cafe">Cafe</option>
-                            <option value="other business">Other Business</option>
+                            <option value="Office Sspace">Office Space</option>
+                            <option value="Co-Working">co-working</option>
+                            <option value="Shop">Shop</option>
+                            <option value="Showroom">Showroom</option>
+                            <option value="Godown">Godown</option>
+                            <option value="Warehouse">Warehouse</option>
+                            <option value="Industrial Shed">Industrial Shed</option>
+                            <option value="Industrial Building">Industrial Building</option>
+                            <option value="Restaurant">Restaurant</option>
+                            <option value="Cafe">Cafe</option>
+                            <option value="Other Business">Other Business</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>Builtup Area</label>
-                          <input type="text" name="cr_detail_builtup_area" className="form-control" />
+                          <input type="number" name="cr_detail_builtup_area" onChange={handleChange} value={data.cr_detail_builtup_area} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Building Type</label>
-                          <select id="bedrooms" name="cr_detail_building_type" className="form-control">
+                          <select id="bedrooms" name="cr_detail_building_type onChange={handleChange} value={data.cr_detail_building_type}" className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="independent house">Independent House</option>
-                            <option value="business park">Business Park</option>
-                            <option value="mall">Mall</option>
-                            <option value="standalone building">Standalone Building</option>
-                            <option value="independent shop">Independent Shop</option>
+                            <option value="Independent House">Independent House</option>
+                            <option value="Business Park">Business Park</option>
+                            <option value="Mall">Mall</option>
+                            <option value="Standalone Building">Standalone Building</option>
+                            <option value="Independent Shop">Independent Shop</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
                           <label>property Age</label>
-                          <select id="bathrooms" name="cr_detail_prop_age" className="form-control">
+                          <select id="bathrooms" name="cr_detail_prop_age" onChange={handleChange} value={data.cr_detail_prop_age} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="0-10 yrs">0-10 yrs</option>
                             <option value="10-20 yrs">00-20 yrs</option>
@@ -211,7 +205,7 @@ const CommercialRent = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Floor</label>
-                          <select id="bathrooms" name="cr_detail_floor" className="form-control">
+                          <select id="bathrooms" name="cr_detail_floor" onChange={handleChange} value={data.cr_detail_floor} className="form-control">
                             <option value>&nbsp;</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -227,7 +221,7 @@ const CommercialRent = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Total Floor</label>
-                          <select id="bathrooms" name="cr_detail_total_floor" className="form-control">
+                          <select id="bathrooms" name="cr_detail_total_floor" onChange={handleChange} value={data.cr_detail_total_floor} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="0-10 floor">0-10 Floor</option>
                             <option value="10-20 floor">00-20 Floor</option>
@@ -239,11 +233,11 @@ const CommercialRent = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Furnishing</label>
-                          <select id="bathrooms" name="cr_detail_furnishing" className="form-control">
+                          <select id="bathrooms" name="cr_detail_furnishing" onChange={handleChange} value={data.cr_detail_furnishing} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="furnished">Furnished</option>
-                            <option value="unfurnished">Unfurnished</option>
-                            <option value="semi furnished">Semi Furnished</option>
+                            <option value="Furnished">Furnished</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                            <option value="Semi Furnished">Semi Furnished</option>
                           </select>
                         </div>
                       </div>
@@ -253,14 +247,11 @@ const CommercialRent = () => {
                     <h3>Location</h3>
                     <div className="frm_submit_wrap">
                       <div className="form-row">
-                        {/* <div className="form-group col-md-6">
-                    <label>City</label>
-                    <input type="search" id="gsearch" className="form-control" onChange={handleChange} />
-                  </div> */}
+                       
                         <div className="form-group col-md-6">
                           <label>Locality</label>
                           {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.rrs_location_city} onChange={handleChange} name="rrs_location_city" />
+                          <input type="text" className="form-control" value={data.cr_location_city} onChange={handleChange} name="cr_location_city" />
                           {/* </Autocomplete> */}
 
                         </div>
@@ -280,35 +271,35 @@ const CommercialRent = () => {
                       <div className="form-row">
                         <div className="form-group col-md-4">
                           <label>Rent</label>
-                          <input type="number" className="form-control h-120" name="cr_rental_detail_rent" />
+                          <input type="number" className="form-control h-120" onChange={handleChange} value={data.cr_rental_detail_rent} name="cr_rental_detail_rent" />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Expected Deposit</label>
-                          <input type="number" className="form-control h-120" name="cr_rental_detail_exp_deposit" />
+                          <input type="number" className="form-control h-120" name="cr_rental_detail_exp_deposit" onChange={handleChange} value={data.cr_rental_detail_exp_deposit} />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Negotiable</label>
-                          <select id="bage" name="cr_rental_detail_is_nogotiable" className="form-control">
+                          <select id="bage" name="cr_rental_detail_is_nogotiable" onChange={handleChange} value={data.cr_rental_detail_is_nogotiable} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                           </select>
                         </div>
                         <div className="form-group col-md-4">
                           <label>Monthly Maintenance</label>
-                          <select id="bage" name="cr_rental_detail_monthly_maintenance" className="form-control">
+                          <select id="bage" name="cr_rental_detail_monthly_maintenance" onChange={handleChange} value={data.cr_rental_detail_monthly_maintenance} className="form-control">
                             <option value>&nbsp;</option>
-                            <option value="maintenance included">Maintenance Included</option>
-                            <option value="maintenance extra">Maintenance Extra</option>
+                            <option value="Maintenance Included">Maintenance Included</option>
+                            <option value="Maintenance Extra">Maintenance Extra</option>
                           </select>
                         </div>
                         <div className="form-group col-md-4">
                           <label>Available From</label>
-                          <input type="date" className="form-control h-120" name="cr_rental_detail_avail_from" />
+                          <input type="date" className="form-control h-120" name="cr_rental_detail_avail_from" onChange={handleChange} value={data.cr_rental_detail_avail_from} />
                         </div>
                         <div className="form-group col-md-4">
                           <label>Lease Duration</label>
-                          <select id="garage" name="cr_rental_detail_lease_duration" className="form-control">
+                          <select id="garage" name="cr_rental_detail_lease_duration" onChange={handleChange} value={data.cr_rental_detail_lease_duration} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="0-10 yrs">0-10 yrs</option>
                             <option value="10-20 yrs">10-20 yrs</option>
@@ -320,7 +311,7 @@ const CommercialRent = () => {
                         </div>
                         <div className="form-group col-md-4">
                           <label>Lockin Period</label>
-                          <select id="garage" name="cr_rental_detail_lockin_period" className="form-control">
+                          <select id="garage" name="cr_rental_detail_lockin_period" onChange={handleChange} value={data.cr_rental_detail_lockin_period} className="form-control">
                             <option value>&nbsp;</option>
                             <option value="0-10 yrs">0-10 yrs</option>
                             <option value="10-20 yrs">10-20 yrs</option>
@@ -335,31 +326,31 @@ const CommercialRent = () => {
                           <div className="o-features">
                             <ul className="no-ul-list third-row">
                               <li>
-                                <input id="a-1" className="checkbox-custom" name="cr_amenities_power_backup" type="checkbox" />
+                                <input id="a-1" className="checkbox-custom" name="cr_amenities_power_backup" onChange={handleChange} checked={data.cr_amenities_power_backup} type="checkbox" />
                                 <label htmlFor="a-1" className="checkbox-custom-label">Power Backup</label>
                               </li>
                               <li>
-                                <input id="a-2" className="checkbox-custom" name="cr_amenities_lift" type="checkbox" />
+                                <input id="a-2" className="checkbox-custom" onChange={handleChange} checked={data.cr_amenities_lift} name="cr_amenities_lift" type="checkbox" />
                                 <label htmlFor="a-2" className="checkbox-custom-label">Lift</label>
                               </li>
                               <li>
-                                <input id="a-3" className="checkbox-custom" name="cr_amenities_parking" type="checkbox" />
+                                <input id="a-3" className="checkbox-custom" onChange={handleChange} checked={data.cr_amenities_parking} name="cr_amenities_parking" type="checkbox" />
                                 <label htmlFor="a-3" className="checkbox-custom-label">Parking</label>
                               </li>
                               <li>
-                                <input id="a-4" className="checkbox-custom" name="cr_amenities_washroom" type="checkbox" />
+                                <input id="a-4" className="checkbox-custom" name="cr_amenities_washroom" onChange={handleChange} checked={data.cr_amenities_washroom} type="checkbox" />
                                 <label htmlFor="a-4" className="checkbox-custom-label">Washroom</label>
                               </li>
                               <li>
-                                <input id="a-5" className="checkbox-custom" name="cr_amenities_water_storage" type="checkbox" />
+                                <input id="a-5" className="checkbox-custom" name="cr_amenities_water_storage" onChange={handleChange} checked={data.cr_amenities_water_storage} type="checkbox" />
                                 <label htmlFor="a-5" className="checkbox-custom-label">Water Storage</label>
                               </li>
                               <li>
-                                <input id="a-6" className="checkbox-custom" name="cr_amenities_security" type="checkbox" />
+                                <input id="a-6" className="checkbox-custom" name="cr_amenities_security" onChange={handleChange} checked={data.cr_amenities_security} type="checkbox" />
                                 <label htmlFor="a-6" className="checkbox-custom-label">Security</label>
                               </li>
                               <li>
-                                <input id="a-7" className="checkbox-custom" name="cr_amenities_wifi" type="checkbox" />
+                                <input id="a-7" className="checkbox-custom" name="cr_amenities_wifi" onChange={handleChange} checked={data.cr_amenities_wifi} type="checkbox" />
                                 <label htmlFor="a-7" className="checkbox-custom-label">WiFi</label>
                               </li>
                             </ul>
