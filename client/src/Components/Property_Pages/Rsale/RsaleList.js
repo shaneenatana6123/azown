@@ -17,10 +17,10 @@ const RsaleList = () => {
               <ul className="shorting_grid">
                 {/* <li className="list-inline-item"><a href="grid-layout-with-sidebar.html" className="active"><span className="ti-layout-grid2" />Grid</a></li>
                 <li className="list-inline-item"><a href="list-layout-with-sidebar.html"><span className="ti-view-list" />List</a></li> */}
-                <li className="list-inline-item"><a href="#"><span className="ti-map-alt" />Map</a></li>
+                <li className="list-inline-item"><a href="#"><span className="ti-map-lt" />Residential Resale</a></li>
               </ul>
             </div>
-            <div className="col-lg-6 col-md-12 col-sm-12 order-lg-2 order-md-3 elco_bor col-sm-12">
+            <div className="col-lg-9 col-md-12 col-sm-12 order-lg-2 order-md-3 elco_bor col-sm-12">
               <div className="shorting_pagination">
                 <div className="shorting_pagination_laft">
                   <h5>Showing 1-25 of 72 results</h5>

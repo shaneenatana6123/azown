@@ -68,10 +68,10 @@ const CommercialSale = () => {
     formData.append("cs_detail_description",data.cs_detail_description)
     formData.append("cs_detail_property_type",data.cs_detail_property_type)
     formData.append("cs_detail_building_type",data.cs_detail_building_type)
-    formData.append("cs_detail_prop_age ",data.cs_detail_prop_age)
-    formData.append("cs_detail_floor ",data.cs_detail_floor)
+    formData.append("cs_detail_prop_age",data.cs_detail_prop_age)
+    formData.append("cs_detail_floor",data.cs_detail_floor)
     formData.append("cs_detail_total_floor",data.cs_detail_total_floor)
-    formData.append("cs_detail_builtup_area ",data.cs_detail_builtup_area)
+    formData.append("cs_detail_builtup_area",data.cs_detail_builtup_area)
     formData.append("cs_detail_furnishing",data.cs_detail_furnishing)
     
     formData.append("cs_location_state",data.cs_location_state)
@@ -84,11 +84,11 @@ const CommercialSale = () => {
     formData.append("cs_resale_details_maintenance",data.cs_resale_details_maintenance)
     formData.append("cs_resale_details_available_from",data.cs_resale_details_available_from)
     
-    formData.append("cs_amenities_power_backup ",data.cs_amenities_power_backup)
+    formData.append("cs_amenities_power_backup",data.cs_amenities_power_backup)
     formData.append("cs_amenities_lift",data.cs_amenities_lift)
     formData.append("cs_amenities_parking",data.cs_amenities_parking)
     formData.append("cs_amenities_washroom",data.cs_amenities_washroom)
-    formData.append("cs_amenities_water_storage ",data.cs_amenities_water_storage)
+    formData.append("cs_amenities_water_storage",data.cs_amenities_water_storage)
     formData.append("cs_amenities_security",data.cs_amenities_security)
     formData.append("cs_amenities_wifi",data.cs_amenities_security)
 
@@ -245,27 +245,15 @@ const CommercialSale = () => {
                     <h3>Location</h3>
                     <div className="frm_submit_wrap">
                       <div className="form-row">
-                        {/* <div className="form-group col-md-6">
-                    <label>City</label>
-                    <input type="search" id="gsearch" className="form-control" onChange={handleChange} />
-                  </div> */}
-                        <div className="form-group col-md-6">
-                          <label>Locality</label>
-                          {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.cs_location_city} onChange={handleChange} name="cs_location_city" />
-                          {/* </Autocomplete> */}
-
-                        </div>
-
+                     
                         <div className="form-group col-md-12">
-                          <LocationPicker />
+                          <LocationPicker handleChange={handleChange}  name='cs_location_city'/>
                         </div>
 
 
                       </div>
                     </div>
                   </div>}
-
                   {currentStep === 3 && <>    <div className="frm_submit_block">
                     <h3>Resale Detailed</h3>
                     <div className="frm_submit_wrap">

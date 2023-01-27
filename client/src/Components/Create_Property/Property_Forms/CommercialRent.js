@@ -70,13 +70,13 @@ const CommercialRent = () => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("cr_detail_description",data.cr_detail_description)
-      formData.append("cr_detail_property_type  ",data.cr_detail_property_type)
-      formData.append("cr_detail_building_type ",data.cr_detail_building_type)
-      formData.append("cr_detail_prop_age ",data.cr_detail_prop_age)
-      formData.append("cr_detail_floor ",data.cr_detail_floor)
+      formData.append("cr_detail_property_type ",data.cr_detail_property_type)
+      formData.append("cr_detail_building_type",data.cr_detail_building_type)
+      formData.append("cr_detail_prop_age",data.cr_detail_prop_age)
+      formData.append("cr_detail_floor",data.cr_detail_floor)
       formData.append("cr_detail_total_floor",data.cr_detail_total_floor)
       formData.append("cr_detail_builtup_area ",data.cr_detail_builtup_area)
-      formData.append("cr_detail_furnishing ",data.cr_detail_furnishing)
+      formData.append("cr_detail_furnishing",data.cr_detail_furnishing)
       
       formData.append("cr_location_state",data.cr_location_state)
       formData.append("cr_location_city",data.cr_location_city)
@@ -84,19 +84,19 @@ const CommercialRent = () => {
       formData.append("cr_location_longitude",data.cr_location_longitude)
       formData.append("cr_location_iframe",data.cr_location_iframe)
       
-      formData.append("cr_rental_detail_rent ",data.cr_rental_detail_rent)
+      formData.append("cr_rental_detail_rent",data.cr_rental_detail_rent)
       formData.append("cr_rental_detail_exp_deposit",data.cr_rental_detail_exp_deposit)
       formData.append("cr_rental_detail_is_nogotiable",data.cr_rental_detail_is_nogotiable)
       formData.append("cr_rental_detail_monthly_maintenance ",data.cr_rental_detail_monthly_maintenance)
       formData.append("cr_rental_detail_avail_from",data.cr_rental_detail_avail_from)
       formData.append("cr_rental_detail_lease_duration",data.cr_rental_detail_lease_duration)
-      formData.append("cr_rental_detail_lockin_period  ",data.cr_rental_detail_lockin_period)
+      formData.append("cr_rental_detail_lockin_period",data.cr_rental_detail_lockin_period)
       
-      formData.append("cr_amenities_power_backup ",data.cr_amenities_power_backup)
+      formData.append("cr_amenities_power_backup",data.cr_amenities_power_backup)
       formData.append("cr_amenities_lift",data.cr_amenities_lift)
       formData.append("cr_amenities_parking",data.cr_amenities_parking)
       formData.append("cr_amenities_washroom",data.cr_amenities_washroom)
-      formData.append("cr_amenities_water_storage ",data.cr_amenities_water_storage)
+      formData.append("cr_amenities_water_storage",data.cr_amenities_water_storage)
       formData.append("cr_amenities_security",data.cr_amenities_security)
       formData.append("cr_amenities_wifi",data.cr_amenities_wifi)
 
@@ -247,17 +247,9 @@ const CommercialRent = () => {
                     <h3>Location</h3>
                     <div className="frm_submit_wrap">
                       <div className="form-row">
-                       
-                        <div className="form-group col-md-6">
-                          <label>Locality</label>
-                          {/* <Autocomplete> */}
-                          <input type="text" className="form-control" value={data.cr_location_city} onChange={handleChange} name="cr_location_city" />
-                          {/* </Autocomplete> */}
-
-                        </div>
-
+                     
                         <div className="form-group col-md-12">
-                          <LocationPicker />
+                          <LocationPicker handleChange={handleChange}  name='cr_location_city'/>
                         </div>
 
 

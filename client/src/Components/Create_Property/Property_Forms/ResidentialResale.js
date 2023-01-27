@@ -355,29 +355,18 @@ const ResidentialResale = () => {
                 {/* Gallery */}
 
                 {currentStep === 2 && <div className="frm_submit_block">
-                  <h3>Location</h3>
-                  <div className="frm_submit_wrap">
-                    <div className="form-row">
-                      {/* <div className="form-group col-md-6">
-                    <label>City</label>
-                    <input type="search" id="gsearch" className="form-control" onChange={handleChange} />
-                  </div> */}
-                      <div className="form-group col-md-6">
-                        <label>Locality</label>
-                        {/* <Autocomplete> */}
-                        <input type="text" className="form-control"  value={data.rrs_location_city} onChange={handleChange} name="rrs_location_city" />
-                        {/* </Autocomplete> */}
+                    <h3>Location</h3>
+                    <div className="frm_submit_wrap">
+                      <div className="form-row">
+                     
+                        <div className="form-group col-md-12">
+                          <LocationPicker handleChange={handleChange}  name='rrs_location_city'/>
+                        </div>
+
 
                       </div>
-
-                      <div className="form-group col-md-12">
-                        <LocationPicker />
-                      </div>
-
-
                     </div>
-                  </div>
-                </div>}
+                  </div>}
                 {/* Detailed Information */}
                 {currentStep === 3 && <>   <div className="frm_submit_block">
                   <h3>Resale Information</h3>

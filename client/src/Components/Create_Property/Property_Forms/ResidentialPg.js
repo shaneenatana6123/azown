@@ -37,20 +37,20 @@ const ResidentialPg = () => {
     rpg_location_iframe: "",
 
 
-    rpg_amenities_cupboard: "",
-    rpg_amenities_tv: "",
-    rpg_amenities_bed: "",
-    rpg_amenities_geyser: "",
-    rpg_amenities_ac: "",
-    rpg_amenities_attached_bathroom: "",
-    rpg_amenities_laundry: "",
-    rpg_amenities_room_cleaning: "",
-    rpg_amenities_lift: "",
-    rpg_amenities_wifi: "",
-    rpg_amenities_power_backup: "",
-    rpg_amenities_mess: "",
-    rpg_amenities_fridge: "",
-    rpg_amenities_mess_cooking: "",
+    rpg_amenities_cupboard: false,
+    rpg_amenities_tv: false,
+    rpg_amenities_bed: false,
+    rpg_amenities_geyser: false,
+    rpg_amenities_ac: false,
+    rpg_amenities_attached_bathroom: false,
+    rpg_amenities_laundry: false,
+    rpg_amenities_room_cleaning: false,
+    rpg_amenities_lift: false,
+    rpg_amenities_wifi: false,
+    rpg_amenities_power_backup: false,
+    rpg_amenities_mess: false,
+    rpg_amenities_fridge: false,
+    rpg_amenities_mess_cooking: false,
 
   })
   const history = useNavigate()
@@ -84,7 +84,7 @@ const ResidentialPg = () => {
     formData.append("rpg_detail_available_from", data.rpg_detail_available_from)
     formData.append("rpg_detail_food_included", data.rpg_detail_food_included)
     formData.append("rpg_detail_gate_shut_time", data.rpg_detail_gate_shut_time)
-    formData.append("rpg_detail_parking ", data.rpg_detail_parking)
+    formData.append("rpg_detail_parking", data.rpg_detail_parking)
     formData.append("rpg_rules_no_girls_entry", data.rpg_rules_no_girls_entry)
     formData.append("rpg_rules_no_drinking", data.rpg_rules_no_drinking)
     formData.append("rpg_rules_no_non_veg", data.rpg_rules_no_non_veg)
@@ -104,7 +104,7 @@ const ResidentialPg = () => {
     formData.append("rpg_amenities_ac", data.rpg_amenities_ac)
     formData.append("rpg_amenities_attached_bathroom", data.rpg_amenities_attached_bathroom)
     formData.append("rpg_amenities_laundry", data.rpg_amenities_laundry)
-    formData.append("rpg_amenities_room_cleaning ", data.rpg_amenities_room_cleaning)
+    formData.append("rpg_amenities_room_cleaning", data.rpg_amenities_room_cleaning)
     formData.append("rpg_amenities_lift", data.rpg_amenities_lift)
     formData.append("rpg_amenities_wifi", data.rpg_amenities_wifi)
     formData.append("rpg_amenities_power_backup", data.rpg_amenities_power_backup)
@@ -231,20 +231,9 @@ const ResidentialPg = () => {
                     <h3>Location</h3>
                     <div className="frm_submit_wrap">
                       <div className="form-row">
-                        {/* <div className="form-group col-md-6">
-                    <label>City</label>
-                    <input type="search" id="gsearch" className="form-control" onChange={handleChange} />
-                  </div> */}
-                        <div className="form-group col-md-6">
-                          <label>Locality</label>
-                          {/* <Autocomplete> */}
-                          <input type="text" className="form-control" onChange={handleChange} value={data.rpg_location_city}  name="rpg_location_city" />
-                          {/* </Autocomplete> */}
-
-                        </div>
-
+                     
                         <div className="form-group col-md-12">
-                          <LocationPicker />
+                          <LocationPicker handleChange={handleChange}  name='rpg_location_city'/>
                         </div>
 
 

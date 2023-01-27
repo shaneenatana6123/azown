@@ -35,7 +35,6 @@ const ResidentialFlatmates = () => {
     rfm_location_city: "",
     rfm_location_latitiude: "",
     rfm_location_longitude: "",
-    rfm_location_iframe: "",
 
     rfm_rental_detail_rent: "",
     rfm_rental_detail_exp_deposit: "",
@@ -86,18 +85,18 @@ const ResidentialFlatmates = () => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("rfm_detail_description", data.rfm_detail_description)
-    formData.append("rfm_detail_app_type ", data.rfm_detail_app_type)
+    formData.append("rfm_detail_app_type", data.rfm_detail_app_type)
     formData.append("rfm_detail_bhk_type", data.rfm_detail_bhk_type)
-    formData.append("rfm_detail_floor ", data.rfm_detail_floor)
+    formData.append("rfm_detail_floor", data.rfm_detail_floor)
     formData.append("rfm_detail_total_floor", data.rfm_detail_total_floor)
-    formData.append("rfm_detail_prop_age ", data.rfm_detail_prop_age)
-    formData.append("rfm_detail_facing ", data.rfm_detail_facing)
-    formData.append("rfm_detail_builtup_area ", data.rfm_detail_builtup_area)
-    formData.append("rfm_detail_room_type ", data.rfm_detail_room_type)
-    formData.append("rfm_detail_tenent_type ", data.rfm_detail_tenent_type)
-    formData.append("rfm_detail_furnishing ", data.rfm_detail_furnishing)
-    formData.append("rfm_detail_parking ", data.rfm_detail_parking)
-    formData.append("rfm_detail_bathroom ", data.rfm_detail_bathroom)
+    formData.append("rfm_detail_prop_age", data.rfm_detail_prop_age)
+    formData.append("rfm_detail_facing", data.rfm_detail_facing)
+    formData.append("rfm_detail_builtup_area", data.rfm_detail_builtup_area)
+    formData.append("rfm_detail_room_type", data.rfm_detail_room_type)
+    formData.append("rfm_detail_tenent_type", data.rfm_detail_tenent_type)
+    formData.append("rfm_detail_furnishing", data.rfm_detail_furnishing)
+    formData.append("rfm_detail_parking", data.rfm_detail_parking)
+    formData.append("rfm_detail_bathroom", data.rfm_detail_bathroom)
     formData.append("rfm_detail_balcony", data.rfm_detail_balcony)
     formData.append("rfm_detail_water_supply", data.rfm_detail_water_supply)
 
@@ -107,9 +106,9 @@ const ResidentialFlatmates = () => {
     formData.append("rfm_location_city", data.rfm_location_city)
     formData.append("rfm_location_latitiude", data.rfm_location_latitiude)
     formData.append("rfm_location_longitude", data.rfm_location_longitude)
-    formData.append("rfm_location_iframe", data.rfm_location_iframe)
+  
 
-    formData.append("rfm_rental_detail_rent ", data.rfm_rental_detail_rent)
+    formData.append("rfm_rental_detail_rent", data.rfm_rental_detail_rent)
     formData.append("rfm_rental_detail_exp_deposit", data.rfm_rental_detail_exp_deposit)
     formData.append("rfm_rental_detail_is_nogotiable", data.rfm_rental_detail_is_nogotiable)
     formData.append("rfm_rental_detail_monthly_maintenance", data.rfm_rental_detail_monthly_maintenance)
@@ -152,17 +151,11 @@ const ResidentialFlatmates = () => {
 
   return (
     <div id="main-wrapper">
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* Start Navigation */}
+    
       <Navbar />
       {/* End Navigation */}
       <div className="clearfix" />
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* ============================ Page Title Start================================== */}
+    
       <div className="page-title" style={{ background: '#f4f4f4 url(assets/img/bg.jpg)' }} data-overlay={5}>
         <div className="container">
           <div className="row">
@@ -177,8 +170,7 @@ const ResidentialFlatmates = () => {
           </div>
         </div>
       </div>
-      {/* ============================ Page Title End ================================== */}
-      {/* ============================ Submit Property Start ================================== */}
+    
       <section>
         <div className="container">
           <div className="row">
@@ -250,12 +242,12 @@ const ResidentialFlatmates = () => {
                           <label>Property Age</label>
                           <select id="ptypes" className="form-control" onChange={handleChange} value={data.rfm_detail_prop_age} name="rfm_detail_prop_age">
                             <option value>&nbsp;</option>
-                            <option value="0-10 yrs">0-10 yrs</option>
-                            <option value="10-20 yrs">10-20 yrs</option>
-                            <option value="20-30 yrs">20-30 yrs</option>
-                            <option value="30-40 yrs">30-40 yrs</option>
-                            <option value="40-50 yrs">40-50 yrs</option>
-                            <option value="50+ yrs">50+ yrs</option>
+                            <option value="0-10">0-10 yrs</option>
+                            <option value="10-20">10-20 yrs</option>
+                            <option value="20-30">20-30 yrs</option>
+                            <option value="30-40">30-40 yrs</option>
+                            <option value="40-50">40-50 yrs</option>
+                            <option value="50+">50+ yrs</option>
                           </select>
                         </div>
                         <div className="form-group col-md-6">
@@ -275,7 +267,7 @@ const ResidentialFlatmates = () => {
                         <div className="form-group col-md-6">
                           <label>Room Type</label>
                           <select id="bedrooms" name="rfm_detail_room_type" onChange={handleChange} value={data.rfm_detail_room_type} className="form-control">
-                            <option value>&nbsp;</option>
+                            <option disabled selected>&nbsp;</option>
                             <option value="Single">Single</option>
                             <option value="Shared">Shared</option>
                           </select>
@@ -309,26 +301,15 @@ const ResidentialFlatmates = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Bathrooms</label>
-                          <select name="rfm_detail_bathroom" onChange={handleChange} value={data.rfm_detail_bathroom} id="bathrooms" className="form-control">
-                            <option value>&nbsp;</option>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                          </select>
+                          <input type="number" name="rfm_detail_bathroom" onChange={handleChange} value={data.rfm_detail_bathroom}  className="form-control" />
+                           
                         </div>
                         <div className="form-group col-md-6">
                           <label>Balcony</label>
-                          <select name="rfm_detail_balcony" onchange={handleChange} value={data.rfm_detail_balcony} id="bathrooms" className="form-control">
-                            <option value>&nbsp;</option>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                          </select>
+                          <input type="number" name="rfm_detail_balcony" onChange={handleChange} value={data.rfm_detail_balcony}  className="form-control" />
+                           
                         </div>
+                       
                         <div className="form-group col-md-6">
                           <label>Water Supply</label>
                           <select name="rfm_detail_water_supply" onChange={handleChange} value={data.rfm_detail_water_supply} id="bathrooms" className="form-control">
@@ -342,24 +323,19 @@ const ResidentialFlatmates = () => {
                       </div>
                     </div>
                   </div>}
-                  {currentStep === 2 && <>
-                    <div className="frm_submit_block">
-                      <h3>Location</h3>
-                      <div className="frm_submit_wrap">
-                        <div className="form-row">
-                          <div className="form-group col-md-6">
-                            <label>Locality</label>
-                            <input type="text"  name="rfm_location_city" onchange={handleChange}   className="form-control" />
-                          </div>
-                          <div className="form-group col-md-12">
-                            <LocationPicker />
-                          </div>
-
+                  {currentStep === 2 && <div className="frm_submit_block">
+                    <h3>Location</h3>
+                    <div className="frm_submit_wrap">
+                      <div className="form-row">
+                     
+                        <div className="form-group col-md-12">
+                          <LocationPicker handleChange={handleChange}  name='rfm_location_city'/>
                         </div>
+
+
                       </div>
                     </div>
-
-                  </>}
+                  </div>}
                   {currentStep === 3 && <><div className="frm_submit_block">
                     <h3>Rental Detailed</h3>
                     <div className="frm_submit_wrap">
@@ -504,7 +480,7 @@ const ResidentialFlatmates = () => {
                                   <input id="a-13" className="checkbox-custom" onchange={handleChange} checked={data.rfm_rules_is_non_veg_allowed} name="rfm_rules_is_non_veg_allowed" type="checkbox" />
                                   <label htmlFor="a-13" className="checkbox-custom-label">Non-Veg Allowed</label>
                                 </li>
-                                {/* //////////////// */}
+                            
                                 <li>
                                   <input id="a-13" className="checkbox-custom"  type="checkbox" hidden />
                                   <label hidden htmlFor="a-13" className="checkbox-custom-label">Non-Veg Allowed</label>

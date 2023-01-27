@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {  useJsApiLoader,  GoogleMap,  Marker,} from '@react-google-maps/api'
+import { useJsApiLoader, Autocomplete, GoogleMap, Marker, } from '@react-google-maps/api'
 
 
-const LocationPicker = () => {
-  const [mark,setmark] = useState(false)
-  useEffect(()=>{
+const LocationPicker = ({ handleChange ,name}) => {
+  const [mark, setmark] = useState(false)
+  useEffect(() => {
     setTimeout(() => {
       setmark(true)
-    }, 500);
+    }, 3000);
 
-  },[])
-  
-  
+  }, [])
+
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
     libraries: ['places'],
   })
 
-  const [selectedLocation, setSelectedLocation] = useState({ lat: 26.477626, lng: 80.31696});
-  
+  const [selectedLocation, setSelectedLocation] = useState({ lat: 26.477626, lng: 80.31696 });
+//  /** @type React.MutableRefObject<HTMLInputElement> */
+//  const originRef = useRef()
   const handleMapClick = (event) => {
     setSelectedLocation({
       lat: event.latLng.lat(),
@@ -31,41 +32,54 @@ const LocationPicker = () => {
     return <h4>Map is Loading....</h4>
   }
   return (
-  <div>
     <div>
-      <h4>Slect the Location</h4>
+      <div>
+       
+        <div className="form-group col-md-6 my-3">
+          <label>Locality</label>
+          <Autocomplete>
+            <input type="text" className="form-control"   name={name}  onClick={handleChange} />
+
+          </Autocomplete>
+
+        </div>
+
+        <div className="form-group col-md-12">
+        <GoogleMap
+        zoom={10}
+        mapContainerStyle={{ width: '100%', height: '400px' }}
+        center={selectedLocation}
+        options={{
+          // zoomControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          // fullscreenControl: false,
+
+        }}
+        onClick={handleMapClick}
+
+
+      >
+
+        {
+          mark && <Marker position={selectedLocation}
+            draggable={true} onChange={handleChange} name="rr_location_longitude"
+            onDragEnd={(e) => {
+              setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+
+            }}
+          />
+        }
+
+
+
+      </GoogleMap>
+        </div>
+
+
+      </div>
     
     </div>
-    <GoogleMap
-      zoom={10}
-      mapContainerStyle={{ width: '100%', height: '400px' }}
-      center={selectedLocation}
-      options={{
-        // zoomControl: false,
-        streetViewControl: false,
-        mapTypeControl: false,
-        // fullscreenControl: false,
-
-      }}
-      onClick={handleMapClick}
-      
-      
-    >
-    
-    {
-      mark &&  <Marker position={selectedLocation}
-       draggable={true}
-     onDragEnd={(e) => {
-  setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
-
-}}
-      />
-    }
-     
-    
- 
-    </GoogleMap>
-  </div>
 
 
   );
