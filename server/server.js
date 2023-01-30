@@ -9,12 +9,12 @@ app.use(express.json())
 app.use(cors())
 
 // Available Routes
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/property', require('./routes/property'))
-app.use('/api/admin',require('./routes/admin'))
-app.use('/api/service',require('./routes/service'))
-app.use('/api/leadprop',require('./routes/leadprop'))
-app.use('/api/handler',require('./routes/handler'))
+app.use('/auth', require('./routes/auth'))
+app.use('/property', require('./routes/property'))
+app.use('/admin',require('./routes/admin'))
+app.use('/service',require('./routes/service'))
+app.use('/leadprop',require('./routes/leadprop'))
+app.use('/handler',require('./routes/handler'))
 
 app.listen(port,()=>{
     console.log(`server is run on ${port}`);
