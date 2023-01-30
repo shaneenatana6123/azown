@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import propertyContext from '../../../context/PropertyContext';
 import Navbar from '../../Header/Navbar'
 import Slider from 'react-slick'
+import Alert from '../../Alert';
+import { leadContext } from '../../../context/LeadContext';
 
 const CrentDetail = () => {
   const [model, setmodel] = useState(false)
@@ -34,8 +36,14 @@ const CrentDetail = () => {
   const { cmrDetail, cmrdata } = context;
   const data = cmrdata
   const [contacted, setcontacted] = useState(false)
-  // const leadcontext = useContext(leadcontext)
-  // const { leadcreate } = leadcontext
+  const leadcontext = useContext(leadContext)
+  const { leadcreate } = leadcontext
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   const { id } = useParams();
   useEffect(() => {
     cmrDetail(id);
@@ -43,6 +51,7 @@ const CrentDetail = () => {
   return (
     <div id="main-wrapper">
       <Navbar />
+      {showAlert && <Alert msg="Please Login Before!!" />}
       <div className="clearfix" />
 
       <section className="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
@@ -181,13 +190,14 @@ const CrentDetail = () => {
                         <span className="sb-header-left">Total Payment</span>
                         <h3 className="price theme-cl">Rs.{parseInt(data.cr_rental_detail_exp_deposit) + parseInt(data.cr_rental_detail_rent)}</h3>
                       </div>
-                      {/* <div className="col-lg-12 col-md-12 col-sm-12">
+                      <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="stbooking-footer mt-1">
                       <div className="form-group mb-0 pb-0">
-                        <a href="#" className="btn book_btn theme-bg">Book It Now</a>
+                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,5) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                        {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
                       </div>
                     </div>
-                  </div> */}
+                  </div>
                     </div>
                   </div>
                 </div>

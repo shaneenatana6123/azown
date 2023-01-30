@@ -61,7 +61,7 @@ const LocationPicker = ({ name}) => {
     types={['address']}
     value={selectedAddress}
 /> */}
-          <Autocomplete  >
+          <Autocomplete id='autocomplete' >
             <Field type='address' className="form-control"   name={name}    />
 
           </Autocomplete>
@@ -86,7 +86,7 @@ const LocationPicker = ({ name}) => {
       >
 
         {
-          mark && <Marker 
+          mark && <Marker position={selectedLocation}
             draggable={true} 
             onDragEnd={(e) => {
               setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
@@ -94,9 +94,6 @@ const LocationPicker = ({ name}) => {
             }}
           />
         }
-
-
-
       </GoogleMap>
         </div>
 

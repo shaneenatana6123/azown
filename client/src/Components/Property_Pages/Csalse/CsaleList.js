@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Navbar from '../../Header/Navbar'
 import Csale from './Csale'
 import CsaleFilter from './CsaleFilter'
@@ -12,7 +13,12 @@ const CsaleList = () => {
 
   const [CmsData, setData] = useState([]);
   const [rr,setrr] = useState([])
+  const [showAlert, setShowAlert] = useState(false);
 
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   useEffect(  () => {
     async function listrrprop(){
       const responce =await  fetch(`${host}/api/property/getcms`, {
@@ -50,6 +56,7 @@ const CsaleList = () => {
   return (
    <div id="main-wrapper">
  <Navbar/>
+ {showAlert && <Alert msg="Please Login Before!!" />}
   {/* End Navigation */}
   <div className="clearfix" />
   {/* ============================================================== */}
@@ -96,7 +103,7 @@ const CsaleList = () => {
         {CmsData.map((property) => {
           
           return (   
-          <Csale property={property}  />
+          <Csale property={property} key={property._id}  onAlert={handleAlert}   />
           );
         })}
         </div>

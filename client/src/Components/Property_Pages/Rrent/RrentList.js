@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Header/Navbar'
 import Rrent from './Rrent'
@@ -15,6 +16,12 @@ const RrentList = () => {
 
   const [RrentData, setData] = useState([]);
   const [rr,setrr] = useState([])
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 5000);
+  };
 
   useEffect(  () => {
     async function listrrprop(){
@@ -57,6 +64,8 @@ const RrentList = () => {
  
 <Navbar/>
   {/* End Navigation */}
+  {showAlert && <Alert msg="Please Login Before!!"/> }
+  
   <div className="clearfix" />
   {/* ============================================================== */}
   {/* Top header  */}
@@ -114,11 +123,11 @@ const RrentList = () => {
         {/* property Sidebar */}
        <RrentFilter/>
        <div className="col-lg-8 col-md-12 col-sm-12">
-       {RrentData.map((property) => {
+       {RrentData && RrentData.map((property) => {
           
           return (
           
-          <Rrent property={property} key={property._id}/>
+          <Rrent property={property} key={property._id} onAlert={handleAlert}/>
           
           
           

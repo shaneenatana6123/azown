@@ -5,6 +5,9 @@ const LeadSchema = new Schema({
     property_id:{
         type:String
     },
+    property_type:{
+    type:Number
+    },
     property_lead_client_id:{
         type:String
     },

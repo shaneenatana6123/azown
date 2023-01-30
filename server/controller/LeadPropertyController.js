@@ -1,27 +1,122 @@
 const rr_props = require("../models/rr_propery");
 const rr_master = require("../models/property_master");
+const rpg_props =require('../models/rr-pg')
 const lead = require("../models/lead");
 const User = require('../models/user')
-const {  getObjectSignedUrl} = require('../Storage/s3')
+const {  getObjectSignedUrl} = require('../Storage/s3');
+const rrs_props = require("../models/rrs_props");
+const rfm_props = require('../models/rr-flat')
+const cmr_props = require('../models/cm-rent')
+const cms_props = require('../models/cm-sale') 
+const plot_props = require('../models/land-plot')
 
 
 const leadcreate =  async (req, res) => {
     try {
       console.log(req.user.id);
       console.log(req.body.property_id);
+      console.log(req.body.property_type);
       const _id = req.body.property_id;
-      const property = await rr_props.findOne({ _id });
-      console.log(property);
-      const leadpp = new lead({
-        property_id: _id,
-        property_lead_client_id: req.user.id,
-        property_lead_owner_id: property.userid,
-        property_lead_handler_id: property.handlerid,
-        property_lead_stage:0
-      });
-      await leadpp.save();
-      await rr_props.updateOne({ _id }, { $push: { lead: req.user.id } });
-      res.json({ success: "Lead is created" });
+      const type = req.body.property_type;
+      let property;
+      let leadpp;
+      if(type===1){
+         property = await rr_props.findOne({ _id });
+         leadpp = new lead({
+          property_id: _id,
+          property_type: type,
+          property_lead_client_id: req.user.id,
+          property_lead_owner_id: property.userid,
+          property_lead_handler_id: property.handlerid,
+          property_lead_stage:0
+        });
+        await leadpp.save();
+        await rr_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+        res.json({ success: "Lead is created" });
+      }else if(type===2) {
+        property = await rrs_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await rrs_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });
+        
+      }else if(type===3) {
+        property = await rpg_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await rpg_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });       
+      }else if(type===4) {
+        property = await rfm_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await rfm_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });
+        
+      }else if(type===5) {
+        property = await cmr_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await rpg_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });
+        
+      }else if(type===6) {
+        property = await cms_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await cms_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });
+        
+      }else if(type===7) {
+        property = await plot_props.findOne({ _id });
+        leadpp = new lead({
+         property_id: _id,
+         property_type: type,
+         property_lead_client_id: req.user.id,
+         property_lead_owner_id: property.userid,
+         property_lead_handler_id: property.handlerid,
+         property_lead_stage:0
+       });
+       await leadpp.save();
+       await plot_props.updateOne({ _id }, { $push: { lead: req.user.id } });
+       res.json({ success: "Lead is created" });    
+      }
+      
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");

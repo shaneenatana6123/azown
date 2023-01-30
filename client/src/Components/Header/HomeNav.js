@@ -93,20 +93,20 @@ const HomeNav = () => {
               </li>
             </ul>
             <ul className="nav-menu nav-menu-social align-to-right">
-              <li onClick={() => { setShow(!show) }}>
+            {localStorage.getItem('token')?<li >
+            <Link to="/dashboard" className='p-0' >
+            <div class="btn-group account-drop p-0">
+                  <button type="button" class="btn btn-order-by-filt" >
+                    <img src="assets/img/user-5.jpg" class="avater-img" alt="" />
+                  </button>
+                  <span style={{ borderRight: "2px solid grey ", padding: "10px" }}></span>
+                </div>
+            </Link>
+              </li> :  <li onClick={() => { setShow(!show) }}>
                 <a href className="alio_green"  >
                   <i className="fas fa-sign-in-alt mr-1" /><span className="dn-lg">Sign In</span>
                 </a>
-
-                {/* <div class="btn-group account-drop p-0">
-                <button type="button" class="btn btn-order-by-filt" >
-                  <img src="assets/img/user-5.jpg" class="avater-img" alt="" />
-                </button>
-                <span style={{ borderRight: "2px solid grey ", padding: "10px" }}></span>
-
-              </div> */}
-
-              </li>
+              </li>}
               <li className="add-listing">
                 <Link to="/create-property" className="theme-cl">
                   <i className="fas fa-plus-circle mr-1" />Add Property

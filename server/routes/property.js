@@ -127,14 +127,14 @@ router.get("/cmr-detail/:id", rrpropconroller.single_cmr_prop);
 router.get("/cms-detail/:id", rrpropconroller.single_cms_prop);
 router.get("/plot-detail/:id", rrpropconroller.single_plot_prop);
 
-router.get("/getrrprop", fetchuser, rrpropconroller.get_rr_prop);
- 
-router.get("/getrrs",fetchuser,rrpropconroller.get_rrs)
-router.get("/getrpg",fetchuser,rrpropconroller.get_rpg)
-router.get("/getrfm",fetchuser,rrpropconroller.get_rfm)
-router.get("/getcmr",fetchuser,rrpropconroller.get_cmr)
-router.get("/getcms",fetchuser,rrpropconroller.get_cms)
-router.get("/getplot",fetchuser,rrpropconroller.get_plot)
+
+router.get("/getrrprop",  rrpropconroller.get_rr_prop);
+router.get("/getrrs",rrpropconroller.get_rrs)
+router.get("/getrpg",rrpropconroller.get_rpg)
+router.get("/getrfm",rrpropconroller.get_rfm)
+router.get("/getcmr",rrpropconroller.get_cmr)
+router.get("/getcms",rrpropconroller.get_cms)
+router.get("/getplot",rrpropconroller.get_plot)
 
 
 

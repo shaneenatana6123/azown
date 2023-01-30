@@ -26,6 +26,7 @@ import PlotList from './Components/Property_Pages/Plot/PlotList';
 import PlotDetail from './Components/Property_Pages/Plot/PlotDetail';
 import RsaleDetail from './Components/Property_Pages/Rsale/RsaleDetail';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Alert from './Components/Alert';
 
 
 

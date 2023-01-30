@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Navbar from '../../Header/Navbar'
 import Crent from './Crent'
 import CrentFilter from './CrentFilter'
@@ -12,7 +13,12 @@ const CrentList = () => {
 
   const [CmrData, setData] = useState([]);
   const [rr, setrr] = useState([])
+  const [showAlert, setShowAlert] = useState(false);
 
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   useEffect(() => {
     async function listrrprop() {
       const responce = await fetch(`${host}/api/property/getcmr`, {
@@ -50,6 +56,7 @@ const CrentList = () => {
   return (
     <div id="main-wrapper">
       <Navbar />
+      {showAlert && <Alert msg="Please Login Before!!" />}
       <div className="clearfix" />
 
       <section className="gray pt-4">
@@ -61,7 +68,7 @@ const CrentList = () => {
               {CmrData.map((property) => {
 
                 return (
-                  <Crent property={property} />
+                  <Crent property={property} key={property._id}  onAlert={handleAlert} />
                 );
               })}
             </div>

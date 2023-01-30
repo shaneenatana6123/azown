@@ -7,14 +7,14 @@ const LeadState =(props)=>{
     // const host = "http://54.199.1.10:5000"
     const host = "http://localhost:5000"
     
-    const leadcreate = async (id) => {
+    const leadcreate = async (id,type) => {
         const responce = await fetch(`${host}/api/leadprop/leadcreate`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "auth-token": localStorage.getItem("token"),
           },
-          body: JSON.stringify({ property_id: id }),
+          body: JSON.stringify({ property_id: id, property_type: type }),
         });
         const res = await responce.json();
         console.log(res);

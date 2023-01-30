@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
+import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
+import Alert from '../../Alert';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Header/Navbar';
 
 const RrentDetail = () => {
+  
+
   const [model, setmodel] = useState(false)
   const settings = {
     dots: false,
@@ -31,12 +35,18 @@ const RrentDetail = () => {
     autoplaySpeed: 3000,
 
   };
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 5000);
+  };
   const context = useContext(propertyContext);
   const { rrdata,rrDetail} = context;
   const data = rrdata
   const [contacted, setcontacted] = useState(false)
-  // const leadcontext = useContext(leadContext)
-  // const { leadcreate } = leadcontext
+  const leadcontext = useContext(leadContext)
+  const { leadcreate } = leadcontext
   const { id } = useParams();
   useEffect(() => {
     rrDetail(id);
@@ -45,6 +55,8 @@ const RrentDetail = () => {
   return (
  <div id="main-wrapper">
 <Navbar/>
+{showAlert && <Alert msg='Please Login Before !!...' / > }
+
   <div className="clearfix" />
  
   <section className="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
@@ -200,13 +212,14 @@ const RrentDetail = () => {
                     <span className="sb-header-left">Total Payment</span>
                     <h3 className="price theme-cl">Rs.{parseInt(data.rr_rental_detail_rent)+parseInt(data.rr_rental_detail_exp_deposit)}</h3>
                   </div>
-                  {/* <div className="col-lg-12 col-md-12 col-sm-12">
+                  <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="stbooking-footer mt-1">
                       <div className="form-group mb-0 pb-0">
-                        <a href="#" className="btn book_btn theme-bg">Book It Now</a>
+                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,1) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                        {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
                       </div>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,7 +234,7 @@ const RrentDetail = () => {
                   </div>
                   <div className="clearfix" />
                 </div>
-                <a href="#" className="agent-btn-contact" data-toggle="modal" data-target="#autho-message"><i className="ti-comment-alt" />Get Owner Detail</a>
+                <a href className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</a>
                 {/* <span id="number" data-last={+1234567896}>
                   <span><i className="ti-headphone-alt" /><a className="see">+355(44)35...Show</a></span>
                 </span> */}

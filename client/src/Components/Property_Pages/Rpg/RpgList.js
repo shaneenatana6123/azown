@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Header/Navbar'
 import Rpg from './Rpg'
@@ -13,6 +14,12 @@ const RpgList = () => {
 
   const [RpgData, setData] = useState([]);
   const [rpg, setrpg] = useState([])
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   useEffect(() => {
     async function listrrsprop() {
       const responce = await fetch(`${host}/api/property/getrpg`, {
@@ -31,17 +38,12 @@ const RpgList = () => {
   }, []);
   return (
     <div id="main-wrapper">
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* Start Navigation */}
+    {showAlert && <Alert msg="Please Login Before!!"/> }
+    
       <Navbar />
       {/* End Navigation */}
       <div className="clearfix" />
-      {/* ============================================================== */}
-      {/* Top header  */}
-      {/* ============================================================== */}
-      {/* ============================ All Property ================================== */}
+    
       <section className="gray pt-4">
         <div className="container">
           <div className="row m-0">
@@ -95,9 +97,9 @@ const RpgList = () => {
             <RpgFilter />
             <div className="col-lg-8 col-md-12 col-sm-12">
               
-{RpgData.map((property)=>{
+{RpgData &&  RpgData.map((property)=>{
   return (   
-          <Rpg property={property} key={property._id} />
+          <Rpg property={property} key={property._id} onAlert={handleAlert} />
           
           );
 })}

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Navbar from '../../Header/Navbar'
 import Rflate from './Rflate'
 import RflateFilter from './RflateFilter'
@@ -12,6 +13,12 @@ const RflatList = () => {
 
   const [RfmData, setData] = useState([]);
   const [rr, setrr] = useState([])
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   useEffect(() => {
     async function listrrprop() {
       const responce = await fetch(`${host}/api/property/getrfm`, {
@@ -32,6 +39,7 @@ const RflatList = () => {
     <div id="main-wrapper">
 
       <Navbar />
+      {showAlert && <Alert msg="Please Login Before!!" />}
       <div className="clearfix" />
       <section className="gray pt-4">
         <div className="container">
@@ -73,7 +81,7 @@ const RflatList = () => {
           
           return (   
             
-          <Rflate property={property} key={property._id} />
+          <Rflate property={property} key={property._id}  onAlert={handleAlert}/>
           );
         })}
             </div>
@@ -82,8 +90,7 @@ const RflatList = () => {
           </div>
         </div>
       </section>
-      {/* ============================ All Property ================================== */}
-      {/* ============================ Call To Action ================================== */}
+     
 
     </div>
 

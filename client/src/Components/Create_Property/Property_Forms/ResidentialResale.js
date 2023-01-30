@@ -173,8 +173,7 @@ const ResidentialResale = () => {
           </div>
         </div>
       </div>
-      {/* ============================ Page Title End ================================== */}
-      {/* ============================ Submit Property Start ================================== */}
+   
       <section>
         <div className="container">
           <div className="row">

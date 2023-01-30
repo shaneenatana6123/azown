@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { leadContext } from '../../../context/LeadContext';
+import propertyContext from '../../../context/PropertyContext';
 
-const Crent = ({property}) => {
+const Crent = ({property,onAlert}) => {
+  const context = useContext(propertyContext);
+  const leadcontext = useContext(leadContext)
+  const { leadcreate } = leadcontext
+  const { lead, handlereq } = context;
+  const [contacted, setcontacted] = useState(false);
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   return (
    
     <div className="row justify-content-center">						
@@ -87,8 +101,7 @@ const Crent = ({property}) => {
               </div>
               <a href="#">  <i className=" fa fa-heart" style={{fontSize: 35, paddingRight: 22, paddingTop: 5}} /></a> 
               <div className="footer-flex">
-                <a href="property-detail.html" className="prt-view" style={{backgroundColor: '#27ae60'}}>Get Owner Details</a>
-                {/* <a href="property-detail.html" class="prt-view">View Detail</a> */}
+              {localStorage.getItem('token') ?  property.lead && property.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="prt-view" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="prt-view" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(property._id,5) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={onAlert} className="prt-view" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
               </div>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Footer from '../../Footer/Footer'
+import Navbar from '../../Header/Navbar'
 import Rsale from './Rsale'
 import RsaleFilter from './RsaleFilter'
 
@@ -11,6 +13,12 @@ const RsaleList = () => {
   const { host } = context;
 
   const [RsaleData, setData] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
   const [rr, setrr] = useState([])
   useEffect(() => {
     async function listrrprop() {
@@ -29,6 +37,8 @@ const RsaleList = () => {
   }, []);
   return (
     <div id="main-wrapper">
+      <Navbar />
+      {showAlert && <Alert msg="Please Login Before!!" />}
       <div className="clearfix" />
 
       <section className="gray pt-4">
@@ -85,7 +95,7 @@ const RsaleList = () => {
             <div className="col-lg-8 col-md-12 col-sm-12">{
               RsaleData.map((property) => {
                 return (
-                  <Rsale property={property}  key={property._id}/>
+                  <Rsale property={property} key={property._id} onAlert={handleAlert} />
                 )
               })
             }

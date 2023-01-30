@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-const Csale = ({property}) => {
+import { leadContext } from '../../../context/LeadContext';
+import propertyContext from '../../../context/PropertyContext';
+const Csale = ({property,onAlert}) => {
+  const context = useContext(propertyContext);
+  const leadcontext = useContext(leadContext)
+  const { leadcreate } = leadcontext
+  const { lead, handlereq } = context;
+  const [contacted, setcontacted] = useState(false);
+  
   return (
   
     <div className="row justify-content-center">						
@@ -23,7 +31,7 @@ const Csale = ({property}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/cms-detail/${property._id}`}>{`${property.cs_detail_property_type} for rent in ${property.cs_location_city.split(",")[0]}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/cms-detail/${property._id}`}>{`${property.cs_detail_property_type} for rent in ${property.cs_location_city &&  property.cs_location_city.split(",")[0]}`} </Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">
@@ -85,8 +93,7 @@ const Csale = ({property}) => {
               </div>
               <a href="#">  <i className=" fa fa-heart" style={{fontSize: 35, paddingRight: 22, paddingTop: 5}} /></a> 
               <div className="footer-flex">
-                <a href="property-detail.html" className="prt-view" style={{backgroundColor: '#27ae60'}}>Get Owner Details</a>
-                {/* <a href="property-detail.html" class="prt-view">View Detail</a> */}
+              {localStorage.getItem('token') ?  property.lead && property.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="prt-view" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="prt-view" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(property._id,6) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={onAlert} className="prt-view" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
               </div>
             </div>
           </div>

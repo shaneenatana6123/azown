@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Slider from 'react-slick'
+import { leadContext } from '../../../context/LeadContext'
 import propertyContext from '../../../context/PropertyContext'
+import Alert from '../../Alert'
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Header/Navbar'
 
@@ -31,12 +33,18 @@ const RpgDetail = () => {
     autoplaySpeed: 3000,
 
   };
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 5000);
+  };
   const context = useContext(propertyContext);
   const { rpgDetail,   rpgdata } = context;
   const data = rpgdata
   const [contacted, setcontacted] = useState(false)
-  // const leadcontext = useContext(leadContext)
-  // const { leadcreate } = leadcontext
+  const leadcontext = useContext(leadContext)
+  const { leadcreate } = leadcontext
   const { id } = useParams();
   useEffect(() => {
     rpgDetail(id);
@@ -44,6 +52,7 @@ const RpgDetail = () => {
   return (
    <div id="main-wrapper">
  <Navbar/>
+ {showAlert && <Alert msg='Please Login Before !!...' / > }
   <div className="clearfix" />
   <section className="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
         <div className="container">
@@ -204,6 +213,14 @@ const RpgDetail = () => {
                   <span className="sb-header-left">Total Payment</span>
                   <h3 className="price theme-cl">Rs.{parseInt( data.rpg_detail_room_rent)+parseInt(data.rpg_detail_room_deposit)}</h3>
                 </div>
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="stbooking-footer mt-1">
+                      <div className="form-group mb-0 pb-0">
+                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,3) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                        {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
+                      </div>
+                    </div>
+                  </div>
               
               </div>
             </div>
