@@ -1,16 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { useJsApiLoader, Autocomplete, GoogleMap, Marker, } from '@react-google-maps/api'
+import { Field } from 'formik';
 
 
-const LocationPicker = ({ handleChange ,name}) => {
+const LocationPicker = ({ name}) => {
   const [mark, setmark] = useState(false)
+  // /** @type React.MutableRefObject<HTMLInputElement> */
+  // const originRef = useRef()
   useEffect(() => {
     setTimeout(() => {
       setmark(true)
     }, 3000);
 
   }, [])
+
+ 
+
+  // function onPlaceChanged (e) {
+  //   console.log(e.autocomplete)
+  //   // if (e.autocomplete !== null) {
+  //   //   console.log(this.autocomplete)
+  //   // } else {
+  //   //   console.log('Autocomplete is not loaded yet!')
+  //   // }
+  // }
 
 
   const { isLoaded } = useJsApiLoader({
@@ -19,6 +33,7 @@ const LocationPicker = ({ handleChange ,name}) => {
   })
 
   const [selectedLocation, setSelectedLocation] = useState({ lat: 26.477626, lng: 80.31696 });
+  
 //  /** @type React.MutableRefObject<HTMLInputElement> */
 //  const originRef = useRef()
   const handleMapClick = (event) => {
@@ -37,8 +52,17 @@ const LocationPicker = ({ handleChange ,name}) => {
        
         <div className="form-group col-md-6 my-3">
           <label>Locality</label>
-          <Autocomplete>
-            <input type="text" className="form-control"   name={name}  onClick={handleChange} />
+          
+
+{/* <Autocomplete
+    onPlaceSelected={(place) => {
+      setSelectedAddress(place.formatted_address);
+    }}
+    types={['address']}
+    value={selectedAddress}
+/> */}
+          <Autocomplete  >
+            <Field type='address' className="form-control"   name={name}    />
 
           </Autocomplete>
 
@@ -62,8 +86,8 @@ const LocationPicker = ({ handleChange ,name}) => {
       >
 
         {
-          mark && <Marker position={selectedLocation}
-            draggable={true} onChange={handleChange} name="rr_location_longitude"
+          mark && <Marker 
+            draggable={true} 
             onDragEnd={(e) => {
               setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
 

@@ -25,7 +25,7 @@ const Rflate = ({property}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link to=''>5689 Resot Relly Market, Montreal </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rfm-detail/${property._id}`}>{`${property.rfm_detail_property_type} for rent in ${property.rfm_location_city.split(",")[0]}`} </Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">

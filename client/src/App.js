@@ -25,53 +25,54 @@ import CsaleDetail from './Components/Property_Pages/Csalse/CsaleDetail';
 import PlotList from './Components/Property_Pages/Plot/PlotList';
 import PlotDetail from './Components/Property_Pages/Plot/PlotDetail';
 import RsaleDetail from './Components/Property_Pages/Rsale/RsaleDetail';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 
 
 function App() {
   return (
     <>
- 
 
-  <Router>
-  <Routes>
-  <Route path='/' element={<Home/>}></Route>
-  <Route path='/create-property' element={<CreateProperty/>} ></Route>
-  <Route path='/residential-rent' element={<ResidentialRent/>} ></Route>
-  <Route path='/residential-resale' element={<ResidentialResale/>} ></Route>
-  <Route path='/residential-pg' element={<ResidentialPg/>} ></Route>
-  <Route path='/residential-flatmate' element={<ResidentialFlatmates/>} ></Route>
-  <Route path='/commercial-rent' element={<CommercialRent/>} ></Route>
-  <Route path='/commercial-sale' element={<CommercialSale/>} ></Route>
-  <Route path='/plot-resale' element={<PlotResale/>} ></Route>
 
-      <Route path="/rrent-list" element={<RrentList />}></Route>
-          <Route path="/rrent-detail/:id" element={<RrentDetail/>}  ></Route>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/create-property' element={<CreateProperty />} ></Route>
+          <Route path='/residential-rent' element={<ResidentialRent />} ></Route>
+          <Route path='/residential-resale' element={<ResidentialResale />} ></Route>
+          <Route path='/residential-pg' element={<ResidentialPg />} ></Route>
+          <Route path='/residential-flatmate' element={<ResidentialFlatmates />} ></Route>
+          <Route path='/commercial-rent' element={<CommercialRent />} ></Route>
+          <Route path='/commercial-sale' element={<CommercialSale />} ></Route>
+          <Route path='/plot-resale' element={<PlotResale />} ></Route>
 
-          <Route path="/rsale-list" element={<RsaleList/>}></Route>
-          <Route path="/rsale-detail/:id" element={<RsaleDetail/>}></Route>
+          <Route path="/rrent-list" element={<RrentList />}></Route>
+          <Route path="/rrent-detail/:id" element={<RrentDetail />}  ></Route>
 
-          <Route path="/rpg-list" element={<RpgList/>}></Route>
-          <Route path="/rpg-detail/:id" element={<RpgDetail/>}></Route>
+          <Route path="/rsale-list" element={<RsaleList />}></Route>
+          <Route path="/rsale-detail/:id" element={<RsaleDetail />}></Route>
 
-          <Route path="/rfm-list" element={<RflatList/>}></Route>
-          <Route path="/rfm-detail/:id" element={<RflateDetail/>}></Route>
+          <Route path="/rpg-list" element={<RpgList />}></Route>
+          <Route path="/rpg-detail/:id" element={<RpgDetail />}></Route>
 
-          <Route path="/cmr-list" element={<CrentList/>}></Route>
-          <Route path="/cmr-detail/:id" element={<CrentDetail/>}></Route>
+          <Route path="/rfm-list" element={<RflatList />}></Route>
+          <Route path="/rfm-detail/:id" element={<RflateDetail />}></Route>
 
-          <Route path="/cms-list" element={<CsaleList/>}></Route>
-          <Route path="/cms-detail/:id" element={<CsaleDetail/>}></Route>
+          <Route path="/cmr-list" element={<CrentList />}></Route>
+          <Route path="/cmr-detail/:id" element={<CrentDetail />}></Route>
 
-          <Route path="/plot-list" element={<PlotList/>}></Route>
-          <Route path="/plot-detail/:id" element={<PlotDetail/>}></Route>
-  
- 
-  </Routes>
-    
-  </Router>
+          <Route path="/cms-list" element={<CsaleList />}></Route>
+          <Route path="/cms-detail/:id" element={<CsaleDetail />}></Route>
+
+          <Route path="/plot-list" element={<PlotList />}></Route>
+          <Route path="/plot-detail/:id" element={<PlotDetail />}></Route>
+<Route path='/dashboard' element={<Dashboard/>}></Route>
+
+        </Routes>
+
+      </Router>
     </>
- 
+
 
   );
 }

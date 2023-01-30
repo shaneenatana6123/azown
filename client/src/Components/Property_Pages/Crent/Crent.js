@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Crent = () => {
+const Crent = ({property}) => {
   return (
-    <div className="col-lg-8 col-md-12 col-sm-12">
+   
     <div className="row justify-content-center">						
       {/* Single Property */}
       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -23,12 +24,12 @@ const Crent = () => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="listing-card-info-price mb-0"><a href="single-property-1.html">5689 Resot Relly Market, Montreal </a></h6>
+                      <h6 className="listing-card-info-price mb-0"><Link style={{fontSize:"15px"}} to={`/cmr-detail/${property._id}`}>{`${property.cr_detail_property_type} for rent in ${property.cr_location_city.split(",")[0]}`} </Link></h6>
                     </div>
                   </div>
                   
                   <div className="_card_flex_last">
-                    <h6 className="listing-card-info-price mb-0">$7,000</h6>
+                    <h6 className="listing-card-info-price mb-0">${property.cr_rental_detail_rent}</h6>
                   </div> 
                 </div>
               </div>
@@ -40,32 +41,32 @@ const Crent = () => {
                 </div>
               </div>												
               <div className="_card_list_flex mb-2">
-                <p className="location_fuzail"><i className="lni-map-marker" />Chaman Ganj, Kanpur Nagar, Uttar Pradesh, India </p>
+                <p className="location_fuzail"><i className="lni-map-marker" />{property.cr_location_city}</p>
               </div>											
               <div className="row" style={{paddingLeft: 17}}>
                 <div className="row col-lg-12 col-md-12">
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">₹50,000 </p>
+                    <p className="rr_list">₹{property.cr_rental_detail_exp_deposit} </p>
                     <i className="fa fa-money pr-1" /> Deposit
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">2,300 sqft</p>
+                    <p className=" rr_list">{property.cr_detail_builtup_area} sqft</p>
                     <i className="fa fa-bed pr-1" />Built-up Area
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">Godown/Warehouse</p>
+                    <p className=" rr_list">{property.cr_detail_property_type}</p>
                     <i className="fa fa-building pr-1" />Property Type
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">Public</p>
+                    <p className=" rr_list">{property.cr_amenities_parking ?"Yes":"No"}</p>
                     <i className="fa fa-parking pr-1" />Parking
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">Fully Furnished</p>
+                    <p className="rr_list">{property.cr_detail_furnishing}</p>
                     <i className="fa fa-building pr-1" />Furnishing
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">28/01/2023</p>
+                    <p className="rr_list">{property.cr_rental_detail_avail_from}</p>
                     <i className="fa fa-calendar pr-1" />Available From
                   </div>
                 </div>
@@ -96,7 +97,7 @@ const Crent = () => {
       </div>
       {/* End Single Property */}
     </div>
-  </div>
+ 
   )
 }
 

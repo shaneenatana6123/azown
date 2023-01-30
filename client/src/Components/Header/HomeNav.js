@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Login from './Login'
+import SignUp from './SignUp'
 
 const HomeNav = () => {
   const [hover, sethover] = useState(false)
@@ -135,69 +137,10 @@ const HomeNav = () => {
                       <div className="tab-content" >
                         <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-login-tab">
                           <div className="login-form">
-                            {log ? <form>
-                              <div className="form-group">
-                                <label>User Name</label>
-                                <div className="input-with-icon">
-                                  <input type="text" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Password</label>
-                                <div className="input-with-icon">
-                                  <input type="password" className="form-control" />
-                                  <i className="ti-unlock" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <div className="eltio_ol9">
-                                  <div className="eltio_k1">
-                                    <input id="dd" className="checkbox-custom" name="dd" type="checkbox" />
-                                    <label htmlFor="dd" className="checkbox-custom-label">Remember Me</label>
-                                  </div>
-                                  <div className="eltio_k2">
-                                    <a href="#">Lost Your Password?</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <button type="submit" className="btn btn-md full-width pop-login">Login</button>
-                              </div>
-                            </form> : <form>
-                              <div className="form-group">
-                                <label>Full Name</label>
-                                <div className="input-with-icon">
-                                  <input type="text" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Email ID</label>
-                                <div className="input-with-icon">
-                                  <input type="email" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Password</label>
-                                <div className="input-with-icon">
-                                  <input type="password" className="form-control" />
-                                  <i className="ti-unlock" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <div className="eltio_ol9">
-                                  <div className="eltio_k1">
-                                    <input id="dds" className="checkbox-custom" name="dds" type="checkbox" />
-                                    <label htmlFor="dds" className="checkbox-custom-label">By using the website, you accept the terms and conditions</label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <button type="submit" className="btn btn-md full-width pop-login">Register</button>
-                              </div>
-                            </form>}
+                            {log ? 
+                            <Login/> :
+                             <SignUp/>
+                            }
 
                           </div>
                         </div>

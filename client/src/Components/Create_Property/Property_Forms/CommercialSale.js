@@ -175,7 +175,7 @@ const CommercialSale = () => {
                         </div>
                         <div className="form-group col-md-6">
                           <label>Builtup Area</label>
-                          <input type="text" name="cs_detail_builtup_area" onChange={handleChange} value={data.cs_detail_builtup_area} className="form-control" />
+                          <input type="number" name="cs_detail_builtup_area" onChange={handleChange} value={data.cs_detail_builtup_area} className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                           <label>Building Type</label>

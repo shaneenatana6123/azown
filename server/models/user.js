@@ -23,7 +23,7 @@ const UserSchema = new Schema({
     },
     usertype:{
         type:String,
-        default:"visiter"
+        default:"Visiter"
     },
     imgname:{
         type:String

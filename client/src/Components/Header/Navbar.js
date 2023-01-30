@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Login from './Login'
+import SignUp from './SignUp'
 
 const Navbar = () => {
   const [hover, sethover] = useState(false)
@@ -13,9 +15,9 @@ const Navbar = () => {
   //   setMenuOpen(!menuOpen);
   // }
   useEffect(() => {
-    if (show){
+    if (show) {
 
-    }else{
+    } else {
 
     }
     function handleResize() {
@@ -54,29 +56,18 @@ const Navbar = () => {
     <div className={fix ? "header-fixed header header-light " : "header header-light"} >
       <div className="container" >
         <nav id="navigation" className={off ? "navigation navigation-portrait" : "navigation navigation-landscape"} >
-        {/* <div class="nav-header">
-							<a class="nav-brand" href="#">
-								<img src="assets/img/logo.png" class="logo" alt="" />
-							</a>
-							<div class="nav-toggle"></div>
-							<div class="mobile_nav">
-								<ul>
-									<li class="_my_prt_list"><a href="#"><span>2</span>My List</a></li>
-									<li><a href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-circle fa-lg"></i></a></li>
-								</ul>
-							</div>
-						</div> */}
+
           <div className="nav-header">
-          
-          <a class="nav-brand" href>
-								<img src="assets/img/logo.png" class="logo" alt="" />
-							</a>
+
+            <a class="nav-brand" href>
+              <img src="assets/img/logo.png" class="logo" alt="" />
+            </a>
             <div className="nav-toggle" onClick={() => { setMenuOpen(!menuOpen); }}></div>
             <div className="mobile_nav">
               <ul>
                 <li ><a href className="add_prt"><i className="fas fa-plus-circle" /></a></li>
                 <span style={{ borderRight: "2px solid grey", padding: "5px" }}></span>
-                <li onClick={()=>{setShow(!show)}}><a href data-toggle="modal" ><i className="fas fa-user-plus fa-lg" /></a></li>
+                <li onClick={() => { setShow(!show) }}><a href data-toggle="modal" ><i className="fas fa-user-plus fa-lg" /></a></li>
                 <li>
                   {/* <div class="btn-group account-drop p-0">
                   <button type="button" class="btn btn-order-by-filt" >
@@ -105,20 +96,22 @@ const Navbar = () => {
               </li>
             </ul>
             <ul className="nav-menu nav-menu-social align-to-right">
-              <li onClick={() => { setShow(!show) }}>
+            {localStorage.getItem('token')?<li >
+            <Link to="/dashboard" className='p-0' >
+            <div class="btn-group account-drop p-0">
+                  <button type="button" class="btn btn-order-by-filt" >
+                    <img src="assets/img/user-5.jpg" class="avater-img" alt="" />
+                  </button>
+                  <span style={{ borderRight: "2px solid grey ", padding: "10px" }}></span>
+                </div>
+            </Link>
+              </li> :  <li onClick={() => { setShow(!show) }}>
                 <a href className="alio_green"  >
                   <i className="fas fa-sign-in-alt mr-1" /><span className="dn-lg">Sign In</span>
                 </a>
-
-                {/* <div class="btn-group account-drop p-0">
-                <button type="button" class="btn btn-order-by-filt" >
-                  <img src="assets/img/user-5.jpg" class="avater-img" alt="" />
-                </button>
-                <span style={{ borderRight: "2px solid grey ", padding: "10px" }}></span>
-
-              </div> */}
-
-              </li>
+              </li>}
+             
+              
               <li className="add-listing">
                 <Link to="/create-property" className="theme-cl">
                   <i className="fas fa-plus-circle mr-1" />Add Property
@@ -149,69 +142,11 @@ const Navbar = () => {
                       <div className="tab-content" >
                         <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-login-tab">
                           <div className="login-form">
-                            {log ? <form>
-                              <div className="form-group">
-                                <label>User Name</label>
-                                <div className="input-with-icon">
-                                  <input type="text" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Password</label>
-                                <div className="input-with-icon">
-                                  <input type="password" className="form-control" />
-                                  <i className="ti-unlock" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <div className="eltio_ol9">
-                                  <div className="eltio_k1">
-                                    <input id="dd" className="checkbox-custom" name="dd" type="checkbox" />
-                                    <label htmlFor="dd" className="checkbox-custom-label">Remember Me</label>
-                                  </div>
-                                  <div className="eltio_k2">
-                                    <a href="#">Lost Your Password?</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <button type="submit" className="btn btn-md full-width pop-login">Login</button>
-                              </div>
-                            </form> : <form>
-                              <div className="form-group">
-                                <label>Full Name</label>
-                                <div className="input-with-icon">
-                                  <input type="text" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Email ID</label>
-                                <div className="input-with-icon">
-                                  <input type="email" className="form-control" />
-                                  <i className="ti-user" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <label>Password</label>
-                                <div className="input-with-icon">
-                                  <input type="password" className="form-control" />
-                                  <i className="ti-unlock" />
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <div className="eltio_ol9">
-                                  <div className="eltio_k1">
-                                    <input id="dds" className="checkbox-custom" name="dds" type="checkbox" />
-                                    <label htmlFor="dds" className="checkbox-custom-label">By using the website, you accept the terms and conditions</label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-group">
-                                <button type="submit" className="btn btn-md full-width pop-login">Register</button>
-                              </div>
-                            </form>}
+                            {log ?
+                              <Login />
+                              :
+                              <SignUp />
+                            }
 
                           </div>
                         </div>

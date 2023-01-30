@@ -70,12 +70,12 @@ const CommercialRent = () => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("cr_detail_description",data.cr_detail_description)
-      formData.append("cr_detail_property_type ",data.cr_detail_property_type)
+      formData.append("cr_detail_property_type",data.cr_detail_property_type)
       formData.append("cr_detail_building_type",data.cr_detail_building_type)
       formData.append("cr_detail_prop_age",data.cr_detail_prop_age)
       formData.append("cr_detail_floor",data.cr_detail_floor)
       formData.append("cr_detail_total_floor",data.cr_detail_total_floor)
-      formData.append("cr_detail_builtup_area ",data.cr_detail_builtup_area)
+      formData.append("cr_detail_builtup_area",data.cr_detail_builtup_area)
       formData.append("cr_detail_furnishing",data.cr_detail_furnishing)
       
       formData.append("cr_location_state",data.cr_location_state)
@@ -87,7 +87,7 @@ const CommercialRent = () => {
       formData.append("cr_rental_detail_rent",data.cr_rental_detail_rent)
       formData.append("cr_rental_detail_exp_deposit",data.cr_rental_detail_exp_deposit)
       formData.append("cr_rental_detail_is_nogotiable",data.cr_rental_detail_is_nogotiable)
-      formData.append("cr_rental_detail_monthly_maintenance ",data.cr_rental_detail_monthly_maintenance)
+      formData.append("cr_rental_detail_monthly_maintenance",data.cr_rental_detail_monthly_maintenance)
       formData.append("cr_rental_detail_avail_from",data.cr_rental_detail_avail_from)
       formData.append("cr_rental_detail_lease_duration",data.cr_rental_detail_lease_duration)
       formData.append("cr_rental_detail_lockin_period",data.cr_rental_detail_lockin_period)

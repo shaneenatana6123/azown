@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import propertyContext from '../../../context/PropertyContext';
 
-const Rpg = () => {
+const Rpg = ({property}) => {
+  
   return (
-    <div className="col-lg-8 col-md-12 col-sm-12">
+   
     <div className="row justify-content-center">
       {/* Single Property */}
       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
         <div className="property-listing list_view">
           <div className="listing-img-wrapper">
-            <div className="_exlio_125">For Rent</div>
+            <div className="_exlio_125">For PG</div>
             <div className="list-img-slide">
               <div className="click">
                 <div><a href="single-property-1.html"><img src="assets/img/p-1.png" className="img-fluid mx-auto" alt /></a></div>
@@ -23,12 +26,12 @@ const Rpg = () => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><a href="single-property-1.html">5689 Resot Relly Market, Montreal </a></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rpg-detail/${property._id}`}>{`${property.rpg_detail_property_type} for rent in ${property.rpg_location_city.split(",")[0]}`} </Link></h6>
                     </div>
                   </div>
                   
                   <div className="_card_flex_last">
-                    <h6 className="cms_amount mb-0">$7,000</h6>
+                    <h6 className="cms_amount mb-0">{property.rpg_detail_room_rent}</h6>
                   </div> 
                 </div>
               </div>
@@ -40,32 +43,32 @@ const Rpg = () => {
                 </div>
               </div>												
               <div className="_card_list_flex mb-2">
-                <p className="location_fuzail"><i className="lni-map-marker" />Chaman Ganj, Kanpur Nagar, Uttar Pradesh, India </p>
+                <p className="location_fuzail"><i className="lni-map-marker" />{property.rpg_location_city}</p>
               </div>											
               <div className="row" style={{paddingLeft: 17}}>
                 <div className="row col-lg-12 col-md-12">
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">₹50,000 </p>
+                    <p className="rr_list">₹{property.rpg_detail_room_deposit}</p>
                     <i className="fa fa-money pr-1" /> Deposit
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">Shared</p>
-                    <i className="fa fa-bed pr-1" />Room Type
+                    <p className=" rr_list">{property.rpg_detail_room_occupany}</p>
+                    <i className="fa fa-bed pr-1" />Room Occupy
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">Any</p>
+                    <p className=" rr_list">{property.rpg_detail_availablefor}</p>
                     <i className="fa fa-building pr-1" />Prefered Tenent
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className=" rr_list">20/01/2023</p>
+                    <p className=" rr_list">{property.rpg_detail_available_from}</p>
                     <i className="fa fa-parking pr-1" />Posted on
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">All Meals</p>
+                    <p className="rr_list">{property.rpg_detail_food_included}</p>
                     <i className="fa fa-building pr-1" />Food Facility
                   </div>
                   <div className="listing-card-info-icon col-lg-4 col-md-4 col-sm-10">
-                    <p className="rr_list">Not Provided</p>
+                    <p className="rr_list">{property.rpg_detail_gate_shut_time}</p>
                     <i className="fa fa-clock pr-1" />Gate Closing Time
                   </div>
                 </div>
@@ -98,7 +101,7 @@ const Rpg = () => {
       {/* ///////////////////////////////////////// */}
     </div>
    
-  </div>
+
   )
 }
 

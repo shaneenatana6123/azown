@@ -70,13 +70,13 @@ const PlotResale = () => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("ps_detail_description", data.ps_detail_description)
-    formData.append("ps_detail_plot_length ", data.ps_detail_plot_length)
-    formData.append("ps_detail_plot_width ", data.ps_detail_plot_width)
+    formData.append("ps_detail_plot_length", data.ps_detail_plot_length)
+    formData.append("ps_detail_plot_width", data.ps_detail_plot_width)
     formData.append("ps_detail_width_of_facing_road", data.ps_detail_width_of_facing_road)
-    formData.append("ps_detail_has_boundary ", data.ps_detail_has_boundary)
+    formData.append("ps_detail_has_boundary", data.ps_detail_has_boundary)
     formData.append("ps_detail_inside_gated_project", data.ps_detail_inside_gated_project)
 
-    formData.append("ps_rules_allowed_floors ", data.ps_rules_allowed_floors)
+    formData.append("ps_rules_allowed_floors", data.ps_rules_allowed_floors)
 
     formData.append("ps_location_state", data.ps_location_state)
     formData.append("ps_location_city", data.ps_location_city)
@@ -84,7 +84,7 @@ const PlotResale = () => {
     formData.append("ps_location_longitude", data.ps_location_longitude)
 
     formData.append("ps_sale_detail_price", data.ps_sale_detail_price)
-    formData.append("ps_sale_detail_available_from ", data.ps_sale_detail_available_from)
+    formData.append("ps_sale_detail_available_from", data.ps_sale_detail_available_from)
     formData.append("ps_sale_detail_is_negotiable", data.ps_sale_detail_is_negotiable)
     formData.append("ps_sale_detail_currently_under_loan", data.ps_sale_detail_currently_under_loan)
 
@@ -93,7 +93,7 @@ const PlotResale = () => {
     formData.append("ps_amenities_gated_security", data.ps_amenities_gated_security)
     formData.append("ps_amenities_electricity_connection", data.ps_amenities_electricity_connection)
 
-    formData.append("ps_info_ownership ", data.ps_info_ownership)
+    formData.append("ps_info_ownership", data.ps_info_ownership)
     formData.append("ps_info_khata_certificate_is_available", data.ps_info_khata_certificate_is_available)
     formData.append("ps_info_conversion_certificate_is_available", data.ps_info_conversion_certificate_is_available)
     formData.append("ps_info_sale_deed_certificate_is_available", data.ps_info_sale_deed_certificate_is_available)
