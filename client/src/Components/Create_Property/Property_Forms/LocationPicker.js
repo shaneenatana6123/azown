@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import { useJsApiLoader, Autocomplete, GoogleMap, Marker, } from '@react-google-maps/api'
-import { Field } from 'formik';
 
 
-const LocationPicker = ({ name}) => {
+
+const LocationPicker = ({ onLocation}) => {
   const [mark, setmark] = useState(false)
   // /** @type React.MutableRefObject<HTMLInputElement> */
   // const originRef = useRef()
@@ -17,14 +16,7 @@ const LocationPicker = ({ name}) => {
 
  
 
-  // function onPlaceChanged (e) {
-  //   console.log(e.autocomplete)
-  //   // if (e.autocomplete !== null) {
-  //   //   console.log(this.autocomplete)
-  //   // } else {
-  //   //   console.log('Autocomplete is not loaded yet!')
-  //   // }
-  // }
+
 
 
   const { isLoaded } = useJsApiLoader({
@@ -51,20 +43,9 @@ const LocationPicker = ({ name}) => {
       <div>
        
         <div className="form-group col-md-6 my-3">
-          <label>Locality</label>
+         
           
 
-{/* <Autocomplete
-    onPlaceSelected={(place) => {
-      setSelectedAddress(place.formatted_address);
-    }}
-    types={['address']}
-    value={selectedAddress}
-/> */}
-          <Autocomplete id='autocomplete' >
-            <Field type='address' className="form-control"   name={name}    />
-
-          </Autocomplete>
 
         </div>
 
@@ -88,10 +69,11 @@ const LocationPicker = ({ name}) => {
         {
           mark && <Marker position={selectedLocation}
             draggable={true} 
-            onDragEnd={(e) => {
-              setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+            onDragEnd={onLocation}
+            // onDragEnd={(e) => {
+            //   setSelectedLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
 
-            }}
+            // }}
           />
         }
       </GoogleMap>

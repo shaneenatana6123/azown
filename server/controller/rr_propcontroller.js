@@ -418,5 +418,71 @@ const get_plot = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 }
+const my_rr = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await rr_props.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+const my_rrs = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await rrs_props.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+const my_rpg = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await rpg_prop.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+const my_rfm = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await rfm_prop.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+const my_cmr = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await cmr_prop.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
 
-module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs ,single_rrs_prop,single_rpg_prop,single_rfm_prop, single_cmr_prop,single_cms_prop,single_plot_prop};
+const my_cms = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await cms_prop.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+
+
+const my_plot = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    let data = await plot_prop.find({ userid: userId });
+    res.status(200).json(data)
+  } catch {
+    res.json({ error: "Not found" });
+  }
+}
+
+module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop,my_rr,my_rrs,my_rpg,my_rfm, my_cmr,my_cms,my_plot };

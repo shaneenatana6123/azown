@@ -4,7 +4,7 @@ const leadContext = createContext()
 const LeadState =(props)=>{
     const [userleadsdata, setuserleadsdata] = useState([]);
     const [ownerleaddata, setownerleaddata] = useState([])
-    // const host = "http://54.199.1.10:5000"
+    // const host = "https://azown.com"
     const host = "http://localhost:5000"
     
     const leadcreate = async (id,type) => {
@@ -21,7 +21,7 @@ const LeadState =(props)=>{
       };
    
      
-      const userlead = async () => {
+      const userlead = async (ptype) => {
         const responce = await fetch(`${host}/api/leadprop/userleaddata`, {
           method: "GET",
           headers: {
@@ -44,6 +44,7 @@ const LeadState =(props)=>{
         const resdata = await responce.json();
         setownerleaddata(resdata);
       };
+      // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNiMmYyYWY0ZTliMTQ5YzAwMTg5ODQ4In0sImlhdCI6MTY3NDMzOTI3MX0.xYzlIULGow26waQsg85OrAsJPRtSaeQ9HFe14XIahss
      const updateleadstage = async (lid,stage)=>{
         const responce = await fetch(`${host}/api/leadprop/updateleadstage`, {
             method: "PUT",
@@ -57,7 +58,7 @@ const LeadState =(props)=>{
        console.log(resdata);
      }
     return (
-        <leadContext.Provider value={{leadcreate,userlead,userleadsdata,updateleadstage,ownerlead, ownerleaddata}}>
+        <leadContext.Provider value={{leadcreate,userlead,userleadsdata,updateleadstage,ownerlead, host,ownerleaddata}}>
             {props.children}
         </leadContext.Provider>
     )

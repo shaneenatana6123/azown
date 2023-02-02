@@ -136,6 +136,14 @@ router.get("/getcmr",rrpropconroller.get_cmr)
 router.get("/getcms",rrpropconroller.get_cms)
 router.get("/getplot",rrpropconroller.get_plot)
 
+router.get("/myrr",fetchuser,   rrpropconroller.my_rr);
+router.get("/myrrs",fetchuser,  rrpropconroller.my_rrs)
+router.get("/myrpg",fetchuser,  rrpropconroller.my_rpg)
+router.get("/myrfm",fetchuser,  rrpropconroller.my_rfm)
+router.get("/mycmr",fetchuser,  rrpropconroller.my_cmr)
+router.get("/mycms",fetchuser,  rrpropconroller.my_cms)
+router.get("/myplot",fetchuser,  rrpropconroller.my_plot)
+
 
 
 router.get("/userdash", fetchuser, async (req, res) => {

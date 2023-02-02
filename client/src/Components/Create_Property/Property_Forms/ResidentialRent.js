@@ -7,12 +7,21 @@ import propertyContext from '../../../context/PropertyContext'
 import Footer from '../../Footer/Footer'
 import { Formik, Form, Field, ErrorMessage, } from "formik";
 import * as Yup from 'yup';
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api'
+
 
 const ResidentialRent = () => {
-
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+    libraries: ['places'],
+  })
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const originRef = useRef()
   const context = useContext(propertyContext);
   const { host } = context;
   const [currentStep, setCurrentStep] = useState(0);
+  const [autocompleteRef, setAutocompleteRef] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState({ lat: 26.477626, lng: 80.31696 });
   const history = useNavigate()
   const [file, setFile] = useState([]);
   const fileSelected = (event) => {
@@ -21,7 +30,16 @@ const ResidentialRent = () => {
   const prevStep = () => {
     setCurrentStep(currentStep - 1);
   };
-  function handleStep(step) {
+
+  // if (!isLoaded) {
+  //   return <h4>Map is Loading....</h4>
+  // }
+  function handleStep(step,setFieldValue) {
+    function handleLocation(e){
+      console.log(e.latLng.lat())
+      setFieldValue('rr_location_latitude',e.latLng.lat())
+      setFieldValue('rr_location_longitude',e.latLng.lng())    
+     }
     switch (step) {
 
       case 0:
@@ -30,6 +48,16 @@ const ResidentialRent = () => {
             <h3>Basic Information</h3>
             <div className="frm_submit_wrap">
               <div className="form-row">
+        
+                
+                {/* <Field name='rr_location_city'>
+                <Autocomplete  >
+                <input type='text' ref={originRef} />
+                </Autocomplete>
+                </Field> */}
+                {/* <Autocomplete  >
+                  <Field type='text' name='rr_location_city' /> 
+                </Autocomplete> */}
                 <div className="form-group col-md-12">
                   <label>Property Description<a href className="tip-topdata" data-tip="Property Description"><i className="ti-help" /></a></label>
                   <Field type="text" name="rr_detail_description" className="form-control" />
@@ -189,9 +217,26 @@ const ResidentialRent = () => {
           <div className="frm_submit_wrap">
             <div className="form-row">
 
+              <div className="form-group col-md-6">
+                
+                <Field name="rr_location_city">
+                {({values, field, form }) => (
+                  <div>
+                       <Autocomplete>
+                      <input  type='text' placeholder='Enter the Location'  className='form-control'  ref={originRef} required/>
+                  
+                    </Autocomplete>
+                    
+                    
+                   
+                  </div>
+                 
+                )}
+
+                </Field>
+              </div>
               <div className="form-group col-md-12">
-                <LocationPicker name='rr_location_city'  />
-                {/* <Field name='rr_location_city' type='text' /> */}
+             <LocationPicker  onLocation={handleLocation} />
               </div>
 
 
@@ -384,6 +429,8 @@ const ResidentialRent = () => {
                   <Field type='file' name='file' onChange={fileSelected}
                     accept="image/*"
                     multiple />
+                  <ErrorMessage name='file' component='div'
+                  />
                   <div className="dz-default dz-message">
                     <i className="ti-gallery" />
                     <span>Drag &amp; Drop To Change Logo</span>
@@ -421,7 +468,7 @@ const ResidentialRent = () => {
 
   }),
   Yup.object().shape({
-    rr_location_city: Yup.string().required('Required')
+    rr_location_city: Yup.string()
   }),
   Yup.object().shape({
     rr_rental_detail_rent: Yup.number().required('This Field is Required'),
@@ -499,6 +546,7 @@ const ResidentialRent = () => {
 
                 <Formik
                   initialValues={{
+                   
                     rr_detail_description: "",
                     rr_detail_app_type: "",
                     rr_detail_bhk_type: "",
@@ -519,6 +567,7 @@ const ResidentialRent = () => {
                     rr_location_city: "",
                     rr_location_latitude: "",
                     rr_location_longitude: "",
+
                     rr_rental_detail_rent: "",
                     rr_rental_detail_exp_deposit: "",
                     rr_rental_detail_is_nogotiable: "",
@@ -550,8 +599,15 @@ const ResidentialRent = () => {
                     rr_amenities_gym: false,
                   }}
                   validationSchema={Schema[currentStep]}
-                  onSubmit={(values, { setSubmitting }) => {
-                    if (currentStep === 4) {
+                  onSubmit={(values, { setSubmitting, setTouched, setFieldValue }) => {
+                    if (currentStep===1){
+                      setFieldValue('rr_location_city',originRef.current.value)
+                      setSubmitting(false);
+                      setCurrentStep(currentStep+1)
+                      setTouched({})
+                      
+                    }
+                   else if (currentStep === 4) {
                       const formData = new FormData();
                       formData.append("rr_detail_description", values.rr_detail_description);
                       formData.append("rr_detail_app_type", values.rr_detail_app_type)
@@ -624,18 +680,19 @@ const ResidentialRent = () => {
                           setSubmitting(false);
                         });
 
-                    } else {
+                    }else {
 
                       setCurrentStep(currentStep + 1);
                       setSubmitting(false);
+                      setTouched({});
                       console.log(values)
                     }
                   }
                   }
                 >
-                  {({ values, isSubmitting }) => (
+                  {({ values, isSubmitting ,setFieldValue}) => (
                     <Form >
-                      {handleStep(currentStep)}
+                      {handleStep(currentStep,setFieldValue)}
                       <button type='submit' className='btn btn-dark float-right'  >{currentStep === 4 ? 'Submit' : 'Next'}</button>
                       <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
                     </Form>

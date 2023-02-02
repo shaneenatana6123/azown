@@ -3,7 +3,7 @@ import PropertyContext from "./PropertyContext";
 
 
 const PropertyState = (props) => {
-  // const host = "http://54.199.1.10:5000";
+  // const host = "https://azown.com"
   const host = "http://localhost:5000"
   
   const [rrprop, setrrprop] = useState([]);
@@ -161,8 +161,8 @@ const handlereq = async (pid,uid,des) => {
     });
     let paydata = await responce.json();
   };
-  const Userrrprop = async () => {
-    const responce = await fetch(`${host}/api/property/getuserrrprop`, {
+  const MyRent = async () => {
+    const responce = await fetch(`${host}/api/property/myrr`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -367,7 +367,7 @@ const handlereq = async (pid,uid,des) => {
         dash,
         gethandle,
         gethandler,
-        Userrrprop,
+      
         rrproplead,
         rrprolead,
         
