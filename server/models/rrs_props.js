@@ -76,7 +76,7 @@ const rrs_PropSchema = new Schema({
     rrs_location_city:{
         type:String
     },
-    rrs_location_latitude:{
+    rrs_location_latitiude:{
         type:String
     },
     rrs_location_longitude:{

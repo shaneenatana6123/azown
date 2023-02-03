@@ -15077,7 +15077,7 @@ h1, .h1 {
     color: black;
   padding-left: 0px;
   margin-bottom: 0px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   line-height: 1.5;
 }
@@ -15107,10 +15107,11 @@ line-height: 1px; font-size: 12px; margin: -22px 0 0px;
 .cms_title{
     font-weight: 700;
     position: relative;
-    font-size: 19px;
+    font-size: 20px;
     color: #27ae60;
-    line-height: 1.4;
-    padding-left: 0.35em;
+    line-height: 1;
+    padding-left: 0.2rem;
+    padding-right: 2rem;
 }
 .icon-details{
     width: 19px;

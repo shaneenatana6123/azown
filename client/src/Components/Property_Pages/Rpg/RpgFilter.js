@@ -54,7 +54,7 @@ const RpgFilter = () => {
                   <div className="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
                     <h6>Choose Price</h6>
                     <div className="rg-slider">
-                      <input type="text" className="js-range-slider" name="my_range" defaultValue={100000} />
+                      <input type="range" className="js-range-slider" name="my_range" defaultValue={100000} />
                     </div>
                   </div>
                 </div>		

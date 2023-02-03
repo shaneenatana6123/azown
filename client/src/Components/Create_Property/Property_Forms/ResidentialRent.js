@@ -17,6 +17,7 @@ const ResidentialRent = () => {
   })
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
+  
   const context = useContext(propertyContext);
   const { host } = context;
   const [currentStep, setCurrentStep] = useState(0);
@@ -34,12 +35,13 @@ const ResidentialRent = () => {
   // if (!isLoaded) {
   //   return <h4>Map is Loading....</h4>
   // }
-  function handleStep(step,setFieldValue) {
-    function handleLocation(e){
+  
+  function handleStep(step, setFieldValue) {
+    function handleLocation(e) {
       console.log(e.latLng.lat())
-      setFieldValue('rr_location_latitude',e.latLng.lat())
-      setFieldValue('rr_location_longitude',e.latLng.lng())    
-     }
+      setFieldValue('rr_location_latitude', e.latLng.lat())
+      setFieldValue('rr_location_longitude', e.latLng.lng())
+    }
     switch (step) {
 
       case 0:
@@ -48,8 +50,8 @@ const ResidentialRent = () => {
             <h3>Basic Information</h3>
             <div className="frm_submit_wrap">
               <div className="form-row">
-        
-                
+
+
                 {/* <Field name='rr_location_city'>
                 <Autocomplete  >
                 <input type='text' ref={originRef} />
@@ -216,27 +218,29 @@ const ResidentialRent = () => {
           <h3>Location</h3>
           <div className="frm_submit_wrap">
             <div className="form-row">
+            <div className="form-group col-md-6">
+                  
+                 <Field name='rr_location_state' type='text' className='form-control' placeholder="Enter the Society" />
+                  <ErrorMessage name='rr_location_state' className='text-danger' component='div' />
+                </div>
 
               <div className="form-group col-md-6">
-                
+
                 <Field name="rr_location_city">
-                {({values, field, form }) => (
-                  <div>
-                       <Autocomplete>
-                      <input  type='text' placeholder='Enter the Location'  className='form-control'  ref={originRef} required/>
-                  
-                    </Autocomplete>
-                    
-                    
-                   
-                  </div>
-                 
-                )}
+                  {({ values, field, form }) => (
+                    <div>
+                      <Autocomplete>
+                        <input type='text' placeholder='Enter the Location' className='form-control' ref={originRef} required />
+
+                      </Autocomplete>
+                    </div>
+
+                  )}
 
                 </Field>
               </div>
               <div className="form-group col-md-12">
-             <LocationPicker  onLocation={handleLocation} />
+                <LocationPicker onLocation={handleLocation} />
               </div>
 
 
@@ -458,28 +462,29 @@ const ResidentialRent = () => {
     rr_detail_kitchen_type: Yup.string().required('This Field is Required'),
     rr_detail_prop_age: Yup.string().required('This Field is Required'),
     rr_detail_facing: Yup.string().required('This Field is Required'),
-    rr_detail_builtup_area: Yup.number().required('This Field is Required'),
-    rr_detail_carpet_area: Yup.number().required('This Field is Required'),
+    rr_detail_builtup_area: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+    rr_detail_carpet_area: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
     rr_detail_furnishing: Yup.string().required('This Field is Required'),
     rr_detail_parking: Yup.string().required('This Field is Required'),
-    rr_detail_bathroom: Yup.number().required('This Field is Required'),
-    rr_detail_balcony: Yup.number().required('This Field is Required'),
+    rr_detail_bathroom: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+    rr_detail_balcony: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
     rr_detail_water_supply: Yup.string().required('This Field is Required'),
 
   }),
   Yup.object().shape({
-    rr_location_city: Yup.string()
+    rr_location_city: Yup.string(),
+    rr_location_state: Yup.string().required('This Field is Required')
   }),
   Yup.object().shape({
-    rr_rental_detail_rent: Yup.number().required('This Field is Required'),
-    rr_rental_detail_exp_deposit: Yup.number().required('This Field is Required'),
+    rr_rental_detail_rent: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+    rr_rental_detail_exp_deposit: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
     rr_rental_detail_is_nogotiable: Yup.string().required('This Field is Required'),
     rr_rental_detail_monthly_maintenance: Yup.string().required('This Field is Required'),
     rr_rental_detail_avail_from: Yup.string().required('This Field is Required'),
     rr_rental_detail_pref_tenent: Yup.string().required('This Field is Required'),
     rr_rental_detail_is_allowed_nonveg: Yup.string().required('This Field is Required'),
     rr_rental_detail_shown_by: Yup.string(),
-    rr_rental_detail_shown_by_number: Yup.number().required('This Field is Required'),
+    rr_rental_detail_shown_by_number: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
   }),
   Yup.object().shape({
     rr_amenities_lift: Yup.boolean(),
@@ -546,7 +551,7 @@ const ResidentialRent = () => {
 
                 <Formik
                   initialValues={{
-                   
+
                     rr_detail_description: "",
                     rr_detail_app_type: "",
                     rr_detail_bhk_type: "",
@@ -600,14 +605,13 @@ const ResidentialRent = () => {
                   }}
                   validationSchema={Schema[currentStep]}
                   onSubmit={(values, { setSubmitting, setTouched, setFieldValue }) => {
-                    if (currentStep===1){
-                      setFieldValue('rr_location_city',originRef.current.value)
+                    if (currentStep === 1) {
+                      setFieldValue('rr_location_city', originRef.current.value)
                       setSubmitting(false);
-                      setCurrentStep(currentStep+1)
+                      setCurrentStep(currentStep + 1)
                       setTouched({})
-                      
                     }
-                   else if (currentStep === 4) {
+                    else if (currentStep === 4) {
                       const formData = new FormData();
                       formData.append("rr_detail_description", values.rr_detail_description);
                       formData.append("rr_detail_app_type", values.rr_detail_app_type)
@@ -668,7 +672,7 @@ const ResidentialRent = () => {
                       axios.post(`${host}/api/property/addprop`, formData, {
                         headers: {
                           "Content-Type": "multipart/form-data",
-                          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNiMmYyYWY0ZTliMTQ5YzAwMTg5ODQ4In0sImlhdCI6MTY3NDMzOTI3MX0.xYzlIULGow26waQsg85OrAsJPRtSaeQ9HFe14XIahss",
+                          "auth-token": localStorage.getItem('token'),
                         },
                       }).then((response) => {
                         console.log(response);
@@ -680,7 +684,7 @@ const ResidentialRent = () => {
                           setSubmitting(false);
                         });
 
-                    }else {
+                    } else {
 
                       setCurrentStep(currentStep + 1);
                       setSubmitting(false);
@@ -690,9 +694,9 @@ const ResidentialRent = () => {
                   }
                   }
                 >
-                  {({ values, isSubmitting ,setFieldValue}) => (
+                  {({ values, isSubmitting, setFieldValue }) => (
                     <Form >
-                      {handleStep(currentStep,setFieldValue)}
+                      {handleStep(currentStep, setFieldValue)}
                       <button type='submit' className='btn btn-dark float-right'  >{currentStep === 4 ? 'Submit' : 'Next'}</button>
                       <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
                     </Form>

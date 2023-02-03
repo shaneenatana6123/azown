@@ -6,7 +6,7 @@ const TestimonialUsers = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll:1,
         nextArrow: <button  className="slick-next slick-arrow">Next</button>,
         prevArrow:   <button  className="slick-prev slick-arrow" >Previous</button>,
@@ -16,7 +16,7 @@ const TestimonialUsers = () => {
             {
               breakpoint: 992,
               settings: {
-                slidesToShow: 2
+                slidesToShow: 3
               }
             },
             {

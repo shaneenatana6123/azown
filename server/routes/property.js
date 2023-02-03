@@ -136,6 +136,9 @@ router.get("/getcmr",rrpropconroller.get_cmr)
 router.get("/getcms",rrpropconroller.get_cms)
 router.get("/getplot",rrpropconroller.get_plot)
 
+router.get("/get-top-rr",  rrpropconroller.get_top_rr_prop);
+
+
 router.get("/myrr",fetchuser,   rrpropconroller.my_rr);
 router.get("/myrrs",fetchuser,  rrpropconroller.my_rrs)
 router.get("/myrpg",fetchuser,  rrpropconroller.my_rpg)

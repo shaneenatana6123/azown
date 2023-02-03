@@ -3,7 +3,7 @@ import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
 import LeadProfile from '../MyProperty/LeadProfile';
 import Status from './Status';
-
+import img from '../../images/p-1.png'
 
 const Contacted = () => {
   const leadcontext = useContext(leadContext);
@@ -13,9 +13,6 @@ const Contacted = () => {
 
   const { ownerlead, ownerleaddata } = leadcontext
   const [model, setmodel] = useState(false);
-
-
-
   const [rr, setrr] = useState([])
   const [rrs, setrrs] = useState([])
   const [rpg, setrpg] = useState([])
@@ -26,7 +23,7 @@ const Contacted = () => {
 
 
   useEffect(() => {
-    const userlead = async (ptype) => {
+    async function userlead  (ptype) {
       const responce = await fetch(`${host}/api/leadprop/userleaddata/${ptype}`, {
         method: "GET",
         headers: {
@@ -50,8 +47,6 @@ const Contacted = () => {
       } else if (ptype === 7) {
         setplot(resdata)
       }
-
-
     };
     userlead(1)
     userlead(2)
@@ -63,7 +58,7 @@ const Contacted = () => {
   }, [])
   return (
     <div className="col-lg-9 col-md-8 col-sm-12">
-      <div className="dashboard-body mb-3">
+      {/* <div className="dashboard-body mb-3">
 
         <div className="row">
           <div className="col-lg-12 col-md-12">
@@ -115,7 +110,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                           
                           </td>
 
                         </tr>
@@ -130,8 +125,8 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
-      </div>
+   
+      </div> */}
       <div className="dashboard-body mb-3">
         <div className="row">
           <div className="col-lg-12 col-md-12">
@@ -545,7 +540,7 @@ const Contacted = () => {
         </div>
         {/* row */}
       </div>
-      
+
 
       <div className={model ? "modal fade show" : "modal fade"} tabIndex={-1} role="dialog" aria-labelledby="authomessage" style={{ display: model ? 'block' : 'none' }}  >
         <div className="modal-dialog modal-dialog-centered login-pop-form" role="document">

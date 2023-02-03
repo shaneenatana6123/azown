@@ -1,566 +1,488 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import propertyContext from '../../../context/PropertyContext';
-import Navbar from '../../Header/Navbar';
-import LocationPicker from './LocationPicker';
+import React, { useContext, useRef, useState } from 'react'
+import Navbar from '../../Header/Navbar'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import LocationPicker from './LocationPicker'
+import propertyContext from '../../../context/PropertyContext'
+import Footer from '../../Footer/Footer'
+import { Formik, Form, Field, ErrorMessage, } from "formik";
+import * as Yup from 'yup';
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api'
 
 const PlotResale = () => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+    libraries: ['places'],
+  })
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const originRef = useRef()
   const context = useContext(propertyContext);
   const { host } = context;
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const history = useNavigate()
-
-  const [data, setdata] = useState({
-
-    ps_detail_description: "",
-    ps_detail_plot_length: "",
-    ps_detail_plot_width: "",
-    ps_detail_width_of_facing_road: "",
-    ps_detail_has_boundary: false,
-    ps_detail_inside_gated_project: false,
-
-    ps_rules_allowed_floors: "",
-
-    ps_location_state: "",
-    ps_location_city: "",
-    ps_location_latitiude: "",
-    ps_location_longitude: "",
-
-    ps_sale_detail_price: "",
-    ps_sale_detail_available_from: "",
-    ps_sale_detail_is_negotiable: false,
-    ps_sale_detail_currently_under_loan: false,
-
-    ps_amenities_water: false,
-    ps_amenities_sewage_connection: false,
-    ps_amenities_gated_security: false,
-    ps_amenities_electricity_connection: false,
-
-    ps_info_ownership: "",
-    ps_info_khata_certificate_is_available: false,
-    ps_info_conversion_certificate_is_available: false,
-    ps_info_sale_deed_certificate_is_available: false,
-    ps_info_encumbrance_certificate_is_available: false,
-    ps_info_is_rera_approved: false,
-
-
-  })
-  const nextStep = () => {
-    setCurrentStep(currentStep + 1);
-  };
-
-  const prevStep = () => {
-    setCurrentStep(currentStep - 1);
-  };
-
   const [file, setFile] = useState([]);
   const fileSelected = (event) => {
     setFile(event.target.files);
   };
-  const handleChange = (e) => {
-    if (e.target.type === "checkbox") {
-      setdata({ ...data, [e.target.name]: e.target.checked })
+  if (!isLoaded) {
+    return <h4>Loading....</h4>
+  }
+  const prevStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+  function handleStep(step,setFieldValue) {
+    function handleLocation(e) {
+      console.log(e.latLng.lat())
+      setFieldValue('ps_location_latitiude', e.latLng.lat())
+      setFieldValue('ps_location_longitude', e.latLng.lng())
+    }
+    switch (step) {
 
-    } else {
-      setdata({ ...data, [e.target.name]: e.target.value })
+      case 0:
+        return <>
+          <div className="frm_submit_block">
+            <h3>Basic Information</h3>
+            <div className="frm_submit_wrap">
+              <div className="form-row">
+                <div className="form-group col-md-12">
+                  <label>Property Description<a href className="tip-topdata" data-tip="Property Description"><i className="ti-help" /></a></label>
+                  <Field type="text" name="ps_detail_description" className="form-control" />
+                  <ErrorMessage name='ps_detail_description' className='text-danger' component='div' />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>Plot Length (.ft)</label>
+                  <Field type="number" name="ps_detail_plot_length" className="form-control" />
+                  <ErrorMessage name='ps_detail_plot_length' className='text-danger' component='div' />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>Plot Width (.ft)</label>
+                  <Field type="number" name="ps_detail_plot_width" className="form-control" />
+                  <ErrorMessage name='ps_detail_plot_width' className='text-danger' component='div' />
+                </div>
+
+                <div className="form-group col-md-6">
+                  <label>Width of Facing Road (.ft)</label>
+                  <Field type="number" name="ps_detail_width_of_facing_road" className="form-control" />
+                  <ErrorMessage name='ps_detail_width_of_facing_road' className='text-danger' component='div' />
+                </div>
+
+
+
+
+                <ul className="no-ul-list mt-2">
+                  <li>
+                    <Field id="a-99" className="checkbox-custom" name="ps_detail_has_boundary" type="checkbox" />
+                    <label htmlFor="a-99" className="checkbox-custom-label">Lift</label>
+                  </li>
+                  <li>
+                    <Field id="a-98" className="checkbox-custom" name="ps_detail_inside_gated_project" type="checkbox" />
+                    <label htmlFor="a-98" className="checkbox-custom-label">Parking</label>
+                  </li>
+                </ul>
+
+
+              </div>
+            </div>
+          </div></>
+case 1:
+  return <div className="frm_submit_block">
+    <h3>Location</h3>
+    <div className="frm_submit_wrap">
+      <div className="form-row">
+      <div className="form-group col-md-6">
+            
+           <Field name='ps_location_state' type='text' className='form-control' placeholder="Enter the Society" />
+            <ErrorMessage name='ps_location_state' className='text-danger' component='div' />
+          </div>
+
+        <div className="form-group col-md-6">
+
+          <Field name="ps_location_city">
+            {({ values, field, form }) => (
+              <div>
+                <Autocomplete>
+                  <input type='text' placeholder='Enter the Location' className='form-control' ref={originRef} required />
+
+                </Autocomplete>
+              </div>
+
+            )}
+
+          </Field>
+        </div>
+        <div className="form-group col-md-12">
+          <LocationPicker onLocation={handleLocation} />
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+      case 2:
+        return <div className="frm_submit_block">
+          <h3>Rules</h3>
+          <div className="frm_submit_wrap">
+
+
+            <div className="o-features">
+              <ul className="no-ul-list">
+                <li>
+                  <Field id="a-100" className="checkbox-custom" name="ps_rules_allowed_floors" type="checkbox" />
+                  <label htmlFor="a-100" className="checkbox-custom-label">Allowed Floor</label>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      case 3:
+        return <>
+          <div className="frm_submit_block">
+            <h3> land/Plot Details</h3>
+            <div className="frm_submit_wrap">
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label> Land/Plot Price</label>
+                  <Field type="number" name="ps_sale_detail_price" className="form-control" />
+                  <ErrorMessage name='ps_sale_detail_price' className='text-danger' component='div' />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>Available From</label>
+                  <Field type="date" name="ps_sale_detail_available_from" className="form-control" />
+                  <ErrorMessage name='ps_sale_detail_available_from' className='text-danger' component='div' />
+                </div>
+
+                <div className="o-features">
+                  <ul className="no-ul-list px-3">
+                    <li>
+                      <Field id="a-101" className="checkbox-custom" name="ps_sale_detail_is_negotiable" type="checkbox" />
+                      <label htmlFor="a-101" className="checkbox-custom-label">Negotiable</label>
+                    </li>
+                    <li>
+                      <Field id="a-102" className="checkbox-custom" name="ps_sale_detail_currently_under_loan" type="checkbox" />
+                      <label htmlFor="a-102" className="checkbox-custom-label">Currently Under Loan</label>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </>
+      case 4:
+        return <>
+          <div className="frm_submit_block">
+            <h3>Detailed Information</h3>
+            <div className="frm_submit_wrap">
+              <div className="form-row">
+                <div className="form-group col-md-12">
+                  <label>Other Features (optional)</label>
+                  <div className="o-features">
+                    <div className="form-group col-md-6">
+                      <label>Building Type</label>
+
+                      <Field as="select" className="form-control" name="ps_info_ownership">
+                        <option value={undefined} selected>Select</option>
+                        <option value="Freehold">Freehold</option>
+                        <option value="Leasehold">Leasehold</option>
+                        <option value="Co-Operative Society">Co-Operative Society</option>
+                        <option value="Power of Attorney">Power of Attorney</option>
+                      </Field>
+                      <ErrorMessage name='ps_info_ownership' className='text-danger' component='div' />
+                    </div>
+                    <ul className="no-ul-list third-row">
+                      <li>
+                        <Field id="a-1" className="checkbox-custom" name="ps_amenities_water" type="checkbox" />
+                        <label htmlFor="a-1" className="checkbox-custom-label">Water</label>
+                      </li>
+                      <li>
+                        <Field id="a-3" className="checkbox-custom" name="ps_amenities_sewage_connection" type="checkbox" />
+                        <label htmlFor="a-3" className="checkbox-custom-label">Sewage Connection</label>
+                      </li>
+                      <li>
+                        <Field id="a-4" className="checkbox-custom" name="ps_amenities_gated_security" type="checkbox" />
+                        <label htmlFor="a-4" className="checkbox-custom-label">Gated Security</label>
+                      </li>
+                      <li>
+                        <Field id="a-5" className="checkbox-custom" name="ps_amenities_electricity_connection" type="checkbox" />
+                        <label htmlFor="a-5" className="checkbox-custom-label">Electricity  Connection</label>
+                      </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+
+      case 5:
+        return <>
+          <div className="frm_submit_block">
+            <h3>Property Information</h3>
+            <div className="frm_submit_wrap">
+              <div className="form-row">
+                <div className="form-group col-md-12">
+                  <div className="o-features">
+                    <ul className="no-ul-list third-row">
+                      <li>
+                        <Field id="a-1" className="checkbox-custom" name="ps_info_khata_certificate_is_available" type="checkbox" />
+                        <label htmlFor="a-1" className="checkbox-custom-label">Khata Certificate is Available</label>
+                      </li>
+                      <li>
+                        <Field id="a-3" className="checkbox-custom" name="ps_info_conversion_certificate_is_available" type="checkbox" />
+                        <label htmlFor="a-3" className="checkbox-custom-label">Conversion Certificate is Available</label>
+                      </li>
+                      <li>
+                        <Field id="a-4" className="checkbox-custom" name="ps_info_sale_deed_certificate_is_available" type="checkbox" />
+                        <label htmlFor="a-4" className="checkbox-custom-label">Deed Certificate is Available</label>
+                      </li>
+                      <li>
+                        <Field id="a-5" className="checkbox-custom" name="ps_info_encumbrance_certificate_is_available" type="checkbox" />
+                        <label htmlFor="a-5" className="checkbox-custom-label">Encumbrance Certificate is Available</label>
+                      </li>
+                      <li>
+                        <Field id="a-4567" className="checkbox-custom" name="ps_info_is_rera_approved" type="checkbox" />
+                        <label htmlFor="a-4567" className="checkbox-custom-label">Rera Approved</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+
+      case 6:
+        return <> <div className="frm_submit_block">
+          <h3>Gallery</h3>
+          <div className="frm_submit_wrap">
+            <div className="form-row">
+              <div className="form-group col-md-12">
+                <label>Upload Gallery</label>
+                <div className="dropzone dz-clickable primary-dropzone" >
+                  <Field type='file' name='file' onChange={fileSelected}
+                    accept="image/*"
+                    multiple />
+                  <div className="dz-default dz-message">
+                    <i className="ti-gallery" />
+                    <span>Drag &amp; Drop To Change Logo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></>
+
+      default:
+        break;
     }
   }
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append("ps_detail_description", data.ps_detail_description)
-    formData.append("ps_detail_plot_length", data.ps_detail_plot_length)
-    formData.append("ps_detail_plot_width", data.ps_detail_plot_width)
-    formData.append("ps_detail_width_of_facing_road", data.ps_detail_width_of_facing_road)
-    formData.append("ps_detail_has_boundary", data.ps_detail_has_boundary)
-    formData.append("ps_detail_inside_gated_project", data.ps_detail_inside_gated_project)
 
-    formData.append("ps_rules_allowed_floors", data.ps_rules_allowed_floors)
 
-    formData.append("ps_location_state", data.ps_location_state)
-    formData.append("ps_location_city", data.ps_location_city)
-    formData.append("ps_location_latitiude", data.ps_location_latitiude)
-    formData.append("ps_location_longitude", data.ps_location_longitude)
 
-    formData.append("ps_sale_detail_price", data.ps_sale_detail_price)
-    formData.append("ps_sale_detail_available_from", data.ps_sale_detail_available_from)
-    formData.append("ps_sale_detail_is_negotiable", data.ps_sale_detail_is_negotiable)
-    formData.append("ps_sale_detail_currently_under_loan", data.ps_sale_detail_currently_under_loan)
+  const Schema = [Yup.object().shape({
+    ps_detail_description: Yup.string().required('This Field is Required'),
+    ps_detail_plot_length: Yup.number().required('This Field is Required').positive("Please Enter the positive Value"),
+    ps_detail_plot_width: Yup.number().required('This Field is Required').positive("Please Enter the positive Value"),
+    ps_detail_width_of_facing_road: Yup.number().required('This Field is Required').positive("Please Enter the positive Value"),
+    ps_detail_has_boundary: Yup.boolean(),
+    ps_detail_inside_gated_project: Yup.boolean(),
 
-    formData.append("ps_amenities_water", data.ps_amenities_water)
-    formData.append("ps_amenities_sewage_connection", data.ps_amenities_sewage_connection)
-    formData.append("ps_amenities_gated_security", data.ps_amenities_gated_security)
-    formData.append("ps_amenities_electricity_connection", data.ps_amenities_electricity_connection)
+  }),
+  Yup.object().shape({
+    ps_location_city: Yup.string(),
+    ps_location_state: Yup.string().required('Required')
+  }),
+  Yup.object().shape({
+    ps_rules_allowed_floors: Yup.string().required('Required')
+  }),
+  
+  Yup.object().shape({
+    ps_sale_detail_price: Yup.number().required('This Field is Required').positive("Please Enter the positive Value"),
+    ps_sale_detail_available_from: Yup.string().required('This Field is Required'),
+    ps_sale_detail_is_negotiable: Yup.boolean(),
+    ps_sale_detail_currently_under_loan: Yup.boolean(),
+  }),
+  Yup.object().shape({
+    ps_amenities_water: Yup.boolean(),
+    ps_amenities_sewage_connection: Yup.boolean(),
+    ps_amenities_gated_security: Yup.boolean(),
+    ps_amenities_electricity_connection: Yup.boolean(),
+  }),
+  Yup.object().shape({
+    ps_info_ownership: Yup.string().required('This Field is Required'),
+    ps_info_khata_certificate_is_available: Yup.boolean(),
+    ps_info_conversion_certificate_is_available: Yup.boolean(),
+    ps_info_sale_deed_certificate_is_available: Yup.boolean(),
+    ps_info_encumbrance_certificate_is_available: Yup.boolean(),
+  }),
+  Yup.object().shape({
 
-    formData.append("ps_info_ownership", data.ps_info_ownership)
-    formData.append("ps_info_khata_certificate_is_available", data.ps_info_khata_certificate_is_available)
-    formData.append("ps_info_conversion_certificate_is_available", data.ps_info_conversion_certificate_is_available)
-    formData.append("ps_info_sale_deed_certificate_is_available", data.ps_info_sale_deed_certificate_is_available)
-    formData.append("ps_info_encumbrance_certificate_is_available", data.ps_info_encumbrance_certificate_is_available)
-    formData.append("ps_info_is_rera_approved", data.ps_info_is_rera_approved)
 
-    console.log(formData)
-    Array.from(file).forEach((item) => {
-      formData.append("image", item);
-    });
-    const responce = await axios.post(`${host}/api/property/add-plot-prop`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNiMmYyYWY0ZTliMTQ5YzAwMTg5ODQ4In0sImlhdCI6MTY3NDMzOTI3MX0.xYzlIULGow26waQsg85OrAsJPRtSaeQ9HFe14XIahss",
-      },
-    });
-    console.log(responce)
-    history("/")
+  }),
 
-  }
+
+
+  ]
+
+
+
+
+
+
+
   return (
     <div id="main-wrapper">
       <Navbar />
-    
       <div className="clearfix" />
-   
       <div className="page-title" style={{ background: '#f4f4f4 url(assets/img/bg.jpg)' }} data-overlay={5}>
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-12">
               <div className="breadcrumbs-wrap">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item active" aria-current="page">Submit Property</li>
+                  <li className="breadcrumb-item"><a href>Home</a></li>
+                  <li className="breadcrumb-item"><a href>Create Property</a></li>
+                  <li className="breadcrumb-item active" aria-current="page">Submit Your Property</li>
                 </ol>
-                <h2 className="breadcrumb-title">Submit Your Property</h2>
+                <h2 className="breadcrumb-title">Land/Plot Property</h2>
               </div>
             </div>
           </div>
         </div>
+
       </div>
       <section>
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              <div className="alert alert-info" role="alert">
-                <p>If you don't have an account you can create one by <a href="#">Click Here</a></p>
-              </div>
-            </div>
-            {/* Submit Form */}
-            <div className="col-lg-12 col-md-12">
               <div className="submit-page p-0">
-                {/* Basic Information */}
-                <form onSubmit={handleSubmit}>
-                {currentStep===1 && <> <div className="frm_submit_block">
-                    <h3>Basic Information</h3>
-                    <div className="frm_submit_wrap">
-                      <div className="form-row">
-                        <div className="form-group col-md-12">
-                          <label>Property Title<a href="#" className="tip-topdata" data-tip="Property Title"><i className="ti-help" /></a></label>
-                          <input type="text" name="ps_detail_description" onChange={handleChange}  value={data.ps_detail_description}
-                           className="form-control" />
-                        </div>
-                        <div className="form-group col-md-4">
-                          <label>Plot Length (.ft)</label>
-                          <input type="number" name="ps_detail_plot_length" onChange={handleChange}  value={data.ps_detail_plot_length} className="form-control" />
-                        </div>
-                        <div className="form-group col-md-4">
-                          <label>Plot Width (.ft)</label>
-                          <input type="number" name="ps_detail_plot_width" onChange={handleChange}  value={data.ps_detail_plot_width} className="form-control" />
-                        </div>
-                        <div className="form-group col-md-4">
-                          <label>Width of Facing Road (.ft)</label>
-                          <input type="number" name="ps_detail_width_of_facing_road" onChange={handleChange}  value={data.ps_detail_width_of_facing_road} className="form-control" />
-                        </div>
-                        <div className="form-group col-md-12 py-3">
-                          <ul className="no-ul-list third-row">
-                            <li>
-                              <input id="a-7" className="checkbox-custom" onChange={handleChange}  checked={data.ps_detail_has_boundary} name="ps_detail_has_boundary" type="checkbox" />
-                              <label htmlFor="a-7" className="checkbox-custom-label">Boundary</label>
-                            </li>
-                            <li>
-                              <input id="a-8" className="checkbox-custom" onChange={handleChange}  checked={data.ps_detail_inside_gated_project} name="ps_detail_inside_gated_project" type="checkbox" />
-                              <label htmlFor="a-8" className="checkbox-custom-label">Gated Security</label>
-                            </li>
-                            <li>
-                              <input hidden id="a-8" className="checkbox-custom"  type="checkbox" />
-                              <label hidden htmlFor="a-8" className="checkbox-custom-label">Gated Security</label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div></>}
-                  {currentStep === 2 && <div className="frm_submit_block">
-                    <h3>Location</h3>
-                    <div className="frm_submit_wrap">
-                      <div className="form-row">
-                     
-                        <div className="form-group col-md-12">
-                          <LocationPicker handleChange={handleChange}  name='ps_location_city'/>
-                        </div>
 
+                <Formik
+                  initialValues={{
+                    ps_detail_description: "",
+                    ps_detail_plot_length: "",
+                    ps_detail_plot_width: "",
+                    ps_detail_width_of_facing_road: "",
+                    ps_detail_has_boundary: false,
+                    ps_detail_inside_gated_project: false,
 
-                      </div>
-                    </div>
-                  </div>}
-                 
-                  
-             {currentStep===3 && <>  <div className="frm_submit_block">
-                    <h3>Rules</h3>
-                    <div className="frm_submit_wrap">
-                      <div className="form-row">
-                        <div className="form-group col-md-4">
-                          <label>Allowed Floors</label>
-                          <input type="number" onChange={handleChange}  value={data.ps_rules_allowed_floors} className="form-control h-120" name="ps_rules_allowed_floors" />
-                        </div>
-                      </div>
-                    </div>
-                  </div></>}
-                
-                  {/* Detailed Information */}
-                  {currentStep===4 && <> <div className="frm_submit_block">
-                    <h3>Sale Detailed</h3>
-                    <div className="frm_submit_wrap">
-                      <div className="form-row">
-                        <div className="form-group col-md-4">
-                          <label>Sale</label>
-                          <input type="number" onChange={handleChange}  value={data.ps_sale_detail_price} className="form-control h-120" name="ps_sale_detail_price" />
-                        </div>
-                        <div className="form-group col-md-4">
-                          <label>Available From</label>
-                          <input type="date" className="form-control h-120" onChange={handleChange}  value={data.ps_sale_detail_available_from} name="ps_sale_detail_available_from" />
-                        </div>
-                        <div className="form-group col-md-12 py-3">
-                          <ul className="no-ul-list third-row">
-                            <li>
-                              <input id="a-9" className="checkbox-custom" onChange={handleChange}  checked={data.ps_sale_detail_is_negotiable} name="ps_sale_detail_is_negotiable" type="checkbox" />
-                              <label htmlFor="a-9" className="checkbox-custom-label">Negotiable</label>
-                            </li>
-                            <li>
-                              <input id="a-10" className="checkbox-custom"   onChange={handleChange}  checked={data.ps_sale_detail_currently_under_loan} name="ps_sale_detail_currently_under_loan" type="checkbox" />
-                              <label htmlFor="a-10" className="checkbox-custom-label">Currently Under Loan</label>
-                            </li>
-                            <li>
-                              <input id="a-10" hidden className="checkbox-custom" name="ps_sale_detail_currently_under_loan" type="checkbox" />
-                              <label htmlFor="a-10" hidden className="checkbox-custom-label">Currently Under Loan</label>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="form-group col-md-12">
-                          <label>Other Features (optional)</label>
-                          <div className="o-features">
-                            <ul className="no-ul-list third-row">
-                              <li>
-                                <input id="a-1" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_water} name="ps_amenities_water" type="checkbox" />
-                                <label htmlFor="a-1" className="checkbox-custom-label">Water</label>
-                              </li>
-                              <li>
-                                <input id="a-2" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_sewage_connection} name="ps_amenities_sewage_connection" type="checkbox" />
-                                <label htmlFor="a-2" className="checkbox-custom-label">Sewage Connection</label>
-                              </li>
-                              <li>
-                                <input id="a-3" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_gated_security} name="ps_amenities_gated_security" type="checkbox" />
-                                <label htmlFor="a-3" className="checkbox-custom-label">Gated Security</label>
-                              </li>
-                              <li>
-                                <input id="a-4" className="checkbox-custom" onChange={handleChange}  checked={data.ps_amenities_electricity_connection} name="ps_amenities_electricity_connection" type="checkbox" />
-                                <label htmlFor="a-4" className="checkbox-custom-label">Electricity Connection</label>
-                              </li>
-                              <li>
-                                <input id="a-4" className="checkbox-custom " hidden  name="ps_amenities_electricity_connection" type="checkbox" />
-                                <label htmlFor="a-4" hidden className="checkbox-custom-label">Electricity Connection</label>
-                              </li>
-                              <li>
-                                <input id="a-4" hidden className="checkbox-custom " name="ps_amenities_electricity_connection" type="checkbox" />
-                                <label htmlFor="a-4" hidden className="checkbox-custom-label">Electricity Connection</label>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        {/* PS INFO */}
-                        <div className="frm_submit_block">
-                          <h3>PS INFO</h3>
-                          <div className="frm_submit_wrap">
-                            <div className="form-row">
-                              <div className="form-group col-md-6">
-                                <label>Ownership</label>
-                                <select id="status" name="ps_info_ownership" onChange={handleChange}  value={data.ps_info_ownership} className="form-control">
-                                  <option value>&nbsp;</option>
-                                  <option value="Freehold">Freehold</option>
-                                  <option value="Leasehold">Leasehold</option>
-                                  <option value="Co-Operative Society">Co-Operative Society</option>
-                                  <option value="Power of Attorney">Power of Attorney</option>
-                                </select>
-                              </div>
-                              <ul className="no-ul-list third-row">
-                                <li>
-                                  <input id="a-5" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_khata_certificate_is_available} name="ps_info_khata_certificate_is_available" type="checkbox" />
-                                  <label htmlFor="a-5" className="checkbox-custom-label">Khata Certificate is Available</label>
-                                </li>
-                                <li>
-                                  <input id="a-6" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_conversion_certificate_is_available} name="ps_info_conversion_certificate_is_available" type="checkbox" />
-                                  <label htmlFor="a-6" className="checkbox-custom-label">Conversion Certificate is Available</label>
-                                </li>
-                                <li>
-                                  <input id="a-7" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_sale_deed_certificate_is_available}  name="ps_info_sale_deed_certificate_is_available" type="checkbox" />
-                                  <label htmlFor="a-7" className="checkbox-custom-label">Sale Deed Certificate is Available</label>
-                                </li>
-                                <li>
-                                  <input id="a-11" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_encumbrance_certificate_is_available} name="ps_info_encumbrance_certificate_is_available" type="checkbox" />
-                                  <label htmlFor="a-11" className="checkbox-custom-label">Encumbrance Certificate is Available</label>
-                                </li>
-                                <li>
-                                  <input id="a-12" className="checkbox-custom" onChange={handleChange}  checked={data.ps_info_is_rera_approved}  name="ps_info_is_rera_approved" type="checkbox" />
-                                  <label htmlFor="a-12" className="checkbox-custom-label">Rera Approved</label>
-                                </li>
-                                <li>
-                                  <input hidden id="a-13" className="checkbox-custom" name="ps_info_is_rera_approved" type="checkbox" />
-                                  <label hidden htmlFor="a-13" className="checkbox-custom-label">Rera Approved</label>
-                                </li>
-                              </ul></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div></>}
-                  {currentStep === 5 && <div className="frm_submit_block">
-                    <h3>Gallery</h3>
-                    <div className="frm_submit_wrap">
-                      <div className="form-row">
-                        <div className="form-group col-md-12">
-                          <label>Upload Gallery</label>
-                          <div className="dropzone dz-clickable primary-dropzone" >
-                            <input type='file' onChange={fileSelected}
+                    ps_rules_allowed_floors: "",
 
-                              accept="image/*"
-                              multiple  />
-                            <div className="dz-default dz-message">
-                              <i className="ti-gallery" />
-                              <span>Drag &amp; Drop To Change Logo</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>}
-                <div>
-                  {currentStep < 5 && (
-                    <button type="button" className='float-right btn btn-dark' onClick={nextStep}>
-                      Next
-                    </button>
-                  )}
-                  {currentStep !== 1 && (
-                    <button type="button" className='btn btn-dark float-start' onClick={prevStep}>
-                      Previous
-                    </button>
+                    ps_location_state: "",
+                    ps_location_city: "",
+                    ps_location_latitiude: "",
+                    ps_location_longitude: "",
+
+                    ps_sale_detail_price: "",
+                    ps_sale_detail_available_from: "",
+                    ps_sale_detail_is_negotiable: false,
+                    ps_sale_detail_currently_under_loan: false,
+
+                    ps_amenities_water: false,
+                    ps_amenities_sewage_connection: false,
+                    ps_amenities_gated_security: false,
+                    ps_amenities_electricity_connection: false,
+
+                    ps_info_ownership: "",
+                    ps_info_khata_certificate_is_available: false,
+                    ps_info_conversion_certificate_is_available: false,
+                    ps_info_sale_deed_certificate_is_available: false,
+                    ps_info_encumbrance_certificate_is_available: false,
+                    ps_info_is_rera_approved: false,
+
+                  }}
+                  validationSchema={Schema[currentStep]}
+                  onSubmit={(values, { setSubmitting, setTouched, setFieldValue }) => {
+                    if (currentStep === 1) {
+                      setFieldValue('ps_location_city', originRef.current.value)
+                      setSubmitting(false);
+                      setCurrentStep(currentStep + 1)
+                      setTouched({})
+                    }else if (currentStep === 6) {
+                      const formData = new FormData();
+                      formData.append("ps_detail_description", values.ps_detail_description)
+                      formData.append("ps_detail_plot_length", values.ps_detail_plot_length)
+                      formData.append("ps_detail_plot_width", values.ps_detail_plot_width)
+                      formData.append("ps_detail_width_of_facing_road", values.ps_detail_width_of_facing_road)
+                      formData.append("ps_detail_has_boundary", values.ps_detail_has_boundary)
+                      formData.append("ps_detail_inside_gated_project", values.ps_detail_inside_gated_project)
+
+                      formData.append("ps_rules_allowed_floors", values.ps_rules_allowed_floors)
+
+                      formData.append("ps_location_state", values.ps_location_state)
+                      formData.append("ps_location_city", values.ps_location_city)
+                      formData.append("ps_location_latitiude", values.ps_location_latitiude)
+                      formData.append("ps_location_longitude", values.ps_location_longitude)
+
+                      formData.append("ps_sale_detail_price", values.ps_sale_detail_price)
+                      formData.append("ps_sale_detail_available_from", values.ps_sale_detail_available_from)
+                      formData.append("ps_sale_detail_is_negotiable", values.ps_sale_detail_is_negotiable)
+                      formData.append("ps_sale_detail_currently_under_loan", values.ps_sale_detail_currently_under_loan)
+
+                      formData.append("ps_amenities_water", values.ps_amenities_water)
+                      formData.append("ps_amenities_sewage_connection", values.ps_amenities_sewage_connection)
+                      formData.append("ps_amenities_gated_security", values.ps_amenities_gated_security)
+                      formData.append("ps_amenities_electricity_connection", values.ps_amenities_electricity_connection)
+
+                      formData.append("ps_info_ownership", values.ps_info_ownership)
+                      formData.append("ps_info_khata_certificate_is_available", values.ps_info_khata_certificate_is_available)
+                      formData.append("ps_info_conversion_certificate_is_available", values.ps_info_conversion_certificate_is_available)
+                      formData.append("ps_info_sale_deed_certificate_is_available", values.ps_info_sale_deed_certificate_is_available)
+                      formData.append("ps_info_encumbrance_certificate_is_available", values.ps_info_encumbrance_certificate_is_available)
+                      formData.append("ps_info_is_rera_approved", values.ps_info_is_rera_approved)
+                      console.log(formData)
+                      Array.from(file).forEach((item) => {
+                        formData.append("image", item);
+                      });
+                      axios.post(`${host}/api/property/add-plot-prop`, formData, {
+                        headers: {
+                          "Content-Type": "multipart/form-data",
+                          "auth-token": localStorage.getItem('token'),
+                        },
+                      }).then((response) => {
+                        console.log(response);
+                        setSubmitting(false);
+                        history('/')
+                      })
+                        .catch((error) => {
+                          console.error(error);
+                          setSubmitting(false);
+                        });
+
+                    } else {
+
+                      setCurrentStep(currentStep + 1);
+                      setSubmitting(false);
+                      console.log(values)
+                      setTouched({})
+                    }
+                  }
+                  }
+                >
+                  {({ values, isSubmitting,setFieldValue }) => (
+                    <Form >
+                      {handleStep(currentStep,setFieldValue)}
+                      <button type='submit' className='btn btn-dark float-right'  >{currentStep === 6 ? 'Submit' : 'Next'}</button>
+                      <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
+                    </Form>
+
                   )}
 
-                  {currentStep === 5 && (
-                    <button type="submit" className='float-right btn btn-dark'>Submit</button>
-                  )}
-                </div>
-                 
-                  
-                </form>
+                </Formik>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      {/* ============================ Submit Property End ================================== */}
-      {/* ============================ Call To Action ================================== */}
-      <section className="theme-bg call_action_wrap-wrap">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="call_action_wrap">
-                <div className="call_action_wrap-head">
-                  <h3>Do You Have Questions ?</h3>
-                  <span>We'll help you to grow your career and growth.</span>
-                </div>
-                <a href="#" className="btn btn-call_action_wrap">Contact Us Today</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* ============================ Call To Action End ================================== */}
-      {/* ============================ Footer Start ================================== */}
-      <footer className="dark-footer skin-dark-footer style-2">
-        <div className="footer-middle">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-5 col-md-5">
-                <div className="footer_widget">
-                  <img src="assets/img/logo-light.png" className="img-footer small mb-2" alt />
-                  <h4 className="extream mb-3">Do you need help with<br />anything?</h4>
-                  <p>Receive updates, hot deals, tutorials, discounts sent straignt in your inbox every month</p>
-                  <div className="foot-news-last">
-                    <div className="input-group">
-                      <input type="text" className="form-control" placeholder="Email Address" />
-                      <div className="input-group-append">
-                        <button type="button" className="input-group-text theme-bg b-0 text-light">Subscribe</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-7 ml-auto">
-                <div className="row">
-                  <div className="col-lg-4 col-md-4">
-                    <div className="footer_widget">
-                      <h4 className="widget_title">Layouts</h4>
-                      <ul className="footer-menu">
-                        <li><a href="#">Home Page</a></li>
-                        <li><a href="#">About Page</a></li>
-                        <li><a href="#">Service Page</a></li>
-                        <li><a href="#">Property Page</a></li>
-                        <li><a href="#">Contact Page</a></li>
-                        <li><a href="#">Single Blog</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4">
-                    <div className="footer_widget">
-                      <h4 className="widget_title">All Sections</h4>
-                      <ul className="footer-menu">
-                        <li><a href="#">Headers<span className="new">New</span></a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Attractive<span className="new">New</span></a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="#">Footers</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4">
-                    <div className="footer_widget">
-                      <h4 className="widget_title">Company</h4>
-                      <ul className="footer-menu">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Affiliate</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Changelog<span className="update">Update</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-12 col-md-12 text-center">
-                <p className="mb-0">© 2021 RentUP. Designd By <a href="https://themezhub.com/">ThemezHub</a>.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-      {/* ============================ Footer End ================================== */}
-      {/* Log In Modal */}
-      <div className="modal fade" id="login" tabIndex={-1} role="dialog" aria-labelledby="registermodal" aria-hidden="true">
-        <div className="modal-dialog modal-xl login-pop-form" role="document">
-          <div className="modal-content overli" id="registermodal">
-            <div className="modal-body p-0">
-              <div className="resp_log_wrap">
-                <div className="resp_log_thumb" style={{ background: 'url(assets/img/log.jpg)no-repeat' }} />
-                <div className="resp_log_caption">
-                  <span className="mod-close" data-dismiss="modal" aria-hidden="true"><i className="ti-close" /></span>
-                  <div className="edlio_152">
-                    <ul className="nav nav-pills tabs_system center" id="pills-tab" role="tablist">
-                      <li className="nav-item">
-                        <a className="nav-link active" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true"><i className="fas fa-sign-in-alt mr-2" />Login</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup" aria-selected="false"><i className="fas fa-user-plus mr-2" />Register</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="tab-content" id="pills-tabContent">
-                    <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-                      <div className="login-form">
-                        <form>
-                          <div className="form-group">
-                            <label>User Name</label>
-                            <div className="input-with-icon">
-                              <input type="text" className="form-control" />
-                              <i className="ti-user" />
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <label>Password</label>
-                            <div className="input-with-icon">
-                              <input type="password" className="form-control" />
-                              <i className="ti-unlock" />
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <div className="eltio_ol9">
-                              <div className="eltio_k1">
-                                <input id="dd" className="checkbox-custom" name="dd" type="checkbox" />
-                                <label htmlFor="dd" className="checkbox-custom-label">Remember Me</label>
-                              </div>
-                              <div className="eltio_k2">
-                                <a href="#">Lost Your Password?</a>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <button type="submit" className="btn btn-md full-width pop-login">Login</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <div className="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
-                      <div className="login-form">
-                        <form>
-                          <div className="form-group">
-                            <label>Full Name</label>
-                            <div className="input-with-icon">
-                              <input type="text" className="form-control" />
-                              <i className="ti-user" />
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <label>Email ID</label>
-                            <div className="input-with-icon">
-                              <input type="email" className="form-control" />
-                              <i className="ti-user" />
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <label>Password</label>
-                            <div className="input-with-icon">
-                              <input type="password" className="form-control" />
-                              <i className="ti-unlock" />
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <div className="eltio_ol9">
-                              <div className="eltio_k1">
-                                <input id="dds" className="checkbox-custom" name="dds" type="checkbox" />
-                                <label htmlFor="dds" className="checkbox-custom-label">By using the website, you accept the terms and conditions</label>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <button type="submit" className="btn btn-md full-width pop-login">Register</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Modal */}
-      <a id="back2Top" className="top-scroll" title="Back to top" href="#"><i className="ti-arrow-up" /></a>
-    </div>
+
+
+      </section >
+      <Footer />
+    </div >
 
   )
 }

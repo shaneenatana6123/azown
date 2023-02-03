@@ -13,17 +13,6 @@ const LocationPicker = ({ onLocation}) => {
     }, 3000);
 
   }, [])
-
- 
-
-
-
-
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
-    libraries: ['places'],
-  })
-
   const [selectedLocation, setSelectedLocation] = useState({ lat: 26.477626, lng: 80.31696 });
   
 //  /** @type React.MutableRefObject<HTMLInputElement> */
@@ -34,10 +23,15 @@ const LocationPicker = ({ onLocation}) => {
       lng: event.latLng.lng()
     });
   }
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+    libraries: ['places'],
+  })
 
   if (!isLoaded) {
-    return <h4>Map is Loading....</h4>
+    return <h4> Loading....</h4>
   }
+ 
   return (
     <div>
       <div>

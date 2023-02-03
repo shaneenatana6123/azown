@@ -1,18 +1,43 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api'
+
+
+
 
 const HeroBanner = () => {
+    const history = useNavigate()
+    const originRef = useRef()
     const [tab, settab] = useState(1)
     const [formData, setFormData] = useState({
         city: "", area: "", proptype: 0
     })
+    const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+    libraries: ['places'],
+  })
+  if (!isLoaded) {
+    return <h4>Page is Loading....</h4>
+  }
     function handleForm(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-    const history = useNavigate()
+   
     function handleClick(e) {
         e.preventDefault()
-        // console.log(data.id)
+        let area = originRef.current.value
+        let arr
+        if (area!=="") {
+            arr =  area.split(",")
+        //     console.log(arr)
+        //     console.log(formData.city)
+        //    console.log(arr.includes(formData.city)) 
+        }
+        
+
+       
+        // console.log(area)
+
         if (tab === 1) {
             
             if (formData.proptype === "1") {
@@ -37,7 +62,6 @@ const HeroBanner = () => {
             }
 
         }
-
     }
     return (
         <div className="image-cover hero_banner" style={{ background: 'url(assets/img/banner-1.png) no-repeat' }} data-overlay={0}>
@@ -69,11 +93,11 @@ const HeroBanner = () => {
                                         <div className="search_hero_wrapping">
                                             <div className="row">
 
-                                                <div className="col-lg-3 col-md-3 col-sm-12">
+                                                <div className="col-lg-2 col-md-2 col-sm-12">
                                                     <div className="form-group">
                                                         <label>City</label>
                                                         <div className="input-with-icon">
-                                                            <select id="location" onChange={handleForm}  className="form-control">
+                                                            <select id="location" name='city' onChange={handleForm}  className="form-control">
 
                                                                 <option value="Pune" selected>Pune</option>
                                                                 <option value="Banglore">Banglore</option>
@@ -86,12 +110,13 @@ const HeroBanner = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="col-lg-3 col-sm-12 col-md-3">
+                                                <div className="col-lg-4 col-sm-12 col-md-4">
                                                     <div className="form-group">
                                                         <label>Area</label>
-                                                        {/* <Autocomplete> */}
-                                                        <input type="text" onChange={handleForm}  className="form-control search_input b-0" placeholder="ex. Baner" />
-                                                        {/* </Autocomplete> */}
+                                                        <Autocomplete>
+                                                        <input type="text" 
+  ref={originRef} className="form-control search_input b-0" placeholder="ex. Baner"  />
+                                                        </Autocomplete>
 
                                                     </div>
                                                 </div>

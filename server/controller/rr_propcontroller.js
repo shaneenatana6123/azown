@@ -346,13 +346,23 @@ const get_rr_prop = async (req, res) => {
 }
 
 
+
 const get_rrs = async (req, res) => {
   try {
-    const rrs_properties = await rrs_props.find({
+    const props = await rrs_props.find({
       // userid: { $not: { $eq: req.user.id } },
     });
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
     // console.log(rr_properties);
-    res.status(200).json(rrs_properties);
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -485,4 +495,25 @@ const my_plot = async (req, res) => {
   }
 }
 
-module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop,my_rr,my_rrs,my_rpg,my_rfm, my_cmr,my_cms,my_plot };
+const get_top_rr_prop = async (req, res) => {
+  try {
+    const props = await rr_props.find({}).limit(5);
+    for (let p = 0; p < props.length; p++) {
+      const data = props[p];
+      let imageurls =[]
+      for (let post of data.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      data.images = imageurls 
+    }
+    // console.log(props);
+
+    res.status(200).json(props);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop,my_rr,my_rrs,my_rpg,my_rfm, my_cmr,my_cms,my_plot ,get_top_rr_prop };

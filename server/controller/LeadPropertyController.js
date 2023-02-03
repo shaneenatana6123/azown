@@ -134,6 +134,7 @@ const userleaddata = async (req, res) => {
     let property_lead_client_id = req.user.id
 
     let data = await lead.find({ $and: [{ property_lead_client_id }, { property_type }] });
+    // console.log(data)
     data.forEach((element) => {
       // console.log(element.property_type===property_type)
       prop.push(element.property_id)
@@ -145,6 +146,7 @@ const userleaddata = async (req, res) => {
     let propdata
     if (property_type===1){
       propdata = await rr_props.find({ _id: { $in: prop } })
+      // console.log(propdata)
     }else if(property_type===2){
       propdata = await rrs_props.find({ _id: { $in: prop } })
     }else if(property_type===3){
@@ -159,6 +161,7 @@ const userleaddata = async (req, res) => {
       propdata = await plot_props.find({ _id: { $in: prop } })
     }
     const userdata = await User.find({ _id: { $in: user } })
+    // console.log(userdata);
 
     for (let index = 0; index < data.length; index++) {
       let element = data[index];
@@ -169,9 +172,9 @@ const userleaddata = async (req, res) => {
           propval = propdata[i]
         }
       }
-      for (let i = 0; i < userdata.length; i++) {
-        if (element.property_lead_handler_id == userdata[i]._id) {
-          userval = userdata[i]
+      for (let j = 0; j < userdata.length; j++) {
+        if (element.property_lead_handler_id == userdata[j]._id) {
+          userval = userdata[j]
         }
       }
 
@@ -183,12 +186,12 @@ const userleaddata = async (req, res) => {
         imgurl.push(posturl)
       }
       element = { ...element._doc, ...{ imgurl }, ...{ email }, ...{ name } }
-      // console.log(element);
+      console.log(element);
       result.push(element)
 
     }
 
-    // console.log(result);
+    console.log(result);
 
     res.json(result);
   } catch {
