@@ -98,7 +98,7 @@ const CrentDetail = () => {
                       {/* <li><span className="gar">1 Garage</span></li> */}
                       <li><span className="sqft">{data.cr_detail_builtup_area} sqft</span></li>
                     </ul>
-                    <h2>{`${data.cr_detail_property_type} for rent in ${data.cr_location_city && data.cr_location_city.split(",")[0]}`}</h2>
+                    <h2>{`${data.cr_detail_furnishing==="Furnished" ?"Furnished":""} ${data.cr_detail_property_type} On ${data.cr_detail_floor}rd Floor of ${data.cr_detail_building_type} in ${data.cr_location_state}`}</h2>
                     <span><i className="lni-map-marker" /> {data.cr_location_city}</span>
                   </div>
                 </div>

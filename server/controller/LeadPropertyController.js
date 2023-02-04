@@ -161,7 +161,7 @@ const userleaddata = async (req, res) => {
       propdata = await plot_props.find({ _id: { $in: prop } })
     }
     const userdata = await User.find({ _id: { $in: user } })
-    // console.log(userdata);
+  // console.log(userdata);
 
     for (let index = 0; index < data.length; index++) {
       let element = data[index];
@@ -172,12 +172,18 @@ const userleaddata = async (req, res) => {
           propval = propdata[i]
         }
       }
+      console.log(propval);
       for (let j = 0; j < userdata.length; j++) {
         if (element.property_lead_handler_id == userdata[j]._id) {
           userval = userdata[j]
         }
       }
+      console.log(userval)
 
+      // console.log(data);
+      // console.log(propdata);
+      // console.log(userdata);
+console.log("beforeimg");
       let { name, email } = userval
       let { images } = propval
       let imgurl = []
@@ -185,7 +191,9 @@ const userleaddata = async (req, res) => {
         let posturl = await getObjectSignedUrl(post)
         imgurl.push(posturl)
       }
+      console.log("aftre");
       element = { ...element._doc, ...{ imgurl }, ...{ email }, ...{ name } }
+      console.log("final");
       console.log(element);
       result.push(element)
 

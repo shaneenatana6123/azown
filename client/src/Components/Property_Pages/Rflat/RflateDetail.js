@@ -97,7 +97,7 @@ const RflateDetail = () => {
                   <li><span className="gar">{data.rfm_detail_bathroom} Bathroom</span></li>
                   <li><span className="sqft">{data.rfm_detail_builtup_area} sqft</span></li>
                 </ul>
-                <h2>{`${data.rfm_detail_property_type} for rent in ${data.rfm_location_city &&  data.rfm_location_city.split(",")[0]}`}</h2>
+                <h2>{`${data.rfm_detail_furnishing==="Furnished"? "Furnished":""}  ${data.rfm_detail_bhk_type} ${data.rfm_detail_app_type} Available for Flatmate in ${data.rfm_location_state}`}</h2>
                 <span><i className="lni-map-marker" /> {data.rfm_location_city}</span>
               </div>
             </div>

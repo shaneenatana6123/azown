@@ -35,6 +35,7 @@ const [failed ,setfailed] = useState(false)
             // console.log(json.success);
             localStorage.setItem("token", json.authtoken);
             getuserdetail()
+           
             history("/")
             console.log("succ")
         } else {
@@ -81,7 +82,7 @@ const [failed ,setfailed] = useState(false)
                 </div>
                 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-md full-width pop-login">Register</button>
+                    <button type="submit"  className="btn btn-md full-width pop-login">Register</button>
                 </div>
             </form></div>
     )

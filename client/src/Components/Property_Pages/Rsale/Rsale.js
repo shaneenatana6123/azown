@@ -11,7 +11,6 @@ const Rsale = ({property,onAlert}) => {
   const { lead, handlereq } = context;
   const [contacted, setcontacted] = useState(false);
   return (
-  
     <div className="row justify-content-center">
       {/* Single Property */}
       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -20,7 +19,7 @@ const Rsale = ({property,onAlert}) => {
             <div className="_exlio_125">For Sale</div>
             <div className="list-img-slide">
               <div className="click">
-                <div><a href="single-property-1.html"><img src={property.images && property.images.length===0?img:property.images[0]} className="img-fluid mx-auto" alt="djk" /></a></div>
+                <div><a href><img src={property.images && property.images.length===0?img:property.images[0]} className="img-fluid mx-auto" alt="djk" /></a></div>
                
               </div>
             </div>
@@ -31,7 +30,7 @@ const Rsale = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rsale-detail/${property._id}`}>{`${property.rrs_detail_bhk_type} for sale value for the moneye fuzail bahi another pakeage  in ${property.rrs_location_state}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rsale-detail/${property._id}`}>{`${property.rrs_detail_furnishing==="Furnished"? "Furnished":""}  ${property.rrs_detail_bhk_type} ${property.rrs_detail_app_type} Available for rent in ${property.rrs_location_state}`}</Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">
@@ -41,13 +40,14 @@ const Rsale = ({property,onAlert}) => {
               </div>
             </div>
             <div style={{borderTop: '#dddddd solid', borderBottom: '#dddddd solid', paddingBottom: 10}}>
-              <br /><div className="_card_list_flex">
+              <br />
+              {/* <div className="_card_list_flex">
                 <div className="_card_flex_01">
-                  {/* <h4 class="listing-name verified" style="padding-top: 10px;"><a href="single-property-1.html" class="prt-link-detail">5689 Resot Relly Market, Montreal Canada</a></h4> */}
+              
                 </div>
-              </div>												
-              <div className="_card_list_flex mb-2">
-                <p className="location_fuzail"><i className="lni-map-marker" /></p>
+              </div>												 */}
+              <div className="_card_list_flex mb-1">
+                <p className="location_fuzail"><i className="lni-map-marker" />{property.rrs_location_city}</p>
               </div>											
               <div className="row" style={{paddingLeft: 17}}>
                 <div className="row col-lg-12 col-md-12">

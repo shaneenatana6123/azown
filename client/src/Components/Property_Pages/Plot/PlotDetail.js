@@ -120,7 +120,7 @@ const PlotDetail = () => {
               <h4 className="property_block_title">Property Description</h4>
             </div>
             <div className="block-body">
-              <p> {`${data.ps_info_ownership} for Sale in ${data.ps_location_city && data.ps_location_city.split(",")[0]}`}</p>
+              <p> {`${data.ps_detail_plot_length} X ${data.ps_detail_plot_width} SQFT ${data.ps_detail_has_boundary && "With Boundary Wall"} Available In front of ${data.ps_detail_width_of_facing_road}FT Road in ${data.ps_location_state}`}</p>
             </div>
           </div>
           {/* Single Block Wrap */}

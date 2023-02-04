@@ -23,7 +23,7 @@ const Contacted = () => {
 
 
   useEffect(() => {
-    async function userlead  (ptype) {
+    async function userlead(ptype) {
       const responce = await fetch(`${host}/api/leadprop/userleaddata/${ptype}`, {
         method: "GET",
         headers: {
@@ -34,6 +34,7 @@ const Contacted = () => {
       const resdata = await responce.json();
       if (ptype === 1) {
         setrr(resdata)
+        console.log(resdata)
       } else if (ptype === 2) {
         setrrs(resdata)
       } else if (ptype === 3) {
@@ -58,8 +59,7 @@ const Contacted = () => {
   }, [])
   return (
     <div className="col-lg-9 col-md-8 col-sm-12">
-      {/* <div className="dashboard-body mb-3">
-
+      <div className="dashboard-body mb-3">
         <div className="row">
           <div className="col-lg-12 col-md-12">
             <div className="dashboard_property">
@@ -72,12 +72,10 @@ const Contacted = () => {
                       <th scope="col" className="m2_hide">Owner Name</th>
                       <th scope="col" className="m2_hide">Posted On</th>
                       <th scope="col">Status</th>
-
-
                     </tr>
                   </thead>
                   <tbody>
-                    {rr && rr.map(item => {
+                    {rr.length===0 ?"No Data Till Now":  rr.map(item => {
                       return <>
                         <tr>
                           <td>
@@ -110,7 +108,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                           
+
                           </td>
 
                         </tr>
@@ -125,8 +123,8 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-   
-      </div> */}
+
+      </div>
       <div className="dashboard-body mb-3">
         <div className="row">
           <div className="col-lg-12 col-md-12">
@@ -154,7 +152,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
+                                <h5>{`${item.rr_detail_bhk_type} inedhrhhygygrjgkh r reiyhrfr ryryy   ${item.rr_detail_app_type}`}</h5>
                                 <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
                               </div>
@@ -178,7 +176,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+
                           </td>
 
                         </tr>
@@ -193,7 +191,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+
       </div>
       <div className="dashboard-body mb-3">
 
@@ -247,7 +245,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                         
                           </td>
 
                         </tr>
@@ -262,7 +260,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+       
       </div>
       <div className="dashboard-body mb-3">
 
@@ -316,7 +314,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                         
                           </td>
 
                         </tr>
@@ -331,7 +329,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+       
       </div>
       <div className="dashboard-body mb-3">
 
@@ -385,7 +383,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                        
                           </td>
 
                         </tr>
@@ -400,7 +398,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+       
       </div>
       <div className="dashboard-body mb-3">
 
@@ -454,7 +452,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                         
                           </td>
 
                         </tr>
@@ -469,7 +467,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+       
       </div>
       <div className="dashboard-body mb-3">
 
@@ -523,7 +521,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                            {/* <div className="_leads_view_title"><span>Till 12 Oct</span></div> */}
+                         
                           </td>
 
                         </tr>
@@ -538,7 +536,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-        {/* row */}
+      
       </div>
 
 

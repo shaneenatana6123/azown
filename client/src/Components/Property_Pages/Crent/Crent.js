@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
+import img from '../../images/p-1.png'
 
 const Crent = ({property,onAlert}) => {
   const context = useContext(propertyContext);
@@ -26,9 +27,7 @@ const Crent = ({property,onAlert}) => {
             <div className="_exlio_125">For Rent</div>
             <div className="list-img-slide">
               <div className="click">
-                <div><a href="single-property-1.html"><img src="assets/img/p-1.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-2.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-3.png" className="img-fluid mx-auto" alt /></a></div>
+              <div><a href><img src={property.images && property.images.length===0?img:property.images[0]} className="img-fluid mx-auto" alt="djk" /></a></div>
               </div>
             </div>
           </div>
@@ -38,7 +37,7 @@ const Crent = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="listing-card-info-price mb-0"><Link style={{fontSize:"15px"}} to={`/cmr-detail/${property._id}`}>{`${property.cr_detail_property_type} for rent in ${property.cr_location_city.split(",")[0]}`} </Link></h6>
+                      <h6 className="listing-card-info-price mb-0"><Link style={{fontSize:"15px"}} to={`/cmr-detail/${property._id}`}>{`${property.cr_detail_furnishing==="Furnished" ?"Furnished":""} ${property.cr_detail_property_type} On ${property.cr_detail_floor}rd Floor of ${property.cr_detail_building_type} in ${property.cr_location_state}`} </Link></h6>
                     </div>
                   </div>
                   

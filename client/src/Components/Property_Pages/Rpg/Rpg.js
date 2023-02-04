@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
+import img from '../../images/p-1.png'
 
 const Rpg = ({property,onAlert}) => {
   const context = useContext(propertyContext);
@@ -20,9 +21,7 @@ const Rpg = ({property,onAlert}) => {
             <div className="_exlio_125">For PG</div>
             <div className="list-img-slide">
               <div className="click">
-                <div><a href="single-property-1.html"><img src="assets/img/p-1.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-2.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-3.png" className="img-fluid mx-auto" alt /></a></div>
+              <div><a href><img src={property.images && property.images.length===0?img:property.images[0]} className="img-fluid mx-auto" alt="djk" /></a></div>
               </div>
             </div>
           </div>

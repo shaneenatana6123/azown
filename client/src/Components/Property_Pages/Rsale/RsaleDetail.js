@@ -98,7 +98,7 @@ const RsaleDetail = () => {
                   <li><span className="gar">1 Garage</span></li>
                   <li><span className="sqft">800 sqft</span></li>
                 </ul>
-                <h2>{`${data.rrs_detail_property_type} for rent in ${data.rrs_location_city &&  data.rrs_location_city.split(",")[0]}`}</h2>
+                <h2>{`${data.rrs_detail_furnishing==="Furnished"? "Furnished":""}  ${data.rrs_detail_bhk_type} ${data.rrs_detail_app_type} Available for sale in ${data.rrs_location_state}`}</h2>
                 <span><i className="lni-map-marker" /> {data.rrs_location_city}</span>
               </div>
             </div>
@@ -227,7 +227,7 @@ const RsaleDetail = () => {
                     <div className="stbooking-footer mt-1">
                       <div className="form-group mb-0 pb-0">
                       {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,2) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
-                        {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
+                    
                       </div>
                     </div>
                   </div>

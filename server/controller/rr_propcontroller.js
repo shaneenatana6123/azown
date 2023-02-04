@@ -334,11 +334,20 @@ const add_plot_prop = async (req, res) => {
 }
 const get_rr_prop = async (req, res) => {
   try {
-    const rr_properties = await rr_props.find({
+    const props = await rr_props.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(rr_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -370,11 +379,20 @@ const get_rrs = async (req, res) => {
 }
 const get_rpg = async (req, res) => {
   try {
-    const rpg_properties = await rpg_prop.find({
+    const props = await rpg_prop.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(rpg_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -382,11 +400,20 @@ const get_rpg = async (req, res) => {
 }
 const get_rfm = async (req, res) => {
   try {
-    const rfm_properties = await rfm_prop.find({
+    const props = await rfm_prop.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(rfm_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -394,11 +421,20 @@ const get_rfm = async (req, res) => {
 }
 const get_cmr = async (req, res) => {
   try {
-    const cmr_properties = await cmr_prop.find({
+    const props = await cmr_prop.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(cmr_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -406,11 +442,20 @@ const get_cmr = async (req, res) => {
 }
 const get_cms = async (req, res) => {
   try {
-    const cms_properties = await cms_prop.find({
+    const props = await cms_prop.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(cms_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -418,11 +463,20 @@ const get_cms = async (req, res) => {
 }
 const get_plot = async (req, res) => {
   try {
-    const plot_properties = await plot_prop.find({
+    const props = await plot_prop.find({
       // userid: { $not: { $eq: req.user.id } },
     });
     // console.log(rr_properties);
-    res.status(200).json(plot_properties);
+    for (let i = 0; i < props.length ; i++) {
+      const prop = props[i];
+      let imageurls =[]
+      for (let post of prop.images) {
+        let posturl = await getObjectSignedUrl(post)
+        imageurls.push(posturl)
+      }
+      prop.images = imageurls 
+    }
+    res.status(200).json(props);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");

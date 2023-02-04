@@ -101,7 +101,7 @@ const RrentDetail = () => {
                   <li><span className="gar">{data.rr_detail_balcony} Balcony</span></li>
                   <li><span className="sqft">{data.rr_detail_builtup_area} sqft</span></li>
                 </ul>
-                <h2>{`${data.rr_detail_property_type} for rent in ${data.rr_location_city &&  data.rr_location_city.split(",")[0]}`}</h2>
+                <h2>{`${data.rr_detail_furnishing==="Furnished"? "Furnished":""}  ${data.rr_detail_bhk_type} ${data.rr_detail_app_type} Available for rent in ${data.rr_location_state}`}</h2>
                 <span><i className="lni-map-marker" /> {data.rr_location_city}</span>
               </div>
             </div>

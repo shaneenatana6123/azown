@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
+import img from '../../images/p-1.png'
 
 const Rflate = ({property, onAlert}) => {
   const context = useContext(propertyContext);
@@ -20,9 +21,7 @@ const Rflate = ({property, onAlert}) => {
             <div className="_exlio_125">For Flatmate</div>
             <div className="list-img-slide">
               <div className="click">
-                <div><a href="single-property-1.html"><img src="assets/img/p-1.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-2.png" className="img-fluid mx-auto" alt /></a></div>
-                <div><a href="single-property-1.html"><img src="assets/img/p-3.png" className="img-fluid mx-auto" alt /></a></div>
+              <div><a href><img src={property.images && property.images.length===0?img:property.images[0]} className="img-fluid mx-auto" alt="djk" /></a></div>
               </div>
             </div>
           </div>
@@ -32,7 +31,7 @@ const Rflate = ({property, onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rfm-detail/${property._id}`}>{`${property.rfm_detail_property_type} for rent in ${property.rfm_location_city.split(",")[0]}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rfm-detail/${property._id}`}>{`${property.rfm_detail_furnishing==="Furnished"? "Furnished":""}  ${property.rfm_detail_bhk_type} ${property.rfm_detail_app_type} Available for rent in ${property.rfm_location_state}`} </Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">

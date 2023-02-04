@@ -27,6 +27,7 @@ const Navbar = () => {
         setoff(false);
       }
     }
+   
     window.addEventListener('resize', handleResize);
     handleResize();
     // return () =>  {
@@ -52,6 +53,9 @@ const Navbar = () => {
     //   window.removeEventListener('scroll', handleScroll);
     // };
   }, []);
+  function handleClose(){
+    setShow(!show)
+  }
   return (
     <div className={fix ? "header-fixed header header-light " : "header header-light"} >
       <div className="container" >
@@ -143,9 +147,9 @@ const Navbar = () => {
                         <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-login-tab">
                           <div className="login-form">
                             {log ?
-                              <Login />
+                              <Login  />
                               :
-                              <SignUp />
+                              <SignUp  />
                             }
 
                           </div>
