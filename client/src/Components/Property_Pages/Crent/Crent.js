@@ -37,7 +37,7 @@ const Crent = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="listing-card-info-price mb-0"><Link style={{fontSize:"15px"}} to={`/cmr-detail/${property._id}`}>{`${property.cr_detail_furnishing==="Furnished" ?"Furnished":""} ${property.cr_detail_property_type} On ${property.cr_detail_floor}rd Floor of ${property.cr_detail_building_type} in ${property.cr_location_state}`} </Link></h6>
+                      <h6 className="listing-card-info-price mb-0"><Link style={{fontSize:"15px"}} to={`/cmr-detail/${property._id}`}>{property.cr_detail_title} </Link></h6>
                     </div>
                   </div>
                   

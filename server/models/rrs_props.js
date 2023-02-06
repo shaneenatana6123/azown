@@ -24,6 +24,9 @@ const rrs_PropSchema = new Schema({
     rrs_detail_description:{
         type:String
     },
+    rrs_detail_title:{
+        type:String
+    },
     rrs_detail_app_type:{
         type:String
     },

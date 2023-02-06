@@ -25,6 +25,9 @@ const plot_PropSchema = new Schema({
     ps_detail_description :{
         type:String
     },
+    ps_detail_title:{
+        type:String
+    },
     ps_detail_plot_length :{
         type:String
     },

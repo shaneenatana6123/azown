@@ -97,7 +97,7 @@ const CsaleDetail = () => {
                   <li><span className="gar">{data.cs_detail_furnishing}</span></li>
                   {/* <li><span className="sqft">800 sqft</span></li> */}
                 </ul>
-                <h2>{`${data.cs_detail_furnishing==="Furnished" ?"Furnished":""} ${data.cs_detail_property_type} On ${data.cs_detail_floor}rd Floor of ${data.cs_detail_building_type} in ${data.cs_location_state}`}</h2>
+                <h2>{data.cs_detail_title}</h2>
                 <span><i className="lni-map-marker" /> {data.cs_location_city}</span>
               </div>
             </div>
@@ -116,7 +116,7 @@ const CsaleDetail = () => {
               <h4 className="property_block_title">Property Description</h4>
             </div>
             <div className="block-body">
-              <p> {`${data.cs_detail_property_type} for rent in ${data.cs_location_city && data.cs_location_city.split(",")[0]}`}</p>
+              <p> {data.cs_detail_title}</p>
             </div>
           </div>
           {/* Single Block Wrap */}

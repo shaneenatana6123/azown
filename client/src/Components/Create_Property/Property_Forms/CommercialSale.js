@@ -282,7 +282,7 @@ const CommercialSale = () => {
   }),
   Yup.object().shape({
     cs_resale_details_exp_price: Yup.number().required('This Field is Required').positive("Please Enter the Positive Value"),
-    cs_resale_details_maintenance: Yup.number().required('This Field is Required').min(0,"Please Enter the Positive Value"),
+    cs_resale_details_maintenance: Yup.number().required('This Field is Required').min(0, "Please Enter the Positive Value"),
     cs_resale_details_available_from: Yup.string().required('This Field is Required'),
   }),
   Yup.object().shape({
@@ -341,13 +341,9 @@ const CommercialSale = () => {
                     cs_location_longitude: "",
                     cs_location_iframe: "",
 
-                    cs_rental_detail_rent: "",
-                    cs_rental_detail_exp_deposit: "",
-                    cs_rental_detail_is_nogotiable: "",
-                    cs_rental_detail_monthly_maintenance: 0,
-                    cs_rental_detail_avail_from: "",
-                    cs_rental_detail_lease_duration: "",
-                    cs_rental_detail_lockin_period: "",
+                    cs_resale_details_exp_price: "",
+                    cs_resale_details_maintenance: "",
+                    cs_resale_details_available_from: "",
 
                     cs_amenities_power_backup: false,
                     cs_amenities_lift: false,
@@ -364,7 +360,7 @@ const CommercialSale = () => {
                       setSubmitting(false);
                       setCurrentStep(currentStep + 1)
                       setTouched({})
-                    }else if (currentStep === 4) {
+                    } else if (currentStep === 4) {
                       const formData = new FormData();
                       formData.append("cs_detail_description", values.cs_detail_description)
                       formData.append("cs_detail_property_type", values.cs_detail_property_type)
@@ -379,13 +375,13 @@ const CommercialSale = () => {
                       formData.append("cs_location_latitiude", values.cs_location_latitiude)
                       formData.append("cs_location_longitude", values.cs_location_longitude)
                       formData.append("cs_location_iframe", values.cs_location_iframe)
-                      formData.append("cs_rental_detail_rent", values.cs_rental_detail_rent)
-                      formData.append("cs_rental_detail_exp_deposit", values.cs_rental_detail_exp_deposit)
-                      formData.append("cs_rental_detail_is_nogotiable", values.cs_rental_detail_is_nogotiable)
-                      formData.append("cs_rental_detail_monthly_maintenance", values.cs_rental_detail_monthly_maintenance)
-                      formData.append("cs_rental_detail_avail_from", values.cs_rental_detail_avail_from)
-                      formData.append("cs_rental_detail_lease_duration", values.cs_rental_detail_lease_duration)
-                      formData.append("cs_rental_detail_lockin_period", values.cs_rental_detail_lockin_period)
+                     
+
+ 
+                     formData.append("cs_resale_details_exp_price",values.cs_resale_details_exp_price)
+                     formData.append("cs_resale_details_maintenance",values.cs_resale_details_maintenance)
+                     formData.append("cs_resale_details_available_from",values.cs_resale_details_available_from)
+
                       formData.append("cs_amenities_power_backup", values.cs_amenities_power_backup)
                       formData.append("cs_amenities_lift", values.cs_amenities_lift)
                       formData.append("cs_amenities_parking", values.cs_amenities_parking)
@@ -410,7 +406,7 @@ const CommercialSale = () => {
                         .catch((error) => {
                           console.error(error);
                           setSubmitting(false);
-                          
+
                         });
 
                     } else {
@@ -423,9 +419,9 @@ const CommercialSale = () => {
                   }
                   }
                 >
-                  {({ values, isSubmitting ,setFieldValue}) => (
+                  {({ values, isSubmitting, setFieldValue }) => (
                     <Form >
-                      {handleStep(currentStep,setFieldValue)}
+                      {handleStep(currentStep, setFieldValue)}
                       <button type='submit' className='btn btn-dark float-right'  >{currentStep === 4 ? 'Submit' : 'Next'}</button>
                       <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
                     </Form>

@@ -98,7 +98,7 @@ const RpgDetail = () => {
                 <li><span className="gar">1 Garage</span></li>
                 <li><span className="sqft">800 sqft</span></li> */}
               </ul>
-              <h2>{`${data.rpg_detail_property_type} for rent in ${data.rpg_location_city &&  data.rpg_location_city.split(",")[0]}`}</h2>
+              <h2>{data.rpg_detail_title}</h2>
               <span><i className="lni-map-marker" /> {data.rpg_location_city}</span>
             </div>
           </div>
@@ -117,7 +117,7 @@ const RpgDetail = () => {
             <h4 className="property_block_title">Property Description</h4>
           </div>
           <div className="block-body">
-            <p> {`${data.rpg_detail_property_type} for rent in ${data.rpg_location_city &&  data.rpg_location_city.split(",")[0]}`}</p>
+            <p> {data.rpg_detail_title}</p>
           </div>
         </div>
         {/* Single Block Wrap */}

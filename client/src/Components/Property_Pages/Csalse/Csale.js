@@ -32,7 +32,7 @@ const Csale = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/cms-detail/${property._id}`}>{`${property.cs_detail_furnishing==="Furnished" ?"Furnished":""} ${property.cs_detail_property_type} On ${property.cs_detail_floor}rd Floor of ${property.cs_detail_building_type} in ${property.cs_location_state}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/cms-detail/${property._id}`}>{property.cs_detail_title}</Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">

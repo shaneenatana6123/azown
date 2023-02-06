@@ -152,7 +152,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} inedhrhhygygrjgkh r reiyhrfr ryryy   ${item.rr_detail_app_type}`}</h5>
+                                <h5>{`${item.rr_detail_bhk_type}  ${item.rr_detail_app_type}`}</h5>
                                 <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
                               </div>

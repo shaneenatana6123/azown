@@ -36,7 +36,7 @@ const Rrent = ({ property, onAlert }) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{ fontSize: "15px" }} to={`/rrent-detail/${property._id}`}>{`${property.rr_detail_furnishing==="Furnished"? "Furnished":""}  ${property.rr_detail_bhk_type} ${property.rr_detail_app_type} Available for rent in ${property.rr_location_state}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{ fontSize: "15px" }} to={`/rrent-detail/${property._id}`}>{property.rr_detail_title} </Link></h6>
                     </div>
                   </div>
 

@@ -36,7 +36,7 @@ const Plot = ({property,onAlert}) => {
                       <div className="_card_list_flex mb-2">
                         <div className="_card_list_flex">
                           <div className="_card_flex_01">
-                            <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/plot-detail/${property._id}`}>{`${property.ps_detail_plot_length} X ${property.ps_detail_plot_width} SQFT ${property.ps_detail_has_boundary && "With Boundary Wall"} Available In front of ${property.ps_detail_width_of_facing_road}FT Road in ${property.ps_location_state}`} </Link></h6>
+                            <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/plot-detail/${property._id}`}>{property.ps_detail_title} </Link></h6>
                           </div>
                         </div>
                         <div className="_card_flex_last">

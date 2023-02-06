@@ -98,7 +98,7 @@ const RsaleDetail = () => {
                   <li><span className="gar">1 Garage</span></li>
                   <li><span className="sqft">800 sqft</span></li>
                 </ul>
-                <h2>{`${data.rrs_detail_furnishing==="Furnished"? "Furnished":""}  ${data.rrs_detail_bhk_type} ${data.rrs_detail_app_type} Available for sale in ${data.rrs_location_state}`}</h2>
+                <h2>{data.rrs_detail_title}</h2>
                 <span><i className="lni-map-marker" /> {data.rrs_location_city}</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ const RsaleDetail = () => {
               <h4 className="property_block_title">Property Description</h4>
             </div>
             <div className="block-body">
-              <p> {`${data.rrs_detail_property_type} for rent in ${data.rrs_location_city &&  data.rrs_location_city.split(",")[0]}`}</p>
+              <p> {data.rrs_detail_title}</p>
             </div>
           </div>
           {/* Single Block Wrap */}

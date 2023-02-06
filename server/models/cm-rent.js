@@ -24,6 +24,9 @@ const cmr_PropSchema = new Schema({
     cr_detail_description: {
         type:String
     },
+    cr_detail_title: {
+        type:String
+    },
     cr_detail_property_type  : {
         type:String
     },

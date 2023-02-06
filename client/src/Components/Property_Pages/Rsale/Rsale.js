@@ -30,7 +30,7 @@ const Rsale = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rsale-detail/${property._id}`}>{`${property.rrs_detail_furnishing==="Furnished"? "Furnished":""}  ${property.rrs_detail_bhk_type} ${property.rrs_detail_app_type} Available for rent in ${property.rrs_location_state}`}</Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rsale-detail/${property._id}`}>{property.rrs_detail_title}</Link></h6>
                     </div>
                   </div>
                   <div className="_card_flex_last">

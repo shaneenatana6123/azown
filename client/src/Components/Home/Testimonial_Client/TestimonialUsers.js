@@ -1,5 +1,9 @@
 import React from 'react'
 import Slider from 'react-slick'
+import three from '../../images/user-3.png'
+import two from '../../images/two.png'
+import four from '../../images/four.png'
+import one from '../../images/one.png'
 
 const TestimonialUsers = () => {
     const settings = {
@@ -54,22 +58,17 @@ const TestimonialUsers = () => {
                                                     <span className="verified">
                                                     <img src="assets/img/verified.svg" className="verify mx-auto" alt="djdh" />
                                                     </span>
-                                                    <img src="assets/img/tuser-3.jpeg" style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="keje" />
+                                                    <img src={one} style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="keje" />
                                                 </a>
                                             </div>
                                             <div className="fr-grid-deatil">
                                                 <span>Register as a</span>
                                                 <h5 className="fr-can-name"><a href="agent-page.html" tabIndex={-1}>Azown Owner</a></h5>
-                                                <ul className="inline_social">
-                                                    <li><a href className="fb" tabIndex={-1}><i className="ti-facebook" /></a></li>
-                                                    <li><a href className="ln" tabIndex={-1}><i className="ti-linkedin" /></a></li>
-                                                    <li><a href className="ins" tabIndex={-1}><i className="ti-instagram" /></a></li>
-                                                    <li><a href className="tw" tabIndex={-1}><i className="ti-twitter" /></a></li>
-                                                </ul>
+                                             
                                             </div>
                                             <div className="fr-infos-deatil">
-                                                <a href="#" data-toggle="modal" data-target="#autho-message" className="btn agent-btn theme-bg" tabIndex={-1}><i className="fa fa-envelope mr-2" />Message</a>
-                                                {/* <a href="#" className="btn agent-btn theme-black" tabIndex={-1}><i className="fa fa-phone" /></a> */}
+                                                <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -81,21 +80,17 @@ const TestimonialUsers = () => {
                                             <div className="fr-grid-thumb">
                                                 <a href="agent-page.html" >
                                                     <span className="verified"><img src="assets/img/verified.svg" className="verify mx-auto" alt="djdh" /></span>
-                                                    <img src="assets/img/tuser-4.jpeg" style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="djd" />
+                                                    <img src={four} style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="djd" />
                                                 </a>
                                             </div>
                                             <div className="fr-grid-deatil">
                                                 <span>Register as a</span>
                                                 <h5 className="fr-can-name"><a href="agent-page.html" tabIndex={-1}>Builder</a></h5>
-                                                <ul className="inline_social">
-                                                    <li><a href="#" className="fb"><i className="ti-facebook" /></a></li>
-                                                    <li><a href="#" className="ln"><i className="ti-linkedin" /></a></li>
-                                                    <li><a href="#" className="ins"><i className="ti-instagram" /></a></li>
-                                                    <li><a href="#" className="tw"><i className="ti-twitter" /></a></li>
-                                                </ul>
+                                              
+                                                
                                             </div>
                                             <div className="fr-infos-deatil">
-                                                <a href="" className="btn agent-btn theme-bg" ><i className="fa fa-envelope mr-2" />Message</a>
+                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
                                               
                                             </div>
                                         </div>
@@ -108,21 +103,16 @@ const TestimonialUsers = () => {
                                             <div className="fr-grid-thumb">
                                                 <a href="agent-page.html" tabIndex={0}>
                                                     <span className="verified"><img src="assets/img/verified.svg" className="verify mx-auto" alt="ekje" /></span>
-                                                    <img src="assets/img/tuser-1.jpeg" style={{objectFit:"cover"}} className="img-fluid mx-auto" alt='jie' />
+                                                    <img src={three} style={{objectFit:"cover"}} className="img-fluid mx-auto" alt='jie' />
                                                 </a>
                                             </div>
                                             <div className="fr-grid-deatil">
                                                 <span>Register as a</span>
                                                 <h5 className="fr-can-name"><a href="agent-page.html" tabIndex={0}>Vender</a></h5>
-                                                <ul className="inline_social">
-                                                    <li><a href="#" className="fb" ><i className="ti-facebook" /></a></li>
-                                                    <li><a href="#" className="ln" ><i className="ti-linkedin" /></a></li>
-                                                    <li><a href="#" className="ins" ><i className="ti-instagram" /></a></li>
-                                                    <li><a href="#" className="tw" ><i className="ti-twitter" /></a></li>
-                                                </ul>
+                                            
                                             </div>
                                             <div className="fr-infos-deatil">
-                                                <a href="#" data-toggle="modal" data-target="#autho-message" className="btn agent-btn theme-bg" tabIndex={0}><i className="fa fa-envelope mr-2" />Message</a>
+                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
                                              
                                             </div>
                                         </div>
@@ -135,21 +125,16 @@ const TestimonialUsers = () => {
                                             <div className="fr-grid-thumb">
                                                 <a href="agent-page.html" tabIndex={0}>
                                                     <span className="verified"><img src="assets/img/verified.svg" className="verify mx-auto" alt="dkkj" /></span>
-                                                    <img src="assets/img/tuser-2.jpeg" style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="dkkj" />
+                                                    <img src={two} style={{objectFit:"cover"}} className="img-fluid mx-auto" alt="dkkj" />
                                                 </a>
                                             </div>
                                             <div className="fr-grid-deatil">
                                                 <span>Register as a</span>
                                                 <h5 className="fr-can-name"><a href="agent-page.html" tabIndex={0}>Broker</a></h5>
-                                                <ul className="inline_social">
-                                                    <li><a href="#" className="fb"><i className="ti-facebook" /></a></li>
-                                                    <li><a href="#" className="ln"><i className="ti-linkedin" /></a></li>
-                                                    <li><a href="#" className="ins"><i className="ti-instagram" /></a></li>
-                                                    <li><a href="#" className="tw"><i className="ti-twitter" /></a></li>
-                                                </ul>
+                                              
                                             </div>
                                             <div className="fr-infos-deatil">
-                                                <a href="#" className="btn agent-btn theme-bg" ><i className="fa fa-envelope mr-2" />Message</a>
+                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
                                                
                                             </div>
                                         </div>

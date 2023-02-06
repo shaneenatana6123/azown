@@ -25,6 +25,9 @@ const rfm_PropSchema = new Schema({
     rfm_detail_description:{
         type:String
     },
+    rfm_detail_title:{
+        type:String
+    },
     rfm_detail_app_type :{
         type:String
     },

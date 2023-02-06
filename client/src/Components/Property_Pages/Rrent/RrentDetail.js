@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
@@ -101,7 +101,7 @@ const RrentDetail = () => {
                   <li><span className="gar">{data.rr_detail_balcony} Balcony</span></li>
                   <li><span className="sqft">{data.rr_detail_builtup_area} sqft</span></li>
                 </ul>
-                <h2>{`${data.rr_detail_furnishing==="Furnished"? "Furnished":""}  ${data.rr_detail_bhk_type} ${data.rr_detail_app_type} Available for rent in ${data.rr_location_state}`}</h2>
+                <h2>{data.rr_detail_title}</h2>
                 <span><i className="lni-map-marker" /> {data.rr_location_city}</span>
               </div>
             </div>
@@ -120,7 +120,7 @@ const RrentDetail = () => {
               <h4 className="property_block_title">Property Description</h4>
             </div>
             <div className="block-body">
-              <p>{`${data.rr_detail_property_type} for rent in ${data.rr_location_city &&  data.rr_location_city.split(",")[0]}`}</p>
+              <p>{data.rr_detail_title}</p>
             </div>
           </div>
           {/* Single Block Wrap */}
@@ -234,7 +234,7 @@ const RrentDetail = () => {
                   </div>
                   <div className="clearfix" />
                 </div>
-                <a href className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</a>
+                <Link to='/user-detail' className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</Link>
                 {/* <span id="number" data-last={+1234567896}>
                   <span><i className="ti-headphone-alt" /><a className="see">+355(44)35...Show</a></span>
                 </span> */}

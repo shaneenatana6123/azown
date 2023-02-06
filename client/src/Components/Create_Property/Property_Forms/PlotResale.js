@@ -127,8 +127,9 @@ case 1:
             <div className="o-features">
               <ul className="no-ul-list">
                 <li>
-                  <Field id="a-100" className="checkbox-custom" name="ps_rules_allowed_floors" type="checkbox" />
-                  <label htmlFor="a-100" className="checkbox-custom-label">Allowed Floor</label>
+                <label  className="checkbox-custom-label">Allowed Floor</label>
+                  <Field  className="checkbox-custom" name="ps_rules_allowed_floors" type="number" />
+               
                 </li>
               </ul>
             </div>
@@ -298,7 +299,7 @@ case 1:
     ps_location_state: Yup.string().required('Required')
   }),
   Yup.object().shape({
-    ps_rules_allowed_floors: Yup.string().required('Required')
+    ps_rules_allowed_floors: Yup.number().required('Required').positive("Please Enter the Positive Value")
   }),
   
   Yup.object().shape({

@@ -27,6 +27,9 @@ import PlotDetail from './Components/Property_Pages/Plot/PlotDetail';
 import RsaleDetail from './Components/Property_Pages/Rsale/RsaleDetail';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Alert from './Components/Alert';
+import UserDetail from './Components/Property_Pages/UserDetail';
+
+
 
 
 
@@ -67,7 +70,9 @@ function App() {
 
           <Route path="/plot-list" element={<PlotList />}></Route>
           <Route path="/plot-detail/:id" element={<PlotDetail />}></Route>
-<Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/dashboard' element={<Dashboard />}></Route>
+
+          <Route path='/user-detail' element={<UserDetail/>} ></Route>
 
         </Routes>
 

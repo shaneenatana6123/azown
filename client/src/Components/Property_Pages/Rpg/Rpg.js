@@ -31,7 +31,7 @@ const Rpg = ({property,onAlert}) => {
                 <div className="_card_list_flex mb-2">
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rpg-detail/${property._id}`}>{`${property.rpg_detail_property_type} for rent in ${property.rpg_location_city.split(",")[0]}`} </Link></h6>
+                      <h6 className="cms_title mb-0"><Link style={{fontSize:"15px"}} to={`/rpg-detail/${property._id}`}>{property.rpg_detail_title} </Link></h6>
                     </div>
                   </div>
                   
