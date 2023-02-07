@@ -83,7 +83,7 @@ const ShortList = () => {
                     </div>
                     <div className="_card_flex_last">
                       <div className="prt_saveed_12lk">
-                        <label className="toggler toggler-danger"><input type="checkbox" /><i className="ti-heart" /></label>
+                        <label className="toggler toggler-danger"><input type="checkbox" /><i className="fa fa-heart" style={{color:"red"}} /></label>
                       </div>
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const ShortList = () => {
                     </div>
                     <div className="_card_flex_last">
                       <div className="prt_saveed_12lk">
-                        <label className="toggler toggler-danger"><input type="checkbox" /><i className="ti-heart" /></label>
+                        <label className="toggler toggler-danger"><input type="checkbox" /><i className="fa fa-heart" style={{color:"red"}} /></label>
                       </div>
                     </div>
                   </div>
