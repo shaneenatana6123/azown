@@ -241,7 +241,7 @@ const RsaleDetail = () => {
                 <div className="agent-_blocks_title">
                   <div className="agent-_blocks_thumb"><img src="assets/img/user-6.jpg" alt /></div>
                   <div className="agent-_blocks_caption">
-                    <h4><a href="#">Shivangi Preet</a></h4>
+                    <h4><a href="#">{data.name}</a></h4>
                     <span className="approved-agent"><i className="ti-check" />approved</span>
                   </div>
                   <div className="clearfix" />

@@ -9,6 +9,7 @@ const rfm_props = require('../models/rr-flat')
 const cmr_props = require('../models/cm-rent')
 const cms_props = require('../models/cm-sale')
 const plot_props = require('../models/land-plot')
+const like = require('../models/like')
 
 
 const leadcreate = async (req, res) => {
@@ -144,24 +145,24 @@ const userleaddata = async (req, res) => {
     // console.log(user);
     // console.log(data);
     let propdata
-    if (property_type===1){
+    if (property_type === 1) {
       propdata = await rr_props.find({ _id: { $in: prop } })
       // console.log(propdata)
-    }else if(property_type===2){
+    } else if (property_type === 2) {
       propdata = await rrs_props.find({ _id: { $in: prop } })
-    }else if(property_type===3){
+    } else if (property_type === 3) {
       propdata = await rpg_props.find({ _id: { $in: prop } })
-    }else if(property_type===4){
+    } else if (property_type === 4) {
       propdata = await rfm_props.find({ _id: { $in: prop } })
-    }else if(property_type===5){
+    } else if (property_type === 5) {
       propdata = await cmr_props.find({ _id: { $in: prop } })
-    }else if(property_type===6){
+    } else if (property_type === 6) {
       propdata = await cms_props.find({ _id: { $in: prop } })
-    }else if(property_type===7){
+    } else if (property_type === 7) {
       propdata = await plot_props.find({ _id: { $in: prop } })
     }
     const userdata = await User.find({ _id: { $in: user } })
-  // console.log(userdata);
+    // console.log(userdata);
 
     for (let index = 0; index < data.length; index++) {
       let element = data[index];
@@ -183,17 +184,62 @@ const userleaddata = async (req, res) => {
       // console.log(data);
       // console.log(propdata);
       // console.log(userdata);
-console.log("beforeimg");
+
       let { name, email } = userval
-      let { images } = propval
+      let images, title, location, price
+
+      if (property_type === 1) {
+        images = propval.images
+        title = propval.rr_detail_title
+        location = propval.rr_location_city
+        price = propval.rr_rental_detail_rent
+
+      } else if (property_type === 2) {
+        images = propval.images
+        title = propval.rrs_detail_title
+        location = propval.rrs_location_city
+        price = propval.rrs_resale_detail_exp_price
+
+      } else if (property_type === 3) {
+        images = propval.images
+        title = propval.rpg_detail_title
+        location = propval.rpg_location_city
+        price = propval.rpg_detail_room_rent
+
+      } else if (property_type === 4) {
+        images = propval.images
+        title = propval.rfm_detail_title
+        location = propval.rfm_location_city
+        price = propval.rfm_rental_detail_rent
+
+      } else if (property_type === 5) {
+        images = propval.images
+        title = propval.cr_detail_title
+        location = propval.cr_location_city
+        price = propval.cr_rental_detail_rent
+
+      } else if (property_type === 6) {
+        images = propval.images
+        title = propval.cs_detail_title
+        location = propval.cs_location_city
+        price = propval.cs_resale_details_exp_price
+
+      } else if (property_type === 7) {
+        images = propval.images
+        title = propval.ps_detail_title
+        location = propval.ps_location_city
+        price = propval.ps_sale_detail_price
+
+      }
+      // let { images } = propval
       let imgurl = []
       for (let post of images) {
         let posturl = await getObjectSignedUrl(post)
         imgurl.push(posturl)
       }
-      console.log("aftre");
-      element = { ...element._doc, ...{ imgurl }, ...{ email }, ...{ name } }
-      console.log("final");
+
+      element = { ...element._doc, ...{ imgurl }, ...{ email }, ...{ name }, ...{ title }, ...{ location }, ...{ price } }
+      // console.log("final");
       console.log(element);
       result.push(element)
 
@@ -253,4 +299,50 @@ const ownerlead = async (req, res) => {
     res.json({ error: "Not found" });
   }
 }
-module.exports = { leadcreate, userleaddata, updateleadstage, ownerlead };
+
+const newlike = async (req, res) => {
+  try {
+    console.log(req.user.id);
+    console.log(req.body.property_id);
+    console.log(req.body.property_type);
+    const property_id = req.body.property_id;
+    const property_type = req.body.property_type;
+
+    const client_id = req.user.id
+
+    let likedata = new like({ property_id, property_type, client_id });
+    await likedata.save();
+
+    if (type === 1) {
+      await rr_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+    } else if (type === 2) {
+    await rrs_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+
+    } else if (type === 3) {
+      await rpg_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+    } else if (type === 4) {
+      await rfm_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+    } else if (type === 5) {
+      await cmr_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+
+    } else if (type === 6) {
+    await cms_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+
+    } else if (type === 7) {
+      await plot_props.updateOne({ _id:property_id }, { $push: { like: req.user.id } });
+      res.json({ success: "Liked Successful.." });
+    }
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+module.exports = { leadcreate, userleaddata, updateleadstage, ownerlead,newlike };

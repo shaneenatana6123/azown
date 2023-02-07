@@ -75,7 +75,7 @@ const Contacted = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rr.length===0 ?"No Data Till Now":  rr.map(item => {
+                    {rr.length === 0 ? "No Data Till Now" : rr.map(item => {
                       return <>
                         <tr>
                           <td>
@@ -84,19 +84,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -152,19 +148,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type}  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -221,19 +213,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -245,7 +233,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                         
+
                           </td>
 
                         </tr>
@@ -260,7 +248,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <div className="dashboard-body mb-3">
 
@@ -290,19 +278,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -314,7 +298,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                         
+
                           </td>
 
                         </tr>
@@ -329,7 +313,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <div className="dashboard-body mb-3">
 
@@ -359,19 +343,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -383,7 +363,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                        
+
                           </td>
 
                         </tr>
@@ -398,7 +378,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <div className="dashboard-body mb-3">
 
@@ -428,19 +408,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                          <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -452,7 +428,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                         
+
                           </td>
 
                         </tr>
@@ -467,7 +443,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <div className="dashboard-body mb-3">
 
@@ -497,19 +473,15 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_bhk_type} in  ${item.rr_detail_app_type}`}</h5>
-                                <div className="prt_dashb_lot">{`${item.rr_detail_builtup_area} in  ${item.rr_location_city && item.rr_location_city.slice(0, 12)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
+                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
+                                <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
                             </div>
                           </td>
                           <td className="m2_hide">
-                            <div className="prt_leads"><span>{item.email}</span></div>
-                            <div className="prt_leads_list">
-                              <ul>
-
-                              </ul>
-                            </div>
+                            <div className="prt_leads " ><span><b>{item.email}</b></span></div>
+                            <div className="prt_leads_list"><span>Owner Email</span></div>
                           </td>
                           <td className="m2_hide">
                             <div className="_leads_view"><h5 className="up">{item.name}</h5></div>
@@ -521,7 +493,7 @@ const Contacted = () => {
                           </td>
                           <td>
                             <div className="_leads_status"><Status key={item._id} item={item} /></div>
-                         
+
                           </td>
 
                         </tr>
@@ -536,7 +508,7 @@ const Contacted = () => {
             </div>
           </div>
         </div>
-      
+
       </div>
 
 

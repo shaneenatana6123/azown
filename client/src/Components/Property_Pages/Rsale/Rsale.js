@@ -7,9 +7,11 @@ import img from '../../images/p-1.png'
 const Rsale = ({property,onAlert}) => {
   const context = useContext(propertyContext);
   const leadcontext = useContext(leadContext)
-  const { leadcreate } = leadcontext
-  const { lead, handlereq } = context;
+  const { leadcreate,likeprop } = leadcontext
+  const { lead, handlereq , } = context;
   const [contacted, setcontacted] = useState(false);
+  const [liked, setliked] = useState(false)
+
   return (
     <div className="row justify-content-center">
       {/* Single Property */}
@@ -91,7 +93,10 @@ const Rsale = ({property,onAlert}) => {
                   </div>
                 </div>
               </div>
-              <a href="#">  <i className=" fa fa-heart" style={{fontSize: 35, paddingRight: 22, paddingTop: 5}} /></a> 
+              {localStorage.getItem('token') ? property.like && property.like.includes(localStorage.getItem('userId')) || liked ? <span  >  <i className=" fa fa-heart" style={{fontSize: 35,color:"red", paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span> :<span onClick={()=>{setliked(true);likeprop(property._id,2)}} >  <i className=" fa fa-heart" style={{fontSize: 35,color:`${ !liked ? "#27ae60":"red"}`, paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span>  :  <span onClick={onAlert} >  <i className=" fa fa-heart" style={{fontSize: 35,color:"#27ae60", paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span> }
+
+              
+
               <div className="footer-flex">
               {localStorage.getItem('token') ?  property.lead && property.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="prt-view" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="prt-view" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(property._id,2) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={onAlert} className="prt-view" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
               </div>

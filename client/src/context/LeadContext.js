@@ -57,8 +57,21 @@ const LeadState =(props)=>{
           const resdata = await responce.json();
        console.log(resdata);
      }
+     const likeprop = async (id,type) => {
+      
+      const responce = await fetch(`${host}/api/likes/like-property`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ property_id: id, property_type: type }),
+      });
+      const res = await responce.json();
+      console.log(res);
+    };
     return (
-        <leadContext.Provider value={{leadcreate,userlead,userleadsdata,updateleadstage,ownerlead, host,ownerleaddata}}>
+        <leadContext.Provider value={{leadcreate,userlead,userleadsdata,updateleadstage,ownerlead, host,likeprop,ownerleaddata}}>
             {props.children}
         </leadContext.Provider>
     )

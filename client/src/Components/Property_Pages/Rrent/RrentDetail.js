@@ -108,8 +108,7 @@ const RrentDetail = () => {
             <div className="property_detail_section">
               <div className="prt-sect-pric">
                 <ul className="_share_lists">
-                  <li><a href="#"><i className="fa fa-bookmark" /></a></li>
-                  <li><a href="#"><i className="fa fa-share" /></a></li>
+                  <li><span><i className="fa fa-heart" style={{fontSize:"30px" ,color:"red"}} /></span></li>
                 </ul>
               </div>
             </div>
@@ -229,7 +228,7 @@ const RrentDetail = () => {
                 <div className="agent-_blocks_title">
                   <div className="agent-_blocks_thumb"><img src="assets/img/user-6.jpg" alt /></div>
                   <div className="agent-_blocks_caption">
-                    <h4><a href="#">Shivangi Preet</a></h4>
+                    <h4><a href="#">{data.name}</a></h4>
                     <span className="approved-agent"><i className="ti-check" />approved</span>
                   </div>
                   <div className="clearfix" />

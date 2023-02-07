@@ -122,14 +122,14 @@ case 1:
         return <div className="frm_submit_block">
           <h3>Rules</h3>
           <div className="frm_submit_wrap">
-
-
             <div className="o-features">
               <ul className="no-ul-list">
                 <li>
-                <label  className="checkbox-custom-label">Allowed Floor</label>
-                  <Field  className="checkbox-custom" name="ps_rules_allowed_floors" type="number" />
-               
+                <div className="form-group col-md-6">
+                  <label>Allowed Floor</label>
+                  <Field type="number" name="ps_rules_allowed_floors" className="form-control" />
+                  <ErrorMessage name='ps_rules_allowed_floors' className='text-danger' component='div' />
+                </div>
                 </li>
               </ul>
             </div>
