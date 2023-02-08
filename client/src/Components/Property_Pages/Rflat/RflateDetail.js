@@ -45,6 +45,7 @@ const RflateDetail = () => {
   const [contacted, setcontacted] = useState(false)
   const leadcontext = useContext(leadContext)
   const { leadcreate } = leadcontext
+  
   const { id } = useParams();
   useEffect(() => {
     rfmDetail(id);

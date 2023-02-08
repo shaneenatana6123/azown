@@ -44,6 +44,7 @@ const CrentDetail = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 3000);
   };
+ 
   const { id } = useParams();
   useEffect(() => {
     cmrDetail(id);

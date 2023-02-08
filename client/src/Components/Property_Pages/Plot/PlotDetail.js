@@ -45,6 +45,7 @@ const PlotDetail = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 3000);
   };
+  
   const { id } = useParams();
   useEffect(() => {
     plotDetail(id);

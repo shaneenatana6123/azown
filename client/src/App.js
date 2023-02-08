@@ -28,6 +28,13 @@ import RsaleDetail from './Components/Property_Pages/Rsale/RsaleDetail';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Alert from './Components/Alert';
 import UserDetail from './Components/Property_Pages/UserDetail';
+import EditRrent from './Components/Create_Property/Property_Forms/EditRrent';
+import EditRsale from './Components/Create_Property/Property_Forms/EditRsale';
+import EditRpg from './Components/Create_Property/Property_Forms/EditRpg';
+import EditRfm from './Components/Create_Property/Property_Forms/EditRfm';
+import EditCmr from './Components/Create_Property/Property_Forms/EditCmr';
+import EditCms from './Components/Create_Property/Property_Forms/EditCms';
+import EditPlot from './Components/Create_Property/Property_Forms/EditPlot';
 
 
 
@@ -73,6 +80,14 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />}></Route>
 
           <Route path='/user-detail' element={<UserDetail/>} ></Route>
+
+          <Route path="/edit-rrent/:id" element={<EditRrent/>}></Route>
+          <Route path="/edit-rsale/:id" element={<EditRsale/>}></Route>
+          <Route path="/edit-rpg/:id" element={<EditRpg/>}></Route>
+          <Route path="/edit-rfm/:id" element={<EditRfm/>}></Route>
+          <Route path="/edit-cmr/:id" element={<EditCmr/>}></Route>
+          <Route path="/edit-cms/:id" element={<EditCms/>}></Route>
+          <Route path="/edit-plot/:id" element={<EditPlot/>}></Route>
 
         </Routes>
 

@@ -15,7 +15,7 @@ const rrpropconroller = require("../controller/rr_propcontroller");
 
 router.post("/handlerreq", fetchuser, async (req, res) => {
   try {
-    const {property_id ,property_owner_id} = req.body
+    const { property_id, property_owner_id } = req.body
     const broker_id = req.user.id
     const newdata = new handler({
       property_id,
@@ -23,10 +23,10 @@ router.post("/handlerreq", fetchuser, async (req, res) => {
       broker_id
     });
     await newdata.save();
-    await rr_props.updateOne({ _id:req.body.property_id }, { $push: { handlerIds: req.user.id } });
+    await rr_props.updateOne({ _id: req.body.property_id }, { $push: { handlerIds: req.user.id } });
 
 
-    res.json({ success: "send handler requested"});
+    res.json({ success: "send handler requested" });
   } catch {
     res.json({ error: "Not found" });
   }
@@ -119,6 +119,14 @@ router.post(
   fetchuser,
   rrpropconroller.add_plot_prop
 );
+router.put( "/update-rr/:id", upload.array("image"), fetchuser, rrpropconroller.update_rr_prop);
+router.put( "/update-rrs/:id", upload.array("image"), fetchuser, rrpropconroller.update_rrs_prop);
+router.put( "/update-rpg/:id", upload.array("image"), fetchuser, rrpropconroller.update_rpg_prop);
+router.put( "/update-rfm/:id", upload.array("image"), fetchuser, rrpropconroller.update_rfm_prop);
+router.put( "/update-cmr/:id", upload.array("image"), fetchuser, rrpropconroller.update_cmr_prop);
+router.put( "/update-cms/:id", upload.array("image"), fetchuser, rrpropconroller.update_cms_prop);
+router.put( "/update-plot/:id", upload.array("image"), fetchuser, rrpropconroller.update_plot_prop);
+
 router.get("/rr-detail/:id", rrpropconroller.single_rr_prop);
 router.get("/rrs-detail/:id", rrpropconroller.single_rrs_prop);
 router.get("/rfm-detail/:id", rrpropconroller.single_rfm_prop);
@@ -128,24 +136,24 @@ router.get("/cms-detail/:id", rrpropconroller.single_cms_prop);
 router.get("/plot-detail/:id", rrpropconroller.single_plot_prop);
 
 
-router.get("/getrrprop",  rrpropconroller.get_rr_prop);
-router.get("/getrrs",rrpropconroller.get_rrs)
-router.get("/getrpg",rrpropconroller.get_rpg)
-router.get("/getrfm",rrpropconroller.get_rfm)
-router.get("/getcmr",rrpropconroller.get_cmr)
-router.get("/getcms",rrpropconroller.get_cms)
-router.get("/getplot",rrpropconroller.get_plot)
+router.get("/getrrprop", rrpropconroller.get_rr_prop);
+router.get("/getrrs", rrpropconroller.get_rrs)
+router.get("/getrpg", rrpropconroller.get_rpg)
+router.get("/getrfm", rrpropconroller.get_rfm)
+router.get("/getcmr", rrpropconroller.get_cmr)
+router.get("/getcms", rrpropconroller.get_cms)
+router.get("/getplot", rrpropconroller.get_plot)
 
-router.get("/get-top-rr",  rrpropconroller.get_top_rr_prop);
+router.get("/get-top-rr", rrpropconroller.get_top_rr_prop);
 
 
-router.get("/myrr",fetchuser,   rrpropconroller.my_rr);
-router.get("/myrrs",fetchuser,  rrpropconroller.my_rrs)
-router.get("/myrpg",fetchuser,  rrpropconroller.my_rpg)
-router.get("/myrfm",fetchuser,  rrpropconroller.my_rfm)
-router.get("/mycmr",fetchuser,  rrpropconroller.my_cmr)
-router.get("/mycms",fetchuser,  rrpropconroller.my_cms)
-router.get("/myplot",fetchuser,  rrpropconroller.my_plot)
+router.get("/myrr", fetchuser, rrpropconroller.my_rr);
+router.get("/myrrs", fetchuser, rrpropconroller.my_rrs)
+router.get("/myrpg", fetchuser, rrpropconroller.my_rpg)
+router.get("/myrfm", fetchuser, rrpropconroller.my_rfm)
+router.get("/mycmr", fetchuser, rrpropconroller.my_cmr)
+router.get("/mycms", fetchuser, rrpropconroller.my_cms)
+router.get("/myplot", fetchuser, rrpropconroller.my_plot)
 
 
 
@@ -153,7 +161,7 @@ router.get("/userdash", fetchuser, async (req, res) => {
   try {
     leaddash = await lead.find({ property_client_id: req.user.id });
     res.send(leaddash);
-  } catch {}
+  } catch { }
 });
 router.delete("/deletenote/:id", fetchuser, async (req, res) => {
   try {

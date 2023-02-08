@@ -21,7 +21,7 @@ const single_rr_prop = async (req, res) => {
     let data = await rr_props.findOne({ _id })
 
     // console.log(data);
-    
+
     for (let post of data.images) {
       let posturl = await getObjectSignedUrl(post)
       imageurls.push(posturl)
@@ -30,7 +30,7 @@ const single_rr_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     console.log(data);
     res.status(200).json(data)
   } catch (error) {
@@ -55,7 +55,7 @@ const single_rrs_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     let { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -79,7 +79,7 @@ const single_rpg_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -104,7 +104,7 @@ const single_rfm_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -128,7 +128,7 @@ const single_cmr_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -152,7 +152,7 @@ const single_cms_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -177,7 +177,7 @@ const single_plot_prop = async (req, res) => {
     let userData = await user.findOne({ _id: data.handlerid })
     const { email, name } = userData
     // console.log(email);
-    data = {...data._doc,...{email},...{name}}
+    data = { ...data._doc, ...{ email }, ...{ name } }
     res.status(200).json(data)
   } catch (error) {
     console.error(error.message);
@@ -716,4 +716,279 @@ const get_top_rr_prop = async (req, res) => {
   }
 }
 
-module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop, my_rr, my_rrs, my_rpg, my_rfm, my_cmr, my_cms, my_plot, get_top_rr_prop };
+
+const update_rr_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const bhk = req.body.rr_detail_bhk_type
+    const app = req.body.rr_detail_app_type
+    const state = req.body.rr_location_state
+    const create = `${bhk} ${app} Available for rent in ${state}`
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await rr_props.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { rr_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await rr_props.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_rrs_prop = async (req, res) => {
+  try {
+    // console.log(req.params.id);
+    let _id = req.params.id
+    const bhk = req.body.rrs_detail_bhk_type
+    const app = req.body.rrs_detail_app_type
+    const state = req.body.rrs_location_state
+    const create = `${bhk} ${app} Available for Sale in ${state}`
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await rrs_props.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { rrs_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await rrs_props.updateOne({ _id }, { $set:  newdata  })
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_rpg_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const guest = req.body.rpg_detail_pref_guest
+    const state = req.body.rpg_location_state
+    let create
+    if (guest == "Both") {
+      create = `PG For Working Professional And Students Available in ${state}`
+    } else {
+      create = `PG For ${guest} Available in ${state}`
+    }
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await rpg_prop.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { rpg_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await rpg_prop.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_rfm_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const bhk = req.body.rfm_detail_bhk_type
+    const app = req.body.rfm_detail_app_type
+    const state = req.body.rfm_location_state
+    const create = `${bhk} ${app} Available for Flatmate in ${state}`
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await rfm_prop.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { rfm_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await rfm_prop.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_cmr_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const prop = req.body.cr_detail_property_type
+    const build = req.body.cr_detail_building_type
+    const floor = req.body.cr_detail_floor
+    const state = req.body.cr_location_state
+    const create = `${prop} Available On ${floor}rd Floor Of ${build} in ${state}`
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await cmr_prop.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { cr_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await cmr_prop.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_cms_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const prop = req.body.cs_detail_property_type
+    const build = req.body.cs_detail_building_type
+    const floor = req.body.cs_detail_floor
+    const state = req.body.cs_location_state
+    const create = `${prop} Available On ${floor} Of ${build} in ${state}`
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await cms_prop.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { cs_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await cms_prop.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+const update_plot_prop = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let _id = req.params.id
+    const Boundary = req.body.ps_detail_has_boundary
+    const l = req.body.ps_detail_plot_length
+    const w = req.body.ps_detail_plot_width
+    const road = req.body.ps_detail_width_of_facing_road
+    const state = req.body.ps_location_state
+    let create
+    if (Boundary) {
+      create = `${parseInt(l) * parseInt(w)} SQFT With Boundry Available In Front Of ${road}FT in ${state}`
+    } else {
+      create = `${parseInt(l) * parseInt(w)} SQFT Available In Front Of ${road}FT in ${state}`
+    }
+    const file = req.files;
+    let arr = [];
+    for (let i = 0; i < file.length; i++) {
+      const fileBuffer = file[i].buffer;
+      const imageName = generateFileName();
+      arr.push(imageName);
+      const fileType = file[i].mimetype;
+      uploadFile(fileBuffer, imageName, fileType);
+    }
+
+    const finddata = await plot_prop.findOne({ _id })
+    arr = arr.concat(finddata.images)
+    //  console.log(arr);
+
+    const img = { images: arr };
+    const title = { ps_detail_title: create }
+
+    const newdata = { ...req.body , ...img , ...title };
+    console.log(newdata);
+    let data = await plot_prop.updateOne({ _id }, { $set:  newdata  })
+    // console.log(newdata);
+    // const data = new rr_props(newdata);
+
+    res.status(200).json({ message: "upload successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+
+
+
+
+module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop, my_rr, my_rrs, my_rpg, my_rfm, my_cmr, my_cms, my_plot, get_top_rr_prop, update_rr_prop ,update_rrs_prop,update_rpg_prop,update_rfm_prop,update_cmr_prop,update_cms_prop,update_plot_prop };

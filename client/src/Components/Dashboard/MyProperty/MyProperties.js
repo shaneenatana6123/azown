@@ -3,6 +3,7 @@ import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
 import LeadProfile from './LeadProfile';
 import img from '../../images/p-1.png'
+import { Link } from 'react-router-dom';
 
 const MyProperties = () => {
   const context = useContext(propertyContext);
@@ -167,7 +168,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                              <Link to={`/edit-rrent/${item._id}`}><i className="fas fa-edit" /></Link>
                               
                             </div>
                           </td>
@@ -238,7 +239,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-rsale/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
@@ -313,7 +314,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-rpg/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
@@ -387,7 +388,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-rfm/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
@@ -459,7 +460,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-cmr/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
@@ -505,7 +506,7 @@ const MyProperties = () => {
                               <div className="dash_prt_caption">
                                 <h5>{`${item.cs_detail_title && item.cs_detail_title.slice(0,50)}...`}</h5>
                                 <div className="prt_dashb_lot">{`${item.cs_location_city && item.cs_location_city.slice(0,60)}...`}</div>
-                                <div className="prt_dash_rate"><span>Rs.{item.cs_sale_details_exp_price}</span></div>
+                                <div className="prt_dash_rate"><span>Rs.{item.cs_resale_details_exp_price}</span></div>
                               </div>
                             </div>
                           </td>
@@ -531,7 +532,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-cms/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
@@ -603,7 +604,7 @@ const MyProperties = () => {
                           </td>
                           <td>
                             <div className="_leads_action">
-                              <a href="#"><i className="fas fa-edit" /></a>
+                            <Link to={`/edit-plot/${item._id}`}><i className="fas fa-edit" /></Link>
                               {/* <a href="#"><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>

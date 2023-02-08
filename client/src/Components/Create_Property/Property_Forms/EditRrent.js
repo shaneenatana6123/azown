@@ -1,0 +1,677 @@
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import Navbar from '../../Header/Navbar'
+import axios from 'axios'
+import { useNavigate, useParams } from 'react-router-dom'
+import LocationPicker from './LocationPicker'
+import propertyContext from '../../../context/PropertyContext'
+import Footer from '../../Footer/Footer'
+import { Formik, Form, Field, ErrorMessage, } from "formik";
+import * as Yup from 'yup';
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api'
+
+
+const EditRrent = () => {
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+        libraries: ['places'],
+    })
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const originRef = useRef()
+
+    const context = useContext(propertyContext);
+    const { host, rrdata, rrDetail } = context;
+    // const [data ,setdata] = useState(rrdata)
+    const [currentStep, setCurrentStep] = useState(0);
+    const history = useNavigate()
+    const [file, setFile] = useState([]);
+    const { id } = useParams();
+    useEffect(() => {
+        rrDetail(id);
+    }, []);
+    const fileSelected = (event) => {
+        setFile(event.target.files);
+    };
+    const prevStep = () => {
+        setCurrentStep(currentStep - 1);
+    };
+
+    if (!isLoaded) {
+      return <h4>Loading....</h4>
+    }
+
+    function handleStep(step, setFieldValue) {
+        function handleLocation(e) {
+            console.log(e.latLng.lat())
+            setFieldValue('rr_location_latitude', e.latLng.lat())
+            setFieldValue('rr_location_longitude', e.latLng.lng())
+        }
+        switch (step) {
+
+            case 0:
+                return <>
+                    <div className="frm_submit_block">
+                        <h3>Basic Information</h3>
+                        <div className="frm_submit_wrap">
+                            <div className="form-row">
+
+
+                                {/* <Field name='rr_location_city'>
+                <Autocomplete  >
+                <input type='text' ref={originRef} />
+                </Autocomplete>
+                </Field> */}
+                                {/* <Autocomplete  >
+                  <Field type='text' name='rr_location_city' /> 
+                </Autocomplete> */}
+                                <div className="form-group col-md-12">
+                                    <label>Property Description<a href className="tip-topdata" data-tip="Property Description"><i className="ti-help" /></a></label>
+                                    <Field type="text" name="rr_detail_description" className="form-control" />
+                                    <ErrorMessage name='rr_detail_description' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Apartment Type</label>
+
+
+                                    <Field as="select" className="form-control" name="rr_detail_app_type">
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Appartment">Appartment</option>
+                                        <option value="Independent house villa">Independent house villa</option>
+                                        <option value="Gated Community Villa">Gated Community Villa</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_app_type' className='text-danger' component='div' />
+                                </div>
+
+                                <div className="form-group col-md-6">
+                                    <label>BHK Type</label>
+                                    <Field as="select" name="rr_detail_bhk_type" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="1 RK">1 RK</option>
+                                        <option value="1 BHK">1 BHK</option>
+                                        <option value="2 BHK">2 BHK</option>
+                                        <option value="3 BHK">3 BHK</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_bhk_type' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Floor</label>
+                                    <Field as="select" name="rr_detail_floor" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="1">1 Floor</option>
+                                        <option value="2">2 Floor</option>
+                                        <option value="3">3 Floor</option>
+                                        <option value="4">4 Floor</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_floor' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Total  Floor</label>
+                                    <Field as="select" name="rr_detail_total_floor" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="1">1 Floor</option>
+                                        <option value="2">2 Floor</option>
+                                        <option value="3">3 Floor</option>
+                                        <option value="4">4 Floor</option>
+                                        <option value="99+">99+ Floor</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_total_floor' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Floor Type</label>
+                                    <Field as="select" name="rr_detail_floor_type" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Vitrified Tiles">Vitrified Tiles</option>
+                                        <option value="Mossaic">Mossaic</option>
+                                        <option value="Marble">Marble</option>
+                                        <option value="Granite">Granite</option>
+                                        <option value="Cement">Cement</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_floor_type' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Kitchen Type</label>
+                                    <Field as="select" name="rr_detail_kitchen_type" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Modular">Modular</option>
+                                        <option value="Covered Shelves">Covered Shelves</option>
+                                        <option value="Open Shelves">open Shelves</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_kitchen_type' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Building Age</label>
+                                    <Field as="select" name="rr_detail_prop_age" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="0-10">0-10yrs</option>
+                                        <option value="10-20">10-20yrs</option>
+                                        <option value="20-30">20-30yrs</option>
+                                        <option value="30-40">30-40yrs</option>
+                                        <option value="40+">40+ yrs</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_prop_age' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Facing</label>
+                                    <Field as="select" name="rr_detail_facing" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="North">North</option>
+                                        <option value="East">East</option>
+                                        <option value="West">West</option>
+                                        <option value="South">South</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_facing' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Builtup Area</label>
+                                    <Field type="number" name="rr_detail_builtup_area" className="form-control" />
+                                    <ErrorMessage name='rr_detail_builtup_area' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Carpet Area</label>
+                                    <Field type="number" name="rr_detail_carpet_area" className="form-control" />
+                                    <ErrorMessage name='rr_detail_carpet_area' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Furnishing</label>
+                                    <Field as='select' name="rr_detail_furnishing" className="form-control">
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Furnished">Furnished</option>
+                                        <option value="Unfurnished">Unfurnished</option>
+                                        <option value="Semi Furnished">Semi Furnished</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_furnishing' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Parking</label>
+                                    <Field as="select" name="rr_detail_parking" className="form-control">
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Car">Car</option>
+                                        <option value="Bike">Bike</option>
+                                        <option value="Both">Both</option>
+                                        <option value="Bone">None</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_parking' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Bathroom</label>
+                                    <Field type="number" name="rr_detail_bathroom" className="form-control" />
+                                    <ErrorMessage name='rr_detail_bathroom' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Balcony</label>
+                                    <Field type="number" name="rr_detail_balcony" className="form-control" />
+                                    <ErrorMessage name='rr_detail_balcony' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Water Supply</label>
+                                    <Field as='select' name="rr_detail_water_supply" className="form-control">
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="Borewell">Borewell</option>
+                                        <option value="Corporation">Corporation</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_detail_water_supply' className='text-danger' component='div' />
+                                </div>
+                            </div>
+                        </div>
+                    </div></>
+
+            case 1:
+                return <div className="frm_submit_block">
+                    <h3>Location</h3>
+                    <div className="frm_submit_wrap">
+                        <div className="form-row">
+                            <div className="form-group col-md-6">
+
+                                <Field name='rr_location_state' type='text' className='form-control' placeholder="Enter the Society" />
+                                <ErrorMessage name='rr_location_state' className='text-danger' component='div' />
+                            </div>
+
+                            <div className="form-group col-md-6">
+
+                                <Field name="rr_location_city">
+                                    {({ values, field, form }) => (
+                                        <div>
+                                            <Autocomplete>
+                                                <input type='text' placeholder='Enter the Location' className='form-control' ref={originRef} required />
+
+                                            </Autocomplete>
+                                        </div>
+
+                                    )}
+
+                                </Field>
+                            </div>
+                            <div className="form-group col-md-12">
+                                <LocationPicker onLocation={handleLocation} />
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            case 2:
+                return <>
+                    <div className="frm_submit_block">
+                        <h3>Rent Details</h3>
+                        <div className="frm_submit_wrap">
+                            <div className="form-row">
+                                <div className="form-group col-md-6">
+                                    <label>Rent</label>
+                                    <Field type="number" name="rr_rental_detail_rent" className="form-control" />
+                                    <ErrorMessage name='rr_rental_detail_rent' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Expected Deposit</label>
+                                    <Field type="number" name="rr_rental_detail_exp_deposit" className="form-control" />
+                                    <ErrorMessage name='rr_rental_detail_exp_deposit' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Negotiable</label>
+                                    <Field as='select' name="rr_rental_detail_is_nogotiable" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_rental_detail_is_nogotiable' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Monthly Maintenance</label>
+                                    <Field as='select' name="rr_rental_detail_monthly_maintenance" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Maintenance Included">Maintenance Included</option>
+                                        <option value="Maintenance Extra">Maintenance Extra</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_rental_detail_monthly_maintenance' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Available From</label>
+                                    <Field type="date" name="rr_rental_detail_avail_from" className="form-control" />
+                                    <ErrorMessage name='rr_rental_detail_avail_from' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Prefered Tenent</label>
+                                    <Field as='select' name="rr_rental_detail_pref_tenent" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Doesnot Matter">Doesnt Matter</option>
+                                        <option value="Family">Family</option>
+                                        <option value="Bachelors">Bachelors</option>
+                                        <option value="Company">Company</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_rental_detail_pref_tenent' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Non-Veg Allowed</label>
+                                    <Field as='select' name="rr_rental_detail_is_allowed_nonveg" className="form-control"  >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="No">No</option>
+                                        <option value="Yes" >Yes</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_rental_detail_is_allowed_nonveg' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Shown By</label>
+                                    <Field as='select' name="rr_rental_detail_shown_by" className="form-control" >
+                                        <option value={undefined} selected>Select</option>
+                                        <option value="Doesnot Matter">Doesnt Matter</option>
+                                        <option value="I will show">I Will Show</option>
+                                        <option value="Friends">Friends</option>
+                                        <option value="Neighbour">Neighbour</option>
+                                        <option value="Security">Security</option>
+                                        <option value="Tenents">Tenents</option>
+                                    </Field>
+                                    <ErrorMessage name='rr_rental_detail_shown_by' className='text-danger' component='div' />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label>Shown By Number</label>
+                                    <Field type="number" name="rr_rental_detail_shown_by_number" className="form-control" />
+                                    <ErrorMessage name='rr_rental_detail_shown_by_number' className='text-danger' component='div' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            case 3:
+                return <>
+                    <div className="frm_submit_block">
+                        <h3>Detailed Information</h3>
+                        <div className="frm_submit_wrap">
+                            <div className="form-row">
+                                <div className="form-group col-md-12">
+                                    <label>Other Features (optional)</label>
+                                    <div className="o-features">
+                                        <ul className="no-ul-list third-row">
+                                            <li>
+                                                <Field id="a-1" className="checkbox-custom" name="rr_amenities_lift" type="checkbox" />
+                                                <label htmlFor="a-1" className="checkbox-custom-label">Lift</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-13" className="checkbox-custom" name="rr_amenities_ac" type="checkbox" />
+                                                <label htmlFor="a-13" className="checkbox-custom-label">Air Condition</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-14" className="checkbox-custom" name="rr_amenities_intercom" type="checkbox" />
+                                                <label htmlFor="a-14" className="checkbox-custom-label">Inter Communication</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-15" className="checkbox-custom" name="rr_amenities_children_play_area" type="checkbox" />
+                                                <label htmlFor="a-15" className="checkbox-custom-label">Children Play Area</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-16" className="checkbox-custom" name="rr_amenities_servant_room" type="checkbox" />
+                                                <label htmlFor="a-16" className="checkbox-custom-label">Servent Room</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-17" className="checkbox-custom" name="rr_amenities_gas_pipeline" type="checkbox" />
+                                                <label htmlFor="a-17" className="checkbox-custom-label">Gas Pipeline</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-18" className="checkbox-custom" name="rr_amenities_rainwater_harvesting" type="checkbox" />
+                                                <label htmlFor="a-18" className="checkbox-custom-label">Rainwater Harvesting</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-19" className="checkbox-custom" name="rr_amenities_housekeepiing" type="checkbox" />
+                                                <label htmlFor="a-19" className="checkbox-custom-label">Housekeeping</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-20" className="checkbox-custom" name="rr_amenities_visitor_parking" type="checkbox" />
+                                                <label htmlFor="a-20" className="checkbox-custom-label">Visitor Parking</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-21" className="checkbox-custom" name="rr_amenities_club_house" type="checkbox" />
+                                                <label htmlFor="a-21" className="checkbox-custom-label">House Club</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-22" className="checkbox-custom" name="rr_amenities_swimming_pool" type="checkbox" />
+                                                <label htmlFor="a-22" className="checkbox-custom-label">Swimming Pool</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-50" className="checkbox-custom" name="rr_amenities_fire_safety" type="checkbox" />
+                                                <label htmlFor="a-50" className="checkbox-custom-label">Fire Safety</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-2" className="checkbox-custom" name="rr_amenities_shopping_center" type="checkbox" />
+                                                <label htmlFor="a-2" className="checkbox-custom-label">Shopping Center</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-3" className="checkbox-custom" name="rr_amenities_park" type="checkbox" />
+                                                <label htmlFor="a-3" className="checkbox-custom-label">Park</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-4" className="checkbox-custom" name="rr_amenities_internet" type="checkbox" />
+                                                <label htmlFor="a-4" className="checkbox-custom-label">Internet</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-5" className="checkbox-custom" name="rr_amenities_sewage_treatment" type="checkbox" />
+                                                <label htmlFor="a-5" className="checkbox-custom-label">Sewage Treatment</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-6" className="checkbox-custom" name="rr_amenities_power_backup" type="checkbox" />
+                                                <label htmlFor="a-6" className="checkbox-custom-label">Power Backup</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-7" className="checkbox-custom" name="rr_amenities_gated_security" type="checkbox" />
+                                                <label htmlFor="a-7" className="checkbox-custom-label">Gated Security</label>
+                                            </li>
+                                            <li>
+                                                <Field id="a-8" className="checkbox-custom" name="rr_amenities_gym" type="checkbox" />
+                                                <label htmlFor="a-8" className="checkbox-custom-label">GYM</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+
+            case 4:
+                return <> <div className="frm_submit_block">
+                    <h3>Gallery</h3>
+                    <div className="frm_submit_wrap">
+                        <div className="form-row">
+                            <div className="form-group col-md-12">
+                                <label>Upload Gallery</label>
+                                <div className="dropzone dz-clickable primary-dropzone" >
+                                    <Field type='file' name='file' onChange={fileSelected}
+                                        accept="image/*"
+                                        multiple />
+                                    <ErrorMessage name='file' component='div'
+                                    />
+                                    <div className="dz-default dz-message">
+                                        <i className="ti-gallery" />
+                                        <span>Drag &amp; Drop To Change Logo</span>
+                                    </div>
+                                    <div>
+                                  
+                                        {rrdata.images && rrdata.images.map(item=>{
+                                            return <img src={item} style={{width:"100px"}}/>
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></>
+
+            default:
+                break;
+        }
+    }
+    const Schema = [Yup.object().shape({
+        rr_detail_description: Yup.string().required('This Field is Required'),
+        rr_detail_app_type: Yup.string().required('This Field is Required'),
+        rr_detail_bhk_type: Yup.string().required('This Field is Required'),
+        rr_detail_floor: Yup.string().required('This Field is Required'),
+        rr_detail_total_floor: Yup.string().required('This Field is Required'),
+        rr_detail_floor_type: Yup.string().required('This Field is Required'),
+        rr_detail_kitchen_type: Yup.string().required('This Field is Required'),
+        rr_detail_prop_age: Yup.string().required('This Field is Required'),
+        rr_detail_facing: Yup.string().required('This Field is Required'),
+        rr_detail_builtup_area: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_detail_carpet_area: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_detail_furnishing: Yup.string().required('This Field is Required'),
+        rr_detail_parking: Yup.string().required('This Field is Required'),
+        rr_detail_bathroom: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_detail_balcony: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_detail_water_supply: Yup.string().required('This Field is Required'),
+
+    }),
+    Yup.object().shape({
+        rr_location_city: Yup.string(),
+        rr_location_state: Yup.string().required('This Field is Required')
+    }),
+    Yup.object().shape({
+        rr_rental_detail_rent: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_rental_detail_exp_deposit: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+        rr_rental_detail_is_nogotiable: Yup.string().required('This Field is Required'),
+        rr_rental_detail_monthly_maintenance: Yup.string().required('This Field is Required'),
+        rr_rental_detail_avail_from: Yup.string().required('This Field is Required'),
+        rr_rental_detail_pref_tenent: Yup.string().required('This Field is Required'),
+        rr_rental_detail_is_allowed_nonveg: Yup.string().required('This Field is Required'),
+        rr_rental_detail_shown_by: Yup.string(),
+        rr_rental_detail_shown_by_number: Yup.number().required('This Field is Required').positive('Enter the Positive Value'),
+    }),
+    Yup.object().shape({
+        rr_amenities_lift: Yup.boolean(),
+        rr_amenities_ac: Yup.boolean(),
+        rr_amenities_intercom: Yup.boolean(),
+        rr_amenities_children_play_area: Yup.boolean(),
+        rr_amenities_servant_room: Yup.boolean(),
+        rr_amenities_gas_pipeline: Yup.boolean(),
+        rr_amenities_rainwater_harvesting: Yup.boolean(),
+        rr_amenities_housekeepiing: Yup.boolean(),
+        rr_amenities_visitor_parking: Yup.boolean(),
+        rr_amenities_internet: Yup.boolean(),
+        rr_amenities_club_house: Yup.boolean(),
+        rr_amenities_swimming_pool: Yup.boolean(),
+        rr_amenities_fire_safety: Yup.boolean(),
+        rr_amenities_shopping_center: Yup.boolean(),
+        rr_amenities_park: Yup.boolean(),
+        rr_amenities_sewage_treatment: Yup.boolean(),
+        rr_amenities_power_backup: Yup.boolean(),
+        rr_amenities_gated_security: Yup.boolean(),
+        rr_amenities_gym: Yup.boolean(),
+    }),
+    Yup.object().shape({
+        // files: Yup.array().of(Yup.mixed().required('At least one image is required'))
+
+    }),
+
+
+
+    ]
+
+    return (
+        <>
+            {isLoaded && <><div id="main-wrapper">
+            <Navbar />
+            <div className="clearfix" />
+            <div className="page-title" style={{ background: '#f4f4f4 url(assets/img/bg.jpg)' }} data-overlay={5}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 col-md-12">
+                            <div className="breadcrumbs-wrap">
+                                <ol className="breadcrumb">
+                                    <li className="breadcrumb-item"><a href>Home</a></li>
+                                    <li className="breadcrumb-item"><a href>Create Property</a></li>
+                                    <li className="breadcrumb-item active" aria-current="page">Submit Your Property</li>
+                                </ol>
+                                <h2 className="breadcrumb-title">Residential Rent Property</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 col-md-12">
+                            <div className="submit-page p-0">
+
+                                <Formik
+                                    initialValues={rrdata}
+                                    validationSchema={Schema[currentStep]}
+                                    onSubmit={(values, { setSubmitting, setTouched, setFieldValue }) => {
+                                        if (currentStep === 1) {
+                                            setFieldValue('rr_location_city', originRef.current.value)
+                                            setSubmitting(false);
+                                            setCurrentStep(currentStep + 1)
+                                            setTouched({})
+                                        }
+                                        else if (currentStep === 4) {
+                                            const formData = new FormData();
+                                            formData.append("rr_detail_description", values.rr_detail_description);
+                                            formData.append("rr_detail_app_type", values.rr_detail_app_type)
+                                            formData.append("rr_detail_bhk_type", values.rr_detail_bhk_type)
+                                            formData.append("rr_detail_floor", values.rr_detail_floor)
+                                            formData.append("rr_detail_total_floor", values.rr_detail_total_floor)
+                                            formData.append("rr_detail_floor_type", values.rr_detail_floor_type)
+                                            formData.append("rr_detail_kitchen_type", values.rr_detail_kitchen_type)
+                                            formData.append("rr_detail_prop_age", values.rr_detail_prop_age)
+                                            formData.append("rr_detail_facing", values.rr_detail_facing)
+                                            formData.append("rr_detail_builtup_area", values.rr_detail_builtup_area)
+
+                                            formData.append("rr_detail_carpet_area", values.rr_detail_carpet_area)
+                                            formData.append("rr_detail_furnishing", values.rr_detail_furnishing)
+                                            formData.append("rr_detail_parking", values.rr_detail_parking)
+                                            formData.append("rr_detail_bathroom", values.rr_detail_bathroom)
+                                            formData.append("rr_detail_balcony", values.rr_detail_balcony)
+                                            formData.append("rr_location_state", values.rr_location_state)
+                                            formData.append("rr_location_city", values.rr_location_city)
+                                            formData.append("rr_location_latitude", values.rr_location_latitude)
+                                            formData.append("rr_location_longitude", values.rr_location_longitude)
+
+                                            formData.append("rr_rental_detail_rent", values.rr_rental_detail_rent)
+                                            formData.append("rr_rental_detail_exp_deposit", values.rr_rental_detail_exp_deposit)
+                                            formData.append("rr_rental_detail_is_nogotiable", values.rr_rental_detail_is_nogotiable)
+                                            formData.append("rr_rental_detail_monthly_maintenance", values.rr_rental_detail_monthly_maintenance)
+                                            formData.append("rr_rental_detail_avail_from", values.rr_rental_detail_avail_from)
+
+                                            formData.append("rr_rental_detail_pref_tenent", values.rr_rental_detail_pref_tenent)
+                                            formData.append("rr_rental_detail_is_allowed_nonveg", values.rr_rental_detail_is_allowed_nonveg)
+                                            formData.append("rr_rental_detail_shown_by", values.rr_rental_detail_shown_by)
+                                            formData.append("rr_rental_detail_shown_by_number", values.rr_rental_detail_shown_by_number)
+
+                                            formData.append("rr_amenities_lift", values.rr_amenities_lift)
+                                            formData.append("rr_amenities_ac", values.rr_amenities_ac)
+                                            formData.append("rr_amenities_intercom", values.rr_amenities_intercom)
+                                            formData.append("rr_amenities_children_play_area", values.rr_amenities_children_play_area)
+                                            formData.append("rr_amenities_servant_room", values.rr_amenities_servant_room)
+                                            formData.append("rr_amenities_gas_pipeline", values.rr_amenities_gas_pipeline)
+                                            formData.append("rr_amenities_rainwater_harvesting", values.rr_amenities_rainwater_harvesting)
+                                            formData.append("rr_amenities_housekeepiing", values.rr_amenities_housekeepiing)
+                                            formData.append("rr_amenities_visitor_parking", values.rr_amenities_visitor_parking)
+                                            formData.append("rr_amenities_internet", values.rr_amenities_internet)
+                                            formData.append("rr_amenities_club_house", values.rr_amenities_club_house)
+                                            formData.append("rr_amenities_swimming_pool", values.rr_amenities_swimming_pool)
+                                            formData.append("rr_amenities_fire_safety", values.rr_amenities_fire_safety)
+                                            formData.append("rr_amenities_shopping_center", values.rr_amenities_shopping_center)
+                                            formData.append("rr_amenities_park", values.rr_amenities_park)
+                                            formData.append("rr_amenities_sewage_treatment", values.rr_amenities_sewage_treatment)
+
+                                            formData.append("rr_amenities_power_backup", values.rr_amenities_power_backup)
+                                            formData.append("rr_amenities_gated_security", values.rr_amenities_gated_security)
+                                            formData.append("rr_amenities_gym", values.rr_amenities_gym)
+                                            console.log(formData)
+                                            Array.from(file).forEach((item) => {
+                                                formData.append("image", item);
+                                            });
+                                            axios.put(`${host}/api/property/update-rr/${rrdata._id}`, formData, {
+                                                headers: {
+                                                    "Content-Type": "multipart/form-data",
+                                                    "auth-token": localStorage.getItem('token'),
+                                                },
+                                            }).then((response) => {
+                                                console.log(response);
+                                                setSubmitting(false);
+                                                history('/')
+                                            })
+                                                .catch((error) => {
+                                                    console.error(error);
+                                                    setSubmitting(false);
+                                                });
+
+                                        } else {
+
+                                            setCurrentStep(currentStep + 1);
+                                            setSubmitting(false);
+                                            setTouched({});
+                                            console.log(values)
+                                        }
+                                    }
+                                    }
+                                >
+                                    {({ values, isSubmitting, setFieldValue }) => (
+                                        <Form >
+                                            {handleStep(currentStep, setFieldValue)}
+                                            <button type='submit' className='btn btn-dark float-right'  >{currentStep === 4 ? 'Submit' : 'Next'}</button>
+                                            <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
+                                        </Form>
+
+                                    )}
+
+                                </Formik>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section >
+            <Footer />
+        </div ></>}
+        </>
+
+    )
+}
+
+export default EditRrent
+
+
