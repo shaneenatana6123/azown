@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import propertyContext from '../../context/PropertyContext'
 import Footer from '../Footer/Footer'
 import Navbar from '../Header/Navbar'
 import Contacted from './Contacted/Contacted'
 import MyProfile from './Myprofile/MyProfile'
 import MyProperties from './MyProperty/MyProperties'
 import ShortList from './ShortList/ShortList'
+import user from '../images/user.jpeg'
 
 const Dashboard = () => {
     const [tab, settab] = useState(1)
     const history = useNavigate()
+    const context = useContext(propertyContext);
+    const { userdetail,getuserdetail,} = context
+    
+    useEffect(()=>{
+      getuserdetail()
+    },[])
     return (
         <div id="main-wrapper">
             <Navbar />
@@ -24,7 +32,7 @@ const Dashboard = () => {
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
-                                <h2 className="breadcrumb-title">Hello Adam, Welcome</h2>
+                                <h2 className="breadcrumb-title">Hello {userdetail.name}, Welcome</h2>
                             </div>
                         </div>
                     </div>
@@ -38,9 +46,10 @@ const Dashboard = () => {
                         <div className="col-lg-3 col-md-4">
                             <div className="property_dashboard_navbar">
                                 <div className="dash_user_avater">
-                                    <img src="assets/img/user-3.jpg" className="img-fluid avater" alt />
-                                    <h4>Adam Harshvardhan</h4>
-                                    <span>Canada USA</span>
+                                    <img src={user} className="img-fluid avater" alt="udu" />
+                                    {/* "assets/img/user-3.jpg" */}
+                                    <h4>{userdetail.name}</h4>
+                                    {/* <span>Canada USA</span> */}
                                     <hr />
                                 </div>
 

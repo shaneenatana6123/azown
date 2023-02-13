@@ -35,6 +35,7 @@ import EditRfm from './Components/Create_Property/Property_Forms/EditRfm';
 import EditCmr from './Components/Create_Property/Property_Forms/EditCmr';
 import EditCms from './Components/Create_Property/Property_Forms/EditCms';
 import EditPlot from './Components/Create_Property/Property_Forms/EditPlot';
+import Admin from './Components/Admin/Admin';
 
 
 
@@ -88,6 +89,7 @@ function App() {
           <Route path="/edit-cmr/:id" element={<EditCmr/>}></Route>
           <Route path="/edit-cms/:id" element={<EditCms/>}></Route>
           <Route path="/edit-plot/:id" element={<EditPlot/>}></Route>
+          <Route path="/admin" element={<Admin/>}></Route>
 
         </Routes>
 

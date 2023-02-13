@@ -22,6 +22,105 @@ const MyProperties = () => {
   const [cms, setcms] = useState([])
   const [plot, setplot] = useState([])
 
+ async function deleteRrent(id){
+  const responce = await fetch(`${host}/api/property/delete-rr/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  rr.filter(item=>item._id!==id)
+  setrr(filterData)
+
+ }
+ async function deleteRsale(id){
+  const responce = await fetch(`${host}/api/property/delete-rrs/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  rrs.filter(item=>item._id!==id)
+  setrrs(filterData)
+
+ }
+ async function deleteRpg(id){
+  const responce = await fetch(`${host}/api/property/delete-rpg/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  rpg.filter(item=>item._id!==id)
+  setrpg(filterData)
+
+ }
+ async function deleteRfm(id){
+  const responce = await fetch(`${host}/api/property/delete-rfm/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  rfm.filter(item=>item._id!==id)
+  setrfm(filterData)
+
+ }
+ async function deleteCmr(id){
+  const responce = await fetch(`${host}/api/property/delete-cmr/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  cmr.filter(item=>item._id!==id)
+  setcmr(filterData)
+
+ }
+ async function deleteCms(id){
+  const responce = await fetch(`${host}/api/property/delete-cms/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  cms.filter(item=>item._id!==id)
+  setcms(filterData)
+
+ }
+ async function deletePlot(id){
+  const responce = await fetch(`${host}/api/property/delete-plot/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token'),
+    },
+  });
+  const data = await responce.json();
+  console.log(data)
+  let filterData =  plot.filter(item=>item._id!==id)
+  setplot(filterData)
+
+ }
+
 
   useEffect(() => {
     async function MyRent() {
@@ -144,7 +243,7 @@ const MyProperties = () => {
                                 <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rr_detail_title && item.rr_detail_title.slice(0,50)}...`}</h5>
+                                <h5>{`${item.rr_detail_title && item.rr_detail_title.slice(0,40)}...`}</h5>
                                 <div className="prt_dashb_lot">{`${item.rr_location_city && item.rr_location_city.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rr_rental_detail_exp_deposit}</span></div>
                               </div>
@@ -169,7 +268,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                               <Link to={`/edit-rrent/${item._id}`}><i className="fas fa-edit" /></Link>
-                              
+                              {/* <a  onClick={()=>{deleteRrent(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -215,7 +314,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rrs_detail_title && item.rrs_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/rsale-detail/${item._id}`} style={{fontWeight:'bold'}} >{`${item.rrs_detail_title && item.rrs_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.rrs_location_city && item.rrs_location_city.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rrs_resale_detail_exp_price}</span></div>
                               </div>
@@ -240,7 +339,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-rsale/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deleteRsale(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -286,7 +385,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rpg_detail_title && item.rpg_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/rpg-detail/${item._id}`} style={{fontWeight:'bold'}}>{`${item.rpg_detail_title && item.rpg_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.rpg_location_city && item.rpg_location_city.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rpg_detail_room_deposit}</span></div>
                               </div>
@@ -315,7 +414,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-rpg/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deleteRpg(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -360,7 +459,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.rfm_detail_title && item.rfm_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/rfm-detail/${item._id}`} style={{fontWeight:'bold'}}>{`${item.rfm_detail_title && item.rfm_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.rfm_location_city && item.rfm_location_city.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.rfm_rental_detail_exp_deposit}</span></div>
                               </div>
@@ -389,7 +488,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-rfm/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deleteRfm(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -432,7 +531,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.cr_detail_title && item.cr_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/cmr-detail/${item._id}`} style={{fontWeight:'bold'}}>{`${item.cr_detail_title && item.cr_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.cr_location_city && item.cr_location_city.slice(0,60)}....`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.cr_rental_detail_exp_deposit}</span></div>
                               </div>
@@ -461,7 +560,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-cmr/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deleteCmr(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -504,7 +603,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.cs_detail_title && item.cs_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/cms-detail/${item._id}`} style={{fontWeight:'bold'}}>{`${item.cs_detail_title && item.cs_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.cs_location_city && item.cs_location_city.slice(0,60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.cs_resale_details_exp_price}</span></div>
                               </div>
@@ -533,7 +632,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-cms/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deleteCms(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>
@@ -576,7 +675,7 @@ const MyProperties = () => {
                               <img src={item.images && item.images.length===0 ?img:item.images[0]} className="img-fluid" alt="jfh" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.ps_detail_title && item.ps_detail_title.slice(0,50)}...`}</h5>
+                                <Link to={`/plot-detail/${item._id}`} style={{fontWeight:'bold'}}>{`${item.ps_detail_title && item.ps_detail_title.slice(0,40)}...`}</Link>
                                 <div className="prt_dashb_lot">{`${item.ps_location_city && item.ps_location_city.slice(0, 60)}....`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.ps_sale_detail_price}</span></div>
                               </div>
@@ -605,7 +704,7 @@ const MyProperties = () => {
                           <td>
                             <div className="_leads_action">
                             <Link to={`/edit-plot/${item._id}`}><i className="fas fa-edit" /></Link>
-                              {/* <a href="#"><i className="fas fa-trash" /></a> */}
+                            {/* <a  onClick={()=>{deletePlot(item._id)}}><i className="fas fa-trash" /></a> */}
                             </div>
                           </td>
                         </tr>

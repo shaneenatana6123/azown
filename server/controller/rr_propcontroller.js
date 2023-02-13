@@ -987,8 +987,80 @@ const update_plot_prop = async (req, res) => {
   }
 };
 
+const delete_rr_property =async (req, res) => {
+  try {
+    
+   await rr_props.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const delete_rrs_property =async (req, res) => {
+  try {
+    
+   await rrs_props.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+const delete_rpg_property =async (req, res) => {
+  try {
+    
+   await rpg_prop.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+const delete_rfm_property =async (req, res) => {
+  try {
+    
+   await rfm_prop.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const delete_cmr_property =async (req, res) => {
+  try {
+    
+   await cmr_prop.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const delete_cms_property =async (req, res) => {
+  try {
+    
+   await cms_prop.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const delete_plot_property =async (req, res) => {
+  try {
+    
+   await plot_prop.deleteOne({_id:req.params.id});
+    res.json({ Success: "Property has been deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+}
 
 
-
-
-module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop, my_rr, my_rrs, my_rpg, my_rfm, my_cmr, my_cms, my_plot, get_top_rr_prop, update_rr_prop ,update_rrs_prop,update_rpg_prop,update_rfm_prop,update_cmr_prop,update_cms_prop,update_plot_prop };
+module.exports = { add_plot_prop, add_rr_prop, single_rr_prop, get_rr_prop, add_rrs_prop, add_rpg_prop, add_rfm_prop, add_cmr_prop, add_cms_prop, get_plot, get_cms, get_cmr, get_rfm, get_rpg, get_rrs, single_rrs_prop, single_rpg_prop, single_rfm_prop, single_cmr_prop, single_cms_prop, single_plot_prop, my_rr, my_rrs, my_rpg, my_rfm, my_cmr, my_cms, my_plot, get_top_rr_prop, update_rr_prop ,update_rrs_prop,update_rpg_prop,update_rfm_prop,update_cmr_prop,update_cms_prop,update_plot_prop ,delete_rr_property ,delete_rrs_property,delete_rpg_property,delete_rfm_property, delete_cmr_property,delete_cms_property, delete_plot_property };

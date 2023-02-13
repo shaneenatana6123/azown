@@ -30,14 +30,14 @@ const Footer = () => {
               <img src="assets/img/logo-light.png" className="img-footer small mb-2" alt />
               <h4 className="extream mb-3">Do you need help with<br />anything?</h4>
               <p>Receive updates, hot deals, tutorials, discounts sent straignt in your inbox every month</p>
-              <div className="foot-news-last">
+              {/* <div className="foot-news-last">
                 <div className="input-group">
                   <input type="text" className="form-control" placeholder="Email Address" />
                   <div className="input-group-append">
                     <button type="button" className="input-group-text theme-bg b-0 text-light">Subscribe</button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-lg-6 col-md-7 ml-auto">
@@ -90,7 +90,7 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-12 col-md-12 text-center">
-            <p className="mb-0">© 2021 RentUP. Designd By <a href="https://themezhub.com/">ThemezHub</a>.</p>
+            <p className="mb-0">© 2023 Azown. Developed By <a href="https://androcoders.com/">AndroCoders</a>.</p>
           </div>
         </div>
       </div>
