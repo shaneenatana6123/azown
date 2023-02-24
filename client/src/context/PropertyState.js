@@ -3,8 +3,8 @@ import PropertyContext from "./PropertyContext";
 
 
 const PropertyState = (props) => {
-  // const host = "https://azown.com"
-  const host = "http://localhost:5000"
+  const host = "https://azown.com"
+  // const host = "http://localhost:5000"
   
   const [rrprop, setrrprop] = useState([]);
   
