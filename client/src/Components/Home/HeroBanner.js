@@ -13,51 +13,51 @@ const HeroBanner = () => {
         city: "", area: "", proptype: 0
     })
     const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
-    libraries: ['places'],
-  })
-  if (!isLoaded) {
-    return <h4>Page is Loading....</h4>
-  }
+        googleMapsApiKey: "AIzaSyCjYb2QG0B00lOeygGl9w2Nib4-NpBIc9U",
+        libraries: ['places'],
+    })
+    if (!isLoaded) {
+        return <h4>Page is Loading....</h4>
+    }
     function handleForm(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-   
+
     function handleClick(e) {
         e.preventDefault()
         let area = originRef.current.value
         let arr
-        if (area!=="") {
-            arr =  area.split(",")
-        //     console.log(arr)
-        //     console.log(formData.city)
-        //    console.log(arr.includes(formData.city)) 
+        if (area !== "") {
+            arr = area.split(",")
+            //     console.log(arr)
+            //     console.log(formData.city)
+            //    console.log(arr.includes(formData.city)) 
         }
-        
 
-       
+
+
         // console.log(area)
 
         if (tab === 1) {
-            
+
             if (formData.proptype === "1") {
                 history('/rsale-list')
             } else if (formData.proptype === "2") {
                 history('/plot-list')
-                
-            } 
-        } else if (tab===2) {
+
+            }
+        } else if (tab === 2) {
             if (formData.proptype === '1') {
                 history('/rrent-list')
             } else if (formData.proptype === "2") {
                 history('/rfm-list')
-            }else if (formData.proptype === "3") {
+            } else if (formData.proptype === "3") {
                 history('/rpg-list')
             }
-        } else if (tab===3) {
+        } else if (tab === 3) {
             if (formData.proptype === '1') {
                 history('/cms-list')
-            }else if (formData.proptype === '2') {
+            } else if (formData.proptype === '2') {
                 history('/cmr-list')
             }
 
@@ -97,7 +97,7 @@ const HeroBanner = () => {
                                                     <div className="form-group">
                                                         <label>City</label>
                                                         <div className="input-with-icon">
-                                                            <select id="location" name='city' onChange={handleForm}  className="form-control">
+                                                            <select id="location" name='city' onChange={handleForm} className="form-control">
 
                                                                 <option value="Pune" selected>Pune</option>
                                                                 <option value="Banglore">Banglore</option>
@@ -114,8 +114,8 @@ const HeroBanner = () => {
                                                     <div className="form-group">
                                                         <label>Area</label>
                                                         <Autocomplete>
-                                                        <input type="text" 
-  ref={originRef} className="form-control search_input b-0" placeholder="ex. Baner"  />
+                                                            <input type="text"
+                                                                ref={originRef} className="form-control search_input b-0" placeholder="ex. Baner" />
                                                         </Autocomplete>
 
                                                     </div>
@@ -124,7 +124,7 @@ const HeroBanner = () => {
                                                     <div className="form-group">
                                                         <label>Property Type</label>
                                                         {tab === 1 && <div className="input-with-icon">
-                                                            <select id="ptypes" name='proptype' onChange={handleForm}  className="form-control">
+                                                            <select id="ptypes" name='proptype' onChange={handleForm} className="form-control">
                                                                 <option value={0} disabled selected>Select categories</option>
                                                                 <option value={1}>Full House</option>
                                                                 <option value={2}>Land/Plots</option>

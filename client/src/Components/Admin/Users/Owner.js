@@ -21,7 +21,7 @@ const Owner = () => {
               <div className="_prt_filt_radius">
               </div>
               <div className="_prt_filt_add_new">
-                <a href="submit-property-dashboard.html" className="prt_submit_link"><i className="fas fa-plus-circle" /><span className="d-none d-lg-block d-md-block">Create New User</span></a>
+                <a href="submit-property-dashboard.html" className="prt_submit_link"><i className="fas fa-plus-circle" /><span className="d-none d-lg-block d-md-block">Create Owner</span></a>
               </div>
             </div>
           </div>

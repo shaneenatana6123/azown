@@ -20,7 +20,7 @@ const RrentList = () => {
 
   const handleAlert = () => {
     setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 5000);
+    setTimeout(() => setShowAlert(false), 3000);
   };
 
   useEffect(  () => {

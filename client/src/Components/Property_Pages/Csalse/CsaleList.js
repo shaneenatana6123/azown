@@ -59,10 +59,7 @@ const CsaleList = () => {
  {showAlert && <Alert msg="Please Login Before!!" />}
   {/* End Navigation */}
   <div className="clearfix" />
-  {/* ============================================================== */}
-  {/* Top header  */}
-  {/* ============================================================== */}
-  {/* ============================ All Property ================================== */}
+
   <section className="gray pt-4">
     <div className="container">
       <div className="row m-0">

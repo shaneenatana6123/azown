@@ -614,7 +614,6 @@ rrsDetail(id)
                       <button type='submit' className='btn btn-dark float-right'  >{currentStep === 5 ? 'Submit' : 'Next'}</button>
                       <button type='button' onClick={prevStep} className='btn btn-dark float-left' disabled={currentStep === 0}>Prev</button>
                     </Form>
-
                   )}
 
                 </Formik>

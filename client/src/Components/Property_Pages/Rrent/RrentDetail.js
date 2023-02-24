@@ -50,7 +50,6 @@ const RrentDetail = () => {
   const { id } = useParams();
   useEffect(() => {
     rrDetail(id);
-    // console.log(rrdata)
   }, []);
   return (
  <div id="main-wrapper">

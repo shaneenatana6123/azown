@@ -7,5 +7,6 @@ router.post("/leadcreate", fetchuser,LeadController.leadcreate);
 router.get("/userleaddata/:ptype", fetchuser, LeadController.userleaddata);
 router.put("/updateleadstage", fetchuser, LeadController.updateleadstage)
 router.post("/ownerlead", fetchuser,LeadController.ownerlead)
+router.post("/liked-property",fetchuser,LeadController.newlike)
 
 module.exports = router;

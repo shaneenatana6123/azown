@@ -12,9 +12,11 @@ const Rrent = ({ property, onAlert }) => {
   const context = useContext(propertyContext);
   const leadcontext = useContext(leadContext)
   const { leadcreate,likeprop } = leadcontext
+  const [liked, setliked] = useState(false)
   const { lead, handlereq } = context;
   const [contacted, setcontacted] = useState(false);
-  const [liked, setliked] = useState(false)
+  
+
 
 
   return (<>

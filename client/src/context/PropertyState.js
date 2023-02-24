@@ -32,7 +32,7 @@ const getuserdetail = async () => {
   setuserdetail(resdata);
 };
 
-const userprofile =async (id)=>{
+const userprofile = async (id)=>{
   console.log(id);
   const responce = await fetch(`${host}/api/auth/userprofile`, {
     method: "POST",
@@ -59,18 +59,6 @@ const fetchAllrrprop = async () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-//Rrent leads data
 
 // handler 
 const handlereq = async (pid,uid,des) => {
