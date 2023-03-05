@@ -89,7 +89,7 @@ const ShortList = () => {
                   </div>
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h4 className="listing-name verified"><a href="single-property-1.html" className="prt-link-detail">{item.rr_detail_title && item.rr_detail_title.slice(0,50)+"..."}</a></h4>
+                      <h4 className="listing-name verified"><Link to="/" className="prt-link-detail">{item.rr_detail_title && item.rr_detail_title.slice(0,50)+"..."}</Link></h4>
                     </div>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ const ShortList = () => {
                   </div>
                   <div className="_card_list_flex">
                     <div className="_card_flex_01">
-                      <h4 className="listing-name verified"><a href="single-property-1.html" className="prt-link-detail">{item.rrs_detail_title && item.rrs_detail_title.slice(0,50)+"..."}</a></h4>
+                      <h4 className="listing-name verified"><Link to="/" className="prt-link-detail">{item.rrs_detail_title && item.rrs_detail_title.slice(0,50)+"..."}</Link></h4>
                     </div>
                   </div>
                 </div>

@@ -75,7 +75,7 @@ const Contacted = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rr.length === 0 ? "No Data Till Now" : rr.map(item => {
+                    {rr  && rr.map(item => {
                       return <>
                         <tr>
                           <td>
@@ -84,7 +84,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -148,7 +148,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -213,7 +213,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -278,7 +278,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -343,7 +343,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -408,7 +408,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>
@@ -473,7 +473,7 @@ const Contacted = () => {
                                 <img src={item.imgurl ? item.imgurl[0] : "assets/img/p-1.png"} className="img-fluid" alt="image" />
                               </div>
                               <div className="dash_prt_caption">
-                                <h5>{`${item.title && item.title.slice(0, 35)}...`}</h5>
+                                <h5>{`${item.title && item.title.slice(0, 30)}...`}</h5>
                                 <div className="prt_dashb_lot">{` ${item.location && item.location.slice(0, 60)}...`}</div>
                                 <div className="prt_dash_rate"><span>Rs.{item.price}</span></div>
                               </div>

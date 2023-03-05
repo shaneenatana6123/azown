@@ -17,7 +17,7 @@ const HeroBanner = () => {
         libraries: ['places'],
     })
     if (!isLoaded) {
-        return <h4>Page is Loading....</h4>
+        return 
     }
     function handleForm(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value })
