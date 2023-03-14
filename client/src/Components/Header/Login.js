@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import propertyContext from '../../context/PropertyContext';
 
 const Login = () => {
@@ -8,6 +8,8 @@ const Login = () => {
     const context = useContext(propertyContext)
     const {  host } = context
     const history = useNavigate();
+    const pageLocation = useLocation()
+    console.log(pageLocation.pathname)
     const getuserdetail = async () => {
         const responce = await fetch(`${host}/api/auth/getuserdetail`, {
             method: "GET",
@@ -34,7 +36,8 @@ const Login = () => {
         if (json.success) {
             localStorage.setItem('token', json.authtoken);
             getuserdetail()
-            history("/");
+            history(pageLocation.pathname);
+             location.reload();
         } else {
             setfailed(true)
             setTimeout(() => {

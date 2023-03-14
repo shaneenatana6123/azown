@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import propertyContext from '../../../context/PropertyContext';
-import Navbar from '../../Header/Navbar'
-import Slider from 'react-slick'
-import Alert from '../../Alert';
-import { leadContext } from '../../../context/LeadContext';
+import React, { useContext, useEffect, useState } from "react";
+import { useParams,Link } from "react-router-dom";
+import propertyContext from "../../../context/PropertyContext";
+import Navbar from "../../Header/Navbar";
+import Slider from "react-slick";
+import Alert from "../../Alert";
+import { leadContext } from "../../../context/LeadContext";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import SigninPop from "../Rrent/signinPop";
 
 const CrentDetail = () => {
-  const [model, setmodel] = useState(false)
+  const [model, setmodel] = useState(false);
   const settings = {
     dots: false,
     infinite: true,
@@ -15,10 +18,9 @@ const CrentDetail = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <button className="slick-next slick-arrow">Next</button>,
-    prevArrow: <button className="slick-prev slick-arrow" >Previous</button>,
+    prevArrow: <button className="slick-prev slick-arrow">Previous</button>,
     autoplay: true,
     autoplaySpeed: 3000,
-
   };
   const setting = {
     dots: false,
@@ -26,25 +28,48 @@ const CrentDetail = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <button title="Next (Right arrow key)" type="button" class="mfp-arrow mfp-arrow-right mfp-prevent-close"></button>,
-    prevArrow:<button title="Previous (Left arrow key)" type="button" class="mfp-arrow mfp-arrow-left mfp-prevent-close"></button>,
+    nextArrow: (
+      <button
+        title="Next (Right arrow key)"
+        type="button"
+        class="mfp-arrow mfp-arrow-right mfp-prevent-close"
+      ></button>
+    ),
+    prevArrow: (
+      <button
+        title="Previous (Left arrow key)"
+        type="button"
+        class="mfp-arrow mfp-arrow-left mfp-prevent-close"
+      ></button>
+    ),
     autoplay: true,
     autoplaySpeed: 3000,
-
   };
   const context = useContext(propertyContext);
   const { cmrDetail, cmrdata } = context;
-  const data = cmrdata
-  const [contacted, setcontacted] = useState(false)
-  const leadcontext = useContext(leadContext)
-  const { leadcreate } = leadcontext
+  const data = cmrdata;
+  const [contacted, setcontacted] = useState(false);
+  const leadcontext = useContext(leadContext);
+  const { leadcreate } = leadcontext;
   const [showAlert, setShowAlert] = useState(false);
+  const [show, setShow] = useState(false);
+  const [log, setlog] = useState(false);
+  const [showUser, setShowUser] = useState(false);
+
+  console.log(data);
+  const handleClose = () => {
+    setShowUser(false);
+  };
+
+  const handleSignUpPopHide = () => {
+    setShow(false);
+  };
 
   const handleAlert = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 3000);
   };
- 
+
   const { id } = useParams();
   useEffect(() => {
     cmrDetail(id);
@@ -52,19 +77,86 @@ const CrentDetail = () => {
   return (
     <div id="main-wrapper">
       <Navbar />
-      {showAlert && <Alert msg="Please Login Before!!" />}
+      {/* {showAlert && <Alert msg="Please Login Before!!" />}
+       */}
+
+{show && <SigninPop onHide={handleSignUpPopHide}/>}
+
+
+{   showUser &&  <Modal show={showUser} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Get Owner Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <p>Owner will contact you shortly</p>
+        <strong>Email: {data.email}</strong>
+         </Modal.Body>
+        <Modal.Footer>
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button> */}
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>}
+
       <div className="clearfix" />
 
       <section className="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-8 col-md-7 col-sm-12 pr-1" onClick={()=>{setmodel(true)}}>
-              <div className="gg_single_part left"><img src={data.images && data.images.length > 0 ? data.images[0] : "assets/img/p-2.png"} className="img-fluid mx-auto" alt="img" /></div>
+            <div
+              className="col-lg-8 col-md-7 col-sm-12 pr-1"
+              onClick={() => {
+                setmodel(true);
+              }}
+            >
+              <div className="gg_single_part left">
+                <img
+                  src={
+                    data.images && data.images.length > 0
+                      ? data.images[0]
+                      : "assets/img/p-2.png"
+                  }
+                  className="img-fluid mx-auto"
+                  alt="img"
+                />
+              </div>
             </div>
             <div className="col-lg-4 col-md-5 col-sm-12 pl-1">
-              <div className="gg_single_part-right min"><img src={data.images && data.images.length > 1 ? data.images[1] : "assets/img/p-2.png"} className="img-fluid mx-auto" alt='img' /></div>
-              <div className="gg_single_part-right min mt-2 mb-2"><img src={data.images && data.images.length > 2 ? data.images[2] : "assets/img/p-3.png"} className="img-fluid mx-auto" alt='nu' /></div>
-              <div className="gg_single_part-right min"><img src={data.images && data.images.length > 3 ? data.images[3] : "assets/img/p-4.png"} className="img-fluid mx-auto" alt='kj' /></div>
+              <div className="gg_single_part-right min">
+                <img
+                  src={
+                    data.images && data.images.length > 1
+                      ? data.images[1]
+                      : "assets/img/p-2.png"
+                  }
+                  className="img-fluid mx-auto"
+                  alt="img"
+                />
+              </div>
+              <div className="gg_single_part-right min mt-2 mb-2">
+                <img
+                  src={
+                    data.images && data.images.length > 2
+                      ? data.images[2]
+                      : "assets/img/p-3.png"
+                  }
+                  className="img-fluid mx-auto"
+                  alt="nu"
+                />
+              </div>
+              <div className="gg_single_part-right min">
+                <img
+                  src={
+                    data.images && data.images.length > 3
+                      ? data.images[3]
+                      : "assets/img/p-4.png"
+                  }
+                  className="img-fluid mx-auto"
+                  alt="kj"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -72,15 +164,22 @@ const CrentDetail = () => {
       <div className="featured_slick_gallery gray d-block d-md-block d-lg-block d-xl-none">
         <div className="featured_slick_gallery-slide">
           <Slider {...settings}>
-            {data.images && data.images.map((val) => {
-              return <>
-                <div className="featured_slick_padd" onClick={()=>{setmodel(true)}}><img src={val} className="img-fluid mx-auto" alt="dj" /></div>
-              </>
-            })}
-
-
+            {data.images &&
+              data.images.map((val) => {
+                return (
+                  <>
+                    <div
+                      className="featured_slick_padd"
+                      onClick={() => {
+                        setmodel(true);
+                      }}
+                    >
+                      <img src={val} className="img-fluid mx-auto" alt="dj" />
+                    </div>
+                  </>
+                );
+              })}
           </Slider>
-
         </div>
       </div>
       {/* ============================ Hero Banner End ================================== */}
@@ -94,20 +193,38 @@ const CrentDetail = () => {
                 <div className="property_info_detail_wrap_first">
                   <div className="pr-price-into">
                     <ul className="prs_lists">
-                      <li><span className="bed">{data.cr_detail_floor} Floor</span></li>
+                      <li>
+                        <span className="bed">
+                          {data.cr_detail_floor} Floor
+                        </span>
+                      </li>
                       {/* <li><span className="bath">2 Bath</span></li> */}
                       {/* <li><span className="gar">1 Garage</span></li> */}
-                      <li><span className="sqft">{data.cr_detail_builtup_area} sqft</span></li>
+                      <li>
+                        <span className="sqft">
+                          {data.cr_detail_builtup_area} sqft
+                        </span>
+                      </li>
                     </ul>
                     <h2>{data.cr_detail_title}</h2>
-                    <span><i className="lni-map-marker" /> {data.cr_location_city}</span>
+                    <span>
+                      <i className="lni-map-marker" /> {data.cr_location_city}
+                    </span>
                   </div>
                 </div>
                 <div className="property_detail_section">
                   <div className="prt-sect-pric">
                     <ul className="_share_lists">
-                      <li><a href="#"><i className="fa fa-bookmark" /></a></li>
-                      <li><a href="#"><i className="fa fa-share" /></a></li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-bookmark" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-share" />
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -128,14 +245,70 @@ const CrentDetail = () => {
                 </div>
                 <div className="block-body">
                   <ul className="row p-0 m-0">
-                    <li className="col-lg-6 col-md-6 mb-2  p-0"><img src="assets/icons/office-building.png" className="icon-details mr-1" alt='icon' />Property Type</li><p className='col-6'>{data.cr_detail_property_type} </p>
+                    <li className="col-lg-6 col-md-6 mb-2  p-0">
+                      <img
+                        src="assets/icons/office-building.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Property Type
+                    </li>
+                    <p className="col-6">{data.cr_detail_property_type} </p>
 
-                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0"><img src="assets/icons/buildingpro.png" className="icon-details mr-1" alt='icon' />Building type</li><p className='col-6'>{data.cr_detail_building_type}</p>
-                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0"><img src="assets/icons/cake.png" className="icon-details mr-1" alt='icon' />Property Age</li><p className='col-6'>{data.cr_detail_prop_age}</p>
-                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0"><img src="assets/icons/building.png" className="icon-details mr-1" alt='icon' />Floor</li><p className='col-6'>{data.cr_detail_floor}</p>
-                    <li className="col-lg-6 col-md-6 mb-2 p-0"><img src="assets/icons/all.png" className="icon-details mr-1" alt='icon' />Total Floor</li><p className='col-6'>{data.cr_detail_total_floor}</p>
-                    <li className="col-lg-6 col-md-6 mb-2 p-0"><img src="assets/icons/scale-screen.png" className="icon-details mr-1" alt='icon' />built-up Area</li><p className='col-6'>{data.cr_detail_builtup_area} sqft.</p>
-                    <li className="col-lg-6 col-md-6 mb-2 p-0"><img src="assets/icons/armchair.png" className="icon-details mr-1" alt='icon' />Furnishing</li><p className='col-6'>{data.cr_detail_furnishing}</p>
+                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/buildingpro.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Building type
+                    </li>
+                    <p className="col-6">{data.cr_detail_building_type}</p>
+                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/cake.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Property Age
+                    </li>
+                    <p className="col-6">{data.cr_detail_prop_age}</p>
+                    <li className="col-lg-6 col-md-6 col-sm-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/building.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Floor
+                    </li>
+                    <p className="col-6">{data.cr_detail_floor}</p>
+                    <li className="col-lg-6 col-md-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/all.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Total Floor
+                    </li>
+                    <p className="col-6">{data.cr_detail_total_floor}</p>
+                    <li className="col-lg-6 col-md-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/scale-screen.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      built-up Area
+                    </li>
+                    <p className="col-6">{data.cr_detail_builtup_area} sqft.</p>
+                    <li className="col-lg-6 col-md-6 mb-2 p-0">
+                      <img
+                        src="assets/icons/armchair.png"
+                        className="icon-details mr-1"
+                        alt="icon"
+                      />
+                      Furnishing
+                    </li>
+                    <p className="col-6">{data.cr_detail_furnishing}</p>
                   </ul>
                 </div>
               </div>
@@ -146,13 +319,33 @@ const CrentDetail = () => {
                 </div>
                 <div className="block-body">
                   <ul className="avl-features third">
-                    <li className={data.cr_amenities_lift ? "active" : ""}>Lift</li>
-                    <li className={data.cr_amenities_parking ? "active" : ""}>Parking</li>
-                    <li className={data.cr_amenities_washroom ? "active" : ""}>Wahroom</li>
-                    <li className={data.cr_amenities_power_backup ? "active" : ""}>Power Backup</li>
-                    <li className={data.cr_amenities_security ? "active" : ""}>Security</li>
-                    <li className={data.cr_amenities_wifi ? "active" : ""}>WiFI</li>
-                    <li className={data.cr_amenities_water_storage ? "active" : ""}>Water Storage</li>
+                    <li className={data.cr_amenities_lift ? "active" : ""}>
+                      Lift
+                    </li>
+                    <li className={data.cr_amenities_parking ? "active" : ""}>
+                      Parking
+                    </li>
+                    <li className={data.cr_amenities_washroom ? "active" : ""}>
+                      Wahroom
+                    </li>
+                    <li
+                      className={data.cr_amenities_power_backup ? "active" : ""}
+                    >
+                      Power Backup
+                    </li>
+                    <li className={data.cr_amenities_security ? "active" : ""}>
+                      Security
+                    </li>
+                    <li className={data.cr_amenities_wifi ? "active" : ""}>
+                      WiFI
+                    </li>
+                    <li
+                      className={
+                        data.cr_amenities_water_storage ? "active" : ""
+                      }
+                    >
+                      Water Storage
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -163,7 +356,14 @@ const CrentDetail = () => {
                 </div>
                 <div className="block-body">
                   <div className="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15090.183774083564!2d72.82822336977539!3d18.99565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef0d17ace6f%3A0xba0d758b25d8b289!2sICICI%20Bank%20Curry%20Road%2C%20Mumbai-Branch%20%26%20ATM!5e0!3m2!1sen!2sin!4v1624183548415!5m2!1sen!2sin" className="full-width" height={450} style={{ border: 0 }} allowFullScreen loading="lazy" />
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15090.183774083564!2d72.82822336977539!3d18.99565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef0d17ace6f%3A0xba0d758b25d8b289!2sICICI%20Bank%20Curry%20Road%2C%20Mumbai-Branch%20%26%20ATM!5e0!3m2!1sen!2sin!4v1624183548415!5m2!1sen!2sin"
+                      className="full-width"
+                      height={450}
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
@@ -173,7 +373,9 @@ const CrentDetail = () => {
               <div className="property-sidebar">
                 <div className="sider_blocks_wrap">
                   <div className="side-booking-header">
-                    <div className="sb-header-left"><h3> Rent Details </h3></div>
+                    <div className="sb-header-left">
+                      <h3> Rent Details </h3>
+                    </div>
                     <div className="price_offer">#</div>
                   </div>
                   <div className="side-booking-body">
@@ -182,23 +384,82 @@ const CrentDetail = () => {
                         <label htmlFor="guests">Price &amp; Tax</label>
                         <div className="_adv_features">
                           <ul>
-                            <li>Rent<span>Rs.{data.cr_rental_detail_rent}</span></li>
-                            <li>Expected Deposit<span>Rs.{data.cr_rental_detail_exp_deposit}</span></li>
+                            <li>
+                              Rent<span>Rs.{data.cr_rental_detail_rent}</span>
+                            </li>
+                            <li>
+                              Expected Deposit
+                              <span>
+                                Rs.{data.cr_rental_detail_exp_deposit}
+                              </span>
+                            </li>
                           </ul>
                         </div>
                       </div>
                       <div className="side-booking-foot">
                         <span className="sb-header-left">Total Payment</span>
-                        <h3 className="price theme-cl">Rs.{parseInt(data.cr_rental_detail_exp_deposit) + parseInt(data.cr_rental_detail_rent)}</h3>
+                        <h3 className="price theme-cl">
+                          Rs.
+                          {parseInt(data.cr_rental_detail_exp_deposit) +
+                            parseInt(data.cr_rental_detail_rent)}
+                        </h3>
                       </div>
                       <div className="col-lg-12 col-md-12 col-sm-12">
-                    <div className="stbooking-footer mt-1">
-                      <div className="form-group mb-0 pb-0">
-                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,5) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
-                        {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
+                        <div className="stbooking-footer mt-1">
+                          <div className="form-group mb-0 pb-0">
+                          {localStorage.getItem("token") ? (
+                    (data.lead &&
+                      data.lead.includes(localStorage.getItem("userId"))) ||
+                    contacted ? (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                        }}
+                        //  disabled={true}
+                        onClick={() => {
+                          setShowUser(true);
+                          //  console.log("lead already created")
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    ) : (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          leadcreate(data._id, 1);
+                          setcontacted(true);
+                          setShowUser(true);
+                          // console.log("recent lead create");
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    )
+                  ) : (
+                    <button
+                      onClick={() => setShow(true)}
+                      // onClick={()=>console.log("User not login")}
+                      className="prt-view"
+                      style={{
+                        backgroundColor: "#27ae60",
+                        outline: "2px solid #fff",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Get Owner Details
+                    </button>
+                  )}
+                            {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
                     </div>
                   </div>
                 </div>
@@ -206,20 +467,27 @@ const CrentDetail = () => {
                 <div className="sider_blocks_wrap">
                   <div className="side-booking-body">
                     <div className="agent-_blocks_title">
-                      <div className="agent-_blocks_thumb"><img src="assets/img/user-6.jpg" alt /></div>
+                      <div className="agent-_blocks_thumb">
+                        <img src="assets/img/user-6.jpg" alt />
+                      </div>
                       <div className="agent-_blocks_caption">
-                        <h4><a href="#">Shivangi Preet</a></h4>
-                        <span className="approved-agent"><i className="ti-check" />approved</span>
+                        <h4>
+                          <a href="#">Shivangi Preet</a>
+                        </h4>
+                        <span className="approved-agent">
+                          <i className="ti-check" />
+                          approved
+                        </span>
                       </div>
                       <div className="clearfix" />
                     </div>
-                    <a href="#" className="agent-btn-contact" data-toggle="modal" data-target="#autho-message"><i className="ti-comment-alt" />Get Owner Detail</a>
+                    {localStorage.getItem("token") ? <Link to='/user-detail' className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</Link> : <button className='agent-btn-contact w-100 ' style={{cursor:"pointer"}} onClick={()=>setShow(true)}> View Owner Detail</button>}
+
                     {/* <span id="number" data-last={+1234567896}>
                   <span><i className="ti-headphone-alt" /><a className="see">+355(44)35...Show</a></span>
                 </span> */}
                   </div>
                 </div>
-
 
                 {/* <div className="sidebar-widgets">
               <h4>Similar Property</h4>
@@ -303,43 +571,58 @@ const CrentDetail = () => {
           </div>
         </div>
       </section>
-      {model && <div>
-        <div class="mfp-bg mfp-fade mfp-ready"></div>
-        <div className="mfp-wrap mfp-gallery mfp-auto-cursor mfp-fade mfp-ready" tabIndex={-1} style={{ overflow: 'hidden auto' }}>
-          <div className="mfp-container mfp-s-ready mfp-image-holder">
-            <div className="mfp-content">
-              <div className="mfp-figure">
-                <div className="mfp-close" />
-                <Slider {...setting}>
-                {data.images && data.images.map((val)=>{
-                  return   <figure>
-                  <img className="mfp-img" alt src={val}  style={{ maxHeight: 635 }} /><figcaption>
-                    <div className="mfp-bottom-bar">
-                      <div className="mfp-title" />
-                      <div className="mfp-counter">9 of 12</div>
-                    </div>
-                  </figcaption>
-                </figure>
-                })}
-               
-                </Slider>
-              
+      {model && (
+        <div>
+          <div class="mfp-bg mfp-fade mfp-ready"></div>
+          <div
+            className="mfp-wrap mfp-gallery mfp-auto-cursor mfp-fade mfp-ready"
+            tabIndex={-1}
+            style={{ overflow: "hidden auto" }}
+          >
+            <div className="mfp-container mfp-s-ready mfp-image-holder">
+              <div className="mfp-content">
+                <div className="mfp-figure">
+                  <div className="mfp-close" />
+                  <Slider {...setting}>
+                    {data.images &&
+                      data.images.map((val) => {
+                        return (
+                          <figure>
+                            <img
+                              className="mfp-img"
+                              alt
+                              src={val}
+                              style={{ maxHeight: 635 }}
+                            />
+                            <figcaption>
+                              <div className="mfp-bottom-bar">
+                                <div className="mfp-title" />
+                                <div className="mfp-counter">9 of 12</div>
+                              </div>
+                            </figcaption>
+                          </figure>
+                        );
+                      })}
+                  </Slider>
+                </div>
               </div>
+              <div className="mfp-preloader">Loading...</div>
             </div>
-            <div className="mfp-preloader">Loading...</div>
-            </div>
-          <button title="Close (Esc)" type="button" className="mfp-close" onClick={()=>{setmodel(false)}}>×</button>
+            <button
+              title="Close (Esc)"
+              type="button"
+              className="mfp-close"
+              onClick={() => {
+                setmodel(false);
+              }}
+            >
+              ×
+            </button>
+          </div>
         </div>
-
-      </div> }
-      
-
-
-
+      )}
     </div>
+  );
+};
 
-
-  )
-}
-
-export default CrentDetail
+export default CrentDetail;

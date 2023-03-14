@@ -6,6 +6,9 @@ import propertyContext from '../../../context/PropertyContext';
 import Alert from '../../Alert';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Header/Navbar';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import SigninPop from './signinPop';
 
 const RrentDetail = () => {
   
@@ -48,13 +51,44 @@ const RrentDetail = () => {
   const leadcontext = useContext(leadContext)
   const { leadcreate } = leadcontext
   const { id } = useParams();
+  const [show,setShow] = useState(false)
+  const [log,setlog] = useState(false)
+  const [showUser,setShowUser] = useState(false)
+  
+ const handleClose = ()=>{
+  setShowUser(false);
+}
+
+const handleSignUpPopHide = () =>{
+  setShow(false);
+}
+
   useEffect(() => {
     rrDetail(id);
   }, []);
   return (
- <div id="main-wrapper">
+ <div id="main-wrapper" style={show ? {overflow:"hidden"}:{overflow:"auto"}}>
 <Navbar/>
-{showAlert && <Alert msg='Please Login Before !!...' / > }
+{/* {showAlert && <Alert msg='Please Login Before !!...' / > } */}
+{show && <SigninPop onHide={handleSignUpPopHide}/>}
+
+
+{   showUser &&  <Modal show={showUser} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Get Owner Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <p>Owner will contact you shortly</p>
+        <strong>Email: {data.email}</strong>
+         </Modal.Body>
+        <Modal.Footer>
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button> */}
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>}
 
   <div className="clearfix" />
  
@@ -213,8 +247,57 @@ const RrentDetail = () => {
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="stbooking-footer mt-1">
                       <div className="form-group mb-0 pb-0">
-                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,1) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                      {/* {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,1) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>} */}
                         {/* <button className="btn book_btn theme-bg">Get Owner Detail</button> */}
+                        {localStorage.getItem("token") ? (
+                    (data.lead &&
+                      data.lead.includes(localStorage.getItem("userId"))) ||
+                    contacted ? (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                        }}
+                        //  disabled={true}
+                        onClick={() => {
+                          setShowUser(true);
+                          //  console.log("lead already created")
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    ) : (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          leadcreate(data._id, 1);
+                          setcontacted(true);
+                          setShowUser(true);
+                          // console.log("recent lead create");
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    )
+                  ) : (
+                    <button
+                      onClick={() => setShow(true)}
+                      // onClick={()=>console.log("User not login")}
+                      className="prt-view"
+                      style={{
+                        backgroundColor: "#27ae60",
+                        outline: "2px solid #fff",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Get Owner Details
+                    </button>
+                  )}
                       </div>
                     </div>
                   </div>
@@ -232,9 +315,9 @@ const RrentDetail = () => {
                   </div>
                   <div className="clearfix" />
                 </div>
-                <Link to='/user-detail' className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</Link>
+               {localStorage.getItem("token") ? <Link to='/user-detail' className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</Link> : <button className='agent-btn-contact w-100 ' style={{cursor:"pointer"}} onClick={()=>setShow(true)}> View Owner Detail</button>}
                 {/* <span id="number" data-last={+1234567896}>
-                  <span><i className="ti-headphone-alt" /><a className="see">+355(44)35...Show</a></span>
+                  <span><i className="ti-headphone-alt" /><a className="see">+355(44)35...Show</a></span>s
                 </span> */}
               </div>
             </div>
