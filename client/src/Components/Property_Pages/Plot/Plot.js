@@ -60,11 +60,8 @@ const handleSignUpPopHide = () =>{
 <Modal.Body> <p>Owner will contact you shortly</p>
 <strong>Email: {data.email}</strong>
 </Modal.Body><Modal.Footer>
-<Button variant="secondary" onClick={handleClose}>
+<Button style={{backgroundColor:"#27ae60"}} onClick={handleClose}>
   Close
-</Button>
-<Button variant="primary" onClick={handleClose}>
-  Save Changes
 </Button>
 </Modal.Footer>
 </Modal>}

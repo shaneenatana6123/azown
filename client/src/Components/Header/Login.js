@@ -9,7 +9,7 @@ const Login = () => {
     const {  host } = context
     const history = useNavigate();
     const pageLocation = useLocation()
-    console.log(pageLocation.pathname)
+    // console.log(pageLocation.pathname)
     const getuserdetail = async () => {
         const responce = await fetch(`${host}/api/auth/getuserdetail`, {
             method: "GET",

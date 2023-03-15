@@ -60,7 +60,7 @@ const handleSignUpPopHide = () =>{
 <strong>Email: {data.email}</strong>
 </Modal.Body>
 <Modal.Footer>
-<Button variant="secondary" onClick={handleClose}>
+<Button style={{backgroundColor:"#27ae60"}} onClick={handleClose}>
   Close
 </Button>
 {/* <Button variant="primary" onClick={handleClose}>
@@ -150,7 +150,7 @@ const handleSignUpPopHide = () =>{
                         //  disabled={true}
                          onClick={()=>{setShowUser(true)
                                        getUserInfo(property._id)
-                         console.log("lead already crated")
+                        //  console.log("lead already crated")
                         }}
                         >
                         Get Owner Details
@@ -166,7 +166,7 @@ const handleSignUpPopHide = () =>{
                            setShowUser(true)
                            getUserInfo(property._id)
 
-                           console.log("recent lead create");
+                          //  console.log("recent lead create");
                         }}
                       >
                         Get Owner Details
