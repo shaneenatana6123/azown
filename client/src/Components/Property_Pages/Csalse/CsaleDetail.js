@@ -96,7 +96,7 @@ const CsaleDetail = () => {
           {/* <Button variant="secondary" onClick={handleClose}>
             Close
           </Button> */}
-          <Button variant="primary" onClick={handleClose}>
+          <Button style={{backgroundColor:"#27ae60"}} onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>

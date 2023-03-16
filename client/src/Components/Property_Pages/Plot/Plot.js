@@ -12,16 +12,16 @@ const Plot = ({property,onAlert}) => {
   const leadcontext = useContext(leadContext)
   const { leadcreate,likeprop } = leadcontext
   const [liked, setliked] = useState(false)
-  const { lead, handlereq,cmrDetail,cmrdata } = context;
+  const { lead, handlereq,plotDetail,plotdata } = context;
   const [contacted, setcontacted] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [show,setShow] = useState(false)
   const [log,setlog] = useState(false)
   const [showUser,setShowUser] = useState(false)
-  const data = cmrdata;
+  const data = plotdata;
 
   const getUserInfo = (id) =>{
-    cmrDetail(id);
+    plotDetail(id);
   }
   
  const handleClose = ()=>{

@@ -12,17 +12,15 @@ const Csale = ({property,onAlert}) => {
   const leadcontext = useContext(leadContext)
   const { leadcreate,likeprop } = leadcontext
   const [liked, setliked] = useState(false)
-  const { lead, handlereq,cmrDetail,cmrdata } = context;
+  const { lead, handlereq,cmsDetail,cmsdata } = context;
   const [contacted, setcontacted] = useState(false);
   const [show,setShow] = useState(false)
   const [log,setlog] = useState(false)
   const [showUser,setShowUser] = useState(false)
-  const [btnText,setBtnText] = useState("Get Owner Details")
-  const data = cmrdata;
+  const data = cmsdata;
  
   const getUserInfo = (id) =>{
-    cmrDetail(id);
-    console.log(data);
+    cmsDetail(id);
   }
  const handleClose = ()=>{
   setShowUser(false);
@@ -164,7 +162,7 @@ const handleSignUpPopHide = () =>{
                            setShowUser(true)
                            getUserInfo(property._id)
 
-                         setBtnText("Requested")
+                    
                           // console.log("recent lead create");
                         }}
                       >

@@ -77,13 +77,13 @@ const HeroBanner = () => {
                         <div className="simple_tab_search center">
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item" onClick={() => { settab(1) }}>
-                                    <a className={tab === 1 ? "nav-link active" : "nav-link"}  style={{fontWeight:"bold",cursor:"pointer"}} id="buy-tab" data-toggle="tab" href role="tab" aria-controls="buy" aria-selected="true">Buy</a>
+                                    <a className={tab === 1 ? "nav-link active" : "nav-link"}  style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="buy-tab" data-toggle="tab" href role="tab" aria-controls="buy" aria-selected="true">Buy</a>
                                 </li>
                                 <li className="nav-item " onClick={() => { settab(2) }}>
-                                    <a className={tab === 2 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer"}} id="sell-tab" data-toggle="tab" href role="tab" aria-controls="sell" aria-selected="false">Rent</a>
+                                    <a className={tab === 2 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="sell-tab" data-toggle="tab" href role="tab" aria-controls="sell" aria-selected="false">Rent</a>
                                 </li>
                                 <li className="nav-item" onClick={() => { settab(3) }}>
-                                    <a className={tab === 3 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer"}} id="rent-tab" data-toggle="tab" href role="tab" aria-controls="rent" aria-selected="false">Commercial</a>
+                                    <a className={tab === 3 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="rent-tab" data-toggle="tab" href role="tab" aria-controls="rent" aria-selected="false">Commercial</a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="myTabContent">
