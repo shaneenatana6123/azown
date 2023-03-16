@@ -143,7 +143,7 @@ const handleSignUpPopHide = () =>{
                      (
                       <button
                         className="prt-view"
-                        style={{ backgroundColor: "#27ae60",cursor:"pointer" }}
+                        style={{ backgroundColor: "#27ae60",cursor:"pointer",border:"none", }}
                         //  disabled={true}
                          onClick={()=>{setShowUser(true)
                           getUserInfo(property._id)
@@ -157,7 +157,7 @@ const handleSignUpPopHide = () =>{
                     ) : (
                       <button
                         className="prt-view"
-                        style={{ backgroundColor: "#27ae60" ,cursor:"pointer"}}
+                        style={{ backgroundColor: "#27ae60" ,cursor:"pointer",border:"none",}}
                         onClick={() => {
                           leadcreate(property._id, 6);
                           setcontacted(true);
@@ -178,7 +178,7 @@ const handleSignUpPopHide = () =>{
                       className="prt-view"
                       style={{
                         backgroundColor: "#27ae60",
-                        outline: "2px solid #fff",
+                        border:"none",
                         cursor:"pointer"
                       }}
                     >

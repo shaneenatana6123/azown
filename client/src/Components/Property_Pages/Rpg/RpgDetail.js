@@ -263,6 +263,7 @@ const handleSignUpPopHide = () =>{
                         style={{
                           backgroundColor: "#27ae60",
                           cursor: "pointer",
+                          border:"none",
                         }}
                         //  disabled={true}
                         onClick={() => {
@@ -278,9 +279,10 @@ const handleSignUpPopHide = () =>{
                         style={{
                           backgroundColor: "#27ae60",
                           cursor: "pointer",
+                          border:"none",
                         }}
                         onClick={() => {
-                          leadcreate(data._id, 1);
+                          leadcreate(data._id, 3);
                           setcontacted(true);
                           setShowUser(true);
                           // console.log("recent lead create");
@@ -296,7 +298,7 @@ const handleSignUpPopHide = () =>{
                       className="prt-view"
                       style={{
                         backgroundColor: "#27ae60",
-                        outline: "2px solid #fff",
+                        border:"none",
                         cursor: "pointer",
                       }}
                     >

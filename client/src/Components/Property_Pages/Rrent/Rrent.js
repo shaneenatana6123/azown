@@ -243,6 +243,7 @@ const Rrent = ({ property, onAlert }) => {
                         style={{
                           backgroundColor: "#27ae60",
                           cursor: "pointer",
+                          border:"none",
                         }}
                         //  disabled={true}
                         onClick={() => {
@@ -260,6 +261,7 @@ const Rrent = ({ property, onAlert }) => {
                         style={{
                           backgroundColor: "#27ae60",
                           cursor: "pointer",
+                          border:"none",
                         }}
                         onClick={() => {
                           leadcreate(property._id, 1);
@@ -280,7 +282,7 @@ const Rrent = ({ property, onAlert }) => {
                       className="prt-view"
                       style={{
                         backgroundColor: "#27ae60",
-                        outline: "2px solid #fff",
+                        border:"none",
                         cursor: "pointer",
                       }}
                     >

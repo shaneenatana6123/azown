@@ -67,7 +67,8 @@ const TestimonialUsers = () => {
                                              
                                             </div>
                                             <div className="fr-infos-deatil">
-                                                <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
+                                                {/* <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a> */}
+                                                {localStorage.getItem('token')?<Link to="/dashboard" className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</Link>:<button className="btn agent-btn theme-bg"style={{color:"#fff"}} onClick={()=>setSignIn(true)}><i className="fa fa-user-plus mr-2" />Register</button>}
                                               
                                             </div>
                                         </div>
@@ -90,7 +91,8 @@ const TestimonialUsers = () => {
                                                 
                                             </div>
                                             <div className="fr-infos-deatil">
-                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
+                                            {/* <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a> */}
+                                            {localStorage.getItem('token')?<Link to="/dashboard" className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</Link>:<button className="btn agent-btn theme-bg"style={{color:"#fff"}} onClick={()=>setSignIn(true)}><i className="fa fa-user-plus mr-2" />Register</button>}
                                               
                                             </div>
                                         </div>
@@ -112,7 +114,8 @@ const TestimonialUsers = () => {
                                             
                                             </div>
                                             <div className="fr-infos-deatil">
-                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
+                                            {/* <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a> */}
+                                            {localStorage.getItem('token')?<Link to="/dashboard" className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</Link>:<button className="btn agent-btn theme-bg"style={{color:"#fff"}} onClick={()=>setSignIn(true)}><i className="fa fa-user-plus mr-2" />Register</button>}
                                              
                                             </div>
                                         </div>
@@ -134,7 +137,8 @@ const TestimonialUsers = () => {
                                               
                                             </div>
                                             <div className="fr-infos-deatil">
-                                            <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a>
+                                            {/* <a href className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</a> */}
+                                            {localStorage.getItem('token')?<Link to="/dashboard" className="btn agent-btn theme-bg"style={{color:"#fff"}} ><i className="fa fa-user-plus mr-2" />Register</Link>:<button className="btn agent-btn theme-bg"style={{color:"#fff"}} onClick={()=>setSignIn(true)}><i className="fa fa-user-plus mr-2" />Register</button>}
                                                
                                             </div>
                                         </div>
