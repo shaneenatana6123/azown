@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
 import Alert from '../../Alert';
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Header/Navbar'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import SigninPop from '../Rrent/signinPop';
 
 const RsaleDetail = () => {
   const [model, setmodel] = useState(false)
@@ -34,6 +37,19 @@ const RsaleDetail = () => {
 
   };
   const [showAlert, setShowAlert] = useState(false);
+  const [show,setShow] = useState(false)
+  const [log,setlog] = useState(false)
+  const [showUser,setShowUser] = useState(false)
+  
+
+ const handleClose = ()=>{
+  setShowUser(false);
+}
+
+const handleSignUpPopHide = () =>{
+  setShow(false);
+}
+
 
   const handleAlert = () => {
     setShowAlert(true);
@@ -52,7 +68,27 @@ const RsaleDetail = () => {
   return (
   <div id="main-wrapper">
   <Navbar/>
-  {showAlert && <Alert msg='Please Login Before !!...' / > }
+  {/* {showAlert && <Alert msg='Please Login Before !!...' / > } */}
+  {show && <SigninPop onHide={handleSignUpPopHide}/>}
+
+
+{   showUser &&  <Modal show={showUser} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Get Owner Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <p>Owner will contact you shortly</p>
+        <strong>Email: {data.email}</strong>
+         </Modal.Body>
+        <Modal.Footer>
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button> */}
+          <Button style={{backgroundColor:"#27ae60"}} onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>}
+
   <div className="clearfix" />
   <section className="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
         <div className="container">
@@ -226,7 +262,58 @@ const RsaleDetail = () => {
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="stbooking-footer mt-1">
                       <div className="form-group mb-0 pb-0">
-                      {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,2) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                      {/* {localStorage.getItem('token') ?  data.lead && data.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="btn book_btn theme-bg" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(data._id,2) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={handleAlert} className="btn book_btn theme-bg" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>} */}
+                      {localStorage.getItem("token") ? (
+                    (data.lead &&
+                      data.lead.includes(localStorage.getItem("userId"))) ||
+                    contacted ? (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                          border:"none",
+                        }}
+                        //  disabled={true}
+                        onClick={() => {
+                          setShowUser(true);
+                          //  console.log("lead already created")
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    ) : (
+                      <button
+                        className="prt-view"
+                        style={{
+                          backgroundColor: "#27ae60",
+                          cursor: "pointer",
+                          border:"none",
+                        }}
+                        onClick={() => {
+                          leadcreate(data._id, 2);
+                          setcontacted(true);
+                          setShowUser(true);
+                          // console.log("recent lead create");
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    )
+                  ) : (
+                    <button
+                      onClick={() => setShow(true)}
+                      // onClick={()=>console.log("User not login")}
+                      className="prt-view"
+                      style={{
+                        backgroundColor: "#27ae60",
+                        border:"none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Get Owner Details
+                    </button>
+                  )}
                     
                       </div>
                     </div>
@@ -246,7 +333,9 @@ const RsaleDetail = () => {
                   </div>
                   <div className="clearfix" />
                 </div>
-                <a href="#" className="agent-btn-contact" data-toggle="modal" data-target="#autho-message"><i className="ti-comment-alt" />Get Owner Detail</a>
+                {/* <a href="#" className="agent-btn-contact" data-toggle="modal" data-target="#autho-message"><i className="ti-comment-alt" />Get Owner Detail</a> */}
+               {localStorage.getItem("token") ? <Link to='/user-detail' className="agent-btn-contact" ><i className="ti-comment-alt" />View Owner Detail</Link> : <button className='agent-btn-contact w-100 ' style={{cursor:"pointer"}} onClick={()=>setShow(true)}> View Owner Detail</button>}
+                
               
               </div>
             </div>

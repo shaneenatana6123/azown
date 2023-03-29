@@ -109,7 +109,7 @@ const HomeNav = () => {
               </li>}
               <li className="add-listing">
                 <Link to="/create-property" className="theme-cl">
-                  <i className="fas fa-plus-circle mr-1" />Add Property
+                  <i className="fas fa-plus-circle mr-1" />Post Free Property
                 </Link>
               </li>
             </ul>

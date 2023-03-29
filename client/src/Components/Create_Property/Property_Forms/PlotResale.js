@@ -20,6 +20,27 @@ const PlotResale = () => {
   const { host } = context;
   const [currentStep, setCurrentStep] = useState(0);
   const history = useNavigate()
+  const [autoComplete,setAutoComp] = useState(null);
+  const [markerPosition,setMarkerPosition] = useState({ lat: 26.477626, lng: 80.31696 });
+  const [placeValue,setPlaceValue] = useState("");
+
+  const handlePlaceChanged = () =>{
+   const place = autoComplete.getPlace();
+   const lat = place.geometry.location.lat();
+   const lng = place.geometry.location.lng();
+   setPlaceValue(place.formatted_address);
+  //  console.log(lat,lng)
+   setMarkerPosition({lat:lat,lng:lng});
+  //  console.log(markerPosition);
+  }
+  const handleUserPlaceChange = (e) =>{
+  const value = e.target.value;
+  setPlaceValue(value)
+  // console.log(placeValue)
+  }
+  const handleChildData =(data)=>{
+    setPlaceValue(data);
+  }
   const [file, setFile] = useState([]);
   const fileSelected = (event) => {
     setFile(event.target.files);
@@ -100,10 +121,10 @@ case 1:
           <Field name="ps_location_city">
             {({ values, field, form }) => (
               <div>
-                <Autocomplete>
-                  <input type='text' placeholder='Enter the Location' className='form-control' ref={originRef} required />
+              <Autocomplete onLoad={(autoComplete)=>setAutoComp(autoComplete)} onPlaceChanged={handlePlaceChanged}>
+                        <input type='text' placeholder='Enter the Location' className='form-control' value={placeValue} onChange={handleUserPlaceChange} ref={originRef} required />
 
-                </Autocomplete>
+                      </Autocomplete>
               </div>
 
             )}
@@ -111,7 +132,8 @@ case 1:
           </Field>
         </div>
         <div className="form-group col-md-12">
-          <LocationPicker onLocation={handleLocation} />
+          {/* <LocationPicker onLocation={handleLocation} /> */}
+          <LocationPicker onLocation={handleLocation} markerPosition={markerPosition} onChildData={handleChildData} />
         </div>
 
 

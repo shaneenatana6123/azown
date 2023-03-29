@@ -68,8 +68,8 @@ const HeroBanner = () => {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-12 col-lg-12 col-md-12">
-                        <h1 className="big-header-capt mb-0 text-light">Search Your Next Home</h1>
-                        <p className="text-center mb-4 text-light">Find new &amp; featured property located in your local city.</p>
+                        <h1 className="big-header-capt mb-0 text-light">Find your dream home in a click</h1>
+                        <p className="text-center mb-4 text-light">Discover your perfect property in a single click</p>
                     </div>
                 </div>
                 <div className="row">
@@ -77,13 +77,13 @@ const HeroBanner = () => {
                         <div className="simple_tab_search center">
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item" onClick={() => { settab(1) }}>
-                                    <a className={tab === 1 ? "nav-link active" : "nav-link"} id="buy-tab" data-toggle="tab" href role="tab" aria-controls="buy" aria-selected="true">Buy</a>
+                                    <a className={tab === 1 ? "nav-link active" : "nav-link"}  style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="buy-tab" data-toggle="tab" href role="tab" aria-controls="buy" aria-selected="true">Buy</a>
                                 </li>
                                 <li className="nav-item " onClick={() => { settab(2) }}>
-                                    <a className={tab === 2 ? "nav-link active" : "nav-link"} id="sell-tab" data-toggle="tab" href role="tab" aria-controls="sell" aria-selected="false">Rent</a>
+                                    <a className={tab === 2 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="sell-tab" data-toggle="tab" href role="tab" aria-controls="sell" aria-selected="false">Rent</a>
                                 </li>
                                 <li className="nav-item" onClick={() => { settab(3) }}>
-                                    <a className={tab === 3 ? "nav-link active" : "nav-link"} id="rent-tab" data-toggle="tab" href role="tab" aria-controls="rent" aria-selected="false">Commercial</a>
+                                    <a className={tab === 3 ? "nav-link active" : "nav-link"} style={{fontWeight:"bold",cursor:"pointer",fontSize:"20px"}} id="rent-tab" data-toggle="tab" href role="tab" aria-controls="rent" aria-selected="false">Commercial</a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="myTabContent">

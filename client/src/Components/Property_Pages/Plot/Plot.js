@@ -3,15 +3,35 @@ import { Link } from 'react-router-dom'
 import { leadContext } from '../../../context/LeadContext';
 import propertyContext from '../../../context/PropertyContext';
 import img from '../../images/p-1.png'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import SigninPop from '../SigninPopUp';
 
 const Plot = ({property,onAlert}) => {
   const context = useContext(propertyContext);
   const leadcontext = useContext(leadContext)
   const { leadcreate,likeprop } = leadcontext
   const [liked, setliked] = useState(false)
-  const { lead, handlereq } = context;
+  const { lead, handlereq,plotDetail,plotdata } = context;
   const [contacted, setcontacted] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [show,setShow] = useState(false)
+  const [log,setlog] = useState(false)
+  const [showUser,setShowUser] = useState(false)
+  const data = plotdata;
+
+  const getUserInfo = (id) =>{
+    plotDetail(id);
+  }
+  
+ const handleClose = ()=>{
+  setShowUser(false);
+}
+
+const handleSignUpPopHide = () =>{
+  setShow(false);
+}
+
 
   const handleAlert = () => {
     setShowAlert(true);
@@ -31,6 +51,20 @@ const Plot = ({property,onAlert}) => {
                     </div>
                   </div>
                 </div>
+                {show && <SigninPop onHide={handleSignUpPopHide}/>}
+
+{   showUser &&  <Modal show={showUser} onHide={handleClose}>
+<Modal.Header >
+<Modal.Title>Get Owner Details</Modal.Title>
+</Modal.Header>
+<Modal.Body> <p>Owner will contact you shortly</p>
+<strong>Email: {data.email}</strong>
+</Modal.Body><Modal.Footer>
+<Button style={{backgroundColor:"#27ae60"}} onClick={handleClose}>
+  Close
+</Button>
+</Modal.Footer>
+</Modal>}
                 <div className="list_view_flex">										
                   <div className="listing-detail-wrapper mt-1">
                     <div className="listing-short-detail-wrap">
@@ -99,7 +133,56 @@ const Plot = ({property,onAlert}) => {
                     </div>
                     {localStorage.getItem('token') ? property.like && property.like.includes(localStorage.getItem('userId')) || liked ? <span  >  <i className=" fa fa-heart" style={{fontSize: 35,color:"red", paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span> :<span onClick={()=>{setliked(true);likeprop(property._id,7)}} >  <i className=" fa fa-heart" style={{fontSize: 35,color:`${ !liked ? "#27ae60":"red"}`, paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span>  :  <span onClick={onAlert} >  <i className=" fa fa-heart" style={{fontSize: 35,color:"#27ae60", paddingRight: 22, paddingTop: 5 , cursor:"pointer"}} /></span> }
                     <div className="footer-flex">
-                    {localStorage.getItem('token') ?  property.lead && property.lead.includes(localStorage.getItem('userId')) || contacted ? <button  className="prt-view" style={{ backgroundColor: 'lightgrey'  }}  disabled={true}>Get Owner Details</button> : <button  className="prt-view" style={{ backgroundColor: '#27ae60'  }}  onClick={()=>{leadcreate(property._id,7) ; setcontacted(true)}}>Get Owner Details</button> : <button onClick={onAlert} className="prt-view" style={{ backgroundColor: '#27ae60',outline:"2px solid #fff"  }}>Get Owner Details</button>}
+                    {localStorage.getItem("token") ?
+                   (
+                    (property.lead &&
+                      property.lead.includes(localStorage.getItem("userId"))) ||
+                    contacted ?
+                     (
+                      <button
+                        className="prt-view"
+                        style={{ backgroundColor: "#27ae60",cursor:"pointer",border:"none", }}
+                        //  disabled={true}
+                         onClick={()=>{setShowUser(true)
+                          getUserInfo(property._id)
+
+                        //  console.log("lead already created")
+                        }}
+                        
+                      >
+                        Get Owner Details
+                      </button> 
+                    ) : (
+                      <button
+                        className="prt-view"
+                        style={{ backgroundColor: "#27ae60" ,cursor:"pointer",border:"none",}}
+                        onClick={() => {
+                          leadcreate(property._id, 7);
+                          setcontacted(true);
+                           setShowUser(true)
+                           getUserInfo(property._id)
+
+                          // console.log("recent lead create");
+                        }}
+                      >
+                        Get Owner Details
+                      </button>
+                    )
+                  ) : (
+                    <button
+                     onClick={()=>setShow(true)}
+                    // onClick={()=>console.log("User not login")}
+                      className="prt-view"
+                      style={{
+                        backgroundColor: "#27ae60",
+                        border:"none",
+                        cursor:"pointer"
+                      }}
+                    >
+                      Get Owner Details
+                    </button>
+                  )}
+
                     </div>
                   </div>
                 </div>
