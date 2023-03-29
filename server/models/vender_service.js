@@ -2,28 +2,28 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const vender_serviceSchema = new Schema({
+  vender_id: {
+    type: String,
+  },
+  service_id: {
+    type: String,
+  },
   service_name: {
     type: String,
   },
-  vender_id:{
-    type:String
+  sub_service_name: {
+    type: String,
   },
-  vender_name:{
-    type:String
+  service_charge: {
+    type: String,
   },
-  vendor_description:{
-    type:String
+  charge_unit: {
+    type: String,
   },
-  vendor_location:{
-    type:String
+  service_description: {
+    type: String,
   },
-  lead_req:{
-    type:[]
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, { timestamps: true }, 
+);
 const vender_service = mongoose.model("vender_service", vender_serviceSchema);
 module.exports = vender_service;

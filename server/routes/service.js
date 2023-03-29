@@ -4,21 +4,19 @@ const router = express.Router();
 const Service = require("../models/service");
 const vender_service = require("../models/vender_service");
 const Vender = require("../models/vender_service");
-const service_lead = require("../models/service_laed");
-router.post("/createservice", async (req, res) => {
-  const { service_name, service_desc, service_charge } = req.body;
-  try {
-    const servicedata = await new Service({
-      service_name,
-      service_desc,
-      service_charge,
-    });
-    const data = await servicedata.save();
-    res.json({ data });
-  } catch {
-    res.json({ success: "Not found" });
-  }
-});
+const service_lead = require("../models/service_lead");
+const { createVenderService, createService } = require("../controller/ServiceController");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+
+
+
+router.post("/create-vender-service", fetchuser, createVenderService);
+
+
+router.post("/create-service" , upload.single("service_image"),  createService);
 
 router.get("/fetchservice", async (req, res) => {
   try {

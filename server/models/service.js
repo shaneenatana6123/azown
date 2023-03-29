@@ -1,24 +1,23 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const ServiceSchema = new Schema({
-  service_name: {
-    type: String,
+const ServiceSchema = new Schema(
+  {
+    service_name: {
+      type: String,
+    },
+    service_description: {
+      type: String,
+    },
+    service_image: {
+      type: String,
+    },
+    service_is_active: {
+      type: Boolean,
+      default: true,
+    },
   },
-  service_desc: {
-    type: String,
-  },
-  service_charge: {
-    type: Number,
-  },
-  service_is_active: {
-    type: Boolean,
-    default: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { timestamps: true }
+);
 const Service = mongoose.model("Service", ServiceSchema);
 module.exports = Service;
