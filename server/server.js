@@ -9,7 +9,7 @@ app.use(express.json({limit:'50mb'}))
 app.use(cors())
 
 // Available Routes
-app.use('/auth', require('./routes/auth'))
+app.use('/user', require('./routes/user'))
 app.use('/property', require('./routes/property'))
 app.use('/admin',require('./routes/admin'))
 app.use('/service',require('./routes/service'))

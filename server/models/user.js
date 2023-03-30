@@ -12,7 +12,8 @@ const UserSchema = new Schema({
         unique: true
     },
     phone:{
-        type:String
+        type:String,
+        unique: true
     },
     dob:{
         type:String
@@ -23,42 +24,40 @@ const UserSchema = new Schema({
     },
     usertype:{
         type:String,
-        default:"Visiter"
+        default:0
     },
-    imgname:{
+    img_url:{
         type:String
     },
     description:{
         type:String
     },
-    country:String,
-    state:String,
-    city:String,
-    street:String,
-    landmark:String,
-    adharno:{
+    is_active:{
+        type:Boolean,
+        default:true
+    },
+    facebook_link:{
         type:String
     },
-    pancardno:{
+    twitter_link:{
         type:String
     },
-    transactionid:{
+    instagram_link:{
         type:String
     },
-    totalproperty:{
+    linkedin_link:{
         type:String
     },
-    totaldashboard:{
-        type:String
-    },
-    block:{
+    primium:{
         type:Boolean,
         default:false
     },
-    date:{
-        type: Date,
-        default: Date.now
-    }
-  });
+    kyc_status:{
+        type:Number,
+        default:0
+    },
+
+
+  }, { timestamps: true });
   const User = mongoose.model('user', UserSchema);
   module.exports = User;
