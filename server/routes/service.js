@@ -5,7 +5,7 @@ const Service = require("../models/service");
 const vender_service = require("../models/vender_service");
 const Vender = require("../models/vender_service");
 const service_lead = require("../models/service_lead");
-const { createVenderService, createService, fetchVenderByService, createServiceLead, updateLeadStage } = require("../controller/ServiceController");
+const { createVenderService, createService, fetchVenderByService, createServiceLead, updateLeadStage , fetchVenderOwnService } = require("../controller/ServiceController");
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -20,6 +20,8 @@ router.post("/create-service" , upload.single("service_image"),  createService);
 router.get('/fetch-vender-by-service/:service_id', fetchVenderByService);
 router.post('/create-service-lead', fetchuser, createServiceLead);
 router.put('/update-service-lead/:service_lead_id' ,  updateLeadStage);
+router.get("/fetch-vender-own-service", fetchuser, fetchVenderOwnService )
+
 
 router.get("/fetchservice", async (req, res) => {
   try {

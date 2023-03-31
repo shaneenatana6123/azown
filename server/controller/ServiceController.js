@@ -105,13 +105,21 @@ const updateLeadStage = async (req, res) => {
         const { service_lead_id } = req.params;
         const { service_lead_stage } = req.body;
         const serviceLead = await service_lead.findByIdAndUpdate(service_lead_id, { service_lead_stage });
-        res.status(201).json(serviceLead);
+        res.status(200).json(serviceLead);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
     
 };
 
+const fetchVenderOwnService = async (req, res) => {
+    try {
+        const vender_id = req.user.id;
+        const venderService = await vender_service.find({ vender_id });
+        res.status(200).json(venderService);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
-
-module.exports = { createVenderService , createService  , fetchVenderByService ,createServiceLead , updateLeadStage }
+module.exports = { createVenderService , createService  , fetchVenderByService ,createServiceLead , updateLeadStage  , fetchVenderOwnService }
