@@ -40,7 +40,7 @@ const CreateProperty = () => {
                     <h4 className="property_block_title">Our Terms &amp; Conditions</h4>
                   </div>
                   <div className="block-body">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since th been the industry's standard dummy text ever since th been the industry's standard dummy text ever since th been the industry's standard dummy text ever since the 1500s, when an unknown printer took a type specimen book.</p>
+                    <p>Lorem Ipsum iruhr simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since th been the industry's standard dummy text ever since th been the industry's standard dummy text ever since th been the industry's standard dummy text ever since the 1500s, when an unknown printer took a type specimen book.</p>
                     {/* <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus</p> */}
 
                   </div>

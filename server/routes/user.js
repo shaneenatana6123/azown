@@ -51,15 +51,24 @@ router.post('/add-vender-kyc' , fetchuser , userController.addVenderKyc)
 router.put('/update-vender-kyc' , fetchuser , userController.updateVenderKyc)
 router.get('/get-vender-kyc' , fetchuser , userController.fetchVenderKyc)
 router.get('/get-broker-kyc' , fetchuser , userController.fetchBrokerKyc)
-router.get('/get-user-kyc' , fetchuser , userController.fetchUserKyc)
 router.get('/get-template-data' , fetchuser , userController.fetchTemplateData)
 router.post('/add-broker-kyc' , fetchuser , userController.addBrokerKyc)
 router.put('/update-broker-kyc' , fetchuser , userController.updateBrokerKyc)
-router.post('/add-user-kyc' , fetchuser , userController.addUserKyc)
-router.put('/update-user-kyc' , fetchuser , userController.updateUserKyc)
+
+router.post('/add-builder-kyc' , fetchuser , userController.addBuilderKyc)
+router.put('/update-builder-kyc' , fetchuser , userController.updateBuilderKyc)
+router.get('/get-builder-kyc' , fetchuser , userController.fetchBuilderKyc)
+
+router.post('/add-owner-kyc', fetchuser , userController.addOwnerKyc)
+router.put('/update-owner-kyc', fetchuser , userController.updateOwnerKyc)
+router.get('/get-owner-kyc', fetchuser , userController.fetchOwnerKyc)
+
+
+
 
 router.post('/add-tempalate-data' , fetchuser , userController.addTemplateData)
 router.put('/update-tempalate-data' , fetchuser , userController.updateTemplateData)
+
 
 
 
